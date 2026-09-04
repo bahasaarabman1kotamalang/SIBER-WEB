@@ -1198,7 +1198,7 @@
         document.getElementById("topicList").innerHTML = topics[g]
           .map(
             (t, i) =>
-              `<div class="card topic"><span class="tag">Kelas ${g}</span><h3 class="arabic">${t[0]}</h3><b>${t[1]}</b><p class="muted">Kosakata • teks • komunikasi • tata bahasa • produksi bahasa</p><button class="btn ${(g === "X" && i <= 4) || (g === "XI" && i <= 2) || (g === "XII" && i <= 1) ? "primary" : ""}" onclick="openLesson('${g}',${i})">${(g === "X" && i <= 4) || (g === "XI" && i <= 2) || (g === "XII" && i <= 1) ? `Buka Unit ${i + 1}` : "Buka materi"}</button></div>`,
+              `<div class="card topic"><span class="tag">Kelas ${g}</span><h3 class="arabic">${t[0]}</h3><b>${t[1]}</b><p class="muted">Kosakata • teks • komunikasi • tata bahasa • produksi bahasa</p><button class="btn ${(g === "X" && i <= 5) || (g === "XI" && i <= 2) || (g === "XII" && i <= 1) ? "primary" : ""}" onclick="openLesson('${g}',${i})">${(g === "X" && i <= 5) || (g === "XI" && i <= 2) || (g === "XII" && i <= 1) ? `Buka Unit ${i + 1}` : "Buka materi"}</button></div>`,
           )
           .join("");
       }
@@ -1343,6 +1343,28 @@
         ["الْخَيَّاطُ", "Penjahit"],
         ["النَّجَّارُ", "Tukang kayu"],
         ["الْبَنَّاءُ", "Tukang bangunan"],
+      ];
+      const vocab6 = [
+        ["أَقُومُ مِنَ النَّوْمِ", "Saya bangun tidur"],
+        ["أُنَظِّفُ سَرِيرِي وَغُرْفَةَ نَوْمِي", "Saya merapikan tempat tidur dan kamar"],
+        ["أَغْتَسِلُ فِي الْحَمَّامِ", "Saya mandi di kamar mandi"],
+        ["أُصَلِّي الصُّبْحَ فِي الْمَسْجِدِ", "Saya salat Subuh di masjid"],
+        ["أُسَاعِدُ أُمِّي فِي الْمَطْبَخِ", "Saya membantu ibu di dapur"],
+        ["أَتَنَاوَلُ الْفُطُورَ فِي غُرْفَةِ الطَّعَامِ", "Saya sarapan di ruang makan"],
+        ["أُوَدِّعُ وَالِدَيَّ", "Saya berpamitan kepada orang tua"],
+        ["أَذْهَبُ إِلَى الْمَدْرَسَةِ", "Saya pergi ke sekolah"],
+        ["أَكْنُسُ الْفَصْلَ", "Saya menyapu kelas"],
+        ["أَسْتَمِعُ إِلَى شَرْحِ الْمُدَرِّسِ", "Saya menyimak penjelasan guru"],
+        ["أَلْعَبُ مَعَ أَصْدِقَائِي فِي الْمَلْعَبِ", "Saya bermain bersama teman di lapangan"],
+        ["أَرْجِعُ مِنَ الْمَدْرَسَةِ", "Saya pulang dari sekolah"],
+        ["أَتَنَاوَلُ الْغَدَاءَ", "Saya makan siang"],
+        ["أُشَاهِدُ التِّلْفَازَ", "Saya menonton televisi"],
+        ["أُذَاكِرُ الدُّرُوسَ", "Saya mengulang pelajaran"],
+        ["أَعْمَلُ الْوَاجِبَاتِ", "Saya mengerjakan tugas"],
+        ["أَقْرَأُ الْقُرْآنَ", "Saya membaca Al-Qur'an"],
+        ["أَتَنَاوَلُ الْعَشَاءَ", "Saya makan malam"],
+        ["أَنَامُ فِي غُرْفَةِ النَّوْمِ", "Saya tidur di kamar"],
+        ["السَّاعَةُ الرَّابِعَةُ وَالنِّصْفُ", "Pukul empat lewat tiga puluh"],
       ];
       const vocab12Unit1 = [
         [
@@ -2250,6 +2272,139 @@
 </div>`;
       }
 
+      function dars6() {
+        return `<div class="card">
+<div class="unit-heading">
+  <div>
+    <span class="tag">Kelas X • Bab 6 / Unit 6 • Unit Terakhir</span>
+    <h2 class="arabic">الْوَحْدَةُ السَّادِسَةُ: الْحَيَاةُ الْيَوْمِيَّةُ</h2>
+    <h2>Unit 6: Kehidupan Sehari-hari</h2>
+    <p>Pelajari kegiatan harian di rumah dan sekolah, ungkapan waktu, bilangan Arab, serta cara menceritakan rutinitas secara lisan dan tertulis.</p>
+  </div>
+  <div class="unit-number" aria-label="Unit 6">06</div>
+</div>
+
+<div class="lesson-nav">
+  <button class="btn" onclick="previousChapter(6)">← Bab sebelumnya</button>
+  <div class="navinfo">BAB 6 • الْحَيَاةُ الْيَوْمِيَّةُ</div>
+</div>
+
+<div class="lesson-tabs" role="tablist" aria-label="Bagian Unit 6">
+  <button class="active" onclick="lessonTab('tujuan',this)">🎯 Tujuan</button>
+  <button onclick="lessonTab('mufradat',this)">🃏 Mufradat</button>
+  <button onclick="lessonTab('istima',this)">🎧 Istima'</button>
+  <button onclick="lessonTab('hiwar',this)">🗣️ Hiwar</button>
+  <button onclick="lessonTab('qiraah',this)">📖 Qira'ah</button>
+  <button onclick="lessonTab('tarkib',this)">🔢 Tarkib</button>
+  <button onclick="lessonTab('kitabah',this)">✍️ Kitabah</button>
+  <button onclick="lessonTab('evaluasi',this)">🏆 Kuis</button>
+</div>
+
+<div id="panel-tujuan" class="lesson-panel active">
+  <div class="dars-section">
+    <h3>🎯 Tujuan Pembelajaran</h3>
+    <p>Peserta didik mampu memahami, menganalisis, dan menghasilkan teks bertema kegiatan sehari-hari (<span class="arabic">الْحَيَاةُ الْيَوْمِيَّةُ</span>) dengan penggunaan ungkapan waktu serta <span class="arabic">الْعَدَدُ وَالْمَعْدُودُ</span> yang tepat.</p>
+    <div class="objective-grid">
+      <div class="objective-item"><b>01 • Pelafalan</b>Menirukan mufradat kegiatan harian dan ungkapan waktu dengan tepat.</div>
+      <div class="objective-item"><b>02 • Menyimak</b>Menemukan informasi waktu dan urutan aktivitas dari teks lisan.</div>
+      <div class="objective-item"><b>03 • Berbicara</b>Bertanya dan menjawab tentang jadwal kegiatan sehari-hari.</div>
+      <div class="objective-item"><b>04 • Membaca</b>Memahami informasi umum dan rinci dalam teks deskriptif.</div>
+      <div class="objective-item"><b>05 • Tata bahasa</b>Menggunakan bilangan pokok, bilangan tingkat, dan ma'dud.</div>
+      <div class="objective-item"><b>06 • Menulis</b>Menyusun jadwal dan paragraf tentang rutinitas harian.</div>
+    </div>
+  </div>
+  <div class="dars-section">
+    <h3>📚 Apersepsi</h3>
+    <div class="rtlbox">قُلْ مَنْ حَرَّمَ زِينَةَ اللَّهِ الَّتِي أَخْرَجَ لِعِبَادِهِ وَالطَّيِّبَاتِ مِنَ الرِّزْقِ قُلْ هِيَ لِلَّذِينَ آمَنُوا فِي الْحَيَاةِ الدُّنْيَا خَالِصَةً يَوْمَ الْقِيَامَةِ</div>
+    <p><b>QS. Al-A'raf: 32.</b> Waktu dan nikmat sehari-hari digunakan secara tertib, baik, dan bertanggung jawab.</p>
+  </div>
+</div>
+
+<div id="panel-mufradat" class="lesson-panel">
+  <div class="dars-section">
+    <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk membalik arti; tekan suara untuk berlatih pelafalan.</span></div><span class="progress-chip">${vocab6.length} kosakata</span></div>
+    <div class="vocab-grid">${vocab6.map((v) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();speak('${v[0]}')">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+  </div>
+  <div class="dars-section">
+    <h3>Latihan cepat</h3>
+    <div class="mini-task">
+      <div><span class="arabic">أُذَاكِرُ الدُّرُوسَ</span> berarti …<br><button class="btn" onclick="quickAnswer6(this,true)">Mengulang pelajaran</button> <button class="btn" onclick="quickAnswer6(this,false)">Pergi ke sekolah</button></div>
+      <div><span class="arabic">أَتَنَاوَلُ الْعَشَاءَ</span> berarti …<br><button class="btn" onclick="quickAnswer6(this,false)">Sarapan</button> <button class="btn" onclick="quickAnswer6(this,true)">Makan malam</button></div>
+    </div>
+    <div id="quickFeedback6" class="choice-feedback" aria-live="polite"></div>
+  </div>
+</div>
+
+<div id="panel-istima" class="lesson-panel">
+  <div class="dars-section">
+    <h3>🎧 الِاسْتِمَاعُ — Istima'</h3>
+    <p>Dengarkan percakapan tentang waktu kegiatan, lalu jawab pertanyaannya.</p>
+    <div class="dialogue rtlbox" id="d6Listen"><b>الْأَبُ:</b> كَمِ السَّاعَةُ الْآنَ؟<br><b>الِابْنُ:</b> السَّاعَةُ الْخَامِسَةُ تَمَامًا.<br><b>الْأَبُ:</b> مَتَى تَذْهَبُ إِلَى الْمَدْرَسَةِ؟<br><b>الِابْنُ:</b> السَّاعَةُ السَّادِسَةُ تَمَامًا.<br><b>الْأَبُ:</b> وَمَتَى تَرْجِعُ مِنَ الْمَدْرَسَةِ؟<br><b>الِابْنُ:</b> أَرْجِعُ السَّاعَةَ الرَّابِعَةَ مَسَاءً.</div>
+    <button class="btn primary" onclick="speak(document.getElementById('d6Listen').innerText)">▶ Putar Istima'</button>
+    <div class="exercise"><b>Periksa pemahamanmu</b><p class="arabic">مَتَى يَذْهَبُ الِابْنُ إِلَى الْمَدْرَسَةِ؟</p><input id="d6ist1" placeholder="اُكْتُبِ الْجَوَابَ"><button class="btn" onclick="cekFlexible('d6ist1',['الساعة السادسة','في الساعة السادسة'],'d6istfb')">Cek jawaban</button><div id="d6istfb" class="feedback" aria-live="polite"></div></div>
+  </div>
+</div>
+
+<div id="panel-hiwar" class="lesson-panel">
+  <div class="dars-section">
+    <h3>🗣️ الْحِوَارُ — الْأَنْشِطَةُ الْيَوْمِيَّةُ</h3>
+    <div class="dialogue rtlbox"><b>إِبْرَاهِيمُ:</b> مَتَى تَقُومُ مِنَ النَّوْمِ؟<br><b>أَغِيثُ:</b> أَقُومُ مِنَ النَّوْمِ صَبَاحًا بَاكِرًا.<br><b>إِبْرَاهِيمُ:</b> فِي أَيَّةِ سَاعَةٍ؟<br><b>أَغِيثُ:</b> فِي السَّاعَةِ الرَّابِعَةِ. وَأَنْتَ؟<br><b>إِبْرَاهِيمُ:</b> فِي السَّاعَةِ الرَّابِعَةِ وَالرُّبْعِ.<br><b>أَغِيثُ:</b> مَتَى تَتَنَاوَلُ الْفُطُورَ؟<br><b>إِبْرَاهِيمُ:</b> فِي السَّادِسَةِ إِلَّا الرُّبْعَ.<br><b>أَغِيثُ:</b> وَمَتَى تَذْهَبُ إِلَى الْمَدْرَسَةِ؟<br><b>إِبْرَاهِيمُ:</b> فِي السَّادِسَةِ وَالنِّصْفِ.</div>
+    <button class="btn" onclick="speak(this.previousElementSibling.innerText)">🔊 Dengarkan hiwar</button>
+    <div class="exercise"><b>Praktik berpasangan:</b> Gunakan pola <span class="arabic">مَتَى تَقُومُ مِنَ النَّوْمِ؟ فِي أَيَّةِ سَاعَةٍ؟ مَتَى تَذْهَبُ إِلَى الْمَدْرَسَةِ؟</span></div>
+  </div>
+</div>
+
+<div id="panel-qiraah" class="lesson-panel">
+  <div class="dars-section">
+    <div class="reading-title"><h3>📖 الْقِرَاءَةُ — أَعْمَالِي الْيَوْمِيَّةُ</h3><button class="btn" onclick="speak(document.getElementById('d6read').innerText)">🔊</button></div>
+    <div class="rtlbox" id="d6read">اِسْمِي يَاقُوتُ زَائِرِينَ. أَنَا طَالِبٌ فِي الصَّفِّ الْعَاشِرِ مِنَ الْمَدْرَسَةِ الثَّانَوِيَّةِ الْإِسْلَامِيَّةِ. أَقُومُ مِنَ النَّوْمِ فِي السَّاعَةِ الثَّالِثَةِ وَالنِّصْفِ، فَأُنَظِّفُ سَرِيرِي وَغُرْفَةَ نَوْمِي، أَسْتَحِمُّ وَأَتَوَضَّأُ ثُمَّ أُصَلِّي رَكْعَتَيْنِ وَأُذَاكِرُ دُرُوسِي فِي غُرْفَةِ الْمُطَالَعَةِ. حَانَ أَذَانُ الْفَجْرِ فَأَذْهَبُ إِلَى الْمَسْجِدِ لِلصَّلَاةِ جَمَاعَةً. وَبَعْدَ الصَّلَاةِ أَرْجِعُ إِلَى الْبَيْتِ ثُمَّ أَقْرَأُ بَعْضَ آيَاتٍ مِنَ الْقُرْآنِ الْكَرِيمِ.<br><br>وَفِي الرَّابِعَةِ وَالنِّصْفِ أُنَظِّفُ غُرَفَ بَيْتِي، أَكْنُسُ الْبِلَاطَ وَأُرَتِّبُ الْأَثَاثَ عَلَى مَكَانِهَا. فِي الْخَامِسَةِ أَذْهَبُ إِلَى أُمِّي فِي الْمَطْبَخِ فَأُسَاعِدُهَا عَلَى إِعْدَادِ الْفُطُورِ. الْفُطُورُ جَاهِزٌ فِي السَّادِسَةِ إِلَّا الرُّبْعِ فَأَدْعُو أَبِي إِلَى تَنَاوُلِ الْفُطُورِ مَعًا. وَبَعْدَ الْفُطُورِ أُنَظِّفُ أَسْنَانِي وَأَرْتَدِي زِيَّ الْمَدْرَسَةِ. أُوَدِّعُ وَالِدَيَّ وَأَذْهَبُ إِلَى الْمَدْرَسَةِ فِي السَّادِسَةِ وَالنِّصْفِ مَاشِيًا مَعَ أَصْدِقَائِي.<br><br>أَقْضِي الْيَوْمَ الدِّرَاسِيَّ فِي نَشَاطٍ. أَسْتَمِعُ إِلَى شَرْحِ الْأُسْتَاذِ جَيِّدًا، وَتَنْتَهِي الدِّرَاسَةُ فِي السَّاعَةِ الْوَاحِدَةِ وَالنِّصْفِ. أَرْجِعُ إِلَى الْبَيْتِ وَأَسْتَرِيحُ قَلِيلًا، ثُمَّ أُصَلِّي الْعَصْرَ فِي الرَّابِعَةِ مَسَاءً. وَبَعْدَ صَلَاةِ الْمَغْرِبِ أَقْرَأُ بَعْضَ آيَاتٍ مِنَ الْقُرْآنِ الْكَرِيمِ ثُمَّ أُذَاكِرُ دُرُوسِي وَأَعْمَلُ الْوَاجِبَاتِ الْمَنْزِلِيَّةَ. أَنَامُ فِي السَّاعَةِ الْعَاشِرَةِ تَمَامًا.</div>
+    <div class="exercise"><b>Pemahaman bacaan:</b><ol class="arabic"><li>مَتَى يَقُومُ يَاقُوتُ مِنَ النَّوْمِ؟</li><li>مَاذَا يَعْمَلُ بَعْدَ صَلَاةِ الصُّبْحِ؟</li><li>مَتَى يَتَنَاوَلُ الْفُطُورَ؟</li><li>كَيْفَ يَذْهَبُ إِلَى الْمَدْرَسَةِ؟</li><li>فِي أَيَّةِ سَاعَةٍ يُذَاكِرُ دُرُوسَهُ؟</li></ol></div>
+  </div>
+</div>
+
+<div id="panel-tarkib" class="lesson-panel">
+  <div class="dars-section">
+    <h3>🔢 التَّرَاكِيبُ — الْعَدَدُ وَالْمَعْدُودُ</h3>
+    <p>Bilangan 1–2 mengikuti jenis kata benda yang dihitung, bilangan 3–10 berlawanan jenis, sedangkan bilangan 11–12 menyesuaikan jenis ma'dud.</p>
+    <div class="tablewrap"><table><tr><th>العدد</th><th>المذكر</th><th>المؤنث</th></tr><tr><td>١</td><td class="arabic">طَالِبٌ وَاحِدٌ</td><td class="arabic">طَالِبَةٌ وَاحِدَةٌ</td></tr><tr><td>٢</td><td class="arabic">طَالِبَانِ اثْنَانِ</td><td class="arabic">طَالِبَتَانِ اثْنَتَانِ</td></tr><tr><td>٣</td><td class="arabic">ثَلَاثَةُ طُلَّابٍ</td><td class="arabic">ثَلَاثُ طَالِبَاتٍ</td></tr><tr><td>١١</td><td class="arabic">أَحَدَ عَشَرَ طَالِبًا</td><td class="arabic">إِحْدَى عَشْرَةَ طَالِبَةً</td></tr></table></div>
+  </div>
+  <div class="dars-section">
+    <h3>🕒 السَّاعَةُ — Menyatakan Waktu</h3>
+    <div class="objective-grid"><div class="objective-item"><b class="arabic">السَّاعَةُ الرَّابِعَةُ</b>04.00</div><div class="objective-item"><b class="arabic">الرَّابِعَةُ وَالرُّبْعُ</b>04.15</div><div class="objective-item"><b class="arabic">الرَّابِعَةُ وَالنِّصْفُ</b>04.30</div><div class="objective-item"><b class="arabic">الْخَامِسَةُ إِلَّا الرُّبْعَ</b>04.45</div></div>
+    <div class="exercise"><b>Latihan:</b> Ucapkan dalam bahasa Arab: 05.15, 06.30, 07.45, dan 10.00.</div>
+  </div>
+</div>
+
+<div id="panel-kitabah" class="lesson-panel">
+  <div class="dars-section">
+    <h3>✍️ الْكِتَابَةُ — أَعْمَالِي الْيَوْمِيَّةُ</h3>
+    <p>Susun kegiatan secara berurutan dengan menyebutkan waktu, tempat, dan aktivitas.</p>
+    <div class="exercise"><b>Susun menjadi kalimat:</b><div class="arabic">مِنَ النَّوْمِ – فِي السَّاعَةِ الرَّابِعَةِ – أَقُومُ</div><div class="arabic">إِلَى الْمَدْرَسَةِ – وَالنِّصْفِ – فِي السَّادِسَةِ – أَذْهَبُ</div></div>
+    <p><b>Tuliskan jadwal kegiatanmu dari pagi sampai malam (6–8 kalimat):</b></p><div class="writing-lines rtlbox" contenteditable="true" role="textbox" aria-label="Tulis kegiatan sehari-hari" data-placeholder="أَقُومُ مِنَ النَّوْمِ فِي... ثُمَّ... وَبَعْدَ ذَلِكَ..."></div>
+  </div>
+</div>
+
+<div id="panel-evaluasi" class="lesson-panel">
+  <section class="dars-section unit-quiz">
+    <h3 class="arabic">🏆 اِخْتِبَارُ الْوَحْدَةِ السَّادِسَةِ</h3>
+    <p class="arabic">أَجِبْ عَنْ عَشَرَةِ أَسْئِلَةٍ. لِكُلِّ إِجَابَةٍ صَحِيحَةٍ عَشْرُ دَرَجَاتٍ، وَالدَّرَجَةُ الْكُبْرَى مِائَةٌ.</p>
+    <div class="quiz-progress"><span id="d6Answered" class="arabic">٠/١٠ مُجَابٌ</span><div class="bar"><i id="d6QuizBar"></i></div></div>
+    <div id="dars6Eval"></div>
+    <button class="btn primary quiz-submit arabic" onclick="nilaiDars6()">✓ اِحْسِبِ النَّتِيجَةَ</button>
+    <button class="btn arabic" onclick="resetDars6Quiz()">أَعِدِ الِاخْتِبَارَ</button>
+    <div id="dars6Score" class="result score-card arabic" aria-live="polite">سَتَظْهَرُ النَّتِيجَةُ هُنَا.</div>
+  </section>
+  <div class="dars-section"><h3>🪞 Muhasabah</h3><div class="tablewrap"><table><tr><th>Kegiatan</th><th>Mumtaz</th><th>Jayyid Jiddan</th><th>Jayyid</th></tr>${["أَفْهَمُ الْأَنْشِطَةَ الْيَوْمِيَّةَ", "أَسْتَمِعُ إِلَى الْحِوَارِ وَأَفْهَمُهُ", "أَتَكَلَّمُ عَنْ جَدْوَلِي الْيَوْمِيِّ", "أَسْتَعْمِلُ الْعَدَدَ وَالْمَعْدُودَ", "أَقْرَأُ نَصَّ أَعْمَالِي الْيَوْمِيَّةِ", "أَكْتُبُ أَعْمَالِي الْيَوْمِيَّةَ"].map((x) => `<tr><td class="arabic">${x}</td><td>☐</td><td>☐</td><td>☐</td></tr>`).join("")}</table></div></div>
+</div>
+
+<div class="lesson-nav">
+  <button class="btn" onclick="previousChapter(6)">← Bab sebelumnya</button>
+  <div class="navinfo"><span class="progress-chip">Unit 6 • Kehidupan Sehari-hari • Unit Terakhir</span></div>
+</div>
+<button class="btn primary" onclick="done('X-5')">✓ Tandai Unit 6 selesai +20 XP</button>
+</div>`;
+      }
+
       function dars12Unit1() {
         return `<div class="card">
 <div class="unit-heading">
@@ -2993,6 +3148,12 @@
           quizDars5();
           return;
         }
+        if (g === "X" && i === 5) {
+          document.getElementById("detailBox").innerHTML = dars6();
+          page("detail");
+          quizDars6();
+          return;
+        }
         if (g === "XI" && i === 0) {
           document.getElementById("detailBox").innerHTML = dars11Unit1();
           page("detail");
@@ -3055,7 +3216,7 @@
         } else if (current === 4) {
           window.openLesson("X", 4);
         } else if (current === 5) {
-          alert("Bab 6 akan disusun setelah Unit 5 ditinjau dan disetujui.");
+          window.openLesson("X", 5);
         }
       }
       function previousChapter(current) {
@@ -3063,6 +3224,7 @@
         if (current === 3) window.openLesson("X", 1);
         if (current === 4) window.openLesson("X", 2);
         if (current === 5) window.openLesson("X", 3);
+        if (current === 6) window.openLesson("X", 4);
       }
       function nextChapter11(current) {
         if (current === 1) {
@@ -3146,6 +3308,15 @@
       }
       function quickAnswer5(button, correct) {
         const feedback = document.getElementById("quickFeedback5");
+        if (!feedback) return;
+        feedback.textContent = correct
+          ? "صَحِيحٌ! Jawaban tepat."
+          : "Belum tepat. Buka kembali kartu kosakata.";
+        if (correct) gain(2);
+        button.blur();
+      }
+      function quickAnswer6(button, correct) {
+        const feedback = document.getElementById("quickFeedback6");
         if (!feedback) return;
         feedback.textContent = correct
           ? "صَحِيحٌ! Jawaban tepat."
@@ -3727,6 +3898,106 @@
         if (result) {
           result.classList.remove("quiz-result-perfect");
           result.textContent = "Skor akan muncul di sini.";
+        }
+      }
+
+      const DARS6Q = [
+        [
+          "مَا مَعْنَى الْحَيَاةِ الْيَوْمِيَّةِ؟",
+          ["الْمِهْنَةُ", "الْأَعْمَالُ كُلَّ يَوْمٍ", "الْهِوَايَةُ", "الْمَدْرَسَةُ", "السِّيَاحَةُ"],
+          1,
+        ],
+        [
+          "مَاذَا يَفْعَلُ الطَّالِبُ بَعْدَ أَنْ يَقُومَ مِنَ النَّوْمِ؟",
+          ["يَنَامُ مَرَّةً أُخْرَى", "يَذْهَبُ إِلَى السُّوقِ", "يُنَظِّفُ سَرِيرَهُ", "يَلْعَبُ فِي الْمَلْعَبِ", "يَتَنَاوَلُ الْعَشَاءَ"],
+          2,
+        ],
+        [
+          "أَيْنَ يُصَلِّي يَاقُوتُ صَلَاةَ الْفَجْرِ؟",
+          ["فِي الْمَطْبَخِ", "فِي الْفَصْلِ", "فِي الْمَسْجِدِ", "فِي الْمَلْعَبِ", "فِي الْمَكْتَبَةِ"],
+          2,
+        ],
+        [
+          "مَتَى يَذْهَبُ يَاقُوتُ إِلَى الْمَدْرَسَةِ؟",
+          ["فِي السَّادِسَةِ وَالنِّصْفِ", "فِي الثَّالِثَةِ وَالنِّصْفِ", "فِي الرَّابِعَةِ", "فِي الْوَاحِدَةِ وَالنِّصْفِ", "فِي الْعَاشِرَةِ"],
+          0,
+        ],
+        [
+          "مَا الْعِبَارَةُ الصَّحِيحَةُ لِلسَّاعَةِ ٠٤:١٥؟",
+          ["السَّاعَةُ الرَّابِعَةُ وَالنِّصْفُ", "السَّاعَةُ الْخَامِسَةُ إِلَّا الرُّبْعَ", "السَّاعَةُ الرَّابِعَةُ وَالرُّبْعُ", "السَّاعَةُ الرَّابِعَةُ تَمَامًا", "السَّاعَةُ الثَّالِثَةُ وَالنِّصْفُ"],
+          2,
+        ],
+        [
+          "مَا الْعِبَارَةُ الصَّحِيحَةُ لِلسَّاعَةِ ٠٤:٤٥؟",
+          ["السَّاعَةُ الْخَامِسَةُ إِلَّا الرُّبْعَ", "السَّاعَةُ الرَّابِعَةُ وَالرُّبْعُ", "السَّاعَةُ الْخَامِسَةُ وَالنِّصْفُ", "السَّاعَةُ الرَّابِعَةُ تَمَامًا", "السَّاعَةُ السَّادِسَةُ إِلَّا النِّصْفَ"],
+          0,
+        ],
+        [
+          "أَيُّ عِبَارَةٍ صَحِيحَةٌ لِلْعَدَدِ ٣ مَعَ طَالِبٍ؟",
+          ["ثَلَاثُ طَالِبٍ", "ثَلَاثَةُ طُلَّابٍ", "ثَلَاثَةُ طَالِبًا", "ثَلَاثُ طُلَّابٍ", "ثَلَاثَةُ طَالِبَاتٍ"],
+          1,
+        ],
+        [
+          "أَيُّ عِبَارَةٍ صَحِيحَةٌ لِلْعَدَدِ ١١ مَعَ طَالِبَةٍ؟",
+          ["أَحَدَ عَشَرَ طَالِبَةً", "إِحْدَى عَشْرَةَ طَالِبَةً", "إِحْدَى عَشَرَ طَالِبَةً", "وَاحِدَ عَشَرَ طَالِبَةً", "إِحْدَى عَشْرَةُ طَالِبَاتٍ"],
+          1,
+        ],
+        [
+          "مَاذَا يَفْعَلُ يَاقُوتُ بَعْدَ صَلَاةِ الْمَغْرِبِ؟",
+          ["يَذْهَبُ إِلَى الْمَدْرَسَةِ", "يُنَظِّفُ الْفَصْلَ", "يَقْرَأُ الْقُرْآنَ وَيُذَاكِرُ دُرُوسَهُ", "يَتَنَاوَلُ الْفُطُورَ", "يَلْعَبُ كُرَةَ الْقَدَمِ"],
+          2,
+        ],
+        [
+          "فِي أَيَّةِ سَاعَةٍ يَنَامُ يَاقُوتُ؟",
+          ["فِي السَّاعَةِ الثَّامِنَةِ", "فِي السَّاعَةِ التَّاسِعَةِ", "فِي السَّاعَةِ الْعَاشِرَةِ", "فِي السَّاعَةِ الْحَادِيَةَ عَشْرَةَ", "فِي مُنْتَصَفِ اللَّيْلِ"],
+          2,
+        ],
+      ];
+      function quizDars6() {
+        const box = document.getElementById("dars6Eval");
+        if (!box) return;
+        const letters = ["a", "b", "c", "d", "e"];
+        box.innerHTML = DARS6Q.map(
+          (q, i) =>
+            `<div class="unit-question" data-d6-question="${i}"><b>${i + 1}. <span class="arabic">${q[0]}</span></b>${q[1].map((answer, j) => `<label class="eval-option"><input type="radio" name="d6q${i}" value="${j}" onchange="updateDars6Progress()"><b>${letters[j]}.</b> <span class="arabic">${answer}</span></label>`).join("")}<p class="answer-key arabic">الْإِجَابَةُ الصَّحِيحَةُ: ${letters[q[2]]}. ${q[1][q[2]]}</p></div>`,
+        ).join("");
+        updateDars6Progress();
+      }
+      function updateDars6Progress() {
+        const answered = DARS6Q.filter((q, i) =>
+          document.querySelector(`input[name=d6q${i}]:checked`),
+        ).length;
+        const label = document.getElementById("d6Answered");
+        const bar = document.getElementById("d6QuizBar");
+        if (label) label.textContent = `${answered}/10 مُجَابٌ`;
+        if (bar) bar.style.width = `${answered * 10}%`;
+      }
+      function nilaiDars6() {
+        let correct = 0;
+        let answered = 0;
+        DARS6Q.forEach((q, i) => {
+          const selected = document.querySelector(`input[name=d6q${i}]:checked`);
+          const item = document.querySelector(`[data-d6-question="${i}"]`);
+          if (selected) answered++;
+          const isCorrect = selected && Number(selected.value) === q[2];
+          if (isCorrect) correct++;
+          if (item) {
+            item.classList.remove("correct", "incorrect");
+            item.classList.add(isCorrect ? "correct" : "incorrect");
+          }
+        });
+        const score = correct * 10;
+        const result = document.getElementById("dars6Score");
+        result.classList.toggle("quiz-result-perfect", score >= 80);
+        result.innerHTML = `<h3>النَّتِيجَةُ: ${score}/100</h3><p>${correct} إِجَابَاتٍ صَحِيحَةٍ مِنْ ١٠. ${answered < 10 ? `لَمْ تُجِبْ عَنْ ${10 - answered} أَسْئِلَةٍ. ` : ""}${score >= 80 ? "مُمْتَازٌ! أَحْسَنْتَ. 👏" : "رَاجِعِ الدَّرْسَ ثُمَّ أَعِدِ الِاخْتِبَارَ."}</p>`;
+        if (score >= 80) done("X-5-evaluasi");
+      }
+      function resetDars6Quiz() {
+        quizDars6();
+        const result = document.getElementById("dars6Score");
+        if (result) {
+          result.classList.remove("quiz-result-perfect");
+          result.textContent = "سَتَظْهَرُ النَّتِيجَةُ هُنَا.";
         }
       }
 
