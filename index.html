@@ -1198,7 +1198,7 @@
         document.getElementById("topicList").innerHTML = topics[g]
           .map(
             (t, i) =>
-              `<div class="card topic"><span class="tag">Kelas ${g}</span><h3 class="arabic">${t[0]}</h3><b>${t[1]}</b><p class="muted">Kosakata • teks • komunikasi • tata bahasa • produksi bahasa</p><button class="btn ${(g === "X" && i <= 5) || (g === "XI" && i <= 2) || (g === "XII" && i <= 1) ? "primary" : ""}" onclick="openLesson('${g}',${i})">${(g === "X" && i <= 5) || (g === "XI" && i <= 2) || (g === "XII" && i <= 1) ? `Buka Unit ${i + 1}` : "Buka materi"}</button></div>`,
+              `<div class="card topic"><span class="tag">Kelas ${g}</span><h3 class="arabic">${t[0]}</h3><b>${t[1]}</b><p class="muted">Kosakata • teks • komunikasi • tata bahasa • produksi bahasa</p><button class="btn ${(g === "X" && i <= 5) || (g === "XI" && i <= 3) || (g === "XII" && i <= 1) ? "primary" : ""}" onclick="openLesson('${g}',${i})">${(g === "X" && i <= 5) || (g === "XI" && i <= 3) || (g === "XII" && i <= 1) ? `Buka Unit ${i + 1}` : "Buka materi"}</button></div>`,
           )
           .join("");
       }
@@ -1516,6 +1516,32 @@
         ["تَحَلَّلْ", "Bertahallullah"],
         ["تَوَجَّهْ", "Menghadaplah / pergilah"],
         ["اِسْتَلِمْ", "Sentuhlah / istilamlah"],
+      ];
+      const vocab11Unit4 = [
+        ["الْأَدْيَانُ فِي إِنْدُونِيسِيَا", "Agama-agama di Indonesia"],
+        ["الْإِسْلَامُ", "Islam"],
+        ["الْكَاثُولِيكِيَّةُ", "Katolik"],
+        ["الْبُرُوتِسْتَانْتِيَّةُ", "Protestan"],
+        ["الْهِنْدُوسِيَّةُ", "Hindu"],
+        ["الْبُوذِيَّةُ", "Buddha"],
+        ["الْكُونْفُوشِيَّةُ", "Konghucu"],
+        ["الْمُسْلِمُ", "Pemeluk Islam"],
+        ["الْمَسِيحِيُّ", "Pemeluk agama Kristen"],
+        ["الْهِنْدُوسِيُّ", "Pemeluk agama Hindu"],
+        ["الْبُوذِيُّ", "Pemeluk agama Buddha"],
+        ["الْمَسْجِدُ", "Masjid"],
+        ["الْكَنِيسَةُ", "Gereja"],
+        ["فِيهَارَا", "Wihara"],
+        ["الْمَعْبَدُ", "Tempat ibadah / kuil"],
+        ["بَانْجَاسِيلَا", "Pancasila"],
+        ["التَّسَامُحُ", "Toleransi"],
+        ["التَّنَوُّعُ", "Keberagaman"],
+        ["الْوَحْدَةُ", "Persatuan"],
+        ["التَّفَاهُمُ", "Saling memahami"],
+        ["الِاحْتِرَامُ الْمُتَبَادَلُ", "Saling menghormati"],
+        ["يَتَعَبَّدُ", "Beribadah"],
+        ["يَسْكُنُ", "Bertempat tinggal"],
+        ["يُشَجِّعُ", "Mendorong"],
       ];
       function speak(x) {
         if ("speechSynthesis" in window) {
@@ -3117,6 +3143,141 @@
 </div>`;
       }
 
+      function dars11Unit4() {
+        return `<div class="card lesson-shell">
+<div class="lesson-hero">
+  <div>
+    <span class="tag">Kelas XI • Bab 4 / Unit Terakhir</span>
+    <h2 class="arabic">الْوَحْدَةُ الرَّابِعَةُ: الْأَدْيَانُ فِي إِنْدُونِيسِيَا</h2>
+    <h2>Agama-Agama di Indonesia</h2>
+    <p>Mempelajari keberagaman agama, tempat ibadah, toleransi, serta tata bahasa <span class="arabic">النَّعْتُ وَالْمَنْعُوتُ وَالْإِضَافَةُ</span> melalui kegiatan berbahasa yang utuh.</p>
+  </div>
+  <div class="unit-number" aria-label="Unit 4 Kelas XI">04</div>
+</div>
+
+<div class="lesson-nav top-nav">
+  <button class="btn" onclick="previousChapter11(4)">← Bab sebelumnya</button>
+  <div class="navinfo"><span class="progress-chip">Kelas XI • Unit 4 • Unit Terakhir</span></div>
+</div>
+
+<div class="lesson-tabs" role="tablist" aria-label="Bagian Kelas XI Unit 4">
+  <button class="active" onclick="lessonTab('tujuan',this)">🎯 Tujuan</button>
+  <button onclick="lessonTab('mufradat',this)">🃏 Mufradat</button>
+  <button onclick="lessonTab('istima',this)">🎧 Istima'</button>
+  <button onclick="lessonTab('hiwar',this)">💬 Hiwar</button>
+  <button onclick="lessonTab('qiraah',this)">📖 Qira'ah</button>
+  <button onclick="lessonTab('tarkib',this)">🧩 Tarkib</button>
+  <button onclick="lessonTab('kitabah',this)">✍️ Kitabah</button>
+  <button onclick="lessonTab('kuis',this)">🏆 Kuis</button>
+</div>
+
+<div id="panel-tujuan" class="lesson-panel active">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>🎯 Tujuan Pembelajaran</h3><span class="muted">Capaian Unit 4 sesuai struktur buku sumber.</span></div><span class="progress-chip">4 tujuan</span></div>
+    <div class="goal-grid">
+      <article class="goal-card"><span>01</span><h4>Mufradat</h4><p>Menganalisis dan memakai kosakata bertema agama-agama di Indonesia secara tepat dan santun.</p></article>
+      <article class="goal-card"><span>02</span><h4>Tarkib</h4><p>Menganalisis serta menerapkan <span class="arabic">النَّعْتَ وَالْمَنْعُوتَ وَالْإِضَافَةَ</span> dalam kalimat.</p></article>
+      <article class="goal-card"><span>03</span><h4>Reseptif</h4><p>Menemukan informasi tersurat dan tersirat dari wacana lisan, dialog, dan teks deskriptif.</p></article>
+      <article class="goal-card"><span>04</span><h4>Produktif</h4><p>Mengomunikasikan gagasan lisan dan tertulis tentang kehidupan beragama secara logis dan toleran.</p></article>
+    </div>
+    <div class="rtlbox" style="margin-top:18px"><b>قَالَ اللهُ تَعَالَى:</b><br>لَا إِكْرَاهَ فِي الدِّينِ قَدْ تَبَيَّنَ الرُّشْدُ مِنَ الْغَيِّ<br><small>QS Al-Baqarah 2:256 — keyakinan tidak dipaksakan dan perbedaan disikapi dengan hormat.</small></div>
+  </section>
+</div>
+
+<div id="panel-mufradat" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>🃏 الْمُفْرَدَاتُ الْجَدِيدَةُ</h3><span class="muted">Ketuk kartu untuk membuka arti; tekan tombol suara untuk pelafalan.</span></div><span class="progress-chip">${vocab11Unit4.length} kosakata</span></div>
+    <div class="vocab-grid">${vocab11Unit4.map((v) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();speak('${v[0]}')">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="mini-task"><div><h4 class="arabic">تَدْرِيبٌ سَرِيعٌ</h4><p class="arabic">أَيْنَ يَتَعَبَّدُ الْمُسْلِمُ؟</p><button class="btn" onclick="quickAnswer4(this,true)">فِي الْمَسْجِدِ</button> <button class="btn" onclick="quickAnswer4(this,false)">فِي الْكَنِيسَةِ</button> <button class="btn" onclick="quickAnswer4(this,false)">فِي فِيهَارَا</button><p id="quickFeedback4" class="feedback arabic" aria-live="polite"></p></div></div>
+  </section>
+</div>
+
+<div id="panel-istima" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ — التَّسَامُحُ فِي الْمُجْتَمَعِ</h3><span class="muted">Dengarkan lebih dahulu, jawab pertanyaan, kemudian buka transkrip.</span></div><button class="btn primary" onclick="speak(document.getElementById('d11u4ListenText').innerText)">▶ Putar audio</button></div>
+    <div class="audio-script rtlbox"><button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan transkrip</button><div id="d11u4ListenText" hidden><p>خَالِدٌ تَاجِرٌ مُسْلِمٌ يَسْكُنُ فِي جُومْبَانْجَ. يَذْهَبُ إِلَى الْمَسْجِدِ كُلَّ يَوْمٍ لِأَدَاءِ الصَّلَاةِ. وَلَهُ جَارٌ بُوذِيٌّ اسْمُهُ سُونَارْطُو يَتَعَبَّدُ فِي مَعْبَدٍ، وَجَارٌ بُرُوتِسْتَانْتِيٌّ اسْمُهُ فَرَانْسِيسْكُوس يَتَعَبَّدُ فِي الْكَنِيسَةِ. يَعِيشُونَ فِي سَلَامٍ وَتَسَامُحٍ.</p></div></div>
+    <div class="mini-task">
+      <div><h4 class="arabic">فَهْمُ الْمَسْمُوعِ</h4><p class="arabic">أَيْنَ يَتَعَبَّدُ فَرَانْسِيسْكُوس؟</p><input id="d11u4Listen" class="answer-input arabic" placeholder="اُكْتُبِ الْجَوَابَ هُنَا"><button class="btn primary" onclick="cekFlexible('d11u4Listen',['في الكنيسة','فِي الْكَنِيسَةِ','يتعبد في الكنيسة'],'d11u4ListenFb')">Periksa</button><p id="d11u4ListenFb" class="feedback"></p></div>
+      <div><h4 class="arabic">اِسْتَمِعْ وَرَتِّبْ</h4><p class="arabic">رَتِّبْ حَسَبَ النَّصِّ: فَرَانْسِيسْكُوس — خَالِدٌ — سُونَارْطُو</p><p class="muted">Tuliskan urutan tokoh yang disebut dalam teks.</p></div>
+    </div>
+  </section>
+</div>
+
+<div id="panel-hiwar" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>💬 الْحِوَارُ — تَنَوُّعُ الْأَدْيَانِ</h3><span class="muted">Baca bergantian sebagai Ruqayyah dan Ibrahim.</span></div><button class="btn" onclick="speak(document.getElementById('d11u4Hiwar').innerText)">🔊 Dengarkan</button></div>
+    <div id="d11u4Hiwar" class="dialogue">
+      <div class="speech"><b>رُقَيَّةُ</b><p class="arabic">السَّلَامُ عَلَيْكُمْ يَا إِبْرَاهِيمُ، كَيْفَ حَالُكَ الْيَوْمَ؟</p></div>
+      <div class="speech alt"><b>إِبْرَاهِيمُ</b><p class="arabic">وَعَلَيْكُمُ السَّلَامُ يَا رُقَيَّةُ، الْحَمْدُ لِلَّهِ. وَأَنْتِ كَيْفَ الْحَالُ؟</p></div>
+      <div class="speech"><b>رُقَيَّةُ</b><p class="arabic">بِخَيْرٍ وَالْحَمْدُ لِلَّهِ. كُنْتُ أُفَكِّرُ فِي تَنَوُّعِ الْأَدْيَانِ فِي إِنْدُونِيسِيَا.</p></div>
+      <div class="speech alt"><b>إِبْرَاهِيمُ</b><p class="arabic">نَعَمْ، إِنَّهُ أَمْرٌ رَائِعٌ. هُنَاكَ الْمُسْلِمُونَ وَالْمَسِيحِيُّونَ وَالْهِنْدُوسِيُّونَ وَالْبُوذِيُّونَ وَالْكُونْفُوشِيُّونَ يَعِيشُونَ فِي سَلَامٍ.</p></div>
+      <div class="speech"><b>رُقَيَّةُ</b><p class="arabic">صَحِيحٌ، وَأَنَا مُعْجَبَةٌ جِدًّا بِكَيْفِيَّةِ احْتِرَامِ الْجَمِيعِ لِمُعْتَقَدَاتِ الْآخَرِينَ.</p></div>
+      <div class="speech alt"><b>إِبْرَاهِيمُ</b><p class="arabic">هَذَا جُزْءٌ مُهِمٌّ مِنْ قِيَمِ بَانْجَاسِيلَا، حَيْثُ تُشَجِّعُ النَّاسَ عَلَى الْوَحْدَةِ فِي التَّنَوُّعِ.</p></div>
+      <div class="speech"><b>رُقَيَّةُ</b><p class="arabic">طَبْعًا، التَّسَامُحُ هُوَ مِفْتَاحُ السَّلَامِ فِي مُجْتَمَعِنَا.</p></div>
+    </div>
+    <div class="mini-task"><div><h4>Praktik pasangan</h4><p>Peragakan dialog, lalu ubah nama tokoh dan contoh tempat ibadah tanpa mengubah pesan toleransinya.</p></div><div><h4 class="arabic">تَكَلَّمْ!</h4><p class="arabic">هَلْ عِنْدَكَ صَدِيقٌ غَيْرُ مُسْلِمٍ؟ كَيْفَ تُعَامِلُهُ؟</p></div></div>
+  </section>
+</div>
+
+<div id="panel-qiraah" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>📖 الْقِرَاءَةُ — الْأَدْيَانُ فِي إِنْدُونِيسِيَا</h3><span class="muted">Teks deskriptif tentang kehidupan bertetangga di Jombang.</span></div><button class="btn" onclick="speak(document.getElementById('d11u4Reading').innerText)">🔊 Dengarkan bacaan</button></div>
+    <div id="d11u4Reading" class="rtlbox">
+      <p>خَالِدٌ تَاجِرٌ مُسْلِمٌ، هُوَ يَسْكُنُ فِي جُومْبَانْجَ، بَيْتُهُ قَرِيبٌ مِنَ الْمَسْجِدِ. يَذْهَبُ خَالِدٌ إِلَى الْمَسْجِدِ كُلَّ يَوْمٍ لِأَدَاءِ صَلَاةِ الْفَرْضِ. هُوَ مُسْلِمٌ مُطِيعٌ.</p>
+      <p>لِخَالِدٍ جَارٌ اسْمُهُ سُونَارْطُو، هُوَ جَارٌ بُوذِيٌّ. يَتَعَبَّدُ سُونَارْطُو فِي مَعْبَدٍ بَعِيدٍ عَنْ بَيْتِهِ يُسَمَّى مَعْبَدَ «هُوكْ لِيُونْج كِيُونْج». هُوَ مَعْبَدٌ جَمِيلٌ فِي وَسَطِ مَدِينَةِ جُومْبَانْجَ، يُزَيَّنُ بِأَلْوَانٍ مُتَنَوِّعَةٍ مِنَ الْأَحْمَرِ وَالْأَصْفَرِ وَالْأَخْضَرِ.</p>
+      <p>وَلِخَالِدٍ جَارٌ آخَرُ اسْمُهُ فَرَانْسِيسْكُوس، هُوَ جَارٌ بُرُوتِسْتَانْتِيٌّ يَتَعَبَّدُ فِي الْكَنِيسَةِ. يَسْكُنُ خَالِدٌ وَسُونَارْطُو وَفَرَانْسِيسْكُوس فِي سَلَامٍ وَتَسَامُحٍ، وَيُحِبُّ بَعْضُهُمْ بَعْضًا. فَالتَّسَامُحُ مَبْدَأٌ أَسَاسِيٌّ فِي إِنْدُونِيسِيَا، يُشَجِّعُ عَلَى الِاحْتِرَامِ الْمُتَبَادَلِ وَالتَّفَاهُمِ فِي الِاخْتِلَافِ بَيْنَ الْمُعْتَقَدَاتِ الدِّينِيَّةِ.</p>
+    </div>
+    <div class="mini-task"><div><h4 class="arabic">فَهْمُ الْمَقْرُوءِ</h4><p class="arabic">كَيْفَ يَعِيشُ خَالِدٌ وَجَارَاهُ؟</p><input id="d11u4Read" class="answer-input arabic" placeholder="اكتب الجواب"><button class="btn primary" onclick="cekFlexible('d11u4Read',['في سلام وتسامح','فِي سَلَامٍ وَتَسَامُحٍ','يعيشون في سلام وتسامح'],'d11u4ReadFb')">Periksa</button><p id="d11u4ReadFb" class="feedback"></p></div><div><h4>Struktur teks deskriptif</h4><p><span class="arabic">الْوَصْفُ الْعَامُّ</span> memperkenalkan objek; <span class="arabic">الْوَصْفُ الْخَاصُّ</span> menjelaskan ciri dan rinciannya.</p></div></div>
+  </section>
+</div>
+
+<div id="panel-tarkib" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>🧩 التَّرَاكِيبُ — النَّعْتُ وَالْمَنْعُوتُ وَالْإِضَافَةُ</h3><span class="muted">Bedakan frasa sifat dan konstruksi kepemilikan/keterkaitan.</span></div><button class="btn" onclick="speak('مَلْعَبٌ وَاسِعٌ، مَسْجِدٌ كَبِيرٌ، كِتَابُ مُحَمَّدٍ، رَسُولُ اللهِ')">🔊 Contoh</button></div>
+    <div class="rulebox"><p><b><span class="arabic">النَّعْتُ وَالْمَنْعُوتُ</span>:</b> na‘at adalah sifat dan man‘ūt ialah kata yang disifati. Keduanya sesuai dalam nakirah-ma‘rifat, gender, jumlah, dan i‘rab.</p><p><b><span class="arabic">الْإِضَافَةُ</span>:</b> gabungan muḍāf dan muḍāf ilaih. I‘rab muḍāf mengikuti kedudukannya, sedangkan muḍāf ilaih selalu majrūr.</p></div>
+    <div class="tablewrap"><table><thead><tr><th>Jenis</th><th class="arabic">Contoh</th><th>Analisis</th></tr></thead><tbody>
+      <tr><td>Na‘at–man‘ūt</td><td class="arabic">مَعْبَدٌ جَمِيلٌ</td><td><span class="arabic">مَعْبَدٌ</span> man‘ūt; <span class="arabic">جَمِيلٌ</span> na‘at</td></tr>
+      <tr><td>Na‘at–man‘ūt</td><td class="arabic">الْمُسْلِمُ الْمُطِيعُ</td><td>Keduanya ma‘rifat, mudzakkar, mufrad, dan marfū‘</td></tr>
+      <tr><td>Iḍāfah</td><td class="arabic">مَكَانُ الْعِبَادَةِ</td><td><span class="arabic">مَكَانُ</span> muḍāf; <span class="arabic">الْعِبَادَةِ</span> muḍāf ilaih</td></tr>
+      <tr><td>Iḍāfah</td><td class="arabic">وَسَطُ الْمَدِينَةِ</td><td><span class="arabic">الْمَدِينَةِ</span> dibaca majrūr</td></tr>
+    </tbody></table></div>
+    <div class="mini-task"><div><h4>Latihan na‘at</h4><p class="arabic">أَكْمِلْ: هَذَا مَسْجِدٌ ...</p><input id="d11u4Tarkib" class="answer-input arabic" placeholder="النعت المناسب"><button class="btn primary" onclick="cekFlexible('d11u4Tarkib',['كبير','كَبِيرٌ','جميل','جَمِيلٌ'],'d11u4TarkibFb')">Periksa</button><p id="d11u4TarkibFb" class="feedback"></p></div><div><h4>Amati</h4><p class="arabic">مَسْجِدٌ كَبِيرٌ ≠ مَسْجِدُ الْقَرْيَةِ</p><p class="muted">Yang pertama na‘at–man‘ūt; yang kedua iḍāfah.</p></div></div>
+  </section>
+</div>
+
+<div id="panel-kitabah" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>✍️ الْكِتَابَةُ — حَيَاتِي الدِّينِيَّةُ الْيَوْمِيَّةُ</h3><span class="muted">Susun kalimat, lalu tulis deskripsi mandiri.</span></div><span class="progress-chip">3 tahap</span></div>
+    <div class="objective-grid">
+      <article class="objective-item"><b>01 • <span class="arabic">رَتِّبْ</span></b><p>Susun kata menjadi kalimat: <span class="arabic">خَالِدٌ — تَاجِرٌ — مُسْلِمٌ — هُوَ — يَسْكُنُ — فِي جُومْبَانْجَ</span>.</p></article>
+      <article class="objective-item"><b>02 • <span class="arabic">صِفْ</span></b><p>Deskripsikan tempat ibadah menggunakan minimal dua susunan na‘at–man‘ūt.</p></article>
+      <article class="objective-item"><b>03 • <span class="arabic">رَاجِعْ</span></b><p>Periksa iḍāfah, kesesuaian na‘at, kosakata, tanda baca, serta kesantunan isi.</p></article>
+    </div>
+    <label for="d11u4Writing"><b>Tulis 6–8 kalimat berbahasa Arab:</b></label><textarea id="d11u4Writing" class="answer-input arabic" rows="9" placeholder="أَنَا مُسْلِمٌ / مُسْلِمَةٌ. أَعِيشُ مَعَ جِيرَانِي فِي سَلَامٍ ..."></textarea>
+    <div class="mini-task"><div><b>Daftar periksa:</b><p>☐ 6–8 kalimat ☐ 6 kosakata Unit 4 ☐ 2 na‘at–man‘ūt ☐ 2 iḍāfah ☐ pesan toleransi</p></div><div><b class="arabic">مَهَمَّةٌ شَفَهِيَّةٌ</b><p class="arabic">عَبِّرْ عَنْ حَيَاتِكَ الدِّينِيَّةِ الْيَوْمِيَّةِ أَمَامَ الْفَصْلِ.</p></div></div>
+  </section>
+</div>
+
+<div id="panel-kuis" class="lesson-panel">
+  <section class="dars-section quiz-section unit-quiz">
+    <div class="reading-title"><div><h3>🏆 الِاخْتِبَارُ الْإِلِكْتُرُونِيُّ</h3><span class="muted arabic">جَمِيعُ الْأَسْئِلَةِ وَالْخِيَارَاتِ بِاللُّغَةِ الْعَرَبِيَّةِ.</span></div><span class="progress-chip arabic">١٠ أَسْئِلَةٍ • ١٠٠ دَرَجَةٍ</span></div>
+    <p class="arabic rtlbox">أَجِبْ عَنْ جَمِيعِ الْأَسْئِلَةِ. لِكُلِّ إِجَابَةٍ صَحِيحَةٍ عَشْرُ دَرَجَاتٍ، وَالدَّرَجَةُ الْكُبْرَى مِائَةٌ.</p>
+    <div class="quiz-progress"><span id="d11u4Answered" class="arabic">٠/١٠ مُجَابٌ</span><div class="bar"><i id="d11u4QuizBar"></i></div></div>
+    <div id="dars11Unit4Eval"></div>
+    <button class="btn primary quiz-submit arabic" onclick="nilaiDars11Unit4()">✓ اِحْسِبِ النَّتِيجَةَ</button>
+    <button class="btn arabic" onclick="resetDars11Unit4Quiz()">أَعِدِ الِاخْتِبَارَ</button>
+    <div id="dars11Unit4Score" class="result score-card arabic" aria-live="polite">سَتَظْهَرُ النَّتِيجَةُ هُنَا.</div>
+  </section>
+</div>
+
+<div class="lesson-nav">
+  <button class="btn" onclick="previousChapter11(4)">← Bab sebelumnya</button>
+  <div class="navinfo"><span class="progress-chip">Kelas XI • Unit 4 • Bab Terakhir</span></div>
+</div>
+<button class="btn primary" onclick="done('XI-3')">✓ Tandai Unit 4 selesai +20 XP</button>
+</div>`;
+      }
+
       function openLesson(g, i) {
         let t = topics[g][i];
         if (g === "X" && i === 0) {
@@ -3170,6 +3331,12 @@
           document.getElementById("detailBox").innerHTML = dars11Unit3();
           page("detail");
           quizDars11Unit3();
+          return;
+        }
+        if (g === "XI" && i === 3) {
+          document.getElementById("detailBox").innerHTML = dars11Unit4();
+          page("detail");
+          quizDars11Unit4();
           return;
         }
         if (g === "XII" && t[0] === "عُظَمَاءُ الإِسْلَامِ") {
@@ -3232,9 +3399,7 @@
         } else if (current === 2) {
           window.openLesson("XI", 2);
         } else if (current === 3) {
-          alert(
-            "Kelas XI Unit 4 akan disusun setelah Unit 3 ditinjau dan disetujui.",
-          );
+          window.openLesson("XI", 3);
         }
       }
       function previousChapter11(current) {
@@ -3243,6 +3408,7 @@
         }
         if (current === 2) window.openLesson("XI", 0);
         if (current === 3) window.openLesson("XI", 1);
+        if (current === 4) window.openLesson("XI", 2);
       }
       function nextChapter12(current) {
         if (current === 1) {
@@ -4555,6 +4721,107 @@
         if (result) {
           result.classList.remove("quiz-result-perfect");
           result.textContent = "Skor akan muncul di sini.";
+        }
+      }
+
+      const DARS11UNIT4Q = [
+        [
+          "أَيْنَ يَتَعَبَّدُ الْمُسْلِمُ؟",
+          ["فِي الْمَسْجِدِ", "فِي الْكَنِيسَةِ", "فِي فِيهَارَا", "فِي الْمَعْبَدِ", "فِي السُّوقِ"],
+          0,
+        ],
+        [
+          "مَا مَعْنَى التَّسَامُحِ؟",
+          ["التَّعَصُّبُ", "الِاحْتِرَامُ وَقَبُولُ الِاخْتِلَافِ", "الْخَوْفُ", "الْخِصَامُ", "الْعُزْلَةُ"],
+          1,
+        ],
+        [
+          "مَنْ جَارُ خَالِدٍ الْبُوذِيُّ؟",
+          ["إِبْرَاهِيمُ", "فَرَانْسِيسْكُوس", "سُونَارْطُو", "مَرْوَانُ", "أَحْمَدُ"],
+          2,
+        ],
+        [
+          "أَيْنَ يَتَعَبَّدُ فَرَانْسِيسْكُوس؟",
+          ["فِي الْمَسْجِدِ", "فِي الْكَنِيسَةِ", "فِي الْمَعْبَدِ", "فِي الْمَدْرَسَةِ", "فِي الْبَيْتِ"],
+          1,
+        ],
+        [
+          "كَيْفَ يَعِيشُ خَالِدٌ وَجَارَاهُ؟",
+          ["فِي خَوْفٍ", "فِي خِصَامٍ", "فِي عُزْلَةٍ", "فِي سَلَامٍ وَتَسَامُحٍ", "فِي سَفَرٍ"],
+          3,
+        ],
+        [
+          "أَيُّ تَرْكِيبٍ مِنَ النَّعْتِ وَالْمَنْعُوتِ؟",
+          ["مَكَانُ الْعِبَادَةِ", "مَعْبَدٌ جَمِيلٌ", "وَسَطُ الْمَدِينَةِ", "بَيْتُ خَالِدٍ", "صَلَاةُ الْفَرْضِ"],
+          1,
+        ],
+        [
+          "أَيُّ تَرْكِيبٍ مِنَ الْإِضَافَةِ؟",
+          ["جَارٌ بُوذِيٌّ", "دِينٌ قَدِيمٌ", "مَعْبَدٌ جَمِيلٌ", "مَكَانُ الْعِبَادَةِ", "أَلْوَانٌ مُتَنَوِّعَةٌ"],
+          3,
+        ],
+        [
+          "مَا النَّعْتُ فِي الْعِبَارَةِ: الْمُسْلِمُ الْمُطِيعُ؟",
+          ["الْمُسْلِمُ", "الْمُطِيعُ", "الْعِبَارَةُ", "فِي", "لَا شَيْءَ"],
+          1,
+        ],
+        [
+          "مَا الْمُضَافُ إِلَيْهِ فِي: وَسَطُ الْمَدِينَةِ؟",
+          ["وَسَطُ", "الْمَدِينَةِ", "وَسَطُ الْمَدِينَةِ", "فِي", "لَا شَيْءَ"],
+          1,
+        ],
+        [
+          "مَاذَا تُشَجِّعُ قِيَمُ بَانْجَاسِيلَا؟",
+          ["الْخِلَافَ", "الْعُزْلَةَ", "الْوَحْدَةَ فِي التَّنَوُّعِ", "تَرْكَ الْجِيرَانِ", "الِاسْتِهْزَاءَ بِالْآخَرِينَ"],
+          2,
+        ],
+      ];
+      function quizDars11Unit4() {
+        const box = document.getElementById("dars11Unit4Eval");
+        if (!box) return;
+        const letters = ["a", "b", "c", "d", "e"];
+        box.innerHTML = DARS11UNIT4Q.map(
+          (q, i) =>
+            `<div class="unit-question" data-d11u4-question="${i}" dir="rtl"><b>${i + 1}. <span class="arabic">${q[0]}</span></b>${q[1].map((answer, j) => `<label class="eval-option"><input type="radio" name="d11u4q${i}" value="${j}" onchange="updateDars11Unit4Progress()"><b>${letters[j]}.</b> <span class="arabic">${answer}</span></label>`).join("")}<p class="answer-key"><span class="arabic">الْإِجَابَةُ الصَّحِيحَةُ: ${letters[q[2]]}. ${q[1][q[2]]}</span></p></div>`,
+        ).join("");
+        updateDars11Unit4Progress();
+      }
+      function updateDars11Unit4Progress() {
+        const answered = DARS11UNIT4Q.filter((q, i) =>
+          document.querySelector(`input[name=d11u4q${i}]:checked`),
+        ).length;
+        const label = document.getElementById("d11u4Answered");
+        const bar = document.getElementById("d11u4QuizBar");
+        if (label) label.textContent = `${answered}/10 مُجَابٌ`;
+        if (bar) bar.style.width = `${answered * 10}%`;
+      }
+      function nilaiDars11Unit4() {
+        let correct = 0;
+        let answered = 0;
+        DARS11UNIT4Q.forEach((q, i) => {
+          const selected = document.querySelector(`input[name=d11u4q${i}]:checked`);
+          const item = document.querySelector(`[data-d11u4-question="${i}"]`);
+          if (selected) answered++;
+          const isCorrect = selected && Number(selected.value) === q[2];
+          if (isCorrect) correct++;
+          if (item) {
+            item.classList.remove("correct", "incorrect");
+            item.classList.add(isCorrect ? "correct" : "incorrect");
+          }
+        });
+        const score = correct * 10;
+        const result = document.getElementById("dars11Unit4Score");
+        if (!result) return;
+        result.classList.toggle("quiz-result-perfect", score >= 80);
+        result.innerHTML = `<h3>النَّتِيجَةُ: ${score}/100</h3><p>${correct} إِجَابَاتٍ صَحِيحَةً، وَ${10 - correct} إِجَابَاتٍ غَيْرَ صَحِيحَةٍ. ${answered < 10 ? `لَمْ تُجِبْ عَنْ ${10 - answered} سُؤَالٍ. ` : ""}${score >= 80 ? "مُمْتَازٌ! فَهْمُكَ جَيِّدٌ جِدًّا. 👏" : "رَاجِعِ الْمَادَّةَ ثُمَّ أَعِدِ الِاخْتِبَارَ."}</p>`;
+        if (score >= 80) done("XI-3-evaluasi");
+      }
+      function resetDars11Unit4Quiz() {
+        quizDars11Unit4();
+        const result = document.getElementById("dars11Unit4Score");
+        if (result) {
+          result.classList.remove("quiz-result-perfect");
+          result.textContent = "سَتَظْهَرُ النَّتِيجَةُ هُنَا.";
         }
       }
 
