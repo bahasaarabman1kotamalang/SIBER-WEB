@@ -1204,7 +1204,7 @@
         document.getElementById("topicList").innerHTML = topics[g]
           .map(
             (t, i) =>
-              `<div class="card topic"><span class="tag">Kelas ${g}</span><h3 class="arabic">${t[0]}</h3><b>${t[1]}</b><p class="muted">Kosakata • teks • komunikasi • tata bahasa • produksi bahasa</p><button class="btn ${(g === "X" && i <= 4) || (g === "XII" && i === 0) ? "primary" : ""}" onclick="openLesson('${g}',${i})">${(g === "X" && i <= 4) || (g === "XII" && i === 0) ? `Buka Unit ${i + 1}` : "Buka materi"}</button></div>`,
+              `<div class="card topic"><span class="tag">Kelas ${g}</span><h3 class="arabic">${t[0]}</h3><b>${t[1]}</b><p class="muted">Kosakata • teks • komunikasi • tata bahasa • produksi bahasa</p><button class="btn ${(g === "X" && i <= 4) || (g === "XII" && i <= 1) ? "primary" : ""}" onclick="openLesson('${g}',${i})">${(g === "X" && i <= 4) || (g === "XII" && i <= 1) ? `Buka Unit ${i + 1}` : "Buka materi"}</button></div>`,
           )
           .join("");
       }
@@ -1384,6 +1384,32 @@
         ["مُشَارَكَةٌ", "Membagikan"],
         ["تَعْلِيقٌ", "Komentar"],
         ["إِعْجَابٌ", "Suka/like"],
+      ];
+      const vocab12Unit2 = [
+        ["عُظَمَاءُ الْإِسْلَامِ", "Tokoh-tokoh besar Islam"],
+        ["فَيْلَسُوفٌ", "Filsuf"],
+        ["إِمَامٌ", "Imam/pemimpin"],
+        ["مُؤَلِّفٌ / مُؤَلِّفَةٌ", "Penulis"],
+        ["مُؤَرِّخٌ", "Sejarawan"],
+        ["رَحَّالَةٌ", "Penjelajah"],
+        ["لُغَوِيٌّ", "Ahli bahasa"],
+        ["عَالِمٌ اجْتِمَاعِيٌّ", "Sosiolog"],
+        ["عَالِمَةُ رِيَاضِيَّاتٍ", "Matematikawan perempuan"],
+        ["اقْتِصَادِيٌّ", "Ekonom"],
+        ["فِيزْيَائِيٌّ", "Fisikawan"],
+        ["كِيمِيَائِيٌّ / كِيمِيَائِيَّةٌ", "Ahli kimia"],
+        ["فَلَكِيٌّ", "Astronom"],
+        ["طَبِيبٌ", "Dokter"],
+        ["شَاعِرٌ", "Penyair"],
+        ["سِيَاسِيٌّ", "Politikus"],
+        ["قَائِدٌ", "Pemimpin/panglima"],
+        ["مَسْجِدٌ", "Masjid"],
+        ["جَامِعَةٌ", "Universitas"],
+        ["الْحَضَارَةُ الْإِسْلَامِيَّةُ", "Peradaban Islam"],
+        ["مُسَاهَمَةٌ", "Kontribusi"],
+        ["إِخْلَاصٌ", "Keikhlasan"],
+        ["عِلْمٌ وَمَعْرِفَةٌ", "Ilmu dan pengetahuan"],
+        ["أُسِّسَ", "Telah didirikan"],
       ];
       function speak(x) {
         if ("speechSynthesis" in window) {
@@ -2291,6 +2317,156 @@
 </div>`;
       }
 
+      function dars12Unit2() {
+        return `<div class="card">
+<div class="unit-heading">
+  <div>
+    <span class="tag">Kelas XII • Bab 2 / Unit 2</span>
+    <h2 class="arabic">الْوَحْدَةُ الثَّانِيَةُ: عُظَمَاءُ الْإِسْلَامِ</h2>
+    <h2>Unit 2: Tokoh-tokoh Besar Islam</h2>
+    <p>Kenali kontribusi tokoh-tokoh Islam, pahami perubahan fi'il aktif dan pasif, lalu baca dan tulis teks naratif yang meneladankan ilmu, keikhlasan, dan kemaslahatan umat.</p>
+  </div>
+  <div class="unit-number" aria-label="Unit 2 Kelas XII">02</div>
+</div>
+
+<div class="lesson-nav">
+  <button class="btn" onclick="previousChapter12(2)">← Bab sebelumnya</button>
+  <div class="navinfo">KELAS XII • عُظَمَاءُ الْإِسْلَامِ</div>
+  <button class="btn gold" onclick="nextChapter12(2)">Bab berikutnya →</button>
+</div>
+
+<div class="lesson-tabs" role="tablist" aria-label="Bagian Kelas XII Unit 2">
+  <button class="active" onclick="lessonTab('tujuan',this)">🎯 Tujuan</button>
+  <button onclick="lessonTab('mufradat',this)">🃏 Mufradat</button>
+  <button onclick="lessonTab('istima',this)">🎧 Istima'</button>
+  <button onclick="lessonTab('hiwar',this)">🗣️ Hiwar</button>
+  <button onclick="lessonTab('qiraah',this)">📖 Qira'ah</button>
+  <button onclick="lessonTab('tarkib',this)">🔤 Tarkib</button>
+  <button onclick="lessonTab('kitabah',this)">✍️ Kitabah</button>
+  <button onclick="lessonTab('evaluasi',this)">🏆 Kuis</button>
+</div>
+
+<div id="panel-tujuan" class="lesson-panel active">
+  <div class="dars-section">
+    <h3>🎯 Tujuan Pembelajaran</h3>
+    <p>Peserta didik mampu memahami dan menghasilkan wacana naratif tentang tokoh-tokoh Islam dengan menggunakan <span class="arabic">الْفِعْلُ الْمَبْنِيُّ لِلْمَعْلُومِ وَالْفِعْلُ الْمَبْنِيُّ لِلْمَجْهُولِ</span> secara tepat.</p>
+    <div class="objective-grid">
+      <div class="objective-item"><b>01 • Kosakata</b>Mengidentifikasi kosakata tokoh, bidang keilmuan, karya, dan kontribusinya.</div>
+      <div class="objective-item"><b>02 • Menyimak</b>Menemukan informasi tersurat dan tersirat dari dialog tentang sejarah Islam.</div>
+      <div class="objective-item"><b>03 • Berbicara</b>Menyampaikan informasi tokoh dan bangunan bersejarah secara runtut.</div>
+      <div class="objective-item"><b>04 • Tata bahasa</b>Membedakan serta mengubah fi'il mabni lil-ma'lum dan lil-majhul.</div>
+      <div class="objective-item"><b>05 • Membaca</b>Memahami teks naratif visual atau multimodal dengan lafal dan intonasi tepat.</div>
+      <div class="objective-item"><b>06 • Menganalisis</b>Menentukan orientasi, konflik, resolusi, dan penutup dalam teks naratif.</div>
+      <div class="objective-item"><b>07 • Menulis</b>Menyusun paragraf naratif mengenai kontribusi tokoh Islam.</div>
+      <div class="objective-item"><b>08 • Keteladanan</b>Meneladani ilmu, keikhlasan, kerja keras, dan kepedulian terhadap umat.</div>
+    </div>
+  </div>
+  <div class="dars-section">
+    <h3>📚 Apersepsi</h3>
+    <div class="rtlbox">وَمَا أُمِرُوا إِلَّا لِيَعْبُدُوا اللَّهَ مُخْلِصِينَ لَهُ الدِّينَ حُنَفَاءَ وَيُقِيمُوا الصَّلَاةَ وَيُؤْتُوا الزَّكَاةَ وَذَلِكَ دِينُ الْقَيِّمَةِ</div>
+    <p><b>QS. Al-Bayyinah: 5.</b> Tokoh-tokoh Islam memberi sumbangan besar dalam ilmu dan peradaban karena ilmu, pengabdian, serta keikhlasan mereka.</p>
+  </div>
+</div>
+
+<div id="panel-mufradat" class="lesson-panel">
+  <div class="dars-section">
+    <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Tokoh dan Keilmuan</h3><span class="muted">Ketuk kartu untuk melihat arti dan tekan suara untuk berlatih pelafalan.</span></div><span class="progress-chip">${vocab12Unit2.length} kosakata</span></div>
+    <div class="vocab-grid">${vocab12Unit2.map((v) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();speak('${v[0]}')">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+  </div>
+  <div class="dars-section">
+    <h3>Latihan cepat</h3>
+    <div class="mini-task">
+      <div><span class="arabic">مُؤَرِّخٌ</span> berarti …<br><button class="btn" onclick="quickAnswer12Unit2(this,true)">Sejarawan</button> <button class="btn" onclick="quickAnswer12Unit2(this,false)">Fisikawan</button></div>
+      <div><span class="arabic">رَحَّالَةٌ</span> berarti …<br><button class="btn" onclick="quickAnswer12Unit2(this,false)">Penyair</button> <button class="btn" onclick="quickAnswer12Unit2(this,true)">Penjelajah</button></div>
+      <div><span class="arabic">عَالِمَةُ رِيَاضِيَّاتٍ</span> berarti …<br><button class="btn" onclick="quickAnswer12Unit2(this,true)">Matematikawan perempuan</button> <button class="btn" onclick="quickAnswer12Unit2(this,false)">Ahli bahasa</button></div>
+    </div>
+    <div id="quickFeedback12Unit2" class="choice-feedback" aria-live="polite"></div>
+  </div>
+</div>
+
+<div id="panel-istima" class="lesson-panel">
+  <div class="dars-section">
+    <h3>🎧 الِاسْتِمَاعُ — Istima'</h3>
+    <p>Dengarkan informasi singkat tentang Masjid Al-Aqsa dan Universitas Al-Qarawiyyin.</p>
+    <div class="dialogue rtlbox" id="d12u2Listen">يَقَعُ الْمَسْجِدُ الْأَقْصَى فِي الْقُدْسِ بِفِلَسْطِينَ، وَحَرَّرَهُ صَلَاحُ الدِّينِ الْأَيُّوبِيُّ فِي الْقَرْنِ السَّادِسِ الْهِجْرِيِّ. وَجَامِعَةُ الْقَرَوِيِّينَ مِنْ أَقْدَمِ الْجَامِعَاتِ فِي الْعَالَمِ، بَنَتْهَا فَاطِمَةُ الْفِهْرِيَّةُ فِي الْقَرْنِ الثَّالِثِ الْهِجْرِيِّ.</div>
+    <button class="btn primary" onclick="speak(document.getElementById('d12u2Listen').innerText)">▶ Putar Istima'</button>
+    <div class="exercise"><b>Periksa pemahamanmu</b><p class="arabic">مَنْ بَنَى جَامِعَةَ الْقَرَوِيِّينَ؟</p><input id="d12u2ist1" placeholder="Tulis jawaban"><button class="btn" onclick="cekFlexible('d12u2ist1',['فاطمة الفهرية','بنتها فاطمة الفهرية'],'d12u2istfb')">Cek jawaban</button><div id="d12u2istfb" class="feedback" aria-live="polite"></div></div>
+  </div>
+</div>
+
+<div id="panel-hiwar" class="lesson-panel">
+  <div class="dars-section">
+    <h3>🗣️ الْحِوَارُ الْأَوَّلُ — Tempat Bersejarah</h3>
+    <div class="dialogue rtlbox"><b>صَالِحٌ:</b> هَلْ تَعْرِفُ أَيْنَ يَقَعُ الْمَسْجِدُ الْأَقْصَى؟<br><b>أَبْرَارٌ:</b> نَعَمْ، يَقَعُ فِي الْقُدْسِ بِفِلَسْطِينَ.<br><b>صَالِحٌ:</b> مَنْ حَرَّرَ مَدِينَةَ الْقُدْسِ؟<br><b>أَبْرَارٌ:</b> حَرَّرَهَا صَلَاحُ الدِّينِ الْأَيُّوبِيُّ.<br><b>صَالِحٌ:</b> وَمَتَى حُرِّرَتْ هَذِهِ الْمَدِينَةُ؟<br><b>أَبْرَارٌ:</b> حُرِّرَتْ فِي الْقَرْنِ السَّادِسِ الْهِجْرِيِّ.</div>
+    <button class="btn" onclick="speak(this.previousElementSibling.innerText)">🔊 Dengarkan hiwar</button>
+  </div>
+  <div class="dars-section">
+    <h3>🗣️ الْحِوَارُ الثَّانِي — Ilmuwan Muslim</h3>
+    <div class="dialogue rtlbox"><b>إِدْرِيسُ:</b> أَنَا أَقْرَأُ الْمَقَالَاتِ عَنِ الْعُظَمَاءِ الَّذِينَ سَاهَمُوا فِي إِقَامَةِ الْحَضَارَةِ الْإِسْلَامِيَّةِ.<br><b>عَلِيٌّ:</b> مَنْ مِنْهُمْ؟<br><b>إِدْرِيسُ:</b> ابْنُ سِينَا وَابْنُ الْهَيْثَمِ وَالْخَوَارِزْمِيُّ وَابْنُ خَلْدُونَ وَابْنُ بَطُّوطَةَ وَابْنُ النَّفِيسِ وَغَيْرُهُمْ.<br><b>عَلِيٌّ:</b> وَهَلْ هُنَاكَ عُظَمَاءُ مُعَاصِرُونَ؟<br><b>إِدْرِيسُ:</b> نَعَمْ، مِنْهُمْ الشَّيْخُ يُوسُفُ الْقَرَضَاوِيُّ وَالشَّيْخُ أَحْمَدُ الْخَطِيبُ الْمِنَنْكَبَاوِيُّ وَغَيْرُهُمَا.<br><b>بُوتَا:</b> وَفَاطِمَةُ الْفِهْرِيَّةُ مُؤَسِّسَةُ أَقْدَمِ الْجَامِعَاتِ فِي الْعَالَمِ.</div>
+    <button class="btn" onclick="speak(this.previousElementSibling.innerText)">🔊 Dengarkan hiwar</button>
+    <div class="exercise"><b>Praktik:</b> Ceritakan seorang tokoh menggunakan pertanyaan <span class="arabic">مَنْ هُوَ؟ أَيْنَ وُلِدَ؟ فِي أَيِّ مَجَالٍ عَمِلَ؟ مَا مُسَاهَمَتُهُ؟</span></div>
+  </div>
+</div>
+
+<div id="panel-qiraah" class="lesson-panel">
+  <div class="dars-section">
+    <div class="reading-title"><h3>📖 فَاطِمَةُ الْفِهْرِيَّةُ: مُؤَسِّسَةُ أَقْدَمِ جَامِعَةٍ فِي الْعَالَمِ</h3><button class="btn" onclick="speak(document.getElementById('d12u2Read').innerText)">🔊</button></div>
+    <div class="rtlbox" id="d12u2Read">فِي الْقَرْنِ الثَّالِثِ الْهِجْرِيِّ وُلِدَتْ فَتَاةٌ مِنْ عَائِلَةٍ كَرِيمَةٍ فِي الْقَيْرَوَانِ تُدْعَى فَاطِمَةَ. كَانَ وَالِدُهَا فَقِيهًا وَتَاجِرًا نَاجِحًا اسْمُهُ مُحَمَّدُ بْنُ عَبْدِ اللهِ الْفِهْرِيُّ. هَاجَرَتْ عَائِلَتُهَا مِنَ الْقَيْرَوَانِ إِلَى فَاسَ بِالْمَغْرِبِ. وَبَعْدَ وَفَاةِ وَالِدِهَا وَزَوْجِهَا وَرِثَتْ فَاطِمَةُ ثَرْوَةً عَظِيمَةً، فَاسْتَفَادَتْ مِنْهَا لِمَصْلَحَةِ الْأُمَّةِ. رَأَتْ أَنَّ الْمَسْجِدَ الْقَائِمَ لَا يَتَّسِعُ لِجَمِيعِ الْمُصَلِّينَ وَطُلَّابِ الْعِلْمِ، فَنَذَرَتْ أَنْ تَبْنِيَ مَسْجِدًا جَدِيدًا. بَدَأَ بِنَاءُ الْمَسْجِدِ فِي شَهْرِ رَمَضَانَ عَامَ ٢٤٥ هِجْرِيًّا، وَسُمِّيَ مَسْجِدَ الْقَرَوِيِّينَ. وَبَعْدَ مُرُورِ الزَّمَنِ تَحَوَّلَ الْمَسْجِدُ إِلَى مَرْكَزٍ عِلْمِيٍّ كَبِيرٍ، ثُمَّ أَصْبَحَ جَامِعَةً تُدَرَّسُ فِيهَا الْعُلُومُ الدِّينِيَّةُ وَاللُّغَةُ وَالطِّبُّ وَالرِّيَاضِيَّاتُ وَالْفَلْسَفَةُ. وَتَخَرَّجَ فِي جَامِعَةِ الْقَرَوِيِّينَ عُلَمَاءُ كَثِيرُونَ مِنْهُمْ عَبْدُ الرَّحْمَنِ بْنُ خَلْدُونَ وَابْنُ رُشْدٍ وَابْنُ بَطُّوطَةَ. وَلَا تَزَالُ الْجَامِعَةُ قَائِمَةً إِلَى الْيَوْمِ، وَيَتَذَكَّرُ الْعَالَمُ إِخْلَاصَ فَاطِمَةَ الْفِهْرِيَّةِ وَأَفْكَارَهَا الذَّهَبِيَّةَ.</div>
+    <div class="exercise"><b>Pemahaman bacaan:</b><ol class="arabic"><li>أَيْنَ وُلِدَتْ فَاطِمَةُ الْفِهْرِيَّةُ؟</li><li>لِمَاذَا هَاجَرَتْ عَائِلَتُهَا إِلَى الْمَغْرِبِ؟</li><li>لِمَاذَا أَرَادَتْ فَاطِمَةُ أَنْ تَبْنِيَ مَسْجِدًا جَدِيدًا؟</li><li>مَتَى بَدَأَ بِنَاءُ مَسْجِدِ الْقَرَوِيِّينَ؟</li><li>مَنْ مِنَ الْعُلَمَاءِ تَخَرَّجَ فِي جَامِعَةِ الْقَرَوِيِّينَ؟</li></ol></div>
+  </div>
+  <div class="dars-section">
+    <h3>Struktur Teks Naratif — النَّصُّ السَّرْدِيُّ</h3>
+    <div class="objective-grid"><div class="objective-item"><b>الْمُقَدِّمَةُ • Orientasi</b>Tokoh, tempat, waktu, dan situasi awal cerita.</div><div class="objective-item"><b>الْعُقْدَةُ • Konflik</b>Masalah penting yang menjadi inti cerita.</div><div class="objective-item"><b>الْحَلُّ • Resolusi</b>Cara tokoh menyelesaikan masalah.</div><div class="objective-item"><b>الْخَاتِمَةُ • Penutup</b>Kondisi akhir, pesan moral, atau dampak peristiwa.</div></div>
+  </div>
+</div>
+
+<div id="panel-tarkib" class="lesson-panel">
+  <div class="dars-section">
+    <h3>🔤 الْفِعْلُ الْمَبْنِيُّ لِلْمَعْلُومِ وَالْمَبْنِيُّ لِلْمَجْهُولِ</h3>
+    <p><b>Mabni lil-ma'lum</b> menyebutkan pelaku. Pada <b>mabni lil-majhul</b>, pelaku dihapus dan objek berubah menjadi <span class="arabic">نَائِبُ الْفَاعِلِ</span> yang berstatus marfu'.</p>
+    <div class="tablewrap"><table><tr><th>Bentuk</th><th>Aktif</th><th>Pasif</th></tr><tr><td>Fi'il madhi tsulatsi</td><td class="arabic">نَصَرَ اللهُ الْمُؤْمِنِينَ</td><td class="arabic">نُصِرَ الْمُؤْمِنُونَ</td></tr><tr><td>Fi'il madhi lebih dari 3 huruf</td><td class="arabic">اِسْتَقْبَلَتِ الْجَامِعَةُ الطُّلَّابَ</td><td class="arabic">اُسْتُقْبِلَ الطُّلَّابُ</td></tr><tr><td>Fi'il mudhari'</td><td class="arabic">يُعَلِّمُ الْعَالِمُ النَّاسَ</td><td class="arabic">يُعَلَّمُ النَّاسُ</td></tr></table></div>
+  </div>
+  <div class="dars-section">
+    <h3>Pola Perubahan</h3>
+    <div class="objective-grid"><div class="objective-item"><b>Fi'il madhi</b>Huruf awal didhammahkan dan huruf sebelum akhir dikasrahkan: <span class="arabic">كَتَبَ ← كُتِبَ</span>.</div><div class="objective-item"><b>Fi'il mudhari'</b>Huruf awal didhammahkan dan huruf sebelum akhir difathahkan: <span class="arabic">يَكْتُبُ ← يُكْتَبُ</span>.</div></div>
+    <div class="exercise"><b>Bandingkan:</b><div class="arabic">كَتَبَ الْمُؤَرِّخُ كِتَابَ التَّارِيخِ ← كُتِبَ كِتَابُ التَّارِيخِ<br>وَضَعَ الْخَوَارِزْمِيُّ قَوَاعِدَ الرِّيَاضِيَّاتِ ← وُضِعَتْ قَوَاعِدُ الرِّيَاضِيَّاتِ<br>يُكْرِمُ إِبْرَاهِيمُ الضُّيُوفَ ← يُكْرَمُ الضُّيُوفُ</div></div>
+    <div class="exercise"><b>Latihan:</b> Ubah ke bentuk pasif: <span class="arabic">بَنَتْ فَاطِمَةُ الْمَسْجِدَ • أَلَّفَ الْعَالِمُ الْكِتَابَ • يَدْرُسُ الطُّلَّابُ التَّارِيخَ</span>.</div>
+  </div>
+</div>
+
+<div id="panel-kitabah" class="lesson-panel">
+  <div class="dars-section">
+    <h3>✍️ الْكِتَابَةُ — Menulis Teks Naratif</h3>
+    <p>Tulislah 5-10 kalimat mengenai seorang tokoh besar Islam. Susun peristiwa secara kronologis dan sertakan keteladanan yang dapat diambil.</p>
+    <div class="exercise"><b>Pilih tokoh:</b> Ibnu Sina, Al-Khawarizmi, Ibnu Khaldun, Ibnu Bathuthah, Fatimah al-Fihriyyah, atau tokoh lain yang relevan.</div>
+    <div class="objective-grid"><div class="objective-item"><b>1 • الْمُقَدِّمَةُ</b>Nama, tempat dan waktu lahir, serta latar belakang.</div><div class="objective-item"><b>2 • الْعُقْدَةُ</b>Tantangan atau kebutuhan yang dihadapi.</div><div class="objective-item"><b>3 • الْحَلُّ</b>Usaha, karya, penemuan, atau kontribusi tokoh.</div><div class="objective-item"><b>4 • الْخَاتِمَةُ</b>Dampak karya dan pelajaran yang dapat diteladani.</div></div>
+    <div class="writing-lines rtlbox" contenteditable="true" role="textbox" aria-label="Tulis teks naratif tokoh Islam" data-placeholder="وُلِدَ / وُلِدَتْ... ثُمَّ... وَقَدْ سَاهَمَ / سَاهَمَتْ فِي... وَنَتَعَلَّمُ مِنْهُ / مِنْهَا..."></div>
+  </div>
+</div>
+
+<div id="panel-evaluasi" class="lesson-panel">
+  <section class="dars-section unit-quiz">
+    <h3>🏆 Kuis Otomatis Kelas XII Unit 2</h3>
+    <p>Jawab seluruh 10 soal. Setiap jawaban benar bernilai 10; skor maksimal 100.</p>
+    <div class="quiz-progress"><span id="d12u2Answered">0/10 terjawab</span><div class="bar"><i id="d12u2QuizBar"></i></div></div>
+    <div id="dars12Unit2Eval"></div>
+    <button class="btn primary quiz-submit" onclick="nilaiDars12Unit2()">✓ Hitung skor</button>
+    <button class="btn" onclick="resetDars12Unit2Quiz()">Ulangi kuis</button>
+    <div id="dars12Unit2Score" class="result score-card" aria-live="polite">Skor akan muncul di sini.</div>
+  </section>
+  <div class="dars-section"><h3>🪞 Refleksi</h3><div class="tablewrap"><table><tr><th>Kegiatan</th><th>Jayyid Jiddan</th><th>Jayyid</th><th>Dha'if</th></tr>${["أَفْهَمُ مُفْرَدَاتِ عُظَمَاءِ الْإِسْلَامِ", "أَجْرِي الْحِوَارَ مَعَ الزُّمَلَاءِ", "أَقْرَأُ النَّصَّ السَّرْدِيَّ وَأَفْهَمُهُ", "أُحَوِّلُ الْفِعْلَ لِلْمَعْلُومِ إِلَى الْمَبْنِيِّ لِلْمَجْهُولِ", "أَكْتُبُ قِصَّةَ شَخْصِيَّةٍ إِسْلَامِيَّةٍ"].map((x) => `<tr><td class="arabic">${x}</td><td>☐</td><td>☐</td><td>☐</td></tr>`).join("")}</table></div></div>
+  <div class="dars-section"><h3>💡 Hikmah</h3><div class="rtlbox" style="text-align:center;background:#eef6e8;border-radius:22px;padding:28px"><b>مَنْ لَمْ يَتَعَلَّمْ مِنَ التَّارِيخِ، فَإِنَّ التَّارِيخَ سَوْفَ يُعِيدُ نَفْسَهُ.</b><br><span style="font-size:16px">Siapa yang tidak belajar dari sejarah akan mengulangi kesalahan yang sama.</span></div></div>
+</div>
+
+<div class="lesson-nav">
+  <button class="btn" onclick="previousChapter12(2)">← Bab sebelumnya</button>
+  <div class="navinfo"><span class="progress-chip">Kelas XII • Unit 2 • Tokoh Islam</span></div>
+  <button class="btn gold" onclick="nextChapter12(2)">Bab berikutnya →</button>
+</div>
+<button class="btn primary" onclick="done('XII-1')">✓ Tandai Unit 2 selesai +20 XP</button>
+</div>`;
+      }
+
       function openLesson(g, i) {
         let t = topics[g][i];
         if (g === "X" && i === 0) {
@@ -2326,6 +2502,12 @@
           document.getElementById("detailBox").innerHTML = dars12Unit1();
           page("detail");
           quizDars12Unit1();
+          return;
+        }
+        if (g === "XII" && i === 1) {
+          document.getElementById("detailBox").innerHTML = dars12Unit2();
+          page("detail");
+          quizDars12Unit2();
           return;
         }
         let txt =
@@ -2377,10 +2559,15 @@
       }
       function nextChapter12(current) {
         if (current === 1) {
+          window.openLesson("XII", 1);
+        } else if (current === 2) {
           alert(
-            "Kelas XII Unit 2 akan disusun setelah Unit 1 ditinjau dan disetujui.",
+            "Kelas XII Unit 3 akan disusun setelah Unit 2 ditinjau dan disetujui.",
           );
         }
+      }
+      function previousChapter12(current) {
+        if (current === 2) window.openLesson("XII", 0);
       }
       function quickAnswer(button, correct) {
         const feedback = document.getElementById("quickFeedback");
@@ -2435,6 +2622,15 @@
       }
       function quickAnswer12Unit1(button, correct) {
         const feedback = document.getElementById("quickFeedback12Unit1");
+        if (!feedback) return;
+        feedback.textContent = correct
+          ? "صَحِيحٌ! Jawaban tepat."
+          : "Belum tepat. Buka kembali kartu kosakata.";
+        if (correct) gain(2);
+        button.blur();
+      }
+      function quickAnswer12Unit2(button, correct) {
+        const feedback = document.getElementById("quickFeedback12Unit2");
         if (!feedback) return;
         feedback.textContent = correct
           ? "صَحِيحٌ! Jawaban tepat."
@@ -3151,6 +3347,150 @@
       function resetDars12Unit1Quiz() {
         quizDars12Unit1();
         const result = document.getElementById("dars12Unit1Score");
+        if (result) {
+          result.classList.remove("quiz-result-perfect");
+          result.textContent = "Skor akan muncul di sini.";
+        }
+      }
+
+      const DARS12UNIT2Q = [
+        [
+          "Arti مُؤَرِّخٌ adalah …",
+          ["Filsuf", "Sejarawan", "Penyair", "Astronom", "Ekonom"],
+          1,
+        ],
+        [
+          "Tokoh yang membebaskan Al-Quds dalam dialog adalah …",
+          [
+            "ابْنُ سِينَا",
+            "ابْنُ خَلْدُونَ",
+            "صَلَاحُ الدِّينِ الْأَيُّوبِيُّ",
+            "الْخَوَارِزْمِيُّ",
+            "ابْنُ بَطُّوطَةَ",
+          ],
+          2,
+        ],
+        [
+          "Siapakah pendiri Universitas Al-Qarawiyyin menurut bacaan?",
+          [
+            "فَاطِمَةُ الْفِهْرِيَّةُ",
+            "رَابِعَةُ الْعَدَوِيَّةُ",
+            "خَدِيجَةُ الْكُبْرَى",
+            "عَائِشَةُ",
+            "مَرْيَمُ",
+          ],
+          0,
+        ],
+        [
+          "Mengapa Fatimah al-Fihriyyah membangun masjid baru?",
+          [
+            "Untuk tempat berdagang",
+            "Karena masjid lama tidak menampung semua jamaah dan penuntut ilmu",
+            "Untuk tempat tinggal",
+            "Karena diperintah seorang raja",
+            "Untuk menyimpan kekayaan",
+          ],
+          1,
+        ],
+        [
+          "Bentuk pasif dari كَتَبَ adalah …",
+          ["يَكْتُبُ", "كَاتِبٌ", "كُتِبَ", "مَكْتُوبٌ", "اُكْتُبْ"],
+          2,
+        ],
+        [
+          "Bentuk pasif mudhari' dari يَكْتُبُ adalah …",
+          ["يُكْتَبُ", "كَتَبَ", "كُتِبَ", "يَكْتَبُ", "يُكَاتِبُ"],
+          0,
+        ],
+        [
+          "Pada kalimat نُصِرَ الْمُؤْمِنُونَ, kata الْمُؤْمِنُونَ berkedudukan sebagai …",
+          [
+            "مُبْتَدَأٌ",
+            "خَبَرٌ",
+            "مَفْعُولٌ بِهِ",
+            "نَائِبُ الْفَاعِلِ",
+            "فِعْلٌ",
+          ],
+          3,
+        ],
+        [
+          "Bagian teks naratif yang memperkenalkan tokoh, tempat, dan waktu disebut …",
+          [
+            "الْمُقَدِّمَةُ",
+            "الْعُقْدَةُ",
+            "الْحَلُّ",
+            "الْخَاتِمَةُ",
+            "الْحِجَاجُ",
+          ],
+          0,
+        ],
+        [
+          "Bagian naratif yang menjelaskan penyelesaian masalah adalah …",
+          [
+            "الْمُقَدِّمَةُ",
+            "الْعُقْدَةُ",
+            "الْحَلُّ",
+            "الْخَاتِمَةُ",
+            "الْأُطْرُوحَةُ",
+          ],
+          2,
+        ],
+        [
+          "Keteladanan utama dari kisah Fatimah al-Fihriyyah adalah …",
+          [
+            "Mengumpulkan kekayaan untuk diri sendiri",
+            "Meninggalkan ilmu",
+            "Menggunakan kekayaan dengan ikhlas untuk kemaslahatan umat",
+            "Menghindari kerja keras",
+            "Menutup tempat belajar",
+          ],
+          2,
+        ],
+      ];
+      function quizDars12Unit2() {
+        const box = document.getElementById("dars12Unit2Eval");
+        if (!box) return;
+        const letters = ["a", "b", "c", "d", "e"];
+        box.innerHTML = DARS12UNIT2Q.map(
+          (q, i) =>
+            `<div class="unit-question" data-d12u2-question="${i}"><b>${i + 1}. <span class="${/[\u0600-\u06ff]/.test(q[0]) ? "arabic" : ""}">${q[0]}</span></b>${q[1].map((answer, j) => `<label class="eval-option"><input type="radio" name="d12u2q${i}" value="${j}" onchange="updateDars12Unit2Progress()"><b>${letters[j]}.</b> <span class="${/[\u0600-\u06ff]/.test(answer) ? "arabic" : ""}">${answer}</span></label>`).join("")}<p class="answer-key">Jawaban benar: ${letters[q[2]]}. <span class="${/[\u0600-\u06ff]/.test(q[1][q[2]]) ? "arabic" : ""}">${q[1][q[2]]}</span></p></div>`,
+        ).join("");
+        updateDars12Unit2Progress();
+      }
+      function updateDars12Unit2Progress() {
+        const answered = DARS12UNIT2Q.filter((q, i) =>
+          document.querySelector(`input[name=d12u2q${i}]:checked`),
+        ).length;
+        const label = document.getElementById("d12u2Answered");
+        const bar = document.getElementById("d12u2QuizBar");
+        if (label) label.textContent = `${answered}/10 terjawab`;
+        if (bar) bar.style.width = `${answered * 10}%`;
+      }
+      function nilaiDars12Unit2() {
+        let correct = 0;
+        let answered = 0;
+        DARS12UNIT2Q.forEach((q, i) => {
+          const selected = document.querySelector(
+            `input[name=d12u2q${i}]:checked`,
+          );
+          const item = document.querySelector(`[data-d12u2-question="${i}"]`);
+          if (selected) answered++;
+          const isCorrect = selected && Number(selected.value) === q[2];
+          if (isCorrect) correct++;
+          if (item) {
+            item.classList.remove("correct", "incorrect");
+            item.classList.add(isCorrect ? "correct" : "incorrect");
+          }
+        });
+        const score = correct * 10;
+        const result = document.getElementById("dars12Unit2Score");
+        result.classList.toggle("quiz-result-perfect", score >= 80);
+        result.innerHTML = `<h3>Skor: ${score}/100</h3><p>${correct} jawaban benar, ${10 - correct} belum benar. ${answered < 10 ? `Masih ada ${10 - answered} soal yang belum dijawab. ` : ""}${score >= 80 ? "مُمْتَازٌ! Pemahamanmu sangat baik. 👏" : "Pelajari kembali materi yang ditandai, lalu ulangi kuis."}</p>`;
+        if (score >= 80) done("XII-1-evaluasi");
+      }
+      function resetDars12Unit2Quiz() {
+        quizDars12Unit2();
+        const result = document.getElementById("dars12Unit2Score");
         if (result) {
           result.classList.remove("quiz-result-perfect");
           result.textContent = "Skor akan muncul di sini.";
