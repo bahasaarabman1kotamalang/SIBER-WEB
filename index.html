@@ -1204,7 +1204,7 @@
         document.getElementById("topicList").innerHTML = topics[g]
           .map(
             (t, i) =>
-              `<div class="card topic"><span class="tag">Kelas ${g}</span><h3 class="arabic">${t[0]}</h3><b>${t[1]}</b><p class="muted">Kosakata • teks • komunikasi • tata bahasa • produksi bahasa</p><button class="btn ${(g === "X" && i <= 4) || (g === "XI" && i === 0) || (g === "XII" && i <= 1) ? "primary" : ""}" onclick="openLesson('${g}',${i})">${(g === "X" && i <= 4) || (g === "XI" && i === 0) || (g === "XII" && i <= 1) ? `Buka Unit ${i + 1}` : "Buka materi"}</button></div>`,
+              `<div class="card topic"><span class="tag">Kelas ${g}</span><h3 class="arabic">${t[0]}</h3><b>${t[1]}</b><p class="muted">Kosakata • teks • komunikasi • tata bahasa • produksi bahasa</p><button class="btn ${(g === "X" && i <= 4) || (g === "XI" && i <= 1) || (g === "XII" && i <= 1) ? "primary" : ""}" onclick="openLesson('${g}',${i})">${(g === "X" && i <= 4) || (g === "XI" && i <= 1) || (g === "XII" && i <= 1) ? `Buka Unit ${i + 1}` : "Buka materi"}</button></div>`,
           )
           .join("");
       }
@@ -1442,6 +1442,38 @@
         ["بَسَطَ", "Telah membentangkan"],
         ["تَشَمَّسَ", "Telah berjemur"],
         ["لَعِبَ", "Telah bermain"],
+      ];
+      const vocab11Unit2 = [
+        ["الصِّحَّةُ", "Kesehatan"],
+        ["رِيَاضَةٌ", "Olahraga"],
+        ["دَرَّاجَةٌ", "Sepeda"],
+        ["سِبَاحَةٌ", "Renang"],
+        ["جَرْيٌ", "Lari"],
+        ["كُرَةُ الْقَدَمِ", "Sepak bola"],
+        ["مَلْعَبُ الْقَرْيَةِ", "Lapangan desa"],
+        ["صَحِيحٌ ج أَصِحَّاءُ", "Sehat"],
+        ["مَرِيضٌ ج مَرْضَى", "Sakit / pasien"],
+        ["حَكِيمٌ ج حُكَمَاءُ", "Orang bijak"],
+        ["صُدَاعٌ", "Sakit kepala"],
+        ["أَلَمٌ فِي الصَّدْرِ", "Nyeri dada"],
+        ["عَدَمُ وُضُوحِ الرُّؤْيَةِ", "Penglihatan kabur"],
+        ["طَعَامٌ مَالِحٌ", "Makanan asin"],
+        ["طَعَامٌ حُلْوٌ", "Makanan manis"],
+        ["طَعَامٌ مَقْلِيٌّ", "Makanan goreng"],
+        ["لُحُومٌ مُصَنَّعَةٌ", "Daging olahan"],
+        ["جِلْدُ الدَّجَاجِ", "Kulit ayam"],
+        ["جِهَازُ قِيَاسِ ضَغْطِ الدَّمِ", "Alat ukur tekanan darah"],
+        ["مُسْتَشْفًى", "Rumah sakit"],
+        ["صَيْدَلِيَّةٌ", "Apotek"],
+        ["دَوَاءٌ", "Obat"],
+        ["طَبِيبٌ / طَبِيبَةٌ", "Dokter"],
+        ["صَيْدَلِيٌّ", "Apoteker"],
+        ["فَوَاكِهُ", "Buah-buahan"],
+        ["خُضْرَوَاتٌ", "Sayur-sayuran"],
+        ["بُرْتُقَالٌ", "Jeruk"],
+        ["مَوْزٌ", "Pisang"],
+        ["سَمَكٌ", "Ikan"],
+        ["لَبَنٌ مُصَفًّى بِلَا سُكَّرٍ", "Yoghurt tanpa gula"],
       ];
       function speak(x) {
         if ("speechSynthesis" in window) {
@@ -2635,6 +2667,143 @@
 </div>`;
       }
 
+      function dars11Unit2() {
+        return `<div class="card lesson-shell">
+<div class="lesson-hero">
+  <div>
+    <span class="tag">Kelas XI • Bab 2 / Unit 2</span>
+    <h2 class="arabic">الْوَحْدَةُ الثَّانِيَةُ: الصِّحَّةُ</h2>
+    <h2>Kesehatan</h2>
+    <p>Belajar menjaga kesehatan, memilih makanan sehat, berolahraga, dan menyampaikan keluhan melalui taṣrīf lugawī fi'il muḍāri'.</p>
+  </div>
+  <div class="unit-number" aria-label="Unit 2 Kelas XI">02</div>
+</div>
+
+<div class="lesson-nav top-nav">
+  <button class="btn" onclick="previousChapter11(2)">← Bab sebelumnya</button>
+  <div class="navinfo"><span class="progress-chip">Kelas XI • Unit 2 • Kesehatan</span></div>
+  <button class="btn gold" onclick="nextChapter11(2)">Bab berikutnya →</button>
+</div>
+
+<div class="lesson-tabs" role="tablist" aria-label="Bagian Kelas XI Unit 2">
+  <button class="active" onclick="lessonTab('tujuan',this)">🎯 Tujuan</button>
+  <button onclick="lessonTab('mufradat',this)">🃏 Mufradat</button>
+  <button onclick="lessonTab('istima',this)">🎧 Istima'</button>
+  <button onclick="lessonTab('hiwar',this)">💬 Hiwar</button>
+  <button onclick="lessonTab('qiraah',this)">📖 Qira'ah</button>
+  <button onclick="lessonTab('tarkib',this)">🧩 Tarkib</button>
+  <button onclick="lessonTab('kitabah',this)">✍️ Kitabah</button>
+  <button onclick="lessonTab('kuis',this)">🏆 Kuis</button>
+</div>
+
+<div id="panel-tujuan" class="lesson-panel active">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>🎯 Tujuan Pembelajaran</h3><span class="muted">Capaian pembelajaran tema الصِّحَّةُ.</span></div><span class="progress-chip">4 tujuan</span></div>
+    <div class="goal-grid">
+      <article class="goal-card"><span>01</span><h4>Mufradat</h4><p>Menganalisis dan memakai kosakata kesehatan, olahraga, gejala penyakit, serta makanan sehat.</p></article>
+      <article class="goal-card"><span>02</span><h4>Tarkib</h4><p>Memahami dan menerapkan <span class="arabic">التَّصْرِيفُ اللُّغَوِيُّ لِلْفِعْلِ الْمُضَارِعِ</span>.</p></article>
+      <article class="goal-card"><span>03</span><h4>Reseptif</h4><p>Menemukan informasi tersurat dan tersirat dari percakapan dan teks deskriptif tentang kesehatan.</p></article>
+      <article class="goal-card"><span>04</span><h4>Produktif</h4><p>Mengungkapkan kondisi kesehatan secara lisan dan tertulis serta membiasakan hidup bersih dan seimbang.</p></article>
+    </div>
+    <div class="rtlbox" style="margin-top:18px;text-align:center"><b>الصِّحَّةُ تَاجٌ عَلَى رُؤُوسِ الْأَصِحَّاءِ لَا يَعْرِفُهُ إِلَّا الْمَرْضَى.</b><br><small>Kesehatan adalah mahkota di kepala orang sehat yang nilainya baru disadari oleh orang sakit.</small></div>
+  </section>
+</div>
+
+<div id="panel-mufradat" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kesehatan</h3><span class="muted">Ketuk kartu untuk melihat arti dan tekan suara untuk berlatih pelafalan.</span></div><span class="progress-chip">${vocab11Unit2.length} kosakata</span></div>
+    <div class="vocab-grid">${vocab11Unit2.map((v) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();speak('${v[0]}')">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="mini-task"><h4>Latihan cepat</h4><p class="arabic">أَيْنَ يَشْتَرِي الْمَرِيضُ الدَّوَاءَ؟</p><button class="btn" onclick="quickAnswer(this,false)">فِي الْمَلْعَبِ</button> <button class="btn" onclick="quickAnswer(this,true)">فِي الصَّيْدَلِيَّةِ</button> <button class="btn" onclick="quickAnswer(this,false)">فِي الْفَصْلِ</button><p id="quickFeedback" class="feedback"></p></div>
+  </section>
+</div>
+
+<div id="panel-istima" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>🎧 الاستماع — فِي الْمُسْتَشْفَى</h3><span class="muted">Dengarkan percakapan dokter dan pasien, lalu jawab pertanyaannya.</span></div><button class="btn primary" onclick="speak('مَاذَا بِكَ يَا سَيِّدِي؟ أَصَابَنِي الصُّدَاعُ. كَمْ يَوْمًا تَشْعُرُ بِهِ؟ مُنْذُ ثَلَاثَةِ أَيَّامٍ. ضَغْطُ دَمِكَ مُرْتَفِعٌ، عَلَيْكَ أَنْ تَجْتَنِبَ الْأَطْعِمَةَ الْمَالِحَةَ وَالْحُلْوَةَ.')">▶ Putar audio</button></div>
+    <div class="audio-script rtlbox"><button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan transkrip</button><p hidden>الطَّبِيبَةُ: مَاذَا بِكَ يَا سَيِّدِي؟ حَسَنٌ: أَصَابَنِي الصُّدَاعُ. الطَّبِيبَةُ: كَمْ يَوْمًا تَشْعُرُ بِهِ؟ حَسَنٌ: مُنْذُ ثَلَاثَةِ أَيَّامٍ. الطَّبِيبَةُ: ضَغْطُ دَمِكَ مُرْتَفِعٌ، عَلَيْكَ أَنْ تَجْتَنِبَ الْأَطْعِمَةَ الْمَالِحَةَ وَالْحُلْوَةَ.</p></div>
+    <div class="mini-task"><h4>فَهْمُ الْمَسْمُوعِ</h4><p class="arabic">بِمَاذَا يَشْعُرُ حَسَنٌ؟</p><input id="d11u2Listen" class="answer-input arabic" placeholder="اكتب الجواب هنا"><button class="btn primary" onclick="cekFlexible('d11u2Listen',['بالصداع','أصابه الصداع','أَصَابَهُ الصُّدَاعُ','الصُّدَاع'],'d11u2ListenFb')">Periksa</button><p id="d11u2ListenFb" class="feedback"></p></div>
+  </section>
+</div>
+
+<div id="panel-hiwar" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>💬 الحوار — فِي الصَّيْدَلِيَّةِ</h3><span class="muted">Baca bergantian sebagai apoteker dan pasien.</span></div><button class="btn" onclick="speak('السَّلَامُ عَلَيْكُمْ، أَيُّ خِدْمَةٍ؟ أَنَا بِحَاجَةٍ إِلَى الدَّوَاءِ. أَيُّ مَرَضٍ أَصَابَكَ؟ ضَغْطُ الدَّمِ. أَيْنَ الْوَصْفَةُ الطِّبِّيَّةُ؟ هَذِهِ هِيَ الْوَصْفَةُ.')">🔊 Dengarkan</button></div>
+    <div class="dialogue">
+      <div class="speech"><b>الصَّيْدَلِيُّ</b><p class="arabic">السَّلَامُ عَلَيْكُمْ، أَيُّ خِدْمَةٍ؟</p></div>
+      <div class="speech alt"><b>الْمَرِيضُ</b><p class="arabic">وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ اللهِ، أَنَا بِحَاجَةٍ إِلَى الدَّوَاءِ.</p></div>
+      <div class="speech"><b>الصَّيْدَلِيُّ</b><p class="arabic">أَيُّ مَرَضٍ أَصَابَكَ؟ وَأَيْنَ الْوَصْفَةُ الطِّبِّيَّةُ؟</p></div>
+      <div class="speech alt"><b>الْمَرِيضُ</b><p class="arabic">ضَغْطُ الدَّمِ. هَذِهِ هِيَ الْوَصْفَةُ.</p></div>
+      <div class="speech"><b>الصَّيْدَلِيُّ</b><p class="arabic">هَذَا هُوَ الدَّوَاءُ، يَجِبُ عَلَيْكَ تَنَاوُلُهُ مَرَّةً فِي الْيَوْمِ. أَتَمَنَّى لَكَ الشِّفَاءَ الْعَاجِلَ.</p></div>
+      <div class="speech alt"><b>الْمَرِيضُ</b><p class="arabic">شُكْرًا جَزِيلًا.</p></div>
+    </div>
+    <div class="mini-task"><h4>Praktik pasangan</h4><p>Ganti jenis keluhan, lama sakit, obat, dan anjuran dokter. Praktikkan dialog 60–90 detik.</p></div>
+  </section>
+</div>
+
+<div id="panel-qiraah" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>📖 القراءة — الصِّحَّةُ</h3><span class="muted">Bacaan tentang kebiasaan hidup sehat Nabil dan Naufal.</span></div><button class="btn" onclick="speak(document.getElementById('d11u2Reading').innerText)">🔊 Dengarkan bacaan</button></div>
+    <div id="d11u2Reading" class="rtlbox">
+      <p>نَبِيلٌ وَنَوْفَلٌ صَدِيقَانِ يَعِيشَانِ فِي قَرْيَةٍ صَغِيرَةٍ فِي جُومْبَانْجَ، وَيَتَعَلَّمَانِ فِي نَفْسِ الْمَدْرَسَةِ. يُحِبَّانِ أَنْ يَعِيشَا فِي صِحَّةٍ؛ لِأَنَّهُمَا يَعْرِفَانِ أَنَّ الصِّحَّةَ أَمْرٌ مُهِمٌّ فِي حَيَاةِ الْإِنْسَانِ.</p>
+      <p>يَذْهَبُ نَبِيلٌ وَنَوْفَلٌ إِلَى الْمَدْرَسَةِ بِالدَّرَّاجَةِ؛ لِأَنَّ الْمَدْرَسَةَ بَعِيدَةٌ عَنْ بَيْتِهِمَا. يَفْهَمَانِ أَنَّ الذَّهَابَ بِالدَّرَّاجَةِ نَافِعٌ لِصِحَّةِ الْبَدَنِ.</p>
+      <p>يُحِبَّانِ مُـمَارَسَةَ الرِّيَاضَةِ مِثْلَ الْجَرْيِ وَكُرَةِ الْقَدَمِ وَالسِّبَاحَةِ. يَجْرِيَانِ كُلَّ صَبَاحٍ قَبْلَ الذَّهَابِ إِلَى الْمَدْرَسَةِ، وَيَسْبَحَانِ مَرَّةً فِي الْأُسْبُوعِ.</p>
+      <p>يَعْتَنِي الشَّخْصُ بِصِحَّتِهِ مِنْ خِلَالِ تَنَاوُلِ الْأَطْعِمَةِ الصِّحِّيَّةِ وَمُمَارَسَةِ الرِّيَاضَةِ بِانْتِظَامٍ.</p>
+    </div>
+    <div class="mini-task"><h4>فَهْمُ الْمَقْرُوءِ</h4><p class="arabic">كَيْفَ يَذْهَبُ نَبِيلٌ وَنَوْفَلٌ إِلَى الْمَدْرَسَةِ؟</p><input id="d11u2Read" class="answer-input arabic" placeholder="اكتب الجواب"><button class="btn primary" onclick="cekFlexible('d11u2Read',['بالدراجة','يذهبان بالدراجة','بِالدَّرَّاجَةِ'],'d11u2ReadFb')">Periksa</button><p id="d11u2ReadFb" class="feedback"></p></div>
+  </section>
+</div>
+
+<div id="panel-tarkib" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>🧩 التراكيب — تَصْرِيفُ الْفِعْلِ الْمُضَارِعِ</h3><span class="muted">Fi'il muḍāri' menunjukkan perbuatan yang sedang atau akan dilakukan.</span></div><button class="btn" onclick="speak('هُوَ يَذْهَبُ، هُمَا يَذْهَبَانِ، هُمْ يَذْهَبُونَ، هِيَ تَذْهَبُ، أَنَا أَذْهَبُ، نَحْنُ نَذْهَبُ')">🔊 Contoh</button></div>
+    <div class="rulebox"><p><b>Pola:</b> awalan dan akhiran fi'il muḍāri' berubah mengikuti pelaku. Penanda waktunya antara lain <span class="arabic">الْآنَ، الْيَوْمَ، فِي الْأُسْبُوعِ الْقَادِمِ، فِي السَّنَةِ الْآتِيَةِ</span>.</p></div>
+    <div class="tablewrap"><table><thead><tr><th>Ḍamīr</th><th class="arabic">التَّصْرِيفُ</th><th>Ḍamīr</th><th class="arabic">التَّصْرِيفُ</th></tr></thead><tbody>
+      <tr><td class="arabic">هُوَ</td><td class="arabic">يَذْهَبُ</td><td class="arabic">هُمَا</td><td class="arabic">يَذْهَبَانِ</td></tr>
+      <tr><td class="arabic">هُمْ</td><td class="arabic">يَذْهَبُونَ</td><td class="arabic">هِيَ</td><td class="arabic">تَذْهَبُ</td></tr>
+      <tr><td class="arabic">هُمَا</td><td class="arabic">تَذْهَبَانِ</td><td class="arabic">هُنَّ</td><td class="arabic">يَذْهَبْنَ</td></tr>
+      <tr><td class="arabic">أَنْتَ</td><td class="arabic">تَذْهَبُ</td><td class="arabic">أَنْتُمَا</td><td class="arabic">تَذْهَبَانِ</td></tr>
+      <tr><td class="arabic">أَنْتُمْ</td><td class="arabic">تَذْهَبُونَ</td><td class="arabic">أَنْتِ</td><td class="arabic">تَذْهَبِينَ</td></tr>
+      <tr><td class="arabic">أَنْتُنَّ</td><td class="arabic">تَذْهَبْنَ</td><td class="arabic">أَنَا</td><td class="arabic">أَذْهَبُ</td></tr>
+      <tr><td class="arabic">نَحْنُ</td><td class="arabic">نَذْهَبُ</td><td class="arabic">—</td><td class="arabic">—</td></tr>
+    </tbody></table></div>
+    <div class="mini-task"><h4>Latihan tarkib</h4><p class="arabic">أَكْمِلْ: نَحْنُ ... الرِّيَاضَةَ كُلَّ يَوْمٍ.</p><input id="d11u2Tarkib" class="answer-input arabic" placeholder="الفعل المضارع"><button class="btn primary" onclick="cekFlexible('d11u2Tarkib',['نمارس','نُمَارِسُ'],'d11u2TarkibFb')">Periksa</button><p id="d11u2TarkibFb" class="feedback"></p></div>
+  </section>
+</div>
+
+<div id="panel-kitabah" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>✍️ الكتابة — وصفُ الْحَيَاةِ الصِّحِّيَّةِ</h3><span class="muted">Tulis teks deskriptif singkat tentang kebiasaan hidup sehat.</span></div><span class="progress-chip">3 tahap</span></div>
+    <div class="goal-grid">
+      <article class="goal-card"><span>01</span><h4 class="arabic">الطَّعَامُ</h4><p>Jelaskan makanan dan minuman sehat yang dikonsumsi.</p></article>
+      <article class="goal-card"><span>02</span><h4 class="arabic">الرِّيَاضَةُ</h4><p>Sebutkan jenis olahraga dan waktu melakukannya.</p></article>
+      <article class="goal-card"><span>03</span><h4 class="arabic">الْعَادَاتُ</h4><p>Jelaskan kebiasaan tidur, kebersihan, dan pemeriksaan kesehatan.</p></article>
+    </div>
+    <label for="d11u2Writing"><b>Tulis 6–8 kalimat berbahasa Arab:</b></label><textarea id="d11u2Writing" class="answer-input arabic" rows="8" placeholder="أَنَا أَهْتَمُّ بِصِحَّتِي. آكُلُ الْفَوَاكِهَ وَالْخُضْرَوَاتِ ..."></textarea>
+    <div class="mini-task"><b>Daftar periksa:</b> ☐ minimal 4 fi'il muḍāri' ☐ makanan sehat ☐ olahraga ☐ kebersihan ☐ istirahat ☐ kalimat penutup</div>
+  </section>
+</div>
+
+<div id="panel-kuis" class="lesson-panel">
+  <section class="dars-section quiz-section">
+    <div class="reading-title"><div><h3>🏆 الِاخْتِبَارُ — Kuis Otomatis</h3><span class="muted">Seluruh soal dan pilihan jawaban menggunakan bahasa Arab.</span></div><span class="progress-chip">10 soal • 100 poin</span></div>
+    <p>Jawab seluruh 10 soal. Setiap jawaban benar bernilai 10; skor maksimal 100.</p>
+    <div class="quiz-progress"><span id="d11u2Answered">0/10 terjawab</span><div class="bar"><i id="d11u2QuizBar"></i></div></div>
+    <div id="dars11Unit2Eval"></div>
+    <button class="btn primary quiz-submit" onclick="nilaiDars11Unit2()">✓ Hitung skor</button>
+    <button class="btn" onclick="resetDars11Unit2Quiz()">Ulangi kuis</button>
+    <div id="dars11Unit2Score" class="result score-card" aria-live="polite">Skor akan muncul di sini.</div>
+  </section>
+</div>
+
+<div class="lesson-nav">
+  <button class="btn" onclick="previousChapter11(2)">← Bab sebelumnya</button>
+  <div class="navinfo"><span class="progress-chip">Kelas XI • Unit 2 • Kesehatan</span></div>
+  <button class="btn gold" onclick="nextChapter11(2)">Bab berikutnya →</button>
+</div>
+<button class="btn primary" onclick="done('XI-1')">✓ Tandai Unit 2 selesai +20 XP</button>
+</div>`;
+      }
+
       function openLesson(g, i) {
         let t = topics[g][i];
         if (g === "X" && i === 0) {
@@ -2670,6 +2839,12 @@
           document.getElementById("detailBox").innerHTML = dars11Unit1();
           page("detail");
           quizDars11Unit1();
+          return;
+        }
+        if (g === "XI" && i === 1) {
+          document.getElementById("detailBox").innerHTML = dars11Unit2();
+          page("detail");
+          quizDars11Unit2();
           return;
         }
         if (g === "XII" && i === 0) {
@@ -2733,8 +2908,10 @@
       }
       function nextChapter11(current) {
         if (current === 1) {
+          window.openLesson("XI", 1);
+        } else if (current === 2) {
           alert(
-            "Kelas XI Unit 2 akan disusun setelah Unit 1 ditinjau dan disetujui.",
+            "Kelas XI Unit 3 akan disusun setelah Unit 2 ditinjau dan disetujui.",
           );
         }
       }
@@ -2742,6 +2919,7 @@
         if (current === 1) {
           alert("Ini adalah unit pertama Kelas XI.");
         }
+        if (current === 2) window.openLesson("XI", 0);
       }
       function nextChapter12(current) {
         if (current === 1) {
@@ -3677,6 +3855,162 @@
       function resetDars11Unit1Quiz() {
         quizDars11Unit1();
         const result = document.getElementById("dars11Unit1Score");
+        if (result) {
+          result.classList.remove("quiz-result-perfect");
+          result.textContent = "Skor akan muncul di sini.";
+        }
+      }
+
+      const DARS11UNIT2Q = [
+        [
+          "مَا مَعْنَى الصِّحَّةِ؟",
+          [
+            "سَلَامَةُ الْبَدَنِ وَالْعَقْلِ",
+            "كَثْرَةُ الْمَرَضِ",
+            "تَرْكُ الرِّيَاضَةِ",
+            "قِلَّةُ النَّوْمِ",
+            "أَكْلُ الْحَلْوَى كَثِيرًا",
+          ],
+          0,
+        ],
+        [
+          "أَيْنَ يَشْتَرِي الْمَرِيضُ الدَّوَاءَ؟",
+          [
+            "فِي الْمَلْعَبِ",
+            "فِي الصَّيْدَلِيَّةِ",
+            "فِي الْفَصْلِ",
+            "فِي الْمَكْتَبَةِ",
+            "فِي الْحَدِيقَةِ",
+          ],
+          1,
+        ],
+        [
+          "مَا الَّذِي أَصَابَ حَسَنًا فِي الْحِوَارِ؟",
+          [
+            "أَلَمُ الْأُذُنِ",
+            "أَلَمُ الْأَسْنَانِ",
+            "الصُّدَاعُ",
+            "الزُّكَامُ",
+            "السُّعَالُ",
+          ],
+          2,
+        ],
+        [
+          "مَاذَا يَجْتَنِبُ مَنْ كَانَ ضَغْطُ دَمِهِ مُرْتَفِعًا؟",
+          [
+            "الْفَوَاكِهَ وَالْخُضْرَوَاتِ",
+            "الْمَاءَ وَاللَّبَنَ",
+            "الْأَطْعِمَةَ الْمَالِحَةَ وَالْحُلْوَةَ",
+            "السَّمَكَ وَالْبُرْتُقَالَ",
+            "الْأَرُزَّ وَالْخُبْزَ",
+          ],
+          2,
+        ],
+        [
+          "كَيْفَ يَذْهَبُ نَبِيلٌ وَنَوْفَلٌ إِلَى الْمَدْرَسَةِ؟",
+          [
+            "بِالسَّيَّارَةِ",
+            "بِالْحَافِلَةِ",
+            "بِالدَّرَّاجَةِ",
+            "بِالْقِطَارِ",
+            "مَشْيًا عَلَى الْأَقْدَامِ",
+          ],
+          2,
+        ],
+        [
+          "كَمْ مَرَّةً يَسْبَحُ نَبِيلٌ وَنَوْفَلٌ فِي الْأُسْبُوعِ؟",
+          [
+            "مَرَّةً وَاحِدَةً",
+            "مَرَّتَيْنِ",
+            "ثَلَاثَ مَرَّاتٍ",
+            "أَرْبَعَ مَرَّاتٍ",
+            "خَمْسَ مَرَّاتٍ",
+          ],
+          0,
+        ],
+        [
+          "أَيُّ تَصْرِيفٍ صَحِيحٌ لِلضَّمِيرِ نَحْنُ؟",
+          ["يَمْرَضُ", "تَمْرَضِينَ", "يَمْرَضُونَ", "نَمْرَضُ", "أَمْرَضُ"],
+          3,
+        ],
+        [
+          "أَكْمِلِ الْجُمْلَةَ: هُمَا ... الرِّيَاضَةَ كُلَّ يَوْمٍ.",
+          [
+            "يُمَارِسَانِ",
+            "يُمَارِسُونَ",
+            "تُمَارِسِينَ",
+            "نُمَارِسُ",
+            "أُمَارِسُ",
+          ],
+          0,
+        ],
+        [
+          "أَيُّ جُمْلَةٍ تَحْتَوِي عَلَى فِعْلٍ مُضَارِعٍ؟",
+          [
+            "ذَهَبَ الْمَرِيضُ إِلَى الطَّبِيبِ",
+            "اِشْتَرَى حَسَنٌ الدَّوَاءَ",
+            "يَأْكُلُ نَبِيلٌ الْفَوَاكِهَ",
+            "رَكِبَ نَوْفَلٌ الدَّرَّاجَةَ",
+            "شَرِبَتْ رِيتَا اللَّبَنَ",
+          ],
+          2,
+        ],
+        [
+          "أَيُّ عَادَةٍ تُسَاعِدُ عَلَى حِفْظِ الصِّحَّةِ؟",
+          [
+            "تَنَاوُلُ اللُّحُومِ الْمُصَنَّعَةِ كَثِيرًا",
+            "تَرْكُ النَّوْمِ لَيْلًا",
+            "شُرْبُ الْمَشْرُوبَاتِ الْحُلْوَةِ دَائِمًا",
+            "مُمَارَسَةُ الرِّيَاضَةِ بِانْتِظَامٍ",
+            "الْجُلُوسُ طَوِيلًا بِلَا حَرَكَةٍ",
+          ],
+          3,
+        ],
+      ];
+      function quizDars11Unit2() {
+        const box = document.getElementById("dars11Unit2Eval");
+        if (!box) return;
+        const letters = ["a", "b", "c", "d", "e"];
+        box.innerHTML = DARS11UNIT2Q.map(
+          (q, i) =>
+            `<div class="unit-question" data-d11u2-question="${i}"><b>${i + 1}. <span class="arabic">${q[0]}</span></b>${q[1].map((answer, j) => `<label class="eval-option"><input type="radio" name="d11u2q${i}" value="${j}" onchange="updateDars11Unit2Progress()"><b>${letters[j]}.</b> <span class="arabic">${answer}</span></label>`).join("")}<p class="answer-key">Jawaban benar: ${letters[q[2]]}. <span class="arabic">${q[1][q[2]]}</span></p></div>`,
+        ).join("");
+        updateDars11Unit2Progress();
+      }
+      function updateDars11Unit2Progress() {
+        const answered = DARS11UNIT2Q.filter((q, i) =>
+          document.querySelector(`input[name=d11u2q${i}]:checked`),
+        ).length;
+        const label = document.getElementById("d11u2Answered");
+        const bar = document.getElementById("d11u2QuizBar");
+        if (label) label.textContent = `${answered}/10 terjawab`;
+        if (bar) bar.style.width = `${answered * 10}%`;
+      }
+      function nilaiDars11Unit2() {
+        let correct = 0;
+        let answered = 0;
+        DARS11UNIT2Q.forEach((q, i) => {
+          const selected = document.querySelector(
+            `input[name=d11u2q${i}]:checked`,
+          );
+          const item = document.querySelector(`[data-d11u2-question="${i}"]`);
+          if (selected) answered++;
+          const isCorrect = selected && Number(selected.value) === q[2];
+          if (isCorrect) correct++;
+          if (item) {
+            item.classList.remove("correct", "incorrect");
+            item.classList.add(isCorrect ? "correct" : "incorrect");
+          }
+        });
+        const score = correct * 10;
+        const result = document.getElementById("dars11Unit2Score");
+        result.classList.toggle("quiz-result-perfect", score >= 80);
+        result.innerHTML = `<h3>Skor: ${score}/100</h3><p>${correct} jawaban benar, ${10 - correct} belum benar. ${answered < 10 ? `Masih ada ${10 - answered} soal yang belum dijawab. ` : ""}${score >= 80 ? "مُمْتَازٌ! Pemahamanmu sangat baik. 👏" : "Pelajari kembali materi yang ditandai, lalu ulangi kuis."}</p>`;
+        if (score >= 80) done("XI-1-evaluasi");
+      }
+      function resetDars11Unit2Quiz() {
+        quizDars11Unit2();
+        const result = document.getElementById("dars11Unit2Score");
         if (result) {
           result.classList.remove("quiz-result-perfect");
           result.textContent = "Skor akan muncul di sini.";
