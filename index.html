@@ -1204,7 +1204,7 @@
         document.getElementById("topicList").innerHTML = topics[g]
           .map(
             (t, i) =>
-              `<div class="card topic"><span class="tag">Kelas ${g}</span><h3 class="arabic">${t[0]}</h3><b>${t[1]}</b><p class="muted">Kosakata • teks • komunikasi • tata bahasa • produksi bahasa</p><button class="btn ${(g === "X" && i <= 4) || (g === "XII" && i <= 1) ? "primary" : ""}" onclick="openLesson('${g}',${i})">${(g === "X" && i <= 4) || (g === "XII" && i <= 1) ? `Buka Unit ${i + 1}` : "Buka materi"}</button></div>`,
+              `<div class="card topic"><span class="tag">Kelas ${g}</span><h3 class="arabic">${t[0]}</h3><b>${t[1]}</b><p class="muted">Kosakata • teks • komunikasi • tata bahasa • produksi bahasa</p><button class="btn ${(g === "X" && i <= 4) || (g === "XI" && i === 0) || (g === "XII" && i <= 1) ? "primary" : ""}" onclick="openLesson('${g}',${i})">${(g === "X" && i <= 4) || (g === "XI" && i === 0) || (g === "XII" && i <= 1) ? `Buka Unit ${i + 1}` : "Buka materi"}</button></div>`,
           )
           .join("");
       }
@@ -1410,6 +1410,38 @@
         ["إِخْلَاصٌ", "Keikhlasan"],
         ["عِلْمٌ وَمَعْرِفَةٌ", "Ilmu dan pengetahuan"],
         ["أُسِّسَ", "Telah didirikan"],
+      ];
+      const vocab11Unit1 = [
+        ["السِّيَاحَةُ", "Pariwisata"],
+        ["رِحْلَةٌ", "Perjalanan / tur"],
+        ["سَائِحٌ ج سُيَّاحٌ", "Wisatawan"],
+        ["مُرْشِدُ السِّيَاحَةِ", "Pemandu wisata"],
+        ["تَذْكِرَةٌ", "Tiket"],
+        ["شُبَّاكُ التَّذَاكِرِ", "Loket tiket"],
+        ["غَارٌ", "Gua"],
+        ["نَهْرٌ", "Sungai"],
+        ["ضِفَّةُ النَّهْرِ", "Tepi sungai"],
+        ["إِطَارَاتٌ", "Ban-ban pelampung"],
+        ["عَوَّامَةٌ", "Pelampung"],
+        ["تَرْمِيثٌ", "Susur gua dengan ban"],
+        ["شَاطِئٌ", "Pantai"],
+        ["رَمْلٌ أَبْيَضُ", "Pasir putih"],
+        ["فِرَاشٌ", "Tikar / alas"],
+        ["بِطَاقَةُ الْمُرُورِ الْإِلِكْتُرُونِيَّةِ", "Kartu tol elektronik"],
+        ["ذَهَبَ", "Telah pergi"],
+        ["رَكِبَ", "Telah naik"],
+        ["وَصَلَ", "Telah tiba"],
+        ["مَكَثَ", "Telah tinggal"],
+        ["اِسْتَعَدَّ", "Telah bersiap"],
+        ["مَشَى", "Telah berjalan"],
+        ["اِسْتَخْدَمَ", "Telah menggunakan"],
+        [
+          "شَاهَدَ الْمَنَاظِرَ الْجَمِيلَةَ",
+          "Telah melihat pemandangan indah",
+        ],
+        ["بَسَطَ", "Telah membentangkan"],
+        ["تَشَمَّسَ", "Telah berjemur"],
+        ["لَعِبَ", "Telah bermain"],
       ];
       function speak(x) {
         if ("speechSynthesis" in window) {
@@ -2467,6 +2499,142 @@
 </div>`;
       }
 
+      function dars11Unit1() {
+        return `<div class="card lesson-shell">
+<div class="lesson-hero">
+  <div>
+    <span class="tag">Kelas XI • Bab 1 / Unit 1</span>
+    <h2 class="arabic">الْوَحْدَةُ الْأُولَى: السِّيَاحَةُ</h2>
+    <h2>Wisata</h2>
+    <p>Belajar pengalaman perjalanan, adab menjaga lingkungan, dan taṣrīf lugawī fi'il māḍī melalui kegiatan menyimak, berbicara, membaca, serta menulis.</p>
+  </div>
+  <div class="unit-number" aria-label="Unit 1 Kelas XI">01</div>
+</div>
+
+<div class="lesson-nav top-nav">
+  <button class="btn" onclick="previousChapter11(1)">← Bab sebelumnya</button>
+  <div class="navinfo"><span class="progress-chip">Kelas XI • Unit 1 • Wisata</span></div>
+  <button class="btn gold" onclick="nextChapter11(1)">Bab berikutnya →</button>
+</div>
+
+<div class="lesson-tabs" role="tablist" aria-label="Bagian Kelas XI Unit 1">
+  <button class="active" onclick="lessonTab('tujuan',this)">🎯 Tujuan</button>
+  <button onclick="lessonTab('mufradat',this)">🃏 Mufradat</button>
+  <button onclick="lessonTab('istima',this)">🎧 Istima'</button>
+  <button onclick="lessonTab('hiwar',this)">💬 Hiwar</button>
+  <button onclick="lessonTab('qiraah',this)">📖 Qira'ah</button>
+  <button onclick="lessonTab('tarkib',this)">🧩 Tarkib</button>
+  <button onclick="lessonTab('kitabah',this)">✍️ Kitabah</button>
+  <button onclick="lessonTab('kuis',this)">🏆 Kuis</button>
+</div>
+
+<div id="panel-tujuan" class="lesson-panel active">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>🎯 Tujuan Pembelajaran</h3><span class="muted">Hasil belajar yang dituju pada tema السياحة.</span></div><span class="progress-chip">4 tujuan</span></div>
+    <div class="goal-grid">
+      <article class="goal-card"><span>01</span><h4>Mufradat</h4><p>Menganalisis dan memakai kosakata wisata dalam konteks perjalanan yang nyata.</p></article>
+      <article class="goal-card"><span>02</span><h4>Tarkib</h4><p>Memahami dan menerapkan <span class="arabic">التَّصْرِيفُ اللُّغَوِيُّ لِلْفِعْلِ الْمَاضِي</span>.</p></article>
+      <article class="goal-card"><span>03</span><h4>Reseptif</h4><p>Menemukan informasi tersurat dan tersirat dari dialog serta teks rekon tentang wisata.</p></article>
+      <article class="goal-card"><span>04</span><h4>Produktif</h4><p>Menceritakan pengalaman wisata secara lisan dan tertulis sambil menunjukkan adab menjaga alam.</p></article>
+    </div>
+    <div class="rtlbox" style="margin-top:18px"><b>قَالَ اللهُ تَعَالَى:</b><br>هُوَ الَّذِي جَعَلَ لَكُمُ الْأَرْضَ ذَلُولًا فَامْشُوا فِي مَنَاكِبِهَا وَكُلُوا مِنْ رِزْقِهِ وَإِلَيْهِ النُّشُورُ<br><small>QS Al-Mulk 67:15 — jelajahi bumi dengan rasa syukur dan tanggung jawab.</small></div>
+  </section>
+</div>
+
+<div id="panel-mufradat" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata Wisata</h3><span class="muted">Ketuk kartu untuk melihat arti. Gunakan tombol suara untuk latihan pelafalan.</span></div><span class="progress-chip">${vocab11Unit1.length} kosakata</span></div>
+    <div class="vocab-grid">${vocab11Unit1.map((v) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();speak('${v[0]}')">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="mini-task"><h4>Latihan cepat</h4><p class="arabic">أَيُّ كَلِمَةٍ مَعْنَاهَا «تذاكر السفر»؟</p><button class="btn" onclick="quickAnswer(this,false)">غَارٌ</button> <button class="btn" onclick="quickAnswer(this,true)">تَذْكِرَةٌ</button> <button class="btn" onclick="quickAnswer(this,false)">فِرَاشٌ</button><p id="quickFeedback" class="feedback"></p></div>
+  </section>
+</div>
+
+<div id="panel-istima" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>🎧 الاستماع — Menyimak</h3><span class="muted">Dengarkan tanpa melihat teks, lalu jawab pertanyaan pemahaman.</span></div><button class="btn primary" onclick="speak('قَضَيْتُ أَيَّامَ الْعُطْلَةِ فِي بَيْتِ جَدِّي بِسُوكُوهَارْجُو. ذَهَبْتُ هُنَاكَ بِالْقِطَارِ فِي الْأُسْبُوعِ الْمَاضِي، وَمَكَثْتُ هُنَاكَ ثَلَاثَةَ أَيَّامٍ.')">▶ Putar audio</button></div>
+    <div class="audio-script rtlbox"><button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan transkrip</button><p hidden>قَضَيْتُ أَيَّامَ الْعُطْلَةِ فِي بَيْتِ جَدِّي بِسُوكُوهَارْجُو. ذَهَبْتُ هُنَاكَ بِالْقِطَارِ فِي الْأُسْبُوعِ الْمَاضِي، وَمَكَثْتُ هُنَاكَ ثَلَاثَةَ أَيَّامٍ.</p></div>
+    <div class="mini-task"><h4>فَهْمُ الْمَسْمُوعِ</h4><p class="arabic">أَيْنَ قَضَى نَبِيلٌ أَيَّامَ الْعُطْلَةِ؟</p><input id="d11u1Listen" class="answer-input arabic" placeholder="اكتب الجواب هنا"><button class="btn primary" onclick="cekFlexible('d11u1Listen',['في بيت جدي','ببيت جدي','فِي بَيْتِ جَدِّي'],'d11u1ListenFb')">Periksa</button><p id="d11u1ListenFb" class="feedback"></p></div>
+  </section>
+</div>
+
+<div id="panel-hiwar" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>💬 الحوار — Percakapan Wisata</h3><span class="muted">Baca bergantian sebagai Fakhri dan Naufal.</span></div><button class="btn" onclick="speak('مَاذَا فَعَلْتَ أَيَّامَ عُطْلَتِكَ يَا نَوْفَلُ؟ ذَهَبْتُ إِلَى غَارِ فِينْدُولَ فِي يُوكْيَاكَرْتَا. مَاذَا وَجَدْتَ هُنَاكَ؟ هُنَاكَ نَهْرٌ تَحْتَ الْغَارِ.')">🔊 Dengarkan</button></div>
+    <div class="dialogue">
+      <div class="speech"><b>فَخْرِيٌّ</b><p class="arabic">مَاذَا فَعَلْتَ أَيَّامَ عُطْلَتِكَ يَا نَوْفَلُ؟</p></div>
+      <div class="speech alt"><b>نَوْفَلٌ</b><p class="arabic">ذَهَبْتُ إِلَى غَارِ فِينْدُولَ فِي يُوكْيَاكَرْتَا.</p></div>
+      <div class="speech"><b>فَخْرِيٌّ</b><p class="arabic">مَاذَا وَجَدْتَ هُنَاكَ؟</p></div>
+      <div class="speech alt"><b>نَوْفَلٌ</b><p class="arabic">هُنَاكَ نَهْرٌ تَحْتَ الْغَارِ، وَاسْتَطَاعَ النَّاسُ التَّرْمِيثَ بِاسْتِخْدَامِ الْإِطَارَاتِ.</p></div>
+      <div class="speech"><b>فَخْرِيٌّ</b><p class="arabic">لِمَاذَا ذَهَبْتَ هُنَاكَ؟ وَبِكَمْ تَذْكِرَةُ الدُّخُولِ؟</p></div>
+      <div class="speech alt"><b>نَوْفَلٌ</b><p class="arabic">لِأَنَّ بَيْتَ جَدِّي قَرِيبٌ مِنَ الْغَارِ. تَذْكِرَةُ الدُّخُولِ بِخَمْسِينَ أَلْفَ رُوبِيَّةٍ.</p></div>
+    </div>
+    <div class="mini-task"><h4>Praktik pasangan</h4><p>Ganti tujuan wisata, alat transportasi, lama tinggal, dan harga tiket. Rekam percakapan 60–90 detik.</p></div>
+  </section>
+</div>
+
+<div id="panel-qiraah" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>📖 القراءة — رِحْلَةٌ إِلَى غَارِ فِينْدُولَ</h3><span class="muted">Teks rekon: orientasi, rangkaian peristiwa, dan reorientasi.</span></div><button class="btn" onclick="speak(document.getElementById('d11u1Reading').innerText)">🔊 Dengarkan bacaan</button></div>
+    <div id="d11u1Reading" class="rtlbox">
+      <p>أَنَا إِبْرِيزَةُ، طَالِبَةٌ فِي الصَّفِّ الْحَادِيَ عَشَرَ. فِي أَيَّامِ الْعُطْلَةِ الْمَاضِيَةِ ذَهَبْتُ إِلَى بَيْتِ جَدِّي فِي سُوكُوهَارْجُو مَعَ أُسْرَتِي، وَمَكَثْنَا هُنَاكَ أَرْبَعَةَ أَيَّامٍ.</p>
+      <p>اِسْتَعْدَدْنَا بِأَشْيَاءَ كَثِيرَةٍ، ثُمَّ رَكِبْنَا السَّيَّارَةَ فِي السَّاعَةِ السَّابِعَةِ صَبَاحًا. فِي الْيَوْمِ الْأَوَّلِ ذَهَبْنَا إِلَى غَارِ فِينْدُولَ فِي يُوكْيَاكَرْتَا. بَعْدَ شِرَاءِ التَّذَاكِرِ لَبِسْنَا سُتْرَةَ النَّجَاةِ، وَاسْتَخْدَمْنَا الْإِطَارَاتِ لِلسَّيْرِ فِي النَّهْرِ تَحْتَ الْغَارِ.</p>
+      <p>شَاهَدْنَا الْمَنَاظِرَ الْجَمِيلَةَ، وَحَافَظْنَا عَلَى نَظَافَةِ الْمَكَانِ. كَانَتِ الرِّحْلَةُ مُمْتِعَةً، وَشَكَرْنَا اللهَ عَلَى جَمَالِ الطَّبِيعَةِ.</p>
+    </div>
+    <div class="mini-task"><h4>فَهْمُ الْمَقْرُوءِ</h4><p class="arabic">كَمْ يَوْمًا مَكَثَتْ إِبْرِيزَةُ وَأُسْرَتُهَا فِي سُوكُوهَارْجُو؟</p><input id="d11u1Read" class="answer-input arabic" placeholder="اكتب الجواب"><button class="btn primary" onclick="cekFlexible('d11u1Read',['أربعة أيام','اربعة ايام','أَرْبَعَةَ أَيَّامٍ'],'d11u1ReadFb')">Periksa</button><p id="d11u1ReadFb" class="feedback"></p></div>
+  </section>
+</div>
+
+<div id="panel-tarkib" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>🧩 التراكيب — تَصْرِيفُ الْفِعْلِ الْمَاضِي</h3><span class="muted">Fi'il māḍī menunjukkan perbuatan yang telah terjadi.</span></div><button class="btn" onclick="speak('هُوَ ذَهَبَ، هُمَا ذَهَبَا، هُمْ ذَهَبُوا، هِيَ ذَهَبَتْ، أَنَا ذَهَبْتُ، نَحْنُ ذَهَبْنَا')">🔊 Contoh</button></div>
+    <div class="rulebox"><p><b>Pola:</b> bentuk fi'il māḍī berubah mengikuti pelaku (ḍamīr). Contoh dasar: <span class="arabic">ذَهَبَ</span> — telah pergi.</p></div>
+    <div class="tablewrap"><table><thead><tr><th>Ḍamīr</th><th class="arabic">التَّصْرِيفُ</th><th>Ḍamīr</th><th class="arabic">التَّصْرِيفُ</th></tr></thead><tbody>
+      <tr><td class="arabic">هُوَ</td><td class="arabic">ذَهَبَ</td><td class="arabic">هُمَا</td><td class="arabic">ذَهَبَا</td></tr>
+      <tr><td class="arabic">هُمْ</td><td class="arabic">ذَهَبُوا</td><td class="arabic">هِيَ</td><td class="arabic">ذَهَبَتْ</td></tr>
+      <tr><td class="arabic">هُمَا</td><td class="arabic">ذَهَبَتَا</td><td class="arabic">هُنَّ</td><td class="arabic">ذَهَبْنَ</td></tr>
+      <tr><td class="arabic">أَنْتَ</td><td class="arabic">ذَهَبْتَ</td><td class="arabic">أَنْتُمَا</td><td class="arabic">ذَهَبْتُمَا</td></tr>
+      <tr><td class="arabic">أَنْتُمْ</td><td class="arabic">ذَهَبْتُمْ</td><td class="arabic">أَنْتِ</td><td class="arabic">ذَهَبْتِ</td></tr>
+      <tr><td class="arabic">أَنْتُنَّ</td><td class="arabic">ذَهَبْتُنَّ</td><td class="arabic">أَنَا</td><td class="arabic">ذَهَبْتُ</td></tr>
+      <tr><td class="arabic">نَحْنُ</td><td class="arabic">ذَهَبْنَا</td><td class="arabic">—</td><td class="arabic">—</td></tr>
+    </tbody></table></div>
+    <div class="mini-task"><h4>Latihan tarkib</h4><p class="arabic">أَكْمِلْ: نَحْنُ ... إِلَى يُوكْيَاكَرْتَا.</p><input id="d11u1Tarkib" class="answer-input arabic" placeholder="الفعل الماضي"><button class="btn primary" onclick="cekFlexible('d11u1Tarkib',['ذهبنا','ذَهَبْنَا'],'d11u1TarkibFb')">Periksa</button><p id="d11u1TarkibFb" class="feedback"></p></div>
+  </section>
+</div>
+
+<div id="panel-kitabah" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>✍️ الكتابة — Menulis Teks Rekon</h3><span class="muted">Susun pengalaman wisata secara runtut menggunakan fi'il māḍī.</span></div><span class="progress-chip">3 tahap</span></div>
+    <div class="goal-grid">
+      <article class="goal-card"><span>01</span><h4 class="arabic">التَّوْجِيهُ</h4><p>Siapa, kapan, di mana, dan bersama siapa perjalanan dilakukan?</p></article>
+      <article class="goal-card"><span>02</span><h4 class="arabic">الْأَحْدَاثُ</h4><p>Urutkan kegiatan dengan <span class="arabic">ثُمَّ، بَعْدَ ذَلِكَ، وَأَخِيرًا</span>.</p></article>
+      <article class="goal-card"><span>03</span><h4 class="arabic">إِعَادَةُ التَّوْجِيهِ</h4><p>Tutup dengan kesan, syukur, dan pesan menjaga lingkungan.</p></article>
+    </div>
+    <label for="d11u1Writing"><b>Tulis 6–8 kalimat berbahasa Arab:</b></label><textarea id="d11u1Writing" class="answer-input arabic" rows="8" placeholder="فِي الْعُطْلَةِ الْمَاضِيَةِ ذَهَبْتُ إِلَى ..."></textarea>
+    <div class="mini-task"><b>Daftar periksa:</b> ☐ tujuan wisata ☐ waktu ☐ transportasi ☐ minimal 4 fi'il māḍī ☐ kesan ☐ adab lingkungan</div>
+  </section>
+</div>
+
+<div id="panel-kuis" class="lesson-panel">
+  <section class="dars-section quiz-section">
+    <div class="reading-title"><div><h3>🏆 الِاخْتِبَارُ — Kuis Otomatis</h3><span class="muted">Seluruh soal dan pilihan jawaban menggunakan bahasa Arab.</span></div><span class="progress-chip">10 soal • 100 poin</span></div>
+    <p>Jawab seluruh 10 soal. Setiap jawaban benar bernilai 10; skor maksimal 100.</p>
+    <div class="quiz-progress"><span id="d11u1Answered">0/10 terjawab</span><div class="bar"><i id="d11u1QuizBar"></i></div></div>
+    <div id="dars11Unit1Eval"></div>
+    <button class="btn primary quiz-submit" onclick="nilaiDars11Unit1()">✓ Hitung skor</button>
+    <button class="btn" onclick="resetDars11Unit1Quiz()">Ulangi kuis</button>
+    <div id="dars11Unit1Score" class="result score-card" aria-live="polite">Skor akan muncul di sini.</div>
+  </section>
+</div>
+
+<div class="lesson-nav">
+  <button class="btn" onclick="previousChapter11(1)">← Bab sebelumnya</button>
+  <div class="navinfo"><span class="progress-chip">Kelas XI • Unit 1 • Wisata</span></div>
+  <button class="btn gold" onclick="nextChapter11(1)">Bab berikutnya →</button>
+</div>
+<button class="btn primary" onclick="done('XI-0')">✓ Tandai Unit 1 selesai +20 XP</button>
+</div>`;
+      }
+
       function openLesson(g, i) {
         let t = topics[g][i];
         if (g === "X" && i === 0) {
@@ -2496,6 +2664,12 @@
           document.getElementById("detailBox").innerHTML = dars5();
           page("detail");
           quizDars5();
+          return;
+        }
+        if (g === "XI" && i === 0) {
+          document.getElementById("detailBox").innerHTML = dars11Unit1();
+          page("detail");
+          quizDars11Unit1();
           return;
         }
         if (g === "XII" && i === 0) {
@@ -2556,6 +2730,18 @@
         if (current === 3) window.openLesson("X", 1);
         if (current === 4) window.openLesson("X", 2);
         if (current === 5) window.openLesson("X", 3);
+      }
+      function nextChapter11(current) {
+        if (current === 1) {
+          alert(
+            "Kelas XI Unit 2 akan disusun setelah Unit 1 ditinjau dan disetujui.",
+          );
+        }
+      }
+      function previousChapter11(current) {
+        if (current === 1) {
+          alert("Ini adalah unit pertama Kelas XI.");
+        }
       }
       function nextChapter12(current) {
         if (current === 1) {
@@ -3347,6 +3533,150 @@
       function resetDars12Unit1Quiz() {
         quizDars12Unit1();
         const result = document.getElementById("dars12Unit1Score");
+        if (result) {
+          result.classList.remove("quiz-result-perfect");
+          result.textContent = "Skor akan muncul di sini.";
+        }
+      }
+
+      const DARS11UNIT1Q = [
+        [
+          "مَا مَعْنَى السِّيَاحَةِ؟",
+          [
+            "السَّفَرُ لِلتَّرْفِيهِ وَالْمَعْرِفَةِ",
+            "الْجُلُوسُ فِي الْفَصْلِ",
+            "الْعَمَلُ فِي الْمَكْتَبِ",
+            "النَّوْمُ فِي الْبَيْتِ",
+            "الدِّرَاسَةُ فِي الْمَكْتَبَةِ",
+          ],
+          0,
+        ],
+        [
+          "أَيُّ كَلِمَةٍ تَدُلُّ عَلَى وَرَقَةِ الدُّخُولِ إِلَى الْمَكَانِ السِّيَاحِيِّ؟",
+          [
+            "الْغَارُ",
+            "التَّذْكِرَةُ",
+            "النَّهْرُ",
+            "الْفِرَاشُ",
+            "الشَّاطِئُ",
+          ],
+          1,
+        ],
+        [
+          "أَيْنَ قَضَى نَبِيلٌ أَيَّامَ الْعُطْلَةِ؟",
+          [
+            "فِي بَيْتِ جَدِّهِ",
+            "فِي الْمَدْرَسَةِ",
+            "فِي الْمُسْتَشْفَى",
+            "فِي الْمَكْتَبَةِ",
+            "فِي الْمَطْعَمِ",
+          ],
+          0,
+        ],
+        [
+          "بِمَ ذَهَبَ نَبِيلٌ إِلَى بَيْتِ جَدِّهِ؟",
+          [
+            "بِالسَّفِينَةِ",
+            "بِالطَّائِرَةِ",
+            "بِالْقِطَارِ",
+            "بِالْحَافِلَةِ",
+            "بِالدَّرَّاجَةِ",
+          ],
+          2,
+        ],
+        [
+          "مَاذَا اسْتَخْدَمَ السُّيَّاحُ لِلتَّرْمِيثِ فِي غَارِ فِينْدُولَ؟",
+          [
+            "الْإِطَارَاتِ",
+            "الْكُرْسِيَّ",
+            "الْمِظَلَّةَ",
+            "الْحَقِيبَةَ",
+            "الْقَلَمَ",
+          ],
+          0,
+        ],
+        [
+          "أَيُّ تَصْرِيفٍ صَحِيحٌ لِلضَّمِيرِ نَحْنُ؟",
+          ["ذَهَبَ", "ذَهَبْتَ", "ذَهَبُوا", "ذَهَبْنَا", "ذَهَبَتْ"],
+          3,
+        ],
+        [
+          "أَيُّ تَصْرِيفٍ صَحِيحٌ لِلضَّمِيرِ هُمْ؟",
+          ["رَكِبَا", "رَكِبُوا", "رَكِبَتْ", "رَكِبْنَا", "رَكِبْتِ"],
+          1,
+        ],
+        [
+          "أَكْمِلِ الْجُمْلَةَ: أَنَا ... إِلَى يُوكْيَاكَرْتَا.",
+          ["سَافَرَ", "سَافَرُوا", "سَافَرْتُ", "سَافَرْنَا", "سَافَرَتْ"],
+          2,
+        ],
+        [
+          "كَمْ يَوْمًا مَكَثَتْ إِبْرِيزَةُ وَأُسْرَتُهَا فِي بَيْتِ جَدِّهَا؟",
+          [
+            "يَوْمًا وَاحِدًا",
+            "يَوْمَيْنِ",
+            "ثَلَاثَةَ أَيَّامٍ",
+            "أَرْبَعَةَ أَيَّامٍ",
+            "خَمْسَةَ أَيَّامٍ",
+          ],
+          3,
+        ],
+        [
+          "مَاذَا فَعَلَتْ إِبْرِيزَةُ وَأُسْرَتُهَا فِي الْمَكَانِ السِّيَاحِيِّ؟",
+          [
+            "رَمَوُا النُّفَايَاتِ فِي النَّهْرِ",
+            "قَطَعُوا الْأَشْجَارَ",
+            "حَافَظُوا عَلَى نَظَافَةِ الْمَكَانِ",
+            "كَسَرُوا مَرَافِقَ الْغَارِ",
+            "تَرَكُوا الْقُمَامَةَ عَلَى الْأَرْضِ",
+          ],
+          2,
+        ],
+      ];
+      function quizDars11Unit1() {
+        const box = document.getElementById("dars11Unit1Eval");
+        if (!box) return;
+        const letters = ["a", "b", "c", "d", "e"];
+        box.innerHTML = DARS11UNIT1Q.map(
+          (q, i) =>
+            `<div class="unit-question" data-d11u1-question="${i}"><b>${i + 1}. <span class="arabic">${q[0]}</span></b>${q[1].map((answer, j) => `<label class="eval-option"><input type="radio" name="d11u1q${i}" value="${j}" onchange="updateDars11Unit1Progress()"><b>${letters[j]}.</b> <span class="arabic">${answer}</span></label>`).join("")}<p class="answer-key">Jawaban benar: ${letters[q[2]]}. <span class="arabic">${q[1][q[2]]}</span></p></div>`,
+        ).join("");
+        updateDars11Unit1Progress();
+      }
+      function updateDars11Unit1Progress() {
+        const answered = DARS11UNIT1Q.filter((q, i) =>
+          document.querySelector(`input[name=d11u1q${i}]:checked`),
+        ).length;
+        const label = document.getElementById("d11u1Answered");
+        const bar = document.getElementById("d11u1QuizBar");
+        if (label) label.textContent = `${answered}/10 terjawab`;
+        if (bar) bar.style.width = `${answered * 10}%`;
+      }
+      function nilaiDars11Unit1() {
+        let correct = 0;
+        let answered = 0;
+        DARS11UNIT1Q.forEach((q, i) => {
+          const selected = document.querySelector(
+            `input[name=d11u1q${i}]:checked`,
+          );
+          const item = document.querySelector(`[data-d11u1-question="${i}"]`);
+          if (selected) answered++;
+          const isCorrect = selected && Number(selected.value) === q[2];
+          if (isCorrect) correct++;
+          if (item) {
+            item.classList.remove("correct", "incorrect");
+            item.classList.add(isCorrect ? "correct" : "incorrect");
+          }
+        });
+        const score = correct * 10;
+        const result = document.getElementById("dars11Unit1Score");
+        result.classList.toggle("quiz-result-perfect", score >= 80);
+        result.innerHTML = `<h3>Skor: ${score}/100</h3><p>${correct} jawaban benar, ${10 - correct} belum benar. ${answered < 10 ? `Masih ada ${10 - answered} soal yang belum dijawab. ` : ""}${score >= 80 ? "مُمْتَازٌ! Pemahamanmu sangat baik. 👏" : "Pelajari kembali materi yang ditandai, lalu ulangi kuis."}</p>`;
+        if (score >= 80) done("XI-0-evaluasi");
+      }
+      function resetDars11Unit1Quiz() {
+        quizDars11Unit1();
+        const result = document.getElementById("dars11Unit1Score");
         if (result) {
           result.classList.remove("quiz-result-perfect");
           result.textContent = "Skor akan muncul di sini.";
