@@ -1204,7 +1204,7 @@
         document.getElementById("topicList").innerHTML = topics[g]
           .map(
             (t, i) =>
-              `<div class="card topic"><span class="tag">Kelas ${g}</span><h3 class="arabic">${t[0]}</h3><b>${t[1]}</b><p class="muted">Kosakata • teks • komunikasi • tata bahasa • produksi bahasa</p><button class="btn ${g === "X" && i <= 4 ? "primary" : ""}" onclick="openLesson('${g}',${i})">${g === "X" && i <= 4 ? `Buka Unit ${i + 1}` : "Buka materi"}</button></div>`,
+              `<div class="card topic"><span class="tag">Kelas ${g}</span><h3 class="arabic">${t[0]}</h3><b>${t[1]}</b><p class="muted">Kosakata • teks • komunikasi • tata bahasa • produksi bahasa</p><button class="btn ${(g === "X" && i <= 4) || (g === "XII" && i === 0) ? "primary" : ""}" onclick="openLesson('${g}',${i})">${(g === "X" && i <= 4) || (g === "XII" && i === 0) ? `Buka Unit ${i + 1}` : "Buka materi"}</button></div>`,
           )
           .join("");
       }
@@ -1349,6 +1349,41 @@
         ["الْخَيَّاطُ", "Penjahit"],
         ["النَّجَّارُ", "Tukang kayu"],
         ["الْبَنَّاءُ", "Tukang bangunan"],
+      ];
+      const vocab12Unit1 = [
+        [
+          "تِكْنُولُوجِيَا الْإِعْلَامِ وَالِاتِّصَالِ",
+          "Teknologi informasi dan komunikasi",
+        ],
+        ["شَبَكَةٌ", "Jaringan"],
+        ["هَاتِفٌ ذَكِيٌّ", "Telepon pintar"],
+        ["قَمَرٌ صِنَاعِيٌّ", "Satelit"],
+        ["تَطْبِيقٌ", "Aplikasi"],
+        ["بَرْنَامَجٌ", "Program"],
+        ["بُلُوتُوث", "Bluetooth"],
+        ["جِهَازُ الْعَرْضِ", "Proyektor"],
+        ["شَاشَةٌ", "Layar"],
+        ["رَابِطٌ", "Tautan"],
+        ["مِلَفٌّ", "Berkas"],
+        ["إِشَارَةٌ", "Sinyal"],
+        ["تِلْفَازٌ ذَكِيٌّ", "Televisi pintar"],
+        ["مُسْتَعْرِضٌ", "Peramban"],
+        ["مُجَلَّدٌ", "Folder"],
+        ["سَمَّاعَةُ الرَّأْسِ", "Pelantang kepala/headset"],
+        ["شَبَكَةٌ دَوْلِيَّةٌ", "Internet"],
+        ["بَرِيدٌ إِلِكْتِرُونِيٌّ", "Surat elektronik"],
+        ["رَمْزٌ شَرِيطِيٌّ", "Kode QR/barcode"],
+        ["حَاسُوبٌ مَحْمُولٌ", "Laptop"],
+        ["وَسَائِلُ التَّوَاصُلِ الِاجْتِمَاعِيِّ", "Media sosial"],
+        ["تَسْجِيلُ الدُّخُولِ", "Masuk/login"],
+        ["اِشْتِرَاكٌ", "Berlangganan"],
+        ["شَخْصِيَّةٌ", "Profil/kepribadian"],
+        ["رِسَالَةٌ", "Pesan"],
+        ["دَرْدَشَةٌ", "Percakapan daring"],
+        ["تَحْمِيلٌ وَرَفْعٌ", "Unduh dan unggah"],
+        ["مُشَارَكَةٌ", "Membagikan"],
+        ["تَعْلِيقٌ", "Komentar"],
+        ["إِعْجَابٌ", "Suka/like"],
       ];
       function speak(x) {
         if ("speechSynthesis" in window) {
@@ -2105,6 +2140,157 @@
 </div>`;
       }
 
+      function dars12Unit1() {
+        return `<div class="card">
+<div class="unit-heading">
+  <div>
+    <span class="tag">Kelas XII • Bab 1 / Unit 1</span>
+    <h2 class="arabic">الْوَحْدَةُ الْأُولَى: تِكْنُولُوجِيَا الْإِعْلَامِ وَالِاتِّصَالِ</h2>
+    <h2>Unit 1: Teknologi Informasi dan Komunikasi</h2>
+    <p>Pelajari kosakata perangkat dan aktivitas digital, bandingkan benda menggunakan isim tafdhil, pahami teks argumentatif, serta sampaikan gagasan tentang pemanfaatan teknologi yang aman dan bermanfaat.</p>
+  </div>
+  <div class="unit-number" aria-label="Unit 1 Kelas XII">01</div>
+</div>
+
+<div class="lesson-nav">
+  <button class="btn" disabled>← Bab sebelumnya</button>
+  <div class="navinfo">KELAS XII • تِكْنُولُوجِيَا الْإِعْلَامِ وَالِاتِّصَالِ</div>
+  <button class="btn gold" onclick="nextChapter12(1)">Bab berikutnya →</button>
+</div>
+
+<div class="lesson-tabs" role="tablist" aria-label="Bagian Kelas XII Unit 1">
+  <button class="active" onclick="lessonTab('tujuan',this)">🎯 Tujuan</button>
+  <button onclick="lessonTab('mufradat',this)">🃏 Mufradat</button>
+  <button onclick="lessonTab('istima',this)">🎧 Istima'</button>
+  <button onclick="lessonTab('hiwar',this)">🗣️ Hiwar</button>
+  <button onclick="lessonTab('qiraah',this)">📖 Qira'ah</button>
+  <button onclick="lessonTab('tarkib',this)">🔤 Tarkib</button>
+  <button onclick="lessonTab('kitabah',this)">✍️ Kitabah</button>
+  <button onclick="lessonTab('evaluasi',this)">🏆 Kuis</button>
+</div>
+
+<div id="panel-tujuan" class="lesson-panel active">
+  <div class="dars-section">
+    <h3>🎯 Tujuan Pembelajaran</h3>
+    <p>Peserta didik mampu memahami dan menghasilkan wacana argumentatif bertema teknologi informasi dan komunikasi dengan menggunakan <span class="arabic">اِسْمُ التَّفْضِيلِ</span> secara tepat.</p>
+    <div class="objective-grid">
+      <div class="objective-item"><b>01 • Kosakata</b>Mengidentifikasi dan mengartikan kosakata serta ungkapan tentang perangkat dan komunikasi digital.</div>
+      <div class="objective-item"><b>02 • Menyimak</b>Menemukan informasi tersurat dan tersirat dari dialog sederhana tentang teknologi.</div>
+      <div class="objective-item"><b>03 • Berbicara</b>Membandingkan perangkat dan menyampaikan pendapat secara santun.</div>
+      <div class="objective-item"><b>04 • Tata bahasa</b>Memahami pembentukan dan penggunaan isim tafdhil dalam kalimat.</div>
+      <div class="objective-item"><b>05 • Membaca</b>Membaca teks argumentatif visual atau multimodal dengan lafal dan intonasi yang tepat.</div>
+      <div class="objective-item"><b>06 • Menganalisis</b>Membedakan tesis, argumen, bukti/alasan, dan kesimpulan.</div>
+      <div class="objective-item"><b>07 • Menulis</b>Menyusun paragraf argumentatif yang logis dan komunikatif.</div>
+      <div class="objective-item"><b>08 • Nilai</b>Memanfaatkan teknologi untuk belajar dengan aman, seimbang, dan bertanggung jawab.</div>
+    </div>
+  </div>
+  <div class="dars-section">
+    <h3>📚 Apersepsi</h3>
+    <div class="rtlbox">فَإِذَا فَرَغْتَ فَانْصَبْ ۝ وَإِلَى رَبِّكَ فَارْغَبْ</div>
+    <p><b>QS. Al-Insyirah: 7-8.</b> Waktu dan teknologi merupakan karunia. Gunakan keduanya untuk kegiatan yang bermanfaat, belajar, berkarya, dan berkomunikasi secara bijak.</p>
+    <div class="exercise arabic">هُوَ طَالِبٌ يَسْتَخْدِمُ الْأَجْهِزَةَ الْإِلِكْتِرُونِيَّةَ لِلَعِبِ طُولَ الْوَقْتِ. وَهِيَ طَالِبَةٌ تَسْتَفِيدُ مِنَ الْأَجْهِزَةِ الْحَدِيثَةِ لِلتَّعَلُّمِ الذَّاتِيِّ. أَيُّهُمَا أَفْضَلُ؟</div>
+  </div>
+</div>
+
+<div id="panel-mufradat" class="lesson-panel">
+  <div class="dars-section">
+    <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata Digital</h3><span class="muted">Ketuk kartu untuk melihat arti. Gunakan tombol suara untuk latihan pelafalan.</span></div><span class="progress-chip">${vocab12Unit1.length} kosakata</span></div>
+    <div class="vocab-grid">${vocab12Unit1.map((v) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();speak('${v[0]}')">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+  </div>
+  <div class="dars-section">
+    <h3>Latihan cepat</h3>
+    <div class="mini-task">
+      <div><span class="arabic">مُسْتَعْرِضٌ</span> berarti …<br><button class="btn" onclick="quickAnswer12Unit1(this,true)">Peramban</button> <button class="btn" onclick="quickAnswer12Unit1(this,false)">Berkas</button></div>
+      <div><span class="arabic">تَحْمِيلٌ وَرَفْعٌ</span> berarti …<br><button class="btn" onclick="quickAnswer12Unit1(this,false)">Masuk dan keluar</button> <button class="btn" onclick="quickAnswer12Unit1(this,true)">Unduh dan unggah</button></div>
+      <div><span class="arabic">وَسَائِلُ التَّوَاصُلِ الِاجْتِمَاعِيِّ</span> berarti …<br><button class="btn" onclick="quickAnswer12Unit1(this,true)">Media sosial</button> <button class="btn" onclick="quickAnswer12Unit1(this,false)">Televisi pintar</button></div>
+    </div>
+    <div id="quickFeedback12Unit1" class="choice-feedback" aria-live="polite"></div>
+  </div>
+</div>
+
+<div id="panel-istima" class="lesson-panel">
+  <div class="dars-section">
+    <h3>🎧 الِاسْتِمَاعُ — Istima'</h3>
+    <p>Dengarkan penjelasan guru tentang teknologi modern, manfaatnya, dan cara menggunakannya dengan aman.</p>
+    <div class="dialogue rtlbox" id="d12u1Listen">إِنَّ تِكْنُولُوجِيَا الْإِعْلَامِ وَالِاتِّصَالِ لَهَا أَهَمِّيَّةٌ كَبِيرَةٌ فِي حَيَاةِ الْإِنْسَانِ، وَلَكِنَّ الْأَجْهِزَةَ الْحَدِيثَةَ لَهَا فَوَائِدُ وَأَضْرَارٌ. عَلَيْنَا أَنْ نَسْتَفِيدَ مِنْهَا فِي التَّعَلُّمِ وَالْأَعْمَالِ الْمُنْتِجَةِ، وَأَنْ نُوَفِّرَ الْحِمَايَةَ عِنْدَ اسْتِخْدَامِهَا.</div>
+    <button class="btn primary" onclick="speak(document.getElementById('d12u1Listen').innerText)">▶ Putar Istima'</button>
+    <div class="exercise"><b>Periksa pemahamanmu</b><p class="arabic">فِي أَيِّ شَيْءٍ يَنْبَغِي أَنْ نَسْتَفِيدَ مِنَ الْأَجْهِزَةِ الْحَدِيثَةِ؟</p><input id="d12u1ist1" placeholder="Tulis jawaban"><button class="btn" onclick="cekFlexible('d12u1ist1',['في التعلم','التعلم','في التعلم والأعمال المنتجة'],'d12u1istfb')">Cek jawaban</button><div id="d12u1istfb" class="feedback" aria-live="polite"></div></div>
+  </div>
+</div>
+
+<div id="panel-hiwar" class="lesson-panel">
+  <div class="dars-section">
+    <h3>🗣️ الْحِوَارُ الْأَوَّلُ — Membandingkan Perangkat</h3>
+    <div class="dialogue rtlbox"><b>يُوسُفُ:</b> أَظُنُّ أَنَّ هَذَا الْحَاسُوبَ أَحْسَنُ لِلطُّلَّابِ، مَا رَأْيُكَ يَا فَرِيدُ؟<br><b>فَرِيدٌ:</b> أَنَا مُوَافِقٌ يَا يُوسُفُ، هَذَا الْحَاسُوبُ أَحْسَنُ مِنْ غَيْرِهِ.<br><b>يُوسُفُ:</b> وَمَا رَأْيُكَ يَا صَالِحُ؟<br><b>صَالِحٌ:</b> أَنَا غَيْرُ مُوَافِقٍ، هَذَا الْحَاسُوبُ أَسْوَأُ مِنْ غَيْرِهِ.</div>
+    <button class="btn" onclick="speak(this.previousElementSibling.innerText)">🔊 Dengarkan hiwar</button>
+  </div>
+  <div class="dars-section">
+    <h3>🗣️ الْحِوَارُ الثَّانِي — Teknologi: Manfaat dan Risiko</h3>
+    <div class="dialogue rtlbox"><b>الْمُعَلِّمُ:</b> مَنْ يَسْتَطِيعُ أَنْ يَذْكُرَ بَعْضَ الْأَجْهِزَةِ الْإِلِكْتِرُونِيَّةِ لِلْإِعْلَامِ وَالِاتِّصَالِ؟<br><b>يُوسُفُ:</b> حَاسُوبٌ مَحْمُولٌ، تِلْفَازٌ ذَكِيٌّ، سَمَّاعَةُ الرَّأْسِ، جِهَازُ الْعَرْضِ، الشَّاشَةُ وَغَيْرُهَا.<br><b>نُورَةُ:</b> وَمِنَ الْإِنْتَرْنِتِ: كَلِمَةُ الْمُرُورِ، رَمْزٌ شَرِيطِيٌّ، بَرْنَامَجٌ وَغَيْرُهَا.<br><b>الْمُعَلِّمُ:</b> لِمَاذَا هَذَا الْمَوْضُوعُ مُهِمٌّ؟<br><b>لَيْلَى:</b> لِأَنَّ بَعْضَ الشَّبَابِ يَقْضُونَ أَوْقَاتَهُمْ فِي وَسَائِلِ التَّسْلِيَةِ وَالْأَلْعَابِ الْإِلِكْتِرُونِيَّةِ.<br><b>الْمُعَلِّمُ:</b> عَلَيْنَا أَنْ نَسْتَفِيدَ مِنْ أَحْدَثِ الْأَجْهِزَةِ بِأَفْضَلِ طَرِيقَةٍ مُمْكِنَةٍ، وَأَنْ نُوَفِّرَ الْحِمَايَةَ عِنْدَ اسْتِخْدَامِهَا.</div>
+    <button class="btn" onclick="speak(this.previousElementSibling.innerText)">🔊 Dengarkan hiwar</button>
+    <div class="exercise"><b>Praktik:</b> Bandingkan dua perangkat dengan pola <span class="arabic">هَلْ ... أَفْضَلُ مِنْ ...؟ نَعَمْ، أَنَا مُوَافِقٌ / لَا، أَنَا غَيْرُ مُوَافِقٍ.</span></div>
+  </div>
+</div>
+
+<div id="panel-qiraah" class="lesson-panel">
+  <div class="dars-section">
+    <div class="reading-title"><h3>📖 تِكْنُولُوجِيَا الْإِعْلَامِ وَالِاتِّصَالِ الْحَدِيثَةُ: بَيْنَ الِاسْتِفَادَةِ وَالْحِمَايَةِ</h3><button class="btn" onclick="speak(document.getElementById('d12u1Read').innerText)">🔊</button></div>
+    <div class="rtlbox" id="d12u1Read">قَدْ تَقَدَّمَتْ تِكْنُولُوجِيَا الْإِعْلَامِ وَالِاتِّصَالِ إِلَى ذُرْوَتِهَا وَلَكِنَّهَا لَمْ تَبْلُغْ مُنْتَهَاهَا بَعْدُ، وَهِيَ تُعَدُّ مِنْ أَهَمِّ الِاخْتِرَاعَاتِ فِي حَيَاةِ الْإِنْسَانِ. أَصْبَحَتْ مِنْ أَقْوَى الْوَسَائِلِ الَّتِي تُسْتَخْدَمُ فِي مُخْتَلَفِ مَجَالَاتِ الْحَيَاةِ، وَبِوُجُودِ الْإِنْتَرْنِتِ أَصْبَحَ الْوُصُولُ إِلَى الْمَعْلُومَاتِ أَسْهَلَ وَأَسْرَعَ. وَلَكِنَّ هَذِهِ التِّكْنُولُوجِيَا سِلَاحٌ ذُو حَدَّيْنِ؛ فَالِاسْتِخْدَامُ غَيْرُ الْحَذِرِ قَدْ يُؤَدِّي إِلَى الْإِدْمَانِ، وَإِهْمَالِ الْوَاجِبَاتِ، وَانْتِهَاكِ الْخُصُوصِيَّةِ، وَنَشْرِ الْأَخْبَارِ الْكَاذِبَةِ، وَالْجَرَائِمِ السِّيبْرَانِيَّةِ. لِذَلِكَ يَنْبَغِي لِلْآبَاءِ وَالْمُعَلِّمِينَ أَنْ يُوَجِّهُوا الشَّبَابَ إِلَى الِاسْتِفَادَةِ الْفُضْلَى مِنَ الْأَجْهِزَةِ الْحَدِيثَةِ، وَيَنْبَغِي لِلْحُكُومَةِ أَنْ تَضَعَ قَوَانِينَ تَجْعَلُ بِيئَةَ الْإِنْتَرْنِتِ أَكْثَرَ أَمَانًا.</div>
+    <div class="exercise"><b>Pemahaman bacaan:</b><ol class="arabic"><li>مَا فَوَائِدُ تِكْنُولُوجِيَا الْإِعْلَامِ وَالِاتِّصَالِ؟</li><li>مَاذَا يُقْصَدُ بِأَنَّ التِّكْنُولُوجِيَا سِلَاحٌ ذُو حَدَّيْنِ؟</li><li>مَا أَخْطَارُ اسْتِخْدَامِ الْإِنْتَرْنِتِ بِغَيْرِ حَذَرٍ؟</li><li>مَاذَا يَنْبَغِي لِلْآبَاءِ وَالْمُعَلِّمِينَ أَنْ يَفْعَلُوا؟</li></ol></div>
+  </div>
+  <div class="dars-section">
+    <h3>Struktur Teks Argumentatif — النَّصُّ الْحِجَاجِيُّ</h3>
+    <div class="objective-grid"><div class="objective-item"><b>الْأُطْرُوحَةُ • Tesis</b>Pernyataan isu atau pendapat utama yang dibahas.</div><div class="objective-item"><b>الْحِجَاجُ • Argumen</b>Pengembangan gagasan yang diperkuat alasan dan bukti.</div><div class="objective-item"><b>الْبَرَاهِينُ وَالْأَدِلَّةُ</b>Fakta, contoh, atau rujukan pendukung.</div><div class="objective-item"><b>النَّتِيجَةُ • Kesimpulan</b>Pernyataan akhir yang merangkum pendapat.</div></div>
+  </div>
+</div>
+
+<div id="panel-tarkib" class="lesson-panel">
+  <div class="dars-section">
+    <h3>🔤 اِسْمُ التَّفْضِيلِ — Isim Tafdhil</h3>
+    <p>Isim tafdhil adalah sifat turunan dari fi'il yang menyatakan bahwa satu benda atau orang memiliki suatu sifat lebih daripada yang lain. Pola umumnya <span class="arabic">أَفْعَلُ</span> untuk mudzakkar dan <span class="arabic">فُعْلَى</span> untuk muannats.</p>
+    <div class="tablewrap"><table><tr><th>Bentuk</th><th>Pola</th><th>Contoh</th><th>Makna</th></tr><tr><td>Mudzakkar</td><td class="arabic">أَفْعَلُ</td><td class="arabic">الْحَاسُوبُ أَفْضَلُ مِنَ الْجِهَازِ</td><td>Komputer lebih baik daripada perangkat itu.</td></tr><tr><td>Muannats</td><td class="arabic">فُعْلَى</td><td class="arabic">الشَّبَكَةُ الدَّوْلِيَّةُ فُضْلَى الْوَسَائِلِ</td><td>Internet merupakan sarana terbaik.</td></tr></table></div>
+  </div>
+  <div class="dars-section">
+    <h3>Empat Pola Pemakaian</h3>
+    <div class="tablewrap"><table><tr><th>Pola</th><th>Contoh</th></tr><tr><td class="arabic">مُجَرَّدٌ مِنْ أَلْ وَالْإِضَافَةِ</td><td class="arabic">خَالِدٌ أَمْهَرُ مِنْ سَعِيدٍ</td></tr><tr><td class="arabic">مُقْتَرِنٌ بِأَلْ</td><td class="arabic">هُوَ الْأَفْضَلُ، هِيَ الْفُضْلَى</td></tr><tr><td class="arabic">مُضَافٌ إِلَى الْمَعْرِفَةِ</td><td class="arabic">عَلِيٌّ أَفْضَلُ الْقَوْمِ</td></tr><tr><td class="arabic">مُضَافٌ إِلَى النَّكِرَةِ</td><td class="arabic">خَالِدٌ أَفْضَلُ قَائِدٍ</td></tr></table></div>
+    <div class="exercise"><b>Syarat pembentukan langsung:</b> fi'il tsulatsi, mutasharrif, mabni lil-ma'lum, tam, dapat dibandingkan, serta bukan menunjukkan warna, cacat, atau ciri fisik tertentu. Jika tidak memenuhi syarat, gunakan <span class="arabic">أَشَدُّ / أَكْثَرُ + الْمَصْدَرُ</span>, misalnya <span class="arabic">أَشَدُّ احْتِرَامًا</span>.</div>
+    <div class="exercise"><b>Latihan:</b> Bentuk isim tafdhil dari <span class="arabic">عَلِمَ، نَفَعَ، سَهُلَ، جَمُلَ، قَوِيَ</span>, lalu gunakan tiga di antaranya dalam kalimat.</div>
+  </div>
+</div>
+
+<div id="panel-kitabah" class="lesson-panel">
+  <div class="dars-section">
+    <h3>✍️ الْكِتَابَةُ — Menulis Teks Argumentatif</h3>
+    <p>Tulislah 5-10 kalimat mengenai pemanfaatan teknologi informasi dan komunikasi untuk mengembangkan pembelajaran mandiri.</p>
+    <div class="objective-grid"><div class="objective-item"><b>1 • طَرْحُ الْقَضِيَّةِ</b>Ajukan isu atau pertanyaan utama.</div><div class="objective-item"><b>2 • إِبْدَاءُ الرَّأْيِ</b>Nyatakan pendapatmu dengan jelas.</div><div class="objective-item"><b>3 • تَقْدِيمُ الْحُجَجِ</b>Berikan sekurang-kurangnya dua alasan.</div><div class="objective-item"><b>4 • الْمِثَالُ الْوَاقِعِيُّ</b>Hubungkan alasan dengan contoh nyata.</div><div class="objective-item"><b>5 • الْخَاتِمَةُ</b>Tegaskan kembali pendapat pada penutup.</div></div>
+    <div class="exercise"><b>Ungkapan bantu:</b><div class="arabic">فِي عَصْرِنَا الْحَاضِرِ... • مِنْ وِجْهَةِ نَظَرِي... • أَوَّلًا... ثَانِيًا... • عَلَى سَبِيلِ الْمِثَالِ... • فِي الْخِتَامِ أَرَى أَنَّ...</div></div>
+    <div class="writing-lines rtlbox" contenteditable="true" role="textbox" aria-label="Tulis teks argumentatif teknologi" data-placeholder="اُكْتُبْ فِقْرَتَكَ الْحِجَاجِيَّةَ هُنَا..."></div>
+  </div>
+</div>
+
+<div id="panel-evaluasi" class="lesson-panel">
+  <section class="dars-section unit-quiz">
+    <h3>🏆 Kuis Otomatis Kelas XII Unit 1</h3>
+    <p>Jawab seluruh 10 soal. Setiap jawaban benar bernilai 10; skor maksimal 100.</p>
+    <div class="quiz-progress"><span id="d12u1Answered">0/10 terjawab</span><div class="bar"><i id="d12u1QuizBar"></i></div></div>
+    <div id="dars12Unit1Eval"></div>
+    <button class="btn primary quiz-submit" onclick="nilaiDars12Unit1()">✓ Hitung skor</button>
+    <button class="btn" onclick="resetDars12Unit1Quiz()">Ulangi kuis</button>
+    <div id="dars12Unit1Score" class="result score-card" aria-live="polite">Skor akan muncul di sini.</div>
+  </section>
+  <div class="dars-section"><h3>🪞 Refleksi</h3><div class="tablewrap"><table><tr><th>Kegiatan</th><th>Jayyid Jiddan</th><th>Jayyid</th><th>Dha'if</th></tr>${["أَفْهَمُ مُفْرَدَاتِ تِكْنُولُوجِيَا الْإِعْلَامِ وَالِاتِّصَالِ", "أَجْرِي الْحِوَارَ مَعَ الزُّمَلَاءِ", "أَقْرَأُ النَّصَّ الْحِجَاجِيَّ وَأَفْهَمُهُ", "أَسْتَعْمِلُ اسْمَ التَّفْضِيلِ شَفَهِيًّا وَكِتَابِيًّا", "أُقَدِّمُ رَأْيًا وَحُجَّةً وَنَتِيجَةً"].map((x) => `<tr><td class="arabic">${x}</td><td>☐</td><td>☐</td><td>☐</td></tr>`).join("")}</table></div></div>
+  <div class="dars-section"><h3>💡 Hikmah</h3><div class="rtlbox" style="text-align:center;background:#eef6e8;border-radius:22px;padding:28px"><b>الْوَقْتُ نِعْمَةٌ، وَشُكْرُهَا أَنْ يُقْضَى فِيمَا يَنْفَعُ وَلَا يَضُرُّ.</b><br><span style="font-size:16px">Waktu adalah nikmat; mensyukurinya berarti menggunakannya untuk hal yang bermanfaat dan tidak merugikan.</span></div></div>
+</div>
+
+<div class="lesson-nav">
+  <button class="btn" disabled>← Bab sebelumnya</button>
+  <div class="navinfo"><span class="progress-chip">Kelas XII • Unit 1 • TIK</span></div>
+  <button class="btn gold" onclick="nextChapter12(1)">Bab berikutnya →</button>
+</div>
+<button class="btn primary" onclick="done('XII-0')">✓ Tandai Unit 1 selesai +20 XP</button>
+</div>`;
+      }
+
       function openLesson(g, i) {
         let t = topics[g][i];
         if (g === "X" && i === 0) {
@@ -2134,6 +2320,12 @@
           document.getElementById("detailBox").innerHTML = dars5();
           page("detail");
           quizDars5();
+          return;
+        }
+        if (g === "XII" && i === 0) {
+          document.getElementById("detailBox").innerHTML = dars12Unit1();
+          page("detail");
+          quizDars12Unit1();
           return;
         }
         let txt =
@@ -2183,6 +2375,13 @@
         if (current === 4) window.openLesson("X", 2);
         if (current === 5) window.openLesson("X", 3);
       }
+      function nextChapter12(current) {
+        if (current === 1) {
+          alert(
+            "Kelas XII Unit 2 akan disusun setelah Unit 1 ditinjau dan disetujui.",
+          );
+        }
+      }
       function quickAnswer(button, correct) {
         const feedback = document.getElementById("quickFeedback");
         if (!feedback) return;
@@ -2227,6 +2426,15 @@
       }
       function quickAnswer5(button, correct) {
         const feedback = document.getElementById("quickFeedback5");
+        if (!feedback) return;
+        feedback.textContent = correct
+          ? "صَحِيحٌ! Jawaban tepat."
+          : "Belum tepat. Buka kembali kartu kosakata.";
+        if (correct) gain(2);
+        button.blur();
+      }
+      function quickAnswer12Unit1(button, correct) {
+        const feedback = document.getElementById("quickFeedback12Unit1");
         if (!feedback) return;
         feedback.textContent = correct
           ? "صَحِيحٌ! Jawaban tepat."
@@ -2787,6 +2995,162 @@
       function resetDars5Quiz() {
         quizDars5();
         const result = document.getElementById("dars5Score");
+        if (result) {
+          result.classList.remove("quiz-result-perfect");
+          result.textContent = "Skor akan muncul di sini.";
+        }
+      }
+
+      const DARS12UNIT1Q = [
+        [
+          "Arti حَاسُوبٌ مَحْمُولٌ adalah …",
+          [
+            "Televisi pintar",
+            "Telepon pintar",
+            "Laptop",
+            "Proyektor",
+            "Satelit",
+          ],
+          2,
+        ],
+        [
+          "Kosakata Arab untuk ‘media sosial’ adalah …",
+          [
+            "وَسَائِلُ التَّوَاصُلِ الِاجْتِمَاعِيِّ",
+            "شَبَكَةٌ دَوْلِيَّةٌ",
+            "بَرِيدٌ إِلِكْتِرُونِيٌّ",
+            "تَسْجِيلُ الدُّخُولِ",
+            "جِهَازُ الْعَرْضِ",
+          ],
+          0,
+        ],
+        [
+          "Kalimat yang berarti ‘komputer ini lebih baik daripada perangkat itu’ adalah …",
+          [
+            "هَذَا الْحَاسُوبُ أَسْوَأُ مِنْ ذَلِكَ الْجِهَازِ",
+            "هَذَا الْحَاسُوبُ أَفْضَلُ مِنْ ذَلِكَ الْجِهَازِ",
+            "هَذَا الْحَاسُوبُ أَغْلَى جِهَازٍ",
+            "ذَلِكَ الْجِهَازُ أَفْضَلُ حَاسُوبٍ",
+            "الْحَاسُوبَانِ فِي الْفَصْلِ",
+          ],
+          1,
+        ],
+        [
+          "Pola umum isim tafdhil untuk mudzakkar adalah …",
+          ["فَاعِلٌ", "مَفْعُولٌ", "فُعْلَى", "أَفْعَلُ", "فَعَّالٌ"],
+          3,
+        ],
+        [
+          "Menurut bacaan, salah satu manfaat internet adalah …",
+          [
+            "Menyulitkan pencarian informasi",
+            "Mempermudah dan mempercepat akses informasi",
+            "Menghapus semua risiko digital",
+            "Menggantikan seluruh peran guru",
+            "Membuat orang selalu bermain",
+          ],
+          1,
+        ],
+        [
+          "Mengapa teknologi disebut سِلَاحٌ ذُو حَدَّيْنِ?",
+          [
+            "Karena hanya dipakai tentara",
+            "Karena selalu berbahaya",
+            "Karena memiliki manfaat sekaligus risiko",
+            "Karena terdiri atas dua perangkat",
+            "Karena tidak berguna bagi pelajar",
+          ],
+          2,
+        ],
+        [
+          "Bagian teks argumentatif yang menyatakan isu atau pendapat utama adalah …",
+          [
+            "الْأُطْرُوحَةُ",
+            "الْحِجَاجُ",
+            "الْبَرَاهِينُ",
+            "النَّتِيجَةُ",
+            "الْحِوَارُ",
+          ],
+          0,
+        ],
+        [
+          "Fungsi الْبَرَاهِينُ وَالْأَدِلَّةُ dalam teks argumentatif adalah …",
+          [
+            "Memberi judul",
+            "Mengakhiri dialog",
+            "Menyajikan bukti dan alasan pendukung",
+            "Membandingkan dua kata",
+            "Mengubah fi'il menjadi isim",
+          ],
+          2,
+        ],
+        [
+          "Manakah penggunaan isim tafdhil yang tepat?",
+          [
+            "خَالِدٌ أَفْضَلُ مِنْ سَعِيدٍ",
+            "خَالِدٌ فَضَّلَ مِنْ سَعِيدٍ",
+            "خَالِدٌ أَفْضَلَ سَعِيدٌ",
+            "خَالِدٌ فُضْلَى مِنْ سَعِيدٍ",
+            "خَالِدٌ تَفْضِيلٌ سَعِيدٍ",
+          ],
+          0,
+        ],
+        [
+          "Sikap terbaik dalam menggunakan teknologi adalah …",
+          [
+            "Bermain sepanjang waktu",
+            "Membagikan data pribadi kepada semua orang",
+            "Mengabaikan tugas",
+            "Menggunakannya untuk belajar dengan aman dan seimbang",
+            "Memercayai setiap berita tanpa memeriksa",
+          ],
+          3,
+        ],
+      ];
+      function quizDars12Unit1() {
+        const box = document.getElementById("dars12Unit1Eval");
+        if (!box) return;
+        const letters = ["a", "b", "c", "d", "e"];
+        box.innerHTML = DARS12UNIT1Q.map(
+          (q, i) =>
+            `<div class="unit-question" data-d12u1-question="${i}"><b>${i + 1}. <span class="${/[\u0600-\u06ff]/.test(q[0]) ? "arabic" : ""}">${q[0]}</span></b>${q[1].map((answer, j) => `<label class="eval-option"><input type="radio" name="d12u1q${i}" value="${j}" onchange="updateDars12Unit1Progress()"><b>${letters[j]}.</b> <span class="${/[\u0600-\u06ff]/.test(answer) ? "arabic" : ""}">${answer}</span></label>`).join("")}<p class="answer-key">Jawaban benar: ${letters[q[2]]}. <span class="${/[\u0600-\u06ff]/.test(q[1][q[2]]) ? "arabic" : ""}">${q[1][q[2]]}</span></p></div>`,
+        ).join("");
+        updateDars12Unit1Progress();
+      }
+      function updateDars12Unit1Progress() {
+        const answered = DARS12UNIT1Q.filter((q, i) =>
+          document.querySelector(`input[name=d12u1q${i}]:checked`),
+        ).length;
+        const label = document.getElementById("d12u1Answered");
+        const bar = document.getElementById("d12u1QuizBar");
+        if (label) label.textContent = `${answered}/10 terjawab`;
+        if (bar) bar.style.width = `${answered * 10}%`;
+      }
+      function nilaiDars12Unit1() {
+        let correct = 0;
+        let answered = 0;
+        DARS12UNIT1Q.forEach((q, i) => {
+          const selected = document.querySelector(
+            `input[name=d12u1q${i}]:checked`,
+          );
+          const item = document.querySelector(`[data-d12u1-question="${i}"]`);
+          if (selected) answered++;
+          const isCorrect = selected && Number(selected.value) === q[2];
+          if (isCorrect) correct++;
+          if (item) {
+            item.classList.remove("correct", "incorrect");
+            item.classList.add(isCorrect ? "correct" : "incorrect");
+          }
+        });
+        const score = correct * 10;
+        const result = document.getElementById("dars12Unit1Score");
+        result.classList.toggle("quiz-result-perfect", score >= 80);
+        result.innerHTML = `<h3>Skor: ${score}/100</h3><p>${correct} jawaban benar, ${10 - correct} belum benar. ${answered < 10 ? `Masih ada ${10 - answered} soal yang belum dijawab. ` : ""}${score >= 80 ? "مُمْتَازٌ! Pemahamanmu sangat baik. 👏" : "Pelajari kembali materi yang ditandai, lalu ulangi kuis."}</p>`;
+        if (score >= 80) done("XII-0-evaluasi");
+      }
+      function resetDars12Unit1Quiz() {
+        quizDars12Unit1();
+        const result = document.getElementById("dars12Unit1Score");
         if (result) {
           result.classList.remove("quiz-result-perfect");
           result.textContent = "Skor akan muncul di sini.";
