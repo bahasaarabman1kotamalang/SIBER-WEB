@@ -1204,7 +1204,7 @@
         document.getElementById("topicList").innerHTML = topics[g]
           .map(
             (t, i) =>
-              `<div class="card topic"><span class="tag">Kelas ${g}</span><h3 class="arabic">${t[0]}</h3><b>${t[1]}</b><p class="muted">Kosakata • teks • komunikasi • tata bahasa • produksi bahasa</p><button class="btn ${g === "X" && i <= 2 ? "primary" : ""}" onclick="openLesson('${g}',${i})">${g === "X" && i <= 2 ? `Buka Unit ${i + 1}` : "Buka materi"}</button></div>`,
+              `<div class="card topic"><span class="tag">Kelas ${g}</span><h3 class="arabic">${t[0]}</h3><b>${t[1]}</b><p class="muted">Kosakata • teks • komunikasi • tata bahasa • produksi bahasa</p><button class="btn ${g === "X" && i <= 3 ? "primary" : ""}" onclick="openLesson('${g}',${i})">${g === "X" && i <= 3 ? `Buka Unit ${i + 1}` : "Buka materi"}</button></div>`,
           )
           .join("");
       }
@@ -1294,6 +1294,32 @@
         ["الْفِقْهُ", "Fikih"],
         ["التَّارِيخُ", "Sejarah"],
         ["الْقُرْآنُ وَالْحَدِيثُ", "Al-Qur'an dan Hadis"],
+      ];
+      const vocab4 = [
+        ["الْهِوَايَةُ", "Hobi"],
+        ["الْأَنْشِطَةُ اللَّامَنْهَجِيَّةُ", "Kegiatan ekstrakurikuler"],
+        ["قِرَاءَةٌ", "Membaca"],
+        ["صِحَافَةٌ", "Jurnalistik"],
+        ["فُوتُوغْرَافِيَا", "Fotografi"],
+        ["تَدْبِيرٌ مَنْزِلِيٌّ", "Tata boga/keterampilan rumah tangga"],
+        ["طَبْخٌ", "Memasak"],
+        ["رِيَاضَةٌ بَدَنِيَّةٌ", "Olahraga jasmani"],
+        ["كُرَةُ الْقَدَمِ", "Sepak bola"],
+        ["الْكُرَةُ الطَّائِرَةُ", "Bola voli"],
+        ["تِنِسُ الطَّاوِلَةِ", "Tenis meja"],
+        ["رِحْلَةٌ", "Perjalanan/rekreasi"],
+        ["الْخَطُّ الْعَرَبِيُّ", "Kaligrafi Arab"],
+        ["رَسْمٌ", "Menggambar"],
+        ["مُوسِيقَى", "Musik"],
+        ["الْغِنَاءُ", "Bernyanyi"],
+        ["تَمْثِيلٌ", "Seni peran"],
+        ["مُسَابَقَةٌ", "Perlombaan"],
+        ["شَبَكَةٌ دَوْلِيَّةٌ / إِنْتَرْنِت", "Internet"],
+        ["قَرَأَ - يَقْرَأُ", "Telah/sedang membaca"],
+        ["كَتَبَ - يَكْتُبُ", "Telah/sedang menulis"],
+        ["طَبَخَ - يَطْبُخُ", "Telah/sedang memasak"],
+        ["لَعِبَ - يَلْعَبُ", "Telah/sedang bermain"],
+        ["تَدَرَّبَ - يَتَدَرَّبُ", "Telah/sedang berlatih"],
       ];
       function speak(x) {
         if ("speechSynthesis" in window) {
@@ -1746,6 +1772,164 @@
 </div>`;
       }
 
+      function dars4() {
+        return `<div class="card">
+<div class="unit-heading">
+  <div>
+    <span class="tag">Kelas X • Bab 4 / Unit 4</span>
+    <h2 class="arabic">الْوَحْدَةُ الرَّابِعَةُ: الْهِوَايَةُ</h2>
+    <h2>Unit 4: Hobi dan Kegiatan Ekstrakurikuler</h2>
+    <p>Kenali ragam hobi, ceritakan kegiatan yang disukai, pahami jenis kata dan bentuk fi'il, lalu tuliskan pengalaman dalam teks rekon sederhana.</p>
+  </div>
+  <div class="unit-number" aria-label="Unit 4">04</div>
+</div>
+
+<div class="lesson-nav">
+  <button class="btn" onclick="previousChapter(4)">← Bab sebelumnya</button>
+  <div class="navinfo">BAB 4 • الْهِوَايَةُ</div>
+  <button class="btn gold" onclick="nextChapter(4)">Bab berikutnya →</button>
+</div>
+
+<div class="lesson-tabs" role="tablist" aria-label="Bagian Unit 4">
+  <button class="active" onclick="lessonTab('tujuan',this)">🎯 Tujuan</button>
+  <button onclick="lessonTab('mufradat',this)">🃏 Mufradat</button>
+  <button onclick="lessonTab('istima',this)">🎧 Istima'</button>
+  <button onclick="lessonTab('hiwar',this)">🗣️ Hiwar</button>
+  <button onclick="lessonTab('qiraah',this)">📖 Qira'ah</button>
+  <button onclick="lessonTab('tarkib',this)">🔤 Tarkib</button>
+  <button onclick="lessonTab('kitabah',this)">✍️ Kitabah</button>
+  <button onclick="lessonTab('evaluasi',this)">🏆 Kuis</button>
+</div>
+
+<div id="panel-tujuan" class="lesson-panel active">
+  <div class="dars-section">
+    <h3>🎯 Tujuan Pembelajaran</h3>
+    <p>Peserta didik mampu memahami dan menghasilkan teks bertema hobi (<span class="arabic">الْهِوَايَةُ</span>) dengan menggunakan <span class="arabic">تَقْسِيمُ الْكَلِمَةِ</span> dan <span class="arabic">أَقْسَامُ الْفِعْلِ</span> secara tepat.</p>
+    <div class="objective-grid">
+      <div class="objective-item"><b>01 • Pelafalan</b>Menirukan mufradat hobi dan kegiatan ekstrakurikuler dengan tepat.</div>
+      <div class="objective-item"><b>02 • Unsur bahasa</b>Membedakan isim, fi'il, huruf, serta fi'il madhi, mudhari', dan amr.</div>
+      <div class="objective-item"><b>03 • Menyimak</b>Menemukan informasi tersurat dan tersirat dari teks lisan tentang hobi.</div>
+      <div class="objective-item"><b>04 • Berbicara</b>Bertanya dan menjawab tentang jenis, waktu, tempat, serta alasan memilih hobi.</div>
+      <div class="objective-item"><b>05 • Membaca</b>Membaca teks deskriptif dan rekon dengan intonasi serta konteks yang tepat.</div>
+      <div class="objective-item"><b>06 • Menganalisis</b>Mengidentifikasi gagasan, urutan kejadian, dan karakteristik teks.</div>
+      <div class="objective-item"><b>07 • Menulis</b>Menyusun kalimat dan teks rekon sederhana mengenai pengalaman menjalankan hobi.</div>
+      <div class="objective-item"><b>08 • Refleksi</b>Mengelola hobi secara positif, seimbang, sehat, dan bertanggung jawab.</div>
+    </div>
+  </div>
+  <div class="dars-section">
+    <h3>📚 Apersepsi</h3>
+    <div class="rtlbox">وَمَا الْحَيَاةُ الدُّنْيَا إِلَّا لَعِبٌ وَلَهْوٌ ۖ وَلَلدَّارُ الْآخِرَةُ خَيْرٌ لِلَّذِينَ يَتَّقُونَ ۗ أَفَلَا تَعْقِلُونَ</div>
+    <p><b>QS. Al-An'am: 32.</b> Hobi dapat menjadi sarana belajar, menjaga kesehatan, dan mengembangkan bakat apabila dilakukan secara seimbang dan bermanfaat.</p>
+  </div>
+</div>
+
+<div id="panel-mufradat" class="lesson-panel">
+  <div class="dars-section">
+    <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti dan gunakan tombol suara untuk berlatih pelafalan.</span></div><span class="progress-chip">${vocab4.length} kosakata</span></div>
+    <div class="vocab-grid">${vocab4.map((v) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();speak('${v[0]}')">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+  </div>
+  <div class="dars-section">
+    <h3>Latihan cepat</h3>
+    <div class="mini-task">
+      <div><span class="arabic">فُوتُوغْرَافِيَا</span> berarti …<br><button class="btn" onclick="quickAnswer4(this,true)">Fotografi</button> <button class="btn" onclick="quickAnswer4(this,false)">Jurnalistik</button></div>
+      <div><span class="arabic">الْخَطُّ الْعَرَبِيُّ</span> berarti …<br><button class="btn" onclick="quickAnswer4(this,false)">Seni peran</button> <button class="btn" onclick="quickAnswer4(this,true)">Kaligrafi Arab</button></div>
+      <div><span class="arabic">تِنِسُ الطَّاوِلَةِ</span> berarti …<br><button class="btn" onclick="quickAnswer4(this,true)">Tenis meja</button> <button class="btn" onclick="quickAnswer4(this,false)">Bola voli</button></div>
+    </div>
+    <div id="quickFeedback4" class="choice-feedback" aria-live="polite"></div>
+  </div>
+</div>
+
+<div id="panel-istima" class="lesson-panel">
+  <div class="dars-section">
+    <h3>🎧 الِاسْتِمَاعُ — Istima'</h3>
+    <p>Dengarkan informasi tentang hobi Ahmad, lalu jawab pertanyaan pemahaman.</p>
+    <div class="dialogue rtlbox" id="d4Listen">هَذَا أَحْمَدُ مُجَاهِدٌ. هِوَايَتُهُ الْقِرَاءَةُ. يَقْرَأُ كُتُبَ التَّارِيخِ وَالْقِصَّةِ فِي أَوْقَاتِ الْفَرَاغِ. يَقْرَأُ مَرَّتَيْنِ فِي الْأُسْبُوعِ فِي الْمَكْتَبَةِ، وَيُفَضِّلُ كُتُبَ التَّارِيخِ الْإِسْلَامِيِّ.</div>
+    <button class="btn primary" onclick="speak(document.getElementById('d4Listen').innerText)">▶ Putar Istima'</button>
+    <div class="exercise"><b>Periksa pemahamanmu</b><p class="arabic">أَيْنَ يَقْرَأُ أَحْمَدُ مُجَاهِدٌ؟</p><input id="d4ist1" placeholder="Tulis jawaban"><button class="btn" onclick="cekFlexible('d4ist1',['في المكتبة','المكتبة'],'d4istfb')">Cek jawaban</button><div id="d4istfb" class="feedback" aria-live="polite"></div></div>
+  </div>
+</div>
+
+<div id="panel-hiwar" class="lesson-panel">
+  <div class="dars-section">
+    <h3>🗣️ الْحِوَارُ ١ — Membaca dan Olahraga</h3>
+    <div class="dialogue rtlbox"><b>رِضْوَانُ:</b> مَا هِوَايَتُكَ يَا أَخِي؟<br><b>شُكُورٌ:</b> هِوَايَتِي قِرَاءَةٌ وَرَسْمٌ.<br><b>رِضْوَانُ:</b> مَا هِوَايَتُكَ الْمُفَضَّلَةُ؟<br><b>شُكُورٌ:</b> أُفَضِّلُ الْقِرَاءَةَ.<br><b>رِضْوَانُ:</b> أَيَّ كِتَابٍ تُحِبُّ أَنْ تَقْرَأَ؟<br><b>شُكُورٌ:</b> أُحِبُّ كُتُبَ التَّارِيخِ وَالْقِصَّةِ.<br><b>شُكُورٌ:</b> وَأَنْتَ يَا رِضْوَانُ، مَا هِوَايَتُكَ؟<br><b>رِضْوَانُ:</b> هِوَايَتِي رِيَاضَةٌ وَرِحْلَةٌ. أُفَضِّلُ تِنِسَ الطَّاوِلَةِ وَأُمَارِسُهُ مَرَّتَيْنِ فِي الْأُسْبُوعِ.</div>
+    <button class="btn" onclick="speak(this.previousElementSibling.innerText)">🔊 Dengarkan hiwar</button>
+  </div>
+  <div class="dars-section">
+    <h3>🗣️ الْحِوَارُ ٢ — Jurnalistik dan Memasak</h3>
+    <div class="dialogue rtlbox"><b>سُنَيْنَةُ:</b> مَا هِوَايَتُكِ يَا أُخْتِي؟<br><b>شَافِيَةُ:</b> هِوَايَتِي صِحَافَةٌ وَفُوتُوغْرَافِيَا.<br><b>سُنَيْنَةُ:</b> هَلْ فِي الْمَدْرَسَةِ أَنْشِطَةٌ لَامَنْهَجِيَّةٌ فِي الصِّحَافَةِ؟<br><b>شَافِيَةُ:</b> نَعَمْ، وَأَشْتَرِكُ فِي جَمْعِيَّةِ الصِّحَافَةِ وَفُوتُوغْرَافِيَا.<br><b>سُنَيْنَةُ:</b> مَتَى تُمَارِسِينَ الصِّحَافَةَ؟<br><b>شَافِيَةُ:</b> فِي يَوْمِ الِاثْنَيْنِ وَالْخَمِيسِ بَعْدَ الدِّرَاسَةِ.<br><b>شَافِيَةُ:</b> وَأَنْتِ يَا سُنَيْنَةُ، مَا هِوَايَتُكِ؟<br><b>سُنَيْنَةُ:</b> هِوَايَتِي طَبْخٌ، وَأَشْتَرِكُ فِي جَمْعِيَّةِ الطَّبْخِ.</div>
+    <button class="btn" onclick="speak(this.previousElementSibling.innerText)">🔊 Dengarkan hiwar</button>
+  </div>
+  <div class="dars-section">
+    <h3>🗣️ الْحِوَارُ ٣ — Kaligrafi Arab</h3>
+    <div class="dialogue rtlbox"><b>حِلْمِي:</b> هَذَا الْخَطُّ رَائِعٌ. هَلْ هَذِهِ لَوْحَتُكَ؟<br><b>فِكْرِي:</b> نَعَمْ، هَذَا خَطُّ الرُّقْعَةِ.<br><b>حِلْمِي:</b> هَلْ هِوَايَتُكَ خَطٌّ عَرَبِيٌّ؟<br><b>فِكْرِي:</b> نَعَمْ، وَأَشْتَرِكُ فِي جَمْعِيَّةِ الْخَطِّ الْعَرَبِيِّ.<br><b>حِلْمِي:</b> مَاذَا تَدْرُسُ فِي الْخَطِّ الْعَرَبِيِّ؟<br><b>فِكْرِي:</b> نَدْرُسُ كَيْفِيَّةَ كِتَابَةِ الْأَحْرُفِ ثُمَّ الْكَلِمَاتِ صَحِيحَةً وَجَمِيلَةً.<br><b>فِكْرِي:</b> الْمُهِمُّ أَنْ تَجْتَهِدَ فِي الْكِتَابَةِ، وَلَا تَنْسَ مُمَارَسَةَ الْكِتَابَةِ كُلَّ يَوْمٍ.</div>
+    <button class="btn" onclick="speak(this.previousElementSibling.innerText)">🔊 Dengarkan hiwar</button>
+    <div class="exercise"><b>Praktik:</b> Buat dialog menggunakan pertanyaan <span class="arabic">مَا هِوَايَتُكَ؟ مَتَى تُمَارِسُهَا؟ أَيْنَ تُمَارِسُهَا؟ وَلِمَاذَا؟</span></div>
+  </div>
+</div>
+
+<div id="panel-qiraah" class="lesson-panel">
+  <div class="dars-section">
+    <div class="reading-title"><h3>📖 الْقِرَاءَةُ ١ — هِوَايَةُ تِنِسِ الطَّاوِلَةِ</h3><button class="btn" onclick="speak(document.getElementById('d4read1').innerText)">🔊</button></div>
+    <div class="rtlbox" id="d4read1">أَنَا دِيْدِيْن شِهَابُ الدِّينِ. أَجْلِسُ فِي الصَّفِّ الْعَاشِرِ مِنَ الْمَدْرَسَةِ الثَّانَوِيَّةِ الْإِسْلَامِيَّةِ الْحُكُومِيَّةِ. أَتَعَلَّمُ فِي الْمَدْرَسَةِ الدُّرُوسَ الْمُقَرَّرَةَ مِنْ يَوْمِ الِاثْنَيْنِ إِلَى يَوْمِ السَّبْتِ. فِي مَدْرَسَتِنَا أَنْشِطَةٌ لَامَنْهَجِيَّةٌ كَثِيرَةٌ مِنْهَا كَشَّافَةٌ وَصِحَافَةٌ وَرِيَاضَةٌ بَدَنِيَّةٌ وَخَطٌّ عَرَبِيٌّ وَفُوتُوغْرَافِيَا. يُمْكِنُ لِلطُّلَّابِ أَنْ يَشْتَرِكُوا فِي هَذِهِ الْأَنْشِطَةِ لِمُمَارَسَةِ هِوَايَاتِهِمْ بَعْدَ الدِّرَاسَةِ. أَنَا أُحِبُّ تِنِسَ الطَّاوِلَةِ، وَأَشْتَرِكُ فِي جَمْعِيَّةِ الرِّيَاضَةِ الْبَدَنِيَّةِ. أُمَارِسُ هِوَايَتِي مَرَّتَيْنِ فِي الْأُسْبُوعِ، يَوْمَ السَّبْتِ وَالثُّلَاثَاءِ. أَلْعَبُ تِنِسَ الطَّاوِلَةِ مَعَ أَصْدِقَائِي فِي مَلْعَبِ الْمَدْرَسَةِ، وَيُدَرِّبُنَا مُدَرِّسُ الرِّيَاضَةِ.</div>
+    <div class="exercise"><b>Pemahaman:</b><ol class="arabic"><li>مَا هِوَايَةُ دِيْدِيْن شِهَابِ الدِّينِ؟</li><li>مَتَى يُمَارِسُ هِوَايَتَهُ؟</li><li>مَنْ مُدَرِّبُهُ؟</li><li>لِمَاذَا يَشْتَرِكُ الطُّلَّابُ فِي الْأَنْشِطَةِ اللَّامَنْهَجِيَّةِ؟</li></ol></div>
+  </div>
+  <div class="dars-section">
+    <div class="reading-title"><h3>📖 الْقِرَاءَةُ ٢ — هِوَايَةُ الْخَطِّ الْعَرَبِيِّ</h3><button class="btn" onclick="speak(document.getElementById('d4read2').innerText)">🔊</button></div>
+    <div class="rtlbox" id="d4read2">هَذَا صَدِيقِي يَاقُوتُ. اِسْمُهُ بِالْكَامِلِ يَاقُوتُ زَارِيْن. هُوَ يُحِبُّ الْقِرَاءَةَ وَالْخَطَّ الْعَرَبِيَّ. يَقْرَأُ يَاقُوتُ الْكُتُبَ وَالْمَجَلَّاتِ، وَيُفَضِّلُ قِرَاءَةَ التَّارِيخِ الْإِسْلَامِيِّ وَخَاصَّةً عَنِ الْخَطِّ الْعَرَبِيِّ. رَأَى جَدَّهُ الْكَبِيرَ يَكْتُبُ الْأَحْرُفَ وَالْكَلِمَاتِ الْعَرَبِيَّةَ فِي اللَّوْحَةِ. فِي الْمَدْرَسَةِ اشْتَرَكَ يَاقُوتُ فِي جَمْعِيَّةِ الْخَطِّ الْعَرَبِيِّ وَتَعَلَّمَ الْخَطَّ فِيهَا. وَهُوَ يُمَارِسُ كِتَابَةَ الْأَحْرُفِ الْعَرَبِيَّةِ كُلَّ يَوْمٍ. فِي شَهْرِ أُكْتُوبَرَ ٢٠٢٤ اشْتَرَكَ يَاقُوتُ فِي مُسَابَقَةِ الْخَطِّ الْعَرَبِيِّ عَلَى الْمُسْتَوَى الْقَوْمِيِّ فِي بِيكَاسِي جَاوَى الْغَرْبِيَّةِ، وَحَصَلَ عَلَى الْفَائِزِ الْأَوَّلِ. وَفِي شَهْرِ نُوفَمْبَرَ اشْتَرَكَ فِي مُسَابَقَةٍ وَطَنِيَّةٍ فِي سُورَابَايَا وَحَصَلَ عَلَى الْفَائِزِ الْأَوَّلِ أَيْضًا.</div>
+    <div class="exercise"><b>Pemahaman:</b><ol class="arabic"><li>مَا هِوَايَةُ يَاقُوتَ زَارِيْن؟</li><li>أَيْنَ يَدْرُسُ الْخَطَّ الْعَرَبِيَّ؟</li><li>كَيْفَ يَتَدَرَّبُ عَلَى الْخَطِّ؟</li><li>مَتَى حَصَلَ عَلَى الْفَائِزِ الْأَوَّلِ؟</li></ol></div>
+  </div>
+</div>
+
+<div id="panel-tarkib" class="lesson-panel">
+  <div class="dars-section">
+    <h3>🔤 تَقْسِيمُ الْكَلِمَةِ — Jenis Kata</h3>
+    <div class="tablewrap"><table><tr><th>Jenis</th><th>Penjelasan</th><th>Contoh</th></tr><tr><td class="arabic">الِاسْمُ</td><td>Menunjukkan benda atau makna yang tidak berkaitan dengan waktu.</td><td class="arabic">هِوَايَةٌ، قِرَاءَةٌ، الطَّالِبُ، الْمَدْرَسَةُ</td></tr><tr><td class="arabic">الْفِعْلُ</td><td>Menunjukkan kegiatan yang berkaitan dengan waktu.</td><td class="arabic">قَرَأَ، يَقْرَأُ، كَتَبَ، يَكْتُبُ</td></tr><tr><td class="arabic">الْحَرْفُ</td><td>Maknanya terlihat ketika terhubung dengan kata lain.</td><td class="arabic">فِي، مِنْ، إِلَى، عَلَى، وَ، ثُمَّ</td></tr></table></div>
+    <div class="exercise"><b>Latihan:</b> Kelompokkan kata berikut menjadi isim, fi'il, dan huruf: <span class="arabic">الْقِرَاءَةُ، يَكْتُبُ، فِي، طَبْخٌ، لَعِبَ، إِلَى</span>.</div>
+  </div>
+  <div class="dars-section">
+    <h3>أَقْسَامُ الْفِعْلِ — Bentuk Fi'il</h3>
+    <div class="tablewrap"><table><tr><th>Bentuk</th><th>Fungsi</th><th>Contoh</th></tr><tr><td class="arabic">فِعْلٌ مَاضٍ</td><td>Kegiatan yang telah terjadi.</td><td class="arabic">جَلَسَ الطَّالِبُ، كَتَبَتِ الطَّالِبَةُ</td></tr><tr><td class="arabic">فِعْلٌ مُضَارِعٌ</td><td>Kegiatan sekarang atau akan datang; umumnya diawali أ، ن، ي، ت.</td><td class="arabic">يَجْلِسُ، تَكْتُبُ، سَيَذْهَبُ، سَوْفَ تَذْهَبُ</td></tr><tr><td class="arabic">فِعْلُ أَمْرٍ</td><td>Perintah melakukan kegiatan.</td><td class="arabic">اِجْلِسْ، اُكْتُبْ، اِقْرَأْ</td></tr></table></div>
+    <div class="exercise"><b>Latihan:</b> Tentukan bentuk fi'il: <span class="arabic">ذَهَبَ، يَقْرَأُ، اُكْتُبْ، شَاهَدْنَا، سَيُسَافِرُ</span>.</div>
+  </div>
+</div>
+
+<div id="panel-kitabah" class="lesson-panel">
+  <div class="dars-section">
+    <h3>✍️ الْكِتَابَةُ — النَّصُّ السَّرْدِيُّ التَّعَادِي</h3>
+    <p>Teks rekon menceritakan kembali pengalaman yang telah terjadi secara kronologis.</p>
+    <div class="objective-grid"><div class="objective-item"><b>الِاتِّجَاهَاتُ • Orientasi</b>Siapa, di mana, dan kapan peristiwa terjadi.</div><div class="objective-item"><b>الْأَحْدَاثُ • Kejadian</b>Urutan peristiwa dari awal sampai akhir.</div><div class="objective-item"><b>التَّعْلِيقُ • Reorientasi</b>Kesan, penutup, atau pendapat pribadi.</div></div>
+  </div>
+  <div class="dars-section">
+    <h3>Latihan menulis interaktif</h3>
+    <p><b>1. Jawab pertanyaan panduan:</b></p><div class="exercise arabic">مَا اسْمُكَ؟ مَا هِوَايَتُكَ؟ مَتَى وَأَيْنَ تُمَارِسُهَا؟ مَعَ مَنْ؟ كَمْ مَرَّةً فِي الْأُسْبُوعِ؟ وَلِمَاذَا تَخْتَارُهَا؟</div>
+    <p><b>2. Tulis orientasi pengalamanmu:</b></p><div class="writing-lines rtlbox" contenteditable="true" role="textbox" aria-label="Tulis orientasi pengalaman hobi" data-placeholder="مَنْ؟ أَيْنَ؟ مَتَى؟"></div>
+    <p><b>3. Tulis urutan kejadian dan penutup:</b></p><div class="writing-lines rtlbox" contenteditable="true" role="textbox" aria-label="Tulis pengalaman hobi" data-placeholder="الْحَدَثُ الْأَوَّلُ... ثُمَّ... وَفِي النِّهَايَةِ..."></div>
+  </div>
+</div>
+
+<div id="panel-evaluasi" class="lesson-panel">
+  <section class="dars-section unit-quiz">
+    <h3>🏆 Kuis Otomatis Unit 4</h3>
+    <p>Jawab seluruh 10 soal. Setiap jawaban benar bernilai 10; skor maksimal 100.</p>
+    <div class="quiz-progress"><span id="d4Answered">0/10 terjawab</span><div class="bar"><i id="d4QuizBar"></i></div></div>
+    <div id="dars4Eval"></div>
+    <button class="btn primary quiz-submit" onclick="nilaiDars4()">✓ Hitung skor</button>
+    <button class="btn" onclick="resetDars4Quiz()">Ulangi kuis</button>
+    <div id="dars4Score" class="result score-card" aria-live="polite">Skor akan muncul di sini.</div>
+  </section>
+  <div class="dars-section"><h3>🪞 Muhasabah</h3><div class="tablewrap"><table><tr><th>Kegiatan</th><th>Mumtaz</th><th>Jayyid Jiddan</th><th>Jayyid</th></tr>${["أَسْتَمِعُ إِلَى الْعَرْضِ فَأُعِيدُ", "أَنْطِقُ الْمُفْرَدَاتِ الْجَدِيدَةَ وَأَفْهَمُ مَعَانِيَهَا", "أَفْهَمُ التَّرَاكِيبَ وَأَقُومُ بِالتَّدْرِيبَاتِ", "أَتَكَلَّمُ بِالْمَوَادِّ التَّدْرِيبِيَّةِ", "أَقْرَأُ النَّصَّ عَنِ الْهِوَايَةِ", "أَقُومُ بِالتَّدْرِيبَاتِ الْكِتَابِيَّةِ"].map((x) => `<tr><td class="arabic">${x}</td><td>☐</td><td>☐</td><td>☐</td></tr>`).join("")}</table></div></div>
+</div>
+
+<div class="lesson-nav">
+  <button class="btn" onclick="previousChapter(4)">← Bab sebelumnya</button>
+  <div class="navinfo"><span class="progress-chip">Unit 4 • Hobi</span></div>
+  <button class="btn gold" onclick="nextChapter(4)">Bab berikutnya →</button>
+</div>
+<button class="btn primary" onclick="done('X-3')">✓ Tandai Unit 4 selesai +20 XP</button>
+</div>`;
+      }
+
       function openLesson(g, i) {
         let t = topics[g][i];
         if (g === "X" && i === 0) {
@@ -1763,6 +1947,12 @@
           document.getElementById("detailBox").innerHTML = dars3();
           page("detail");
           quizDars3();
+          return;
+        }
+        if (g === "X" && i === 3) {
+          document.getElementById("detailBox").innerHTML = dars4();
+          page("detail");
+          quizDars4();
           return;
         }
         let txt =
@@ -1799,12 +1989,15 @@
         } else if (current === 2) {
           window.openLesson("X", 2);
         } else if (current === 3) {
-          alert("Bab 4 akan disusun setelah Unit 3 ditinjau dan disetujui.");
+          window.openLesson("X", 3);
+        } else if (current === 4) {
+          alert("Bab 5 akan disusun setelah Unit 4 ditinjau dan disetujui.");
         }
       }
       function previousChapter(current) {
         if (current === 2) window.openLesson("X", 0);
         if (current === 3) window.openLesson("X", 1);
+        if (current === 4) window.openLesson("X", 2);
       }
       function quickAnswer(button, correct) {
         const feedback = document.getElementById("quickFeedback");
@@ -1832,6 +2025,15 @@
       }
       function quickAnswer3(button, correct) {
         const feedback = document.getElementById("quickFeedback3");
+        if (!feedback) return;
+        feedback.textContent = correct
+          ? "صَحِيحٌ! Jawaban tepat."
+          : "Belum tepat. Buka kembali kartu kosakata.";
+        if (correct) gain(2);
+        button.blur();
+      }
+      function quickAnswer4(button, correct) {
+        const feedback = document.getElementById("quickFeedback4");
         if (!feedback) return;
         feedback.textContent = correct
           ? "صَحِيحٌ! Jawaban tepat."
@@ -2122,6 +2324,132 @@
       function resetDars3Quiz() {
         quizDars3();
         const result = document.getElementById("dars3Score");
+        if (result) {
+          result.classList.remove("quiz-result-perfect");
+          result.textContent = "Skor akan muncul di sini.";
+        }
+      }
+
+      const DARS4Q = [
+        [
+          "Bahasa Arab untuk ‘hobi’ adalah …",
+          [
+            "الْمِهْنَةُ",
+            "الْهِوَايَةُ",
+            "الْمَدْرَسَةُ",
+            "الرِّحْلَةُ",
+            "الْقِرَاءَةُ",
+          ],
+          1,
+        ],
+        [
+          "Arti فُوتُوغْرَافِيَا adalah …",
+          ["Kaligrafi", "Jurnalistik", "Fotografi", "Menggambar", "Seni peran"],
+          2,
+        ],
+        [
+          "Olahraga تِنِسُ الطَّاوِلَةِ berarti …",
+          [
+            "Sepak bola",
+            "Bola voli",
+            "Bulu tangkis",
+            "Tenis meja",
+            "Bola basket",
+          ],
+          3,
+        ],
+        [
+          "Manakah yang termasuk kalimah isim?",
+          ["قِرَاءَةٌ", "يَقْرَأُ", "اِقْرَأْ", "فِي", "كَتَبَ"],
+          0,
+        ],
+        [
+          "Manakah yang termasuk fi'il mudhari'?",
+          ["كَتَبَ", "يَكْتُبُ", "اُكْتُبْ", "كِتَابٌ", "فِي"],
+          1,
+        ],
+        [
+          "Bentuk fi'il amr dari كَتَبَ adalah …",
+          ["كَاتِبٌ", "يَكْتُبُ", "اُكْتُبْ", "كُتِبَ", "كِتَابَةٌ"],
+          2,
+        ],
+        [
+          "Menurut bacaan pertama, hobi Didin Syihabuddin adalah …",
+          ["Memasak", "Fotografi", "Kaligrafi", "Sepak bola", "Tenis meja"],
+          4,
+        ],
+        [
+          "Didin berlatih tenis meja pada hari …",
+          [
+            "Senin dan Kamis",
+            "Sabtu dan Selasa",
+            "Rabu dan Jumat",
+            "Jumat dan Sabtu",
+            "Selasa dan Kamis",
+          ],
+          1,
+        ],
+        [
+          "Yaqut mengikuti lomba kaligrafi tingkat nasional di …",
+          ["Malang", "Bandung", "Jakarta", "Surabaya", "Mataram"],
+          3,
+        ],
+        [
+          "Urutan struktur teks rekon yang tepat adalah …",
+          [
+            "Orientasi - kejadian - reorientasi",
+            "Pengenalan - klasifikasi - deskripsi",
+            "Tesis - argumen - penegasan",
+            "Masalah - sebab - solusi",
+            "Pembukaan - konflik - resolusi",
+          ],
+          0,
+        ],
+      ];
+      function quizDars4() {
+        const box = document.getElementById("dars4Eval");
+        if (!box) return;
+        const letters = ["a", "b", "c", "d", "e"];
+        box.innerHTML = DARS4Q.map(
+          (q, i) =>
+            `<div class="unit-question" data-d4-question="${i}"><b>${i + 1}. <span class="${/[\u0600-\u06ff]/.test(q[0]) ? "arabic" : ""}">${q[0]}</span></b>${q[1].map((answer, j) => `<label class="eval-option"><input type="radio" name="d4q${i}" value="${j}" onchange="updateDars4Progress()"><b>${letters[j]}.</b> <span class="${/[\u0600-\u06ff]/.test(answer) ? "arabic" : ""}">${answer}</span></label>`).join("")}<p class="answer-key">Jawaban benar: ${letters[q[2]]}. <span class="${/[\u0600-\u06ff]/.test(q[1][q[2]]) ? "arabic" : ""}">${q[1][q[2]]}</span></p></div>`,
+        ).join("");
+        updateDars4Progress();
+      }
+      function updateDars4Progress() {
+        const answered = DARS4Q.filter((q, i) =>
+          document.querySelector(`input[name=d4q${i}]:checked`),
+        ).length;
+        const label = document.getElementById("d4Answered");
+        const bar = document.getElementById("d4QuizBar");
+        if (label) label.textContent = `${answered}/10 terjawab`;
+        if (bar) bar.style.width = `${answered * 10}%`;
+      }
+      function nilaiDars4() {
+        let correct = 0;
+        let answered = 0;
+        DARS4Q.forEach((q, i) => {
+          const selected = document.querySelector(
+            `input[name=d4q${i}]:checked`,
+          );
+          const item = document.querySelector(`[data-d4-question="${i}"]`);
+          if (selected) answered++;
+          const isCorrect = selected && Number(selected.value) === q[2];
+          if (isCorrect) correct++;
+          if (item) {
+            item.classList.remove("correct", "incorrect");
+            item.classList.add(isCorrect ? "correct" : "incorrect");
+          }
+        });
+        const score = correct * 10;
+        const result = document.getElementById("dars4Score");
+        result.classList.toggle("quiz-result-perfect", score >= 80);
+        result.innerHTML = `<h3>Skor: ${score}/100</h3><p>${correct} jawaban benar, ${10 - correct} belum benar. ${answered < 10 ? `Masih ada ${10 - answered} soal yang belum dijawab. ` : ""}${score >= 80 ? "مُمْتَازٌ! Pemahamanmu sangat baik. 👏" : "Pelajari kembali materi yang ditandai, lalu ulangi kuis."}</p>`;
+        if (score >= 80) done("X-3-evaluasi");
+      }
+      function resetDars4Quiz() {
+        quizDars4();
+        const result = document.getElementById("dars4Score");
         if (result) {
           result.classList.remove("quiz-result-perfect");
           result.textContent = "Skor akan muncul di sini.";
