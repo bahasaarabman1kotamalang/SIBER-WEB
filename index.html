@@ -1204,7 +1204,7 @@
         document.getElementById("topicList").innerHTML = topics[g]
           .map(
             (t, i) =>
-              `<div class="card topic"><span class="tag">Kelas ${g}</span><h3 class="arabic">${t[0]}</h3><b>${t[1]}</b><p class="muted">Kosakata • teks • komunikasi • tata bahasa • produksi bahasa</p><button class="btn ${g === "X" && i <= 3 ? "primary" : ""}" onclick="openLesson('${g}',${i})">${g === "X" && i <= 3 ? `Buka Unit ${i + 1}` : "Buka materi"}</button></div>`,
+              `<div class="card topic"><span class="tag">Kelas ${g}</span><h3 class="arabic">${t[0]}</h3><b>${t[1]}</b><p class="muted">Kosakata • teks • komunikasi • tata bahasa • produksi bahasa</p><button class="btn ${g === "X" && i <= 4 ? "primary" : ""}" onclick="openLesson('${g}',${i})">${g === "X" && i <= 4 ? `Buka Unit ${i + 1}` : "Buka materi"}</button></div>`,
           )
           .join("");
       }
@@ -1320,6 +1320,35 @@
         ["طَبَخَ - يَطْبُخُ", "Telah/sedang memasak"],
         ["لَعِبَ - يَلْعَبُ", "Telah/sedang bermain"],
         ["تَدَرَّبَ - يَتَدَرَّبُ", "Telah/sedang berlatih"],
+      ];
+      const vocab5 = [
+        ["الْمِهْنَةُ ج الْمِهَنُ", "Profesi; jamak: berbagai profesi"],
+        ["الْمُدَرِّسُ", "Guru"],
+        ["الْمُحَاضِرُ", "Dosen"],
+        ["مُدِيرُ الْمَدْرَسَةِ", "Kepala sekolah"],
+        ["الْمُوَظَّفُ الْإِدَارِيُّ", "Pegawai administrasi"],
+        ["الْمُهَنْدِسُ", "Insinyur"],
+        ["الطَّبِيبُ", "Dokter"],
+        ["الْمُمَرِّضُ", "Perawat"],
+        ["الصَّيْدَلَانِيُّ", "Apoteker"],
+        ["الْفَلَّاحُ", "Petani"],
+        ["الصَّيَّادُ", "Nelayan"],
+        ["مُرَبِّي الدَّوَاجِنِ", "Peternak unggas"],
+        ["الشُّرْطِيُّ", "Polisi"],
+        ["الْجُنْدِيُّ", "Tentara"],
+        ["الْمُحَامِي", "Pengacara"],
+        ["الصَّحَفِيُّ", "Wartawan"],
+        ["الْمُصَوِّرُ", "Fotografer"],
+        ["التَّاجِرُ", "Pedagang"],
+        ["الطَّبَّاخُ", "Koki"],
+        ["بَارِيْسْتَا", "Barista"],
+        ["الْحَجَّامُ", "Tukang cukur"],
+        ["الرَّسَّامُ", "Pelukis"],
+        ["الْمُخْرِجُ", "Sutradara"],
+        ["الْمُغَنِّي", "Penyanyi"],
+        ["الْخَيَّاطُ", "Penjahit"],
+        ["النَّجَّارُ", "Tukang kayu"],
+        ["الْبَنَّاءُ", "Tukang bangunan"],
       ];
       function speak(x) {
         if ("speechSynthesis" in window) {
@@ -1930,6 +1959,152 @@
 </div>`;
       }
 
+      function dars5() {
+        return `<div class="card">
+<div class="unit-heading">
+  <div>
+    <span class="tag">Kelas X • Bab 5 / Unit 5</span>
+    <h2 class="arabic">الْوَحْدَةُ الْخَامِسَةُ: الْمِهْنَةُ</h2>
+    <h2>Unit 5: Profesi</h2>
+    <p>Kenali beragam profesi dan tempat kerjanya, pahami peran setiap pekerjaan, lalu gunakan jumlah ismiyah dan jumlah fi'liyah untuk berkomunikasi serta menulis teks deskriptif.</p>
+  </div>
+  <div class="unit-number" aria-label="Unit 5">05</div>
+</div>
+
+<div class="lesson-nav">
+  <button class="btn" onclick="previousChapter(5)">← Bab sebelumnya</button>
+  <div class="navinfo">BAB 5 • الْمِهْنَةُ</div>
+  <button class="btn gold" onclick="nextChapter(5)">Bab berikutnya →</button>
+</div>
+
+<div class="lesson-tabs" role="tablist" aria-label="Bagian Unit 5">
+  <button class="active" onclick="lessonTab('tujuan',this)">🎯 Tujuan</button>
+  <button onclick="lessonTab('mufradat',this)">🃏 Mufradat</button>
+  <button onclick="lessonTab('istima',this)">🎧 Istima'</button>
+  <button onclick="lessonTab('hiwar',this)">🗣️ Hiwar</button>
+  <button onclick="lessonTab('qiraah',this)">📖 Qira'ah</button>
+  <button onclick="lessonTab('tarkib',this)">🔤 Tarkib</button>
+  <button onclick="lessonTab('kitabah',this)">✍️ Kitabah</button>
+  <button onclick="lessonTab('evaluasi',this)">🏆 Kuis</button>
+</div>
+
+<div id="panel-tujuan" class="lesson-panel active">
+  <div class="dars-section">
+    <h3>🎯 Tujuan Pembelajaran</h3>
+    <p>Peserta didik mampu memahami, menganalisis, dan menghasilkan teks bertema profesi (<span class="arabic">الْمِهْنَةُ</span>) dengan menggunakan <span class="arabic">الْجُمْلَةُ الِاسْمِيَّةُ وَالْجُمْلَةُ الْفِعْلِيَّةُ</span> secara tepat.</p>
+    <div class="objective-grid">
+      <div class="objective-item"><b>01 • Pelafalan</b>Menirukan mufradat profesi dan tempat kerja dengan lafal yang tepat.</div>
+      <div class="objective-item"><b>02 • Unsur bahasa</b>Membedakan struktur jumlah ismiyah dan jumlah fi'liyah.</div>
+      <div class="objective-item"><b>03 • Menyimak</b>Menemukan informasi tentang jenis profesi, tugas, dan tempat bekerja.</div>
+      <div class="objective-item"><b>04 • Berbicara</b>Bertanya dan menjawab tentang pekerjaan serta cita-cita.</div>
+      <div class="objective-item"><b>05 • Membaca</b>Memahami gagasan umum dan khusus dalam teks deskriptif profesi.</div>
+      <div class="objective-item"><b>06 • Menganalisis</b>Menentukan mubtada-khabar serta fi'il-fa'il-maf'ul bih.</div>
+      <div class="objective-item"><b>07 • Menulis</b>Menyusun kalimat dan paragraf deskriptif mengenai suatu profesi.</div>
+      <div class="objective-item"><b>08 • Sikap</b>Menghargai semua pekerjaan yang halal, amanah, dan bermanfaat.</div>
+    </div>
+  </div>
+  <div class="dars-section">
+    <h3>📚 Apersepsi</h3>
+    <div class="rtlbox">فَمَنْ كَانَ يَرْجُو لِقَاءَ رَبِّهِ فَلْيَعْمَلْ عَمَلًا صَالِحًا وَلَا يُشْرِكْ بِعِبَادَةِ رَبِّهِ أَحَدًا</div>
+    <p><b>QS. Al-Kahf: 110.</b> Pekerjaan yang baik dilaksanakan dengan ilmu, kejujuran, tanggung jawab, dan niat memberi manfaat.</p>
+  </div>
+</div>
+
+<div id="panel-mufradat" class="lesson-panel">
+  <div class="dars-section">
+    <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk membalik arti; tekan suara untuk berlatih pelafalan.</span></div><span class="progress-chip">${vocab5.length} kosakata</span></div>
+    <div class="vocab-grid">${vocab5.map((v) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();speak('${v[0]}')">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+  </div>
+  <div class="dars-section">
+    <h3>Latihan cepat</h3>
+    <div class="mini-task">
+      <div><span class="arabic">الصَّيْدَلَانِيُّ</span> berarti …<br><button class="btn" onclick="quickAnswer5(this,true)">Apoteker</button> <button class="btn" onclick="quickAnswer5(this,false)">Dokter</button></div>
+      <div><span class="arabic">الْمُحَامِي</span> berarti …<br><button class="btn" onclick="quickAnswer5(this,false)">Wartawan</button> <button class="btn" onclick="quickAnswer5(this,true)">Pengacara</button></div>
+      <div><span class="arabic">مُرَبِّي الدَّوَاجِنِ</span> berarti …<br><button class="btn" onclick="quickAnswer5(this,true)">Peternak unggas</button> <button class="btn" onclick="quickAnswer5(this,false)">Nelayan</button></div>
+    </div>
+    <div id="quickFeedback5" class="choice-feedback" aria-live="polite"></div>
+  </div>
+</div>
+
+<div id="panel-istima" class="lesson-panel">
+  <div class="dars-section">
+    <h3>🎧 الِاسْتِمَاعُ — Istima'</h3>
+    <p>Dengarkan uraian singkat tentang profesi di bidang kesehatan, lalu jawab pertanyaannya.</p>
+    <div class="dialogue rtlbox" id="d5Listen">الطَّبِيبُ يُعَالِجُ الْمَرْضَى فِي الْمُسْتَشْفَى، وَالْمُمَرِّضُ يُسَاعِدُ الطَّبِيبَ، وَالصَّيْدَلَانِيُّ يَعْمَلُ فِي الصَّيْدَلِيَّةِ كُلَّ يَوْمٍ. كُلُّهُمْ يَعْمَلُونَ فِي مَجَالِ الصِّحَّةِ، وَهُمْ نَشِيطُونَ فِي أَعْمَالِهِمْ.</div>
+    <button class="btn primary" onclick="speak(document.getElementById('d5Listen').innerText)">▶ Putar Istima'</button>
+    <div class="exercise"><b>Periksa pemahamanmu</b><p class="arabic">أَيْنَ يَعْمَلُ الصَّيْدَلَانِيُّ؟</p><input id="d5ist1" placeholder="Tulis jawaban"><button class="btn" onclick="cekFlexible('d5ist1',['في الصيدلية','الصيدلية'],'d5istfb')">Cek jawaban</button><div id="d5istfb" class="feedback" aria-live="polite"></div></div>
+  </div>
+</div>
+
+<div id="panel-hiwar" class="lesson-panel">
+  <div class="dars-section">
+    <h3>🗣️ الْحِوَارُ — Setiap Profesi Berperan</h3>
+    <div class="dialogue rtlbox"><b>عَلِيٌّ:</b> السَّلَامُ عَلَيْكُمْ يَا إِخْوَتِي، كَيْفَ حَالُكُمْ الْيَوْمَ؟<br><b>أَحْمَدُ:</b> وَعَلَيْكُمُ السَّلَامُ، قَضَيْتُ الصَّبَاحَ فِي الْبَحْرِ وَأَحْضَرْتُ صَيْدًا وَفِيرًا.<br><b>سَعِيدٌ:</b> أَمَّا أَنَا فَقَدْ كُنْتُ مَشْغُولًا بِرِعَايَةِ الدَّوَاجِنِ.<br><b>خَالِدٌ:</b> أَقُومُ بِدَوْرِي فِي الْحِفَاظِ عَلَى الْأَمْنِ وَالنِّظَامِ فِي الْمَدِينَةِ.<br><b>يُوسُفُ:</b> أَعْمَلُ عَلَى حِمَايَةِ الْوَطَنِ وَالدِّفَاعِ عَنْ شَعْبِنَا.<br><b>سَامِي:</b> مِهْنَتِي مُحَامٍ، أَطْلُبُ الْعَدَالَةَ وَأُدَافِعُ عَنْ حُقُوقِ النَّاسِ.<br><b>عَلِيٌّ:</b> كُلُّ مِهْنَةٍ لَهَا دَوْرُهَا الْمُهِمُّ فِي الْمُجْتَمَعِ.<br><b>أَحْمَدُ:</b> بَارَكَ اللهُ فِي جُهُودِنَا جَمِيعًا، فَلْنَعْمَلْ بِأَمَانَةٍ وَإِخْلَاصٍ.<br><b>الْجَمِيعُ:</b> آمِينَ يَا رَبَّ الْعَالَمِينَ.</div>
+    <button class="btn" onclick="speak(this.previousElementSibling.innerText)">🔊 Dengarkan hiwar</button>
+    <div class="exercise"><b>Praktik berpasangan:</b> Ganti profesi dalam pola <span class="arabic">مَا مِهْنَتُكَ؟ أَيْنَ تَعْمَلُ؟ مَاذَا تَعْمَلُ؟ هَلْ تُحِبُّ مِهْنَتَكَ؟</span></div>
+  </div>
+</div>
+
+<div id="panel-qiraah" class="lesson-panel">
+  <div class="dars-section">
+    <div class="reading-title"><h3>📖 الْقِرَاءَةُ — الْمِهْنَةُ</h3><button class="btn" onclick="speak(document.getElementById('d5read').innerText)">🔊</button></div>
+    <div class="rtlbox" id="d5read">هُنَاكَ أَنْوَاعٌ كَثِيرَةٌ مِنَ الْمِهَنِ، مِنْهَا الْمُدَرِّسُ وَالْمُحَاضِرُ وَمُدِيرُ الْمَدْرَسَةِ وَالْمُوَظَّفُ الْإِدَارِيُّ وَالْمُهَنْدِسُ وَالطَّبِيبُ وَالْمُمَرِّضُ وَالصَّيْدَلَانِيُّ وَغَيْرُ ذَلِكَ. الْمُدَرِّسُ يُعَلِّمُ الْعُلُومَ وَالْمَعَارِفَ فِي الْمَدْرَسَةِ، وَالْمُحَاضِرُ يُعَلِّمُ فِي الْجَامِعَةِ. الطَّبِيبُ يُعَالِجُ الْمَرْضَى، وَالْمُمَرِّضُ يُسَاعِدُ الطَّبِيبَ فِي الْمُسْتَشْفَى. ذَاتَ يَوْمٍ سَأَلْتُ أَصْدِقَائِي عَنْ آمَالِهِمْ؛ أَرَادَتْ خَدِيجَةُ أَنْ تَكُونَ صَحَفِيَّةً مَشْهُورَةً، وَأَرَادَ مَرْوَانُ أَنْ يَكُونَ مُصَوِّرًا مَعْرُوفًا، وَأَرَادَ عِرْفَانُ أَنْ يَكُونَ تَاجِرًا نَاجِحًا. وَهُنَاكَ مِهَنٌ أُخْرَى، مِنْهَا الطَّبَّاخُ وَبَارِيْسْتَا وَالْحَجَّامُ وَالرَّسَّامُ وَالْمُخْرِجُ وَالْمُغَنِّي وَالْفَلَّاحُ وَالصَّيَّادُ وَالْخَيَّاطُ وَالنَّجَّارُ وَالْبَنَّاءُ. عَلَى النَّاسِ أَنْ يَعْمَلُوا بِجُهْدٍ وَنَشَاطٍ وَأَمَانَةٍ وَإِخْلَاصٍ.</div>
+    <div class="exercise"><b>Pemahaman bacaan:</b><ol class="arabic"><li>مَاذَا يَفْعَلُ الْمُدَرِّسُ؟</li><li>أَيْنَ يَعْمَلُ الطَّبِيبُ؟</li><li>مَاذَا أَرَادَ مَرْوَانُ أَنْ يَكُونَ؟</li><li>لِمَاذَا يَجِبُ عَلَى النَّاسِ أَنْ يَعْمَلُوا بِأَمَانَةٍ وَإِخْلَاصٍ؟</li></ol></div>
+  </div>
+  <div class="dars-section">
+    <h3>Struktur Teks Deskriptif</h3>
+    <div class="objective-grid"><div class="objective-item"><b>الْوَصْفُ الْعَامُّ</b>Definisi, identifikasi, atau klasifikasi umum objek.</div><div class="objective-item"><b>الْوَصْفُ الْخَاصُّ</b>Rincian ciri, tugas, tempat, dan sifat khusus objek.</div></div>
+  </div>
+</div>
+
+<div id="panel-tarkib" class="lesson-panel">
+  <div class="dars-section">
+    <h3>🔤 الْجُمْلَةُ الِاسْمِيَّةُ — Jumlah Ismiyah</h3>
+    <p>Kalimat yang diawali isim dan umumnya terdiri atas <b>mubtada</b> + <b>khabar</b>. Khabar dapat berupa kata, jumlah fi'liyah, atau syibh jumlah.</p>
+    <div class="tablewrap"><table><tr><th>Contoh</th><th>Mubtada</th><th>Khabar</th></tr><tr><td class="arabic">الطَّالِبُ نَشِيطٌ</td><td class="arabic">الطَّالِبُ</td><td class="arabic">نَشِيطٌ</td></tr><tr><td class="arabic">الْمُدَرِّسُ يُعَلِّمُ الطُّلَّابَ</td><td class="arabic">الْمُدَرِّسُ</td><td class="arabic">يُعَلِّمُ الطُّلَّابَ</td></tr><tr><td class="arabic">الطَّبِيبَانِ فِي الْمُسْتَشْفَى</td><td class="arabic">الطَّبِيبَانِ</td><td class="arabic">فِي الْمُسْتَشْفَى</td></tr></table></div>
+    <p class="muted">Jika khabar berupa syibh jumlah, susunannya dapat dibalik: <span class="arabic">فِي الْمُسْتَشْفَى طَبِيبٌ</span>.</p>
+  </div>
+  <div class="dars-section">
+    <h3>الْجُمْلَةُ الْفِعْلِيَّةُ — Jumlah Fi'liyah</h3>
+    <p>Kalimat yang diawali fi'il; pola dasarnya <b>fi'il</b> + <b>fa'il</b> + <b>maf'ul bih</b> (jika diperlukan).</p>
+    <div class="tablewrap"><table><tr><th>Contoh</th><th>Fi'il</th><th>Fa'il</th><th>Maf'ul bih</th></tr><tr><td class="arabic">تَقْرَأُ فَاطِمَةُ الْقُرْآنَ</td><td class="arabic">تَقْرَأُ</td><td class="arabic">فَاطِمَةُ</td><td class="arabic">الْقُرْآنَ</td></tr><tr><td class="arabic">كَتَبَ مَحْمُودٌ الدَّرْسَ</td><td class="arabic">كَتَبَ</td><td class="arabic">مَحْمُودٌ</td><td class="arabic">الدَّرْسَ</td></tr><tr><td class="arabic">يُنَظِّمُ الشُّرْطِيُّ الْمُرُورَ</td><td class="arabic">يُنَظِّمُ</td><td class="arabic">الشُّرْطِيُّ</td><td class="arabic">الْمُرُورَ</td></tr></table></div>
+    <div class="exercise"><b>Latihan:</b> Tentukan jenis kalimat dan unsur-unsurnya: <span class="arabic">التَّاجِرُ يَبِيعُ الْبَضَائِعَ فِي السُّوقِ • يُسَاعِدُ الْمُمَرِّضُ الْمَرِيضَ • الْجُنْدِيُّ ذَاهِبٌ إِلَى الْمَعْرَكَةِ</span>.</div>
+  </div>
+</div>
+
+<div id="panel-kitabah" class="lesson-panel">
+  <div class="dars-section">
+    <h3>✍️ الْكِتَابَةُ — Teks Deskriptif Profesi</h3>
+    <p>Susun teks dengan deskripsi umum, lalu lanjutkan dengan deskripsi khusus mengenai tempat kerja, tugas, alat, dan sifat yang diperlukan.</p>
+    <div class="exercise"><b>Susun menjadi kalimat:</b><div class="arabic">الْمُدَرِّسُ – مِنَ الْمِهَنِ – مِهْنَةُ – التَّعْلِيمِ – وَالْمُحَاضِرُ</div><div class="arabic">الطَّبَّاخُ – فِي الْمَطْعَمِ – كُلَّ يَوْمٍ – يَطْبُخُ – الطَّعَامَ</div></div>
+    <p><b>Deskripsikan profesi pilihanmu (5–7 kalimat):</b></p><div class="writing-lines rtlbox" contenteditable="true" role="textbox" aria-label="Tulis deskripsi profesi" data-placeholder="هَذِهِ مِهْنَةُ... يَعْمَلُ فِي... وَمِنْ وَاجِبَاتِهِ..."></div>
+    <p><b>Ceritakan pekerjaan ayah, ibu, atau anggota keluargamu:</b></p><div class="writing-lines rtlbox" contenteditable="true" role="textbox" aria-label="Tulis pengalaman keluarga" data-placeholder="مِهْنَةُ أَبِي / أُمِّي هِيَ..."></div>
+  </div>
+</div>
+
+<div id="panel-evaluasi" class="lesson-panel">
+  <section class="dars-section unit-quiz">
+    <h3>🏆 Kuis Otomatis Unit 5</h3>
+    <p>Jawab seluruh 10 soal. Setiap jawaban benar bernilai 10; skor maksimal 100.</p>
+    <div class="quiz-progress"><span id="d5Answered">0/10 terjawab</span><div class="bar"><i id="d5QuizBar"></i></div></div>
+    <div id="dars5Eval"></div>
+    <button class="btn primary quiz-submit" onclick="nilaiDars5()">✓ Hitung skor</button>
+    <button class="btn" onclick="resetDars5Quiz()">Ulangi kuis</button>
+    <div id="dars5Score" class="result score-card" aria-live="polite">Skor akan muncul di sini.</div>
+  </section>
+  <div class="dars-section"><h3>🪞 Muhasabah</h3><div class="tablewrap"><table><tr><th>Kegiatan</th><th>Mumtaz</th><th>Jayyid Jiddan</th><th>Jayyid</th></tr>${["أَسْتَمِعُ إِلَى الْعَرْضِ وَأَفْهَمُهُ", "أَنْطِقُ الْمُفْرَدَاتِ الْجَدِيدَةَ وَأَفْهَمُ مَعَانِيَهَا", "أَفْهَمُ التَّرَاكِيبَ وَأَقُومُ بِالتَّدْرِيبَاتِ", "أَتَكَلَّمُ عَنِ الْمِهْنَةِ", "أَقْرَأُ النَّصَّ عَنِ الْمِهْنَةِ", "أَقُومُ بِالتَّدْرِيبَاتِ الْكِتَابِيَّةِ"].map((x) => `<tr><td class="arabic">${x}</td><td>☐</td><td>☐</td><td>☐</td></tr>`).join("")}</table></div></div>
+  <div class="dars-section"><h3>💡 Hikmah</h3><div class="rtlbox" style="text-align:center;background:#eef6e8;border-radius:22px;padding:28px"><b>سُئِلَ رَسُولُ اللهِ ﷺ: أَيُّ الْكَسْبِ أَطْيَبُ؟ فَقَالَ: عَمَلُ الرَّجُلِ بِيَدِهِ وَكُلُّ بَيْعٍ مَبْرُورٍ.</b><br><span style="font-size:16px">Sebaik-baik penghasilan berasal dari kerja tangan sendiri dan jual beli yang baik.</span></div></div>
+</div>
+
+<div class="lesson-nav">
+  <button class="btn" onclick="previousChapter(5)">← Bab sebelumnya</button>
+  <div class="navinfo"><span class="progress-chip">Unit 5 • Profesi</span></div>
+  <button class="btn gold" onclick="nextChapter(5)">Bab berikutnya →</button>
+</div>
+<button class="btn primary" onclick="done('X-4')">✓ Tandai Unit 5 selesai +20 XP</button>
+</div>`;
+      }
+
       function openLesson(g, i) {
         let t = topics[g][i];
         if (g === "X" && i === 0) {
@@ -1953,6 +2128,12 @@
           document.getElementById("detailBox").innerHTML = dars4();
           page("detail");
           quizDars4();
+          return;
+        }
+        if (g === "X" && i === 4) {
+          document.getElementById("detailBox").innerHTML = dars5();
+          page("detail");
+          quizDars5();
           return;
         }
         let txt =
@@ -1991,13 +2172,16 @@
         } else if (current === 3) {
           window.openLesson("X", 3);
         } else if (current === 4) {
-          alert("Bab 5 akan disusun setelah Unit 4 ditinjau dan disetujui.");
+          window.openLesson("X", 4);
+        } else if (current === 5) {
+          alert("Bab 6 akan disusun setelah Unit 5 ditinjau dan disetujui.");
         }
       }
       function previousChapter(current) {
         if (current === 2) window.openLesson("X", 0);
         if (current === 3) window.openLesson("X", 1);
         if (current === 4) window.openLesson("X", 2);
+        if (current === 5) window.openLesson("X", 3);
       }
       function quickAnswer(button, correct) {
         const feedback = document.getElementById("quickFeedback");
@@ -2034,6 +2218,15 @@
       }
       function quickAnswer4(button, correct) {
         const feedback = document.getElementById("quickFeedback4");
+        if (!feedback) return;
+        feedback.textContent = correct
+          ? "صَحِيحٌ! Jawaban tepat."
+          : "Belum tepat. Buka kembali kartu kosakata.";
+        if (correct) gain(2);
+        button.blur();
+      }
+      function quickAnswer5(button, correct) {
+        const feedback = document.getElementById("quickFeedback5");
         if (!feedback) return;
         feedback.textContent = correct
           ? "صَحِيحٌ! Jawaban tepat."
@@ -2450,6 +2643,150 @@
       function resetDars4Quiz() {
         quizDars4();
         const result = document.getElementById("dars4Score");
+        if (result) {
+          result.classList.remove("quiz-result-perfect");
+          result.textContent = "Skor akan muncul di sini.";
+        }
+      }
+
+      const DARS5Q = [
+        [
+          "Bahasa Arab untuk ‘profesi’ adalah …",
+          [
+            "الْهِوَايَةُ",
+            "الْمِهْنَةُ",
+            "الْمَدْرَسَةُ",
+            "الصِّحَّةُ",
+            "الْمَعْرِفَةُ",
+          ],
+          1,
+        ],
+        [
+          "Profesi الصَّيْدَلَانِيُّ berarti …",
+          ["Dokter", "Perawat", "Apoteker", "Insinyur", "Wartawan"],
+          2,
+        ],
+        [
+          "Siapakah yang bekerja menangkap ikan?",
+          [
+            "الْفَلَّاحُ",
+            "الصَّيَّادُ",
+            "النَّجَّارُ",
+            "الْخَيَّاطُ",
+            "الْبَنَّاءُ",
+          ],
+          1,
+        ],
+        [
+          "Tempat kerja utama الطَّبِيبُ dalam bacaan adalah …",
+          [
+            "الْمَدْرَسَةُ",
+            "الْمَزْرَعَةُ",
+            "السُّوقُ",
+            "الْمُسْتَشْفَى",
+            "الْمَطْعَمُ",
+          ],
+          3,
+        ],
+        [
+          "Kalimat manakah yang merupakan jumlah ismiyah?",
+          [
+            "كَتَبَ مَحْمُودٌ الدَّرْسَ",
+            "يُنَظِّمُ الشُّرْطِيُّ الْمُرُورَ",
+            "الطَّالِبُ نَشِيطٌ",
+            "تَقْرَأُ فَاطِمَةُ الْقُرْآنَ",
+            "ذَهَبَ الْجُنْدِيُّ",
+          ],
+          2,
+        ],
+        [
+          "Mubtada pada kalimat الْمُدَرِّسُ يُعَلِّمُ الطُّلَّابَ adalah …",
+          [
+            "الْمُدَرِّسُ",
+            "يُعَلِّمُ",
+            "الطُّلَّابَ",
+            "الْمَدْرَسَةُ",
+            "التَّعْلِيمُ",
+          ],
+          0,
+        ],
+        [
+          "Fa'il pada kalimat يُنَظِّمُ الشُّرْطِيُّ الْمُرُورَ adalah …",
+          ["يُنَظِّمُ", "الشُّرْطِيُّ", "الْمُرُورَ", "فِي", "الطَّرِيقُ"],
+          1,
+        ],
+        [
+          "Menurut bacaan, Marwan bercita-cita menjadi …",
+          ["Pedagang", "Wartawan", "Fotografer", "Koki", "Dosen"],
+          2,
+        ],
+        [
+          "Bagian teks deskriptif yang memuat rincian tugas dan tempat kerja disebut …",
+          [
+            "الْوَصْفُ الْعَامُّ",
+            "الْوَصْفُ الْخَاصُّ",
+            "الِاتِّجَاهَاتُ",
+            "الْأَحْدَاثُ",
+            "التَّعْلِيقُ",
+          ],
+          1,
+        ],
+        [
+          "Sikap kerja yang ditekankan dalam bacaan adalah …",
+          [
+            "Cepat dan terkenal",
+            "Santai dan bebas",
+            "Amanah dan ikhlas",
+            "Diam dan sendiri",
+            "Kaya dan berkuasa",
+          ],
+          2,
+        ],
+      ];
+      function quizDars5() {
+        const box = document.getElementById("dars5Eval");
+        if (!box) return;
+        const letters = ["a", "b", "c", "d", "e"];
+        box.innerHTML = DARS5Q.map(
+          (q, i) =>
+            `<div class="unit-question" data-d5-question="${i}"><b>${i + 1}. <span class="${/[\u0600-\u06ff]/.test(q[0]) ? "arabic" : ""}">${q[0]}</span></b>${q[1].map((answer, j) => `<label class="eval-option"><input type="radio" name="d5q${i}" value="${j}" onchange="updateDars5Progress()"><b>${letters[j]}.</b> <span class="${/[\u0600-\u06ff]/.test(answer) ? "arabic" : ""}">${answer}</span></label>`).join("")}<p class="answer-key">Jawaban benar: ${letters[q[2]]}. <span class="${/[\u0600-\u06ff]/.test(q[1][q[2]]) ? "arabic" : ""}">${q[1][q[2]]}</span></p></div>`,
+        ).join("");
+        updateDars5Progress();
+      }
+      function updateDars5Progress() {
+        const answered = DARS5Q.filter((q, i) =>
+          document.querySelector(`input[name=d5q${i}]:checked`),
+        ).length;
+        const label = document.getElementById("d5Answered");
+        const bar = document.getElementById("d5QuizBar");
+        if (label) label.textContent = `${answered}/10 terjawab`;
+        if (bar) bar.style.width = `${answered * 10}%`;
+      }
+      function nilaiDars5() {
+        let correct = 0;
+        let answered = 0;
+        DARS5Q.forEach((q, i) => {
+          const selected = document.querySelector(
+            `input[name=d5q${i}]:checked`,
+          );
+          const item = document.querySelector(`[data-d5-question="${i}"]`);
+          if (selected) answered++;
+          const isCorrect = selected && Number(selected.value) === q[2];
+          if (isCorrect) correct++;
+          if (item) {
+            item.classList.remove("correct", "incorrect");
+            item.classList.add(isCorrect ? "correct" : "incorrect");
+          }
+        });
+        const score = correct * 10;
+        const result = document.getElementById("dars5Score");
+        result.classList.toggle("quiz-result-perfect", score >= 80);
+        result.innerHTML = `<h3>Skor: ${score}/100</h3><p>${correct} jawaban benar, ${10 - correct} belum benar. ${answered < 10 ? `Masih ada ${10 - answered} soal yang belum dijawab. ` : ""}${score >= 80 ? "مُمْتَازٌ! Pemahamanmu sangat baik. 👏" : "Pelajari kembali materi yang ditandai, lalu ulangi kuis."}</p>`;
+        if (score >= 80) done("X-4-evaluasi");
+      }
+      function resetDars5Quiz() {
+        quizDars5();
+        const result = document.getElementById("dars5Score");
         if (result) {
           result.classList.remove("quiz-result-perfect");
           result.textContent = "Skor akan muncul di sini.";
