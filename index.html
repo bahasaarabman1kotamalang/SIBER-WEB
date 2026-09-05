@@ -1198,7 +1198,7 @@
         document.getElementById("topicList").innerHTML = topics[g]
           .map(
             (t, i) =>
-              `<div class="card topic"><span class="tag">Kelas ${g}</span><h3 class="arabic">${t[0]}</h3><b>${t[1]}</b><p class="muted">Kosakata • teks • komunikasi • tata bahasa • produksi bahasa</p><button class="btn ${(g === "X" && i <= 5) || (g === "XI" && i <= 3) || (g === "XII" && i <= 1) ? "primary" : ""}" onclick="openLesson('${g}',${i})">${(g === "X" && i <= 5) || (g === "XI" && i <= 3) || (g === "XII" && i <= 1) ? `Buka Unit ${i + 1}` : "Buka materi"}</button></div>`,
+              `<div class="card topic"><span class="tag">Kelas ${g}</span>${g === "XII" && i === 2 ? '<span class="tag" style="margin-left:6px;background:#dcfce7;color:#166534">Materi lengkap • Baru</span>' : ""}<h3 class="arabic">${t[0]}</h3><b>${t[1]}</b><p class="muted">Kosakata • teks • komunikasi • tata bahasa • produksi bahasa</p><button class="btn ${(g === "X" && i <= 5) || (g === "XI" && i <= 3) || (g === "XII" && i <= 2) ? "primary" : ""}" onclick="openLesson('${g}',${i})">${(g === "X" && i <= 5) || (g === "XI" && i <= 3) || (g === "XII" && i <= 2) ? `Buka Unit ${i + 1}` : "Buka materi"}</button></div>`,
           )
           .join("");
       }
@@ -1426,6 +1426,32 @@
         ["إِخْلَاصٌ", "Keikhlasan"],
         ["عِلْمٌ وَمَعْرِفَةٌ", "Ilmu dan pengetahuan"],
         ["أُسِّسَ", "Telah didirikan"],
+      ];
+      const vocab12Unit3 = [
+        ["الدِّرَاسَةُ فِي الْجَامِعَةِ", "Studi di universitas"],
+        ["جَامِعَةٌ", "Universitas"],
+        ["كُلِّيَّةٌ", "Fakultas"],
+        ["قِسْمٌ", "Jurusan / departemen"],
+        ["تَخَصُّصٌ", "Program studi / spesialisasi"],
+        ["مُحَاضِرٌ", "Dosen"],
+        ["مُحَاضَرَةٌ", "Perkuliahan"],
+        ["مُنَاقَشَةٌ", "Diskusi"],
+        ["تَجْرِبَةٌ", "Praktikum / eksperimen"],
+        ["رُسُومٌ دِرَاسِيَّةٌ", "Biaya kuliah"],
+        ["رِسَالَةٌ جَامِعِيَّةٌ", "Skripsi / tesis"],
+        ["مُدِيرُ الْجَامِعَةِ", "Rektor"],
+        ["عَمِيدُ الْكُلِّيَّةِ", "Dekan"],
+        ["رَئِيسُ الْبَرْنَامَجِ الدِّرَاسِيِّ", "Ketua program studi"],
+        ["اخْتِبَارٌ", "Tes / ujian"],
+        ["امْتِحَانٌ", "Ujian"],
+        ["حَفْلَةُ التَّخَرُّجِ", "Upacara wisuda"],
+        ["شَهَادَةٌ", "Ijazah / sertifikat"],
+        ["التَّسْجِيلُ", "Pendaftaran"],
+        ["شُرُوطُ الْقَبُولِ", "Persyaratan penerimaan"],
+        ["الْمَوْقِعُ الْإِلِكْتُرُونِيُّ", "Situs web"],
+        ["الْوَثَائِقُ الْمَطْلُوبَةُ", "Dokumen yang diperlukan"],
+        ["اخْتِبَارُ الْقَبُولِ", "Tes masuk"],
+        ["مُقَابَلَةٌ شَخْصِيَّةٌ", "Wawancara"],
       ];
       const vocab11Unit1 = [
         ["السِّيَاحَةُ", "Pariwisata"],
@@ -2732,6 +2758,141 @@
 </div>`;
       }
 
+      function dars12Unit3() {
+        return `<div class="card lesson-shell">
+<div class="lesson-hero">
+  <div>
+    <span class="tag">Kelas XII • Bab 3 / Unit Terakhir</span>
+    <h2 class="arabic">الْوَحْدَةُ الثَّالِثَةُ: الدِّرَاسَةُ فِي الْجَامِعَةِ</h2>
+    <h2>Studi di Perguruan Tinggi</h2>
+    <p>Mempelajari kehidupan kampus dan langkah pendaftaran universitas melalui teks prosedur, dengan fokus <span class="arabic">الْفِعْلُ الْمُضَارِعُ الْمَرْفُوعُ وَالْمَنْصُوبُ وَالْمَجْزُومُ</span>.</p>
+  </div>
+  <div class="unit-number" aria-label="Unit 3 Kelas XII">03</div>
+</div>
+
+<div class="lesson-nav top-nav">
+  <button class="btn" onclick="previousChapter12(3)">← Bab sebelumnya</button>
+  <div class="navinfo"><span class="progress-chip">Kelas XII • Unit 3 • Unit Terakhir</span></div>
+</div>
+
+<div class="lesson-tabs" role="tablist" aria-label="Bagian Kelas XII Unit 3">
+  <button class="active" onclick="lessonTab('tujuan',this)">🎯 Tujuan</button>
+  <button onclick="lessonTab('mufradat',this)">🃏 Mufradat</button>
+  <button onclick="lessonTab('istima',this)">🎧 Istima'</button>
+  <button onclick="lessonTab('hiwar',this)">💬 Hiwar</button>
+  <button onclick="lessonTab('qiraah',this)">📖 Qira'ah</button>
+  <button onclick="lessonTab('tarkib',this)">🧩 Tarkib</button>
+  <button onclick="lessonTab('kitabah',this)">✍️ Kitabah</button>
+  <button onclick="lessonTab('kuis',this)">🏆 Kuis</button>
+</div>
+
+<div id="panel-tujuan" class="lesson-panel active">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>🎯 Tujuan Pembelajaran</h3><span class="muted">Capaian pembelajaran sesuai materi Unit 3.</span></div><span class="progress-chip">4 tujuan</span></div>
+    <div class="goal-grid">
+      <article class="goal-card"><span>01</span><h4>Komponen Bahasa</h4><p>Mengidentifikasi, memahami, dan menganalisis kosakata serta isi wacana prosedur bertema studi di perguruan tinggi.</p></article>
+      <article class="goal-card"><span>02</span><h4>Istimā’ dan Kalām</h4><p>Menemukan informasi tersurat dan tersirat dari dialog serta mempraktikkannya secara komunikatif.</p></article>
+      <article class="goal-card"><span>03</span><h4>Qirā’ah</h4><p>Membaca, menerjemahkan, dan menganalisis teks prosedur visual atau multimodal tentang pendaftaran universitas.</p></article>
+      <article class="goal-card"><span>04</span><h4>Produktif</h4><p>Menyusun dan mempresentasikan paragraf prosedur dengan fi‘il muḍāri‘ marfū‘, manṣūb, dan majzūm.</p></article>
+    </div>
+    <div class="rtlbox" style="margin-top:18px"><b>حُبُّ الْعِلْمِ</b><br>بِالْعِلْمِ يَبْنِي الْإِنْسَانُ مُسْتَقْبَلَهُ، وَبِالِاجْتِهَادِ يَصِلُ إِلَى هَدَفِهِ.<br><small>Niat, ketekunan, pemanfaatan teknologi, dan belajar sepanjang hayat menjadi landasan cinta ilmu.</small></div>
+  </section>
+</div>
+
+<div id="panel-mufradat" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>🃏 الْمُفْرَدَاتُ</h3><span class="muted">Ketuk kartu untuk membuka arti dan tekan suara untuk latihan pelafalan.</span></div><span class="progress-chip">${vocab12Unit3.length} kosakata</span></div>
+    <div class="vocab-grid">${vocab12Unit3.map((v) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();speak('${v[0]}')">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="mini-task"><div><h4 class="arabic">تَدْرِيبٌ سَرِيعٌ</h4><p class="arabic">مَنْ يَرْأَسُ الْكُلِّيَّةَ؟</p><button class="btn" onclick="quickAnswer12Unit3(this,false)">مُدِيرُ الْجَامِعَةِ</button> <button class="btn" onclick="quickAnswer12Unit3(this,true)">عَمِيدُ الْكُلِّيَّةِ</button> <button class="btn" onclick="quickAnswer12Unit3(this,false)">الطَّالِبُ</button><p id="quickFeedback12Unit3" class="feedback arabic" aria-live="polite"></p></div></div>
+  </section>
+</div>
+
+<div id="panel-istima" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ — خُطُوَاتُ الِالْتِحَاقِ</h3><span class="muted">Dengarkan dialog tanpa membaca, jawab pertanyaan, lalu buka transkrip.</span></div><button class="btn primary" onclick="speak(document.getElementById('d12u3ListenText').innerText)">▶ Putar audio</button></div>
+    <div class="audio-script rtlbox"><button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan transkrip</button><div id="d12u3ListenText" hidden><p><b>عَلِيٌّ:</b> عَفْوًا يَا أُسْتَاذُ، أَنَا لَمْ أَعْرِفْ خُطُوَاتِ الِالْتِحَاقِ بِالْجَامِعَةِ.</p><p><b>الْمُعَلِّمُ:</b> أَوَّلًا، يَنْبَغِي لَكَ أَنْ تَبْحَثَ عَنِ الْمَعْلُومَاتِ عَنِ الْجَامِعَةِ يَا عَلِيُّ.</p><p><b>عَلِيٌّ:</b> وَمَاذَا بَعْدَ ذَلِكَ يَا أُسْتَاذُ؟</p><p><b>الْمُعَلِّمُ:</b> بَعْدَ ذَلِكَ، يَجِبُ عَلَيْكَ أَنْ تُلَبِّيَ جَمِيعَ الشُّرُوطِ الْمَطْلُوبَةِ.</p><p><b>عَلِيٌّ:</b> هَلْ يَجِبُ عَلَيَّ أَنْ أُسَجِّلَ عَلَى الْمَوْقِعِ الْإِلِكْتُرُونِيِّ؟</p><p><b>الْمُعَلِّمُ:</b> نَعَمْ، صَحِيحٌ يَا عَلِيُّ.</p></div></div>
+    <div class="mini-task"><div><h4 class="arabic">فَهْمُ الْمَسْمُوعِ</h4><p class="arabic">مَاذَا يَفْعَلُ عَلِيٌّ أَوَّلًا؟</p><input id="d12u3Listen" class="answer-input arabic" placeholder="اكتب الجواب"><button class="btn primary" onclick="cekFlexible('d12u3Listen',['يبحث عن المعلومات','يَبْحَثُ عَنِ الْمَعْلُومَاتِ','أن يبحث عن المعلومات'],'d12u3ListenFb')">Periksa</button><p id="d12u3ListenFb" class="feedback"></p></div><div><h4 class="arabic">اِسْتَمِعْ وَرَتِّبْ</h4><p class="arabic">الْبَحْثُ عَنِ الْمَعْلُومَاتِ — تَلْبِيَةُ الشُّرُوطِ — التَّسْجِيلُ فِي الْمَوْقِعِ</p></div></div>
+  </section>
+</div>
+
+<div id="panel-hiwar" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>💬 الْحِوَارُ — اخْتِيَارُ الْجَامِعَةِ وَالتَّخَصُّصِ</h3><span class="muted">Baca bergantian sebagai Juwairiyah, Budi, Abrar, dan Salih.</span></div><button class="btn" onclick="speak(document.getElementById('d12u3Hiwar').innerText)">🔊 Dengarkan</button></div>
+    <div id="d12u3Hiwar" class="dialogue">
+      <div class="speech"><b>جُوَيْرِيَةُ</b><p class="arabic">السَّلَامُ عَلَيْكُمْ، هَلْ أَنْتُمْ مُسْتَعِدُّونَ لِلِالْتِحَاقِ بِالْجَامِعَةِ يَا أَيُّهَا الْأَصْحَابُ؟</p></div>
+      <div class="speech alt"><b>بُودِي</b><p class="arabic">وَعَلَيْكُمُ السَّلَامُ. نَعَمْ، إِنْ شَاءَ اللهُ. أَنَا مُسْتَعِدٌّ، وَأُرِيدُ أَنْ أُوَاصِلَ دِرَاسَتِي فِي جَاكَرْتَا.</p></div>
+      <div class="speech"><b>أَبْرَارُ</b><p class="arabic">طَبْعًا، أَنَا مُتَحَمِّسٌ جِدًّا، وَأُرِيدُ أَنْ أُوَاصِلَ دِرَاسَتِي فِي جَامِعَةِ غَاجَاهْ مَادَا بِجُوكْجَاكَرْتَا.</p></div>
+      <div class="speech alt"><b>صَالِحٌ</b><p class="arabic">الْحَمْدُ لِلَّهِ، وَأَنَا كَذَلِكَ أَرْغَبُ فِي الِالْتِحَاقِ بِجَامِعَةِ إِنْدُونِيسِيَا.</p></div>
+      <div class="speech"><b>جُوَيْرِيَةُ</b><p class="arabic">أُرِيدُ أَنْ أُوَاصِلَ دِرَاسَتِي إِلَى جَامِعَةِ مَوْلَانَا مَالِكٍ إِبْرَاهِيمَ الْإِسْلَامِيَّةِ الْحُكُومِيَّةِ بِمَالَانْجَ؛ لِأَنِّي أُحِبُّ اللُّغَةَ الْعَرَبِيَّةَ.</p></div>
+      <div class="speech alt"><b>صَالِحٌ</b><p class="arabic">وَأَنَا سَأُسَجِّلُ فِي كُلِّيَّةِ الِاقْتِصَادِ لِأَنَّنِي أُرِيدُ أَنْ أَتَعَمَّقَ فِي عِلْمِ التِّجَارَةِ.</p></div>
+    </div>
+    <div class="mini-task"><div><h4>Praktik pasangan</h4><p>Ganti nama universitas, fakultas, dan program studi sesuai rencana masing-masing, lalu praktikkan dialog.</p></div><div><h4 class="arabic">تَكَلَّمْ!</h4><p class="arabic">أَيَّ جَامِعَةٍ وَكُلِّيَّةٍ وَتَخَصُّصٍ تَخْتَارُ؟ وَلِمَاذَا؟</p></div></div>
+  </section>
+</div>
+
+<div id="panel-qiraah" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>📖 الْقِرَاءَةُ — الِاسْتِعْدَادُ وَخُطُوَاتُ الِالْتِحَاقِ بِالْجَامِعَةِ</h3><span class="muted">Teks prosedur pendaftaran dan persiapan studi.</span></div><button class="btn" onclick="speak(document.getElementById('d12u3Reading').innerText)">🔊 Dengarkan bacaan</button></div>
+    <div id="d12u3Reading" class="rtlbox">
+      <p>الِالْتِحَاقُ بِالْجَامِعَةِ خُطْوَةٌ مُهِمَّةٌ فِي حَيَاةِ الطَّالِبِ؛ لِأَنَّهَا بِدَايَةُ مَرْحَلَةٍ تَعْلِيمِيَّةٍ جَدِيدَةٍ. فِي هَذِهِ الْمَرْحَلَةِ سَيُوَاجِهُ الطَّالِبُ بَعْضَ التَّحَدِّيَاتِ. يَهْدِفُ هَذَا النَّصُّ إِلَى مُسَاعَدَةِ الطَّالِبِ فِي مَعْرِفَةِ الْخُطُوَاتِ الْأَسَاسِيَّةِ الَّتِي يَجِبُ عَلَيْهِ أَنْ يَتَّبِعَهَا لِلِالْتِحَاقِ بِالْجَامِعَةِ.</p>
+      <p>لَا بُدَّ لِلطَّالِبِ أَنْ يَمْتَلِكَ الِاسْتِعْدَادَ الْكَافِيَ قَبْلَ الْقِيَامِ بِالتَّسْجِيلِ مِنْ خِلَالِ تَحْدِيدِ التَّخَصُّصِ الْمُنَاسِبِ حَسَبَ مَيْلِهِ وَقُدْرَاتِهِ. وَهُوَ يَحْتَاجُ إِلَى أَجْهِزَةٍ إِلِكْتُرُونِيَّةٍ مُلَائِمَةٍ وَاتِّصَالِ الْإِنْتَرْنِتِ السَّرِيعِ وَبَعْضِ الْأَوْرَاقِ الْمَطْلُوبَةِ.</p>
+      <p>وَلِلْقِيَامِ بِالتَّسْجِيلِ، يَجِبُ عَلَى الطَّالِبِ أَوَّلًا الْبَحْثُ عَنِ الْمَعْلُومَاتِ وَالْبَرَامِجِ الْمُنَاسِبَةِ، ثُمَّ التَّأَكُّدُ مِنْ شُرُوطِ الْقَبُولِ وَالْمُعَدَّلِ الْأَكَادِيمِيِّ وَالْوَثَائِقِ وَرُسُومِ التَّسْجِيلِ. وَيُمْكِنُهُ تَقْدِيمُهَا عَبْرَ الْمَوْقِعِ الرَّسْمِيِّ لِلْجَامِعَةِ. وَقَدْ تَطْلُبُ بَعْضُ الْجَامِعَاتِ اخْتِبَارَ قَبُولٍ أَوْ مُقَابَلَةً شَخْصِيَّةً.</p>
+      <p>وَبَعْدَ الْقَبُولِ النِّهَائِيِّ، يَجِبُ عَلَى الطَّالِبِ أَنْ يَدْفَعَ الرُّسُومَ الدِّرَاسِيَّةَ، وَأَنْ يُجَهِّزَ الْأَدَوَاتِ الدِّرَاسِيَّةَ، وَأَنْ يَزُورَ الْحَرَمَ الْجَامِعِيَّ، وَأَخِيرًا أَنْ يَقُومَ بِتَخْطِيطِ الْمُقَرَّرَاتِ الدِّرَاسِيَّةِ.</p>
+    </div>
+    <div class="mini-task"><div><h4 class="arabic">فَهْمُ الْمَقْرُوءِ</h4><p class="arabic">مَا أَوَّلُ خُطْوَةٍ لِلتَّسْجِيلِ فِي الْجَامِعَةِ؟</p><input id="d12u3Read" class="answer-input arabic" placeholder="اكتب الجواب"><button class="btn primary" onclick="cekFlexible('d12u3Read',['البحث عن المعلومات','الْبَحْثُ عَنِ الْمَعْلُومَاتِ','أن يبحث عن المعلومات'],'d12u3ReadFb')">Periksa</button><p id="d12u3ReadFb" class="feedback"></p></div><div><h4>Struktur teks prosedur</h4><p><span class="arabic">الْهَدَفُ</span> tujuan • <span class="arabic">الْمَادَّةُ وَالْأَدَوَاتُ</span> kebutuhan • <span class="arabic">الْخُطُوَاتُ</span> tahapan • <span class="arabic">الْخَاتِمَةُ</span> penutup.</p></div></div>
+  </section>
+</div>
+
+<div id="panel-tarkib" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>🧩 التَّرَاكِيبُ — إِعْرَابُ الْفِعْلِ الْمُضَارِعِ</h3><span class="muted">Marfū‘, manṣūb, dan majzūm.</span></div><button class="btn" onclick="speak('هُوَ يَسْجُلُ، لَنْ نَسْتَعِدَّ، لَمْ أَحْضُرْ')">🔊 Contoh</button></div>
+    <div class="rulebox"><p><b><span class="arabic">الْمَرْفُوعُ</span>:</b> fi‘il muḍāri‘ yang tidak didahului huruf naṣb atau jazm. Tanda dasarnya ḍammah atau tetapnya nūn pada al-af‘āl al-khamsah.</p><p><b><span class="arabic">الْمَنْصُوبُ</span>:</b> didahului <span class="arabic">أَنْ، لَنْ، إِذَنْ، كَيْ، لِلتَّعْلِيلِ، حَتَّى</span>. Tanda dasarnya fatḥah atau terhapusnya nūn.</p><p><b><span class="arabic">الْمَجْزُومُ</span>:</b> didahului <span class="arabic">لَمْ، لَمَّا، لَامُ الْأَمْرِ، لَا النَّاهِيَةُ</span>. Tanda dasarnya sukūn, terhapusnya huruf ‘illat, atau terhapusnya nūn.</p></div>
+    <div class="tablewrap"><table><thead><tr><th class="arabic">الْحَالَةُ</th><th class="arabic">الْمِثَالُ</th><th class="arabic">الْعَلَامَةُ</th></tr></thead><tbody>
+      <tr><td class="arabic">مَرْفُوعٌ</td><td class="arabic">هُوَ يُسَجِّلُ فِي الْجَامِعَةِ</td><td class="arabic">الضَّمَّةُ</td></tr>
+      <tr><td class="arabic">مَرْفُوعٌ</td><td class="arabic">أَنْتُمْ تَكْتُبُونَ الرِّسَالَةَ</td><td class="arabic">ثُبُوتُ النُّونِ</td></tr>
+      <tr><td class="arabic">مَنْصُوبٌ</td><td class="arabic">هُوَ يُرِيدُ أَنْ يُسَجِّلَ</td><td class="arabic">الْفَتْحَةُ</td></tr>
+      <tr><td class="arabic">مَنْصُوبٌ</td><td class="arabic">لَنْ تَسْتَعِدُّوا لِلِاخْتِبَارِ</td><td class="arabic">حَذْفُ النُّونِ</td></tr>
+      <tr><td class="arabic">مَجْزُومٌ</td><td class="arabic">أَنَا لَمْ أَحْضُرْ الْمُحَاضَرَةَ</td><td class="arabic">السُّكُونُ</td></tr>
+      <tr><td class="arabic">مَجْزُومٌ</td><td class="arabic">لَا تَتَأَخَّرُوا عَنِ التَّسْجِيلِ</td><td class="arabic">حَذْفُ النُّونِ</td></tr>
+    </tbody></table></div>
+    <div class="mini-task"><div><h4 class="arabic">اخْتَرِ الْإِعْرَابَ</h4><p class="arabic">لَنْ يَتَأَخَّرَ الطَّالِبُ عَنِ التَّسْجِيلِ.</p><button class="btn" onclick="grammarAnswer12Unit3(this,false)">مَرْفُوعٌ</button> <button class="btn" onclick="grammarAnswer12Unit3(this,true)">مَنْصُوبٌ</button> <button class="btn" onclick="grammarAnswer12Unit3(this,false)">مَجْزُومٌ</button><p id="grammarFeedback12Unit3" class="feedback arabic"></p></div><div><h4 class="arabic">لَاحِظْ</h4><p class="arabic">يَسْجُلُ — أَنْ يُسَجِّلَ — لَمْ يُسَجِّلْ</p><p class="muted">Amati perubahan harakat akhir fi‘il muḍāri‘.</p></div></div>
+  </section>
+</div>
+
+<div id="panel-kitabah" class="lesson-panel">
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>✍️ الْكِتَابَةُ — إِنْتَاجُ النَّصِّ الْإِجْرَائِيِّ</h3><span class="muted">Tulislah prosedur memilih program studi di universitas.</span></div><span class="progress-chip">4 tahap</span></div>
+    <div class="objective-grid">
+      <article class="objective-item"><b>01 • <span class="arabic">حَدِّدِ الْهَدَفَ</span></b><p>Jelaskan tujuan tulisan, misalnya cara memilih program studi.</p></article>
+      <article class="objective-item"><b>02 • <span class="arabic">اذْكُرِ الْأَدَوَاتِ</span></b><p>Catat dokumen, informasi, perangkat, dan akses internet yang diperlukan.</p></article>
+      <article class="objective-item"><b>03 • <span class="arabic">صِفِ الْخُطُوَاتِ</span></b><p>Gunakan penanda urutan: <span class="arabic">أَوَّلًا، ثُمَّ، بَعْدَ ذَلِكَ، أَخِيرًا</span>.</p></article>
+      <article class="objective-item"><b>04 • <span class="arabic">اخْتِمْ</span></b><p>Tegaskan kembali tujuan dan periksa penggunaan fi‘il muḍāri‘.</p></article>
+    </div>
+    <label for="d12u3Writing"><b>Tulis 8–10 kalimat berbahasa Arab:</b></label><textarea id="d12u3Writing" class="answer-input arabic" rows="10" placeholder="أَوَّلًا، يَجِبُ عَلَى الطَّالِبِ أَنْ يَبْحَثَ عَنِ الْمَعْلُومَاتِ ..."></textarea>
+    <div class="mini-task"><div><b>Daftar periksa:</b><p>☐ tujuan ☐ alat/dokumen ☐ langkah runtut ☐ penutup ☐ marfū‘ ☐ manṣūb ☐ majzūm</p></div><div><b class="arabic">مَهَمَّةُ التَّقْدِيمِ</b><p class="arabic">قَدِّمِ النَّصَّ أَمَامَ زُمَلَائِكَ ثُمَّ نَاقِشْهُ مَعَهُمْ.</p></div></div>
+  </section>
+</div>
+
+<div id="panel-kuis" class="lesson-panel">
+  <section class="dars-section quiz-section unit-quiz">
+    <div class="reading-title"><div><h3>🏆 الِاخْتِبَارُ الْإِلِكْتُرُونِيُّ</h3><span class="muted arabic">جَمِيعُ الْأَسْئِلَةِ وَالْخِيَارَاتِ بِاللُّغَةِ الْعَرَبِيَّةِ.</span></div><span class="progress-chip arabic">١٠ أَسْئِلَةٍ • ١٠٠ دَرَجَةٍ</span></div>
+    <p class="arabic rtlbox">أَجِبْ عَنْ جَمِيعِ الْأَسْئِلَةِ. لِكُلِّ إِجَابَةٍ صَحِيحَةٍ عَشْرُ دَرَجَاتٍ، وَالدَّرَجَةُ الْكُبْرَى مِائَةٌ.</p>
+    <div class="quiz-progress"><span id="d12u3Answered" class="arabic">٠/١٠ مُجَابٌ</span><div class="bar"><i id="d12u3QuizBar"></i></div></div>
+    <div id="dars12Unit3Eval"></div>
+    <button class="btn primary quiz-submit arabic" onclick="nilaiDars12Unit3()">✓ اِحْسِبِ النَّتِيجَةَ</button>
+    <button class="btn arabic" onclick="resetDars12Unit3Quiz()">أَعِدِ الِاخْتِبَارَ</button>
+    <div id="dars12Unit3Score" class="result score-card arabic" aria-live="polite">سَتَظْهَرُ النَّتِيجَةُ هُنَا.</div>
+  </section>
+</div>
+
+<div class="lesson-nav">
+  <button class="btn" onclick="previousChapter12(3)">← Bab sebelumnya</button>
+  <div class="navinfo"><span class="progress-chip">Kelas XII • Unit 3 • Bab Terakhir</span></div>
+</div>
+<button class="btn primary" onclick="done('XII-2')">✓ Tandai Unit 3 selesai +20 XP</button>
+</div>`;
+      }
+
       function dars11Unit1() {
         return `<div class="card lesson-shell">
 <div class="lesson-hero">
@@ -3339,6 +3500,12 @@
           quizDars11Unit4();
           return;
         }
+        if (g === "XII" && i === 2) {
+          document.getElementById("detailBox").innerHTML = dars12Unit3();
+          page("detail");
+          quizDars12Unit3();
+          return;
+        }
         if (g === "XII" && t[0] === "عُظَمَاءُ الإِسْلَامِ") {
           document.getElementById("detailBox").innerHTML = dars12Unit2();
           page("detail");
@@ -3414,13 +3581,12 @@
         if (current === 1) {
           window.openLesson("XII", 1);
         } else if (current === 2) {
-          alert(
-            "Kelas XII Unit 3 akan disusun setelah Unit 2 ditinjau dan disetujui.",
-          );
+          window.openLesson("XII", 2);
         }
       }
       function previousChapter12(current) {
         if (current === 2) window.openLesson("XII", 0);
+        if (current === 3) window.openLesson("XII", 1);
       }
       function quickAnswer(button, correct) {
         const feedback = document.getElementById("quickFeedback");
@@ -3478,6 +3644,24 @@
         feedback.textContent = correct
           ? "صَحِيحٌ! Jawaban tepat."
           : "Belum tepat. Buka kembali kartu kosakata.";
+        if (correct) gain(2);
+        button.blur();
+      }
+      function quickAnswer12Unit3(button, correct) {
+        const feedback = document.getElementById("quickFeedback12Unit3");
+        if (!feedback) return;
+        feedback.textContent = correct
+          ? "صَحِيحٌ! عَمِيدُ الْكُلِّيَّةِ. 👏"
+          : "غَيْرُ صَحِيحٍ. رَاجِعِ الْمُفْرَدَاتِ.";
+        if (correct) gain(2);
+        button.blur();
+      }
+      function grammarAnswer12Unit3(button, correct) {
+        const feedback = document.getElementById("grammarFeedback12Unit3");
+        if (!feedback) return;
+        feedback.textContent = correct
+          ? "صَحِيحٌ! الْفِعْلُ مَنْصُوبٌ بِلَنْ، وَعَلَامَتُهُ الْفَتْحَةُ."
+          : "غَيْرُ صَحِيحٍ. لَاحِظْ أَدَاةَ النَّصْبِ: لَنْ.";
         if (correct) gain(2);
         button.blur();
       }
@@ -4967,6 +5151,55 @@
           result.classList.remove("quiz-result-perfect");
           result.textContent = "Skor akan muncul di sini.";
         }
+      }
+
+      const DARS12UNIT3Q = [
+        ["مَا مَعْنَى كَلِمَةِ «كُلِّيَّةٌ»؟", ["مَدْرَسَةٌ", "جَامِعَةٌ", "وَحْدَةٌ أَكَادِيمِيَّةٌ فِي الْجَامِعَةِ", "مَكْتَبَةٌ", "مَسْجِدٌ"], 2],
+        ["مَنْ يَرْأَسُ الْجَامِعَةَ؟", ["عَمِيدُ الْكُلِّيَّةِ", "مُدِيرُ الْجَامِعَةِ", "رَئِيسُ الْقِسْمِ", "الْمُحَاضِرُ", "الطَّالِبُ"], 1],
+        ["مَا أَوَّلُ خُطْوَةٍ لِلتَّسْجِيلِ فِي الْجَامِعَةِ؟", ["دَفْعُ الرُّسُومِ", "حُضُورُ حَفْلَةِ التَّخَرُّجِ", "الْبَحْثُ عَنِ الْمَعْلُومَاتِ", "كِتَابَةُ الرِّسَالَةِ", "أَدَاءُ الِامْتِحَانِ النِّهَائِيِّ"], 2],
+        ["مَاذَا يَجِبُ عَلَى الطَّالِبِ بَعْدَ الْقَبُولِ النِّهَائِيِّ؟", ["أَنْ يَتْرُكَ الدِّرَاسَةَ", "أَنْ يَدْفَعَ الرُّسُومَ الدِّرَاسِيَّةَ", "أَنْ يُغَيِّرَ الْمَدْرَسَةَ", "أَنْ يَبِيعَ الْكُتُبَ", "أَنْ يُسَافِرَ إِلَى الْخَارِجِ"], 1],
+        ["أَيُّ جُمْلَةٍ فِعْلُهَا الْمُضَارِعُ مَرْفُوعٌ؟", ["لَنْ يُسَجِّلَ عَلِيٌّ", "لَمْ يَحْضُرْ عَلِيٌّ", "هُوَ يُسَجِّلُ فِي الْجَامِعَةِ", "لَا تَتَأَخَّرْ", "كَيْ يَنْجَحَ الطَّالِبُ"], 2],
+        ["أَيُّ أَدَاةٍ تَنْصِبُ الْفِعْلَ الْمُضَارِعَ؟", ["لَمْ", "لَمَّا", "لَنْ", "لَا النَّاهِيَةُ", "لَامُ الْأَمْرِ"], 2],
+        ["أَيُّ أَدَاةٍ تَجْزِمُ الْفِعْلَ الْمُضَارِعَ؟", ["أَنْ", "لَنْ", "كَيْ", "حَتَّى", "لَمْ"], 4],
+        ["مَا إِعْرَابُ «يَسْتَعِدَّ» فِي: لَنْ يَسْتَعِدَّ الطَّالِبُ؟", ["مَرْفُوعٌ", "مَنْصُوبٌ", "مَجْزُومٌ", "مَاضٍ", "أَمْرٌ"], 1],
+        ["مَا عَنَاصِرُ النَّصِّ الْإِجْرَائِيِّ؟", ["الشَّخْصِيَّاتُ وَالْحِوَارُ", "الْمُقَدِّمَةُ وَالْعُقْدَةُ", "الْهَدَفُ وَالْمَادَّةُ وَالْخُطُوَاتُ وَالْخَاتِمَةُ", "الزَّمَانُ وَالْمَكَانُ", "السُّؤَالُ وَالْجَوَابُ"], 2],
+        ["لِمَاذَا يَجِبُ عَلَى الطَّالِبِ أَنْ يَخْتَارَ التَّخَصُّصَ الْمُنَاسِبَ؟", ["لِيَتْرُكَ الْجَامِعَةَ", "لِيُنَاسِبَ مَيْلَهُ وَقُدْرَاتِهِ", "لِيَتَجَنَّبَ التَّعَلُّمَ", "لِيُضَيِّعَ الْوَقْتَ", "لِيَتَأَخَّرَ عَنِ التَّسْجِيلِ"], 1],
+      ];
+      function quizDars12Unit3() {
+        const box = document.getElementById("dars12Unit3Eval");
+        if (!box) return;
+        const letters = ["a", "b", "c", "d", "e"];
+        box.innerHTML = DARS12UNIT3Q.map((q, i) => `<div class="unit-question" data-d12u3-question="${i}" dir="rtl"><b>${i + 1}. <span class="arabic">${q[0]}</span></b>${q[1].map((answer, j) => `<label class="eval-option"><input type="radio" name="d12u3q${i}" value="${j}" onchange="updateDars12Unit3Progress()"><b>${letters[j]}.</b> <span class="arabic">${answer}</span></label>`).join("")}<p class="answer-key"><span class="arabic">الْإِجَابَةُ الصَّحِيحَةُ: ${letters[q[2]]}. ${q[1][q[2]]}</span></p></div>`).join("");
+        updateDars12Unit3Progress();
+      }
+      function updateDars12Unit3Progress() {
+        const answered = DARS12UNIT3Q.filter((q, i) => document.querySelector(`input[name=d12u3q${i}]:checked`)).length;
+        const label = document.getElementById("d12u3Answered");
+        const bar = document.getElementById("d12u3QuizBar");
+        if (label) label.textContent = `${answered}/10 مُجَابٌ`;
+        if (bar) bar.style.width = `${answered * 10}%`;
+      }
+      function nilaiDars12Unit3() {
+        let correct = 0, answered = 0;
+        DARS12UNIT3Q.forEach((q, i) => {
+          const selected = document.querySelector(`input[name=d12u3q${i}]:checked`);
+          const item = document.querySelector(`[data-d12u3-question="${i}"]`);
+          if (selected) answered++;
+          const isCorrect = selected && Number(selected.value) === q[2];
+          if (isCorrect) correct++;
+          if (item) { item.classList.remove("correct", "incorrect"); item.classList.add(isCorrect ? "correct" : "incorrect"); }
+        });
+        const score = correct * 10;
+        const result = document.getElementById("dars12Unit3Score");
+        if (!result) return;
+        result.classList.toggle("quiz-result-perfect", score >= 80);
+        result.innerHTML = `<h3>النَّتِيجَةُ: ${score}/100</h3><p>${correct} إِجَابَاتٍ صَحِيحَةً، وَ${10 - correct} إِجَابَاتٍ غَيْرَ صَحِيحَةٍ. ${answered < 10 ? `لَمْ تُجِبْ عَنْ ${10 - answered} سُؤَالٍ. ` : ""}${score >= 80 ? "مُمْتَازٌ! فَهْمُكَ جَيِّدٌ جِدًّا. 👏" : "رَاجِعِ الْمَادَّةَ ثُمَّ أَعِدِ الِاخْتِبَارَ."}</p>`;
+        if (score >= 80) done("XII-2-evaluasi");
+      }
+      function resetDars12Unit3Quiz() {
+        quizDars12Unit3();
+        const result = document.getElementById("dars12Unit3Score");
+        if (result) { result.classList.remove("quiz-result-perfect"); result.textContent = "سَتَظْهَرُ النَّتِيجَةُ هُنَا."; }
       }
 
       const Q = [
