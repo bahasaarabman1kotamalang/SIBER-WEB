@@ -5382,6 +5382,20 @@
         function setSession(s) {
           localStorage.setItem(sessionKey, JSON.stringify(s));
         }
+        var siberVisitorRecorded = false;
+        var siberVisitorStats = null;
+        function recordSiteVisitOnce() {
+          if (siberVisitorRecorded) return;
+          siberVisitorRecorded = true;
+          countVisit().then(function (visits) {
+            siberVisitorStats = visits;
+            var totalEl = document.getElementById("dashTotalVisitors");
+            var todayEl = document.getElementById("dashTodayVisitors");
+            if (totalEl) totalEl.textContent = visits.total;
+            if (todayEl) todayEl.textContent = visits.today;
+          });
+        }
+
         function showLogin() {
           if (document.getElementById("siberLogin")) return;
           var box = el("div", "auth-screen");
@@ -5502,28 +5516,29 @@
             }
           };
         }
-        function countVisit() {
-          var d = new Date().toLocaleDateString("en-CA", {
-            timeZone: "Asia/Jakarta",
-          });
-          var v;
+        async function countVisit() {
           try {
-            v = JSON.parse(localStorage.getItem(visitKey) || "{}");
-          } catch (e) {
-            v = {};
-          }
-          if (!v.days || typeof v.days !== "object") {
-            /* Kompatibel dengan format lama: {tanggal: jumlah}. */
-            var oldDays = v;
-            v = { total: 0, days: oldDays };
-            Object.keys(oldDays).forEach(function(k){
-              if (k !== "total" && typeof oldDays[k] === "number") v.total += oldDays[k];
+            var res = await fetch(SIBER_API_URL + "?action=visit", {
+              method: "GET",
+              cache: "no-store"
             });
+            var data = await res.json();
+            if (data && data.success) {
+              return { today: Number(data.today || 0), total: Number(data.total || 0) };
+            }
+          } catch (e) {
+            console.warn("SIBER-WEB visitor API error:", e);
           }
+
+          /* Fallback sementara jika API sedang tidak tersedia.
+             Data utama tetap berasal dari Google Sheets. */
+          var d = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Jakarta" });
+          var v;
+          try { v = JSON.parse(localStorage.getItem(visitKey) || "{}"); } catch (e) { v = {}; }
+          if (!v.days || typeof v.days !== "object") v = { total: 0, days: {} };
           if (typeof v.total !== "number") v.total = 0;
           if (!v.days[d]) v.days[d] = 0;
-          v.days[d]++;
-          v.total++;
+          v.days[d]++; v.total++;
           localStorage.setItem(visitKey, JSON.stringify(v));
           return { today: v.days[d], total: v.total };
         }
@@ -5553,14 +5568,18 @@
           };
           var home = document.getElementById("home"),
             stats = el("div", "dashboard-extra");
-          var visits = countVisit();
+          var currentVisitorStats = siberVisitorStats || { today: 0, total: 0 };
           stats.innerHTML =
             '<div class="dashstat"><span>Total pengunjung</span><b id="dashTotalVisitors">' +
-            visits.total +
+            currentVisitorStats.total +
             '</b></div><div class="dashstat"><span>Kunjungan hari ini</span><b id="dashTodayVisitors">' +
-            visits.today +
+            currentVisitorStats.today +
             '</b></div><div class="dashstat"><span>Unit tersedia</span><b>25</b></div><div class="dashstat"><span>Rata-rata nilai</span><b id="dashAverage">—</b></div>';
           home.appendChild(stats);
+          if (siberVisitorStats) {
+            document.getElementById("dashTotalVisitors").textContent = siberVisitorStats.total;
+            document.getElementById("dashTodayVisitors").textContent = siberVisitorStats.today;
+          }
           if (s.role === "admin") renderAdminPanel(home);
           tick();
           setInterval(tick, 1000);
@@ -6109,7 +6128,8 @@ body.innerHTML='<div class="role-page-grid">'+cards.map(function(c){return '<div
     setTimeout(refresh,50);
     setInterval(function(){if(currentAccount()) refresh();},500);
   });
-})();
+recordSiteVisitOnce();
+        })();
 </script>
 
   </body>
