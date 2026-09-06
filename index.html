@@ -5591,6 +5591,7 @@
             document.getElementById("dashTotalVisitors").textContent = siberVisitorStats.total;
             document.getElementById("dashTodayVisitors").textContent = siberVisitorStats.today;
           }
+          recordSiteVisitOnce();
           if (s.role === "admin") renderAdminPanel(home);
           tick();
           setInterval(tick, 1000);
@@ -6139,7 +6140,6 @@ body.innerHTML='<div class="role-page-grid">'+cards.map(function(c){return '<div
     setTimeout(refresh,50);
     setInterval(function(){if(currentAccount()) refresh();},500);
   });
-recordSiteVisitOnce();
         })();
 </script>
 
