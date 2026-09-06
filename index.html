@@ -649,7 +649,7 @@
       .hero {
         position: relative;
         overflow: hidden;
-        min-height: 330px;
+        min-height: 520px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -663,6 +663,35 @@
           700 260px/1 "Noto Naskh Arabic",
           serif;
         color: rgba(255, 255, 255, 0.07);
+      }
+      .hero-copy {
+        position: relative;
+        z-index: 3;
+        width: min(48%, 760px);
+      }
+      .hero-flyer {
+        position: absolute;
+        z-index: 2;
+        right: 2.2%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: min(47%, 720px);
+        max-height: calc(100% - 48px);
+        object-fit: contain;
+        object-position: center;
+        border: 2px solid rgba(255, 222, 110, 0.8);
+        border-radius: 20px;
+        box-shadow: 0 20px 45px rgba(3, 42, 31, 0.34), 0 0 0 7px rgba(255,255,255,0.08);
+        pointer-events: none;
+      }
+      .hero:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 82% 35%, rgba(255, 221, 92, 0.25), transparent 29%),
+          linear-gradient(110deg, transparent 54%, rgba(255, 210, 68, 0.08) 75%, rgba(255,255,255,0.12));
+        pointer-events: none;
       }
       .card {
         transition: 0.22s ease;
@@ -1013,6 +1042,17 @@
         .hero {
           min-height: 300px;
         }
+        .hero-copy { width: 100%; padding-bottom: 0; }
+        .hero-flyer {
+          position: relative;
+          top: auto;
+          right: auto;
+          transform: none;
+          width: 100%;
+          max-height: none;
+          margin-top: 24px;
+          border-radius: 14px;
+        }
       }
     
       .admin-panel { margin-top: 20px; }
@@ -1055,6 +1095,7 @@
     <main>
       <section id="home" class="page on">
         <div class="hero">
+          <div class="hero-copy">
           <span class="tag" style="background: #ffffff22; color: white"
             >Kelas X • XI • XII</span
           >
@@ -1071,6 +1112,8 @@
           <button class="btn white" onclick="page('kelas')">
             Mulai belajar →
           </button>
+          </div>
+          <img class="hero-flyer" src="doa-belajar-yasin.png" alt="Doa belajar bersama Guru Bahasa Arab" />
         </div>
         <div class="section kpi">
           <div class="card"><b id="xp">0</b> Pengalaman Belajar</div>
