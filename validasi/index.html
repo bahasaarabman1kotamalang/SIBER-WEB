@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Validasi SIBER-WEB | MAN 1 Kota Malang</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <div class="eyebrow">SIBER-WEB • MAN 1 KOTA MALANG</div>
+    <h1>Instrumen Validasi Sistem Pembelajaran Bahasa Arab Berbasis Web</h1>
+    <p>Formulir penilaian online untuk ahli media, ahli materi Bahasa Arab, dan praktisi/guru.</p>
+  </div>
+  <button id="adminBtn" class="ghost">Rekap Admin</button>
+</header>
+
+<main class="container">
+  <section id="start" class="card">
+    <h2>Mulai Validasi</h2>
+    <p>Pilih jenis validator. Setelah itu isi identitas dan berikan skor 1–4 pada setiap indikator.</p>
+    <div class="role-grid">
+      <button class="role" data-role="media"><b>Ahli Media</b><span>37 indikator</span></button>
+      <button class="role" data-role="materi"><b>Ahli Materi Bahasa Arab</b><span>34 indikator</span></button>
+      <button class="role" data-role="guru"><b>Praktisi / Guru Bahasa Arab</b><span>27 indikator</span></button>
+    </div>
+    <div class="note">Skala: 4 = Sangat Baik, 3 = Baik, 2 = Kurang, 1 = Sangat Kurang.</div>
+  </section>
+
+  <section id="formSection" class="hidden">
+    <div class="progress card">
+      <div><b id="formTitle"></b><span id="progressText"></span></div>
+      <div class="bar"><i id="progressBar"></i></div>
+    </div>
+    <form id="validationForm" class="card">
+      <div class="section-head">
+        <h2>Identitas Validator</h2>
+        <p>Data identitas diperlukan untuk dokumentasi hasil validasi.</p>
+      </div>
+      <div class="fields">
+        <label>Nama <input required name="nama"></label>
+        <label>NIP/NIDN <input name="nip"></label>
+        <label>Instansi <input required name="instansi"></label>
+        <label>Bidang keahlian <input name="keahlian"></label>
+        <label>Tanggal validasi <input required type="date" name="tanggal"></label>
+        <label>Alamat web <input name="web" value="bahasaarabman1kotamalang.github.io/SIBER-WEB"></label>
+      </div>
+      <div id="items"></div>
+      <div class="comments">
+        <h2>Komentar dan Saran Perbaikan</h2>
+        <label>Kelebihan media<textarea name="kelebihan"></textarea></label>
+        <label>Bagian yang perlu diperbaiki<textarea name="perbaikan"></textarea></label>
+        <label>Saran pengembangan lebih lanjut<textarea name="saran"></textarea></label>
+      </div>
+      <div class="recommend">
+        <h2>Rekomendasi Validator</h2>
+        <label><input type="radio" required name="rekomendasi" value="Sangat layak digunakan tanpa revisi."> Sangat layak digunakan tanpa revisi.</label>
+        <label><input type="radio" name="rekomendasi" value="Layak digunakan dengan revisi kecil."> Layak digunakan dengan revisi kecil.</label>
+        <label><input type="radio" name="rekomendasi" value="Cukup layak digunakan setelah revisi besar dan penilaian ulang."> Cukup layak digunakan setelah revisi besar dan penilaian ulang.</label>
+        <label><input type="radio" name="rekomendasi" value="Belum layak digunakan."> Belum layak digunakan.</label>
+      </div>
+      <div class="actions">
+        <button type="button" id="backBtn" class="ghost">Kembali</button>
+        <button type="submit" class="primary">Kirim Hasil Validasi</button>
+      </div>
+    </form>
+  </section>
+
+  <section id="result" class="card hidden"></section>
+
+  <section id="admin" class="card hidden">
+    <div class="admin-head"><div><h2>Rekap Hasil Validasi</h2><p>Data tersimpan di browser perangkat ini.</p></div>
+      <div><button id="exportBtn" class="primary">Ekspor CSV</button> <button id="clearBtn" class="danger">Hapus Semua</button></div>
+    </div>
+    <div id="summary"></div>
+    <div class="table-wrap"><table><thead><tr><th>Tanggal</th><th>Validator</th><th>Jenis</th><th>Skor</th><th>Maks.</th><th>Persentase</th><th>Kategori</th></tr></thead><tbody id="resultsBody"></tbody></table></div>
+    <p class="privacy">Catatan: versi GitHub Pages ini memakai localStorage. Data tidak otomatis terkirim ke server dan hanya tersedia pada browser/perangkat tempat pengisian dilakukan.</p>
+  </section>
+</main>
+<script src="instrument-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
