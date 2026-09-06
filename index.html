@@ -1621,19 +1621,24 @@
         }
       }
       function dars1() {
-        return `<div class="card">
-<span class="tag">Kelas X • Bab 1 / Dars 1</span>
-<h2 class="arabic">الوَحْدَةُ الأُولَى: التَّعَارُفُ</h2>
-<h2>Unit 1: Perkenalan</h2>
-<p>Materi ini diolah dari Bab/Dars 1 pada buku yang diunggah, dengan struktur belajar: tujuan pembelajaran, mufradat, istima', hiwar, qira'ah, tarkib, kitabah, latihan, dan evaluasi. Konten inti dipertahankan mengikuti sumber.</p>
+        return `<div class="card unit-shell">
+<div class="unit-heading">
+  <div>
+    <span class="tag">Kelas X • Bab 1 / Unit 1</span>
+    <h2 class="arabic">الْوَحْدَةُ الْأُولَى: التَّعَارُفُ</h2>
+    <h2>Unit 1: Perkenalan</h2>
+    <p>Pelajari ungkapan perkenalan diri dan orang lain, identitas, asal, alamat, kata tanya, serta kata ganti melalui kegiatan menyimak, berbicara, membaca, dan menulis.</p>
+  </div>
+  <div class="unit-number" aria-label="Unit 1">01</div>
+</div>
 
 <div class="lesson-nav">
 <button class="btn" disabled>← Bab sebelumnya</button>
-<div class="navinfo">BAB 1 • التَّعَارُفُ</div>
+<div class="navinfo"><span class="progress-chip">Unit 1 • Perkenalan</span></div>
 <button class="btn gold" onclick="nextChapter(1)">Bab berikutnya →</button>
 </div>
 
-<div class="lesson-tabs" role="tablist">
+<div class="lesson-tabs" role="tablist" aria-label="Bagian Unit 1">
 <button class="active" onclick="lessonTab('tujuan',this)">🎯 Tujuan</button>
 <button onclick="lessonTab('mufradat',this)">🃏 Mufradat</button>
 <button onclick="lessonTab('istima',this)">🎧 Istima'</button>
@@ -1641,34 +1646,42 @@
 <button onclick="lessonTab('qiraah',this)">📖 Qira'ah</button>
 <button onclick="lessonTab('tarkib',this)">🔤 Tarkib</button>
 <button onclick="lessonTab('kitabah',this)">✍️ Kitabah</button>
-<button onclick="lessonTab('latihan',this)">🧩 Latihan</button>
 <button onclick="lessonTab('evaluasi',this)">🏆 Evaluasi</button>
 </div>
 
 <div id="panel-tujuan" class="lesson-panel active">
-<div class="dars-section"><h3>🎯 Tujuan Pembelajaran</h3>
-<p>Peserta didik mampu mengidentifikasi bunyi kata/mufradat pada teks naratif lisan tentang perkenalan (<span class="arabic">التعارف</span>), menggunakan struktur <span class="arabic">الضمائر</span> dan <span class="arabic">أدوات الاستفهام</span>, menyimak dan menyampaikan informasi, membaca serta memahami teks naratif, menganalisis karakteristiknya, menulis, mempresentasikan, dan memberi tanggapan/refleksi.</p>
-<ol>
-<li>Menirukan/mengulangi bunyi beberapa mufradat dengan pengucapan yang tepat dan memahami artinya.</li>
-<li>Menuturkan dan mengklasifikasikan mufradat serta ungkapan penting pada teks hiwar.</li>
-<li>Menerapkan struktur <span class="arabic">الضمائر</span> dan <span class="arabic">أدوات الاستفهام</span> dengan tepat.</li>
-<li>Menjawab pertanyaan dan menentukan benar/salah berdasarkan teks yang didengar.</li>
-<li>Membaca, memahami, menginterpretasikan, dan menganalisis teks qiraah naratif.</li>
-<li>Menulis gagasan melalui kata, kalimat, dan paragraf bertema perkenalan.</li>
-</ol></div>
-<div class="dars-section"><h3>💚 Kurikulum Berbasis Cinta</h3>
-<div class="dars-grid"><div class="card"><b>Cinta Allah dan Rasul-Nya</b><p>Menumbuhkan pemahaman dan keteladanan dalam kehidupan.</p></div>
-<div class="card"><b>Cinta Ilmu</b><p>Niat, tekun, tawakal, wara', yakin, dan syukur dalam mencari ilmu.</p></div>
-<div class="card"><b>Cinta Diri & Sesama</b><p>Menerima keragaman sebagai sunnatullah serta membangun ukhuwah, adab dan akhlak terpuji.</p></div></div></div>
+<div class="dars-section">
+  <div class="reading-title"><div><h3>🎯 Tujuan Pembelajaran</h3><span class="muted">Capaian pembelajaran terpadu Unit 1.</span></div><span class="progress-chip">8 tujuan</span></div>
+  <div class="objective-grid">
+    <div class="objective-item"><b>01 • Menyimak</b>Mengidentifikasi bunyi, makna, dan informasi penting dalam teks lisan tentang perkenalan.</div>
+    <div class="objective-item"><b>02 • Melafalkan</b>Menirukan kosakata dan ungkapan perkenalan dengan makhraj serta intonasi yang tepat.</div>
+    <div class="objective-item"><b>03 • Berbicara</b>Memperkenalkan diri dan orang lain secara santun dalam dialog sederhana.</div>
+    <div class="objective-item"><b>04 • Membaca</b>Memahami informasi identitas, asal, alamat, sekolah, dan minat dalam teks perkenalan.</div>
+    <div class="objective-item"><b>05 • Tata Bahasa</b>Menerapkan <span class="arabic">الضَّمَائِرُ</span> dan <span class="arabic">أَدَوَاتُ الِاسْتِفْهَامِ</span> secara tepat.</div>
+    <div class="objective-item"><b>06 • Menganalisis</b>Mengidentifikasi struktur dan informasi rinci pada teks perkenalan.</div>
+    <div class="objective-item"><b>07 • Menulis</b>Menyusun kalimat dan paragraf sederhana untuk memperkenalkan diri atau teman.</div>
+    <div class="objective-item"><b>08 • Refleksi</b>Menunjukkan sikap santun, percaya diri, dan menghargai perbedaan saat berkenalan.</div>
+  </div>
+</div>
 <div class="dars-section"><h3>🌍 Apersepsi</h3>
 <div class="rtlbox">يَا أَيُّهَا النَّاسُ إِنَّا خَلَقْنَاكُمْ مِنْ ذَكَرٍ وَأُنْثَى وَجَعَلْنَاكُمْ شُعُوبًا وَقَبَائِلَ لِتَعَارَفُوا ۚ إِنَّ أَكْرَمَكُمْ عِنْدَ اللَّهِ أَتْقَاكُمْ ۚ إِنَّ اللَّهَ عَلِيمٌ خَبِيرٌ</div>
-<p><b>QS. Al-Hujurat: 13</b> — manusia diciptakan berbangsa-bangsa dan bersuku-suku agar saling mengenal.</p></div>
+<p><b>QS. Al-Hujurat: 13</b> mengajarkan bahwa manusia diciptakan beragam agar saling mengenal. Pada unit ini, bahasa dipelajari untuk membangun sikap santun, percaya diri, dan saling menghargai.</p></div>
 </div>
 
 <div id="panel-mufradat" class="lesson-panel">
-<div class="dars-section"><h3>🃏 Mufradat — Kartu Kosakata</h3>
-<p class="muted">Klik kartu untuk membalik. Klik 🔊 untuk mendengar pelafalan.</p>
-<div class="vocab-grid">${vocab.map((v, i) => `<div class="flashcard" id="fc${i}" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><span>${v[1]}</span><button class="btn audio-btn" onclick="event.stopPropagation();speak('${v[0]}')">🔊 Dengarkan</button></div><div class="flashface back"><div><b>Artinya:</b><br>${v[1]}</div><small>Ketuk lagi untuk kembali</small></div></div></div>`).join("")}</div></div>
+<div class="dars-section">
+<div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti. Gunakan tombol suara untuk latihan pelafalan.</span></div><span class="progress-chip">${vocab.length} kosakata</span></div>
+<div class="vocab-grid">${vocab.map((v) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();speak('${v[0]}')">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
+</div>
+<div class="dars-section">
+<h3>Latihan cepat</h3>
+<div class="mini-task">
+  <div><span class="arabic">أَهْلًا وَسَهْلًا</span> berarti …<br><button class="btn" onclick="quickAnswer1(this,true)">Selamat datang</button> <button class="btn" onclick="quickAnswer1(this,false)">Sampai jumpa</button></div>
+  <div><span class="arabic">عُنْوَانِي</span> berarti …<br><button class="btn" onclick="quickAnswer1(this,false)">Sekolah saya</button> <button class="btn" onclick="quickAnswer1(this,true)">Alamat saya</button></div>
+  <div><span class="arabic">طَالِبَةٌ</span> berarti …<br><button class="btn" onclick="quickAnswer1(this,true)">Siswi</button> <button class="btn" onclick="quickAnswer1(this,false)">Guru perempuan</button></div>
+</div>
+<div id="quickFeedback1" class="choice-feedback" aria-live="polite"></div>
+</div>
 </div>
 
 <div id="panel-istima" class="lesson-panel">
@@ -1685,11 +1698,12 @@
 <div class="dialogue rtlbox"><b>أحمد:</b> السَّلَامُ عَلَيْكُمْ<br><b>أغوس:</b> وَعَلَيْكُمُ السَّلَامُ<br><b>أحمد:</b> اسْمِي أَحْمَدُ، وَمَا اسْمُكَ؟<br><b>أغوس:</b> اسْمِي أَغُوسُ، مِنْ أَيْنَ أَنْتَ؟<br><b>أحمد:</b> أَنَا مِنْ جُمْبَانْجَ، وَأَنْتَ؟<br><b>أغوس:</b> أَنَا مِنْ سُورَابَايَا.<br><b>أحمد:</b> أَهْلًا وَسَهْلًا.<br><b>أغوس:</b> أَهْلًا بِكَ.<br><b>أحمد:</b> إِلَى اللِّقَاءِ.<br><b>أغوس:</b> مَعَ السَّلَامَةِ.</div>
 <div class="dialogue rtlbox"><b>ليلى:</b> مَسَاءَ الْخَيْرِ.<br><b>إليسا:</b> مَسَاءَ النُّورِ.<br><b>ليلى:</b> كَيْفَ أَمْسَيْتِ؟<br><b>إليسا:</b> أَمْسَيْتُ بِخَيْرٍ وَالْحَمْدُ لِلَّهِ، وَأَنْتِ؟<br><b>ليلى:</b> بِخَيْرٍ وَالْحَمْدُ لِلَّهِ.<br><b>إليسا:</b> يَا لَيْلَى، هَذِهِ فِطْرِيَةُ، هِيَ صَدِيقَتِي.<br><b>ليلى:</b> مَرْحَبًا يَا فِطْرِيَةُ، أَنَا لَيْلَى.<br><b>فطرية:</b> مَرْحَبًا بِكِ يَا لَيْلَى.</div>
 <button class="btn primary" onclick="speak('السلام عليكم اسمي أحمد أنا من جومبانج وأنت اسمي أغوس أنا من سورابايا أهلا وسهلا إلى اللقاء مع السلامة')">🔊 Dengarkan model hiwar</button>
+<div class="exercise"><b>Praktik berpasangan</b><p>Ganti nama, asal, alamat, dan nama teman dalam dialog. Praktikkan secara bergantian dengan memperhatikan salam, intonasi, dan kesantunan.</p></div>
 </div>
 </div>
 
 <div id="panel-qiraah" class="lesson-panel">
-<div class="dars-section"><h3>📖 القراءة — Qira'ah</h3>
+<div class="dars-section"><div class="reading-title"><div><h3>📖 القراءة — Qira'ah: التَّعَارُفُ</h3><span class="muted">Baca teks, temukan informasi rinci, lalu jawab pertanyaan pemahaman.</span></div></div>
 <div class="rtlbox">اسْمِي أَحْمَدُ. أَنَا مِنْ جُمْبَانْجَ. عُنْوَانِي شَارِعُ كِيَاهِي الْحَاجِّ عَبْدِ الْوَهَّابِ رَقْمُ ٧٩ جُمْبَانْجَ. أَنَا مُتَخَرِّجٌ فِي مَدْرَسَةِ الإِحْسَانِ الْمُتَوَسِّطَةِ الإِسْلَامِيَّةِ جُمْبَانْجَ. أَنَا الآنَ أَتَعَلَّمُ فِي الْمَدْرَسَةِ الثَّانَوِيَّةِ الإِسْلَامِيَّةِ الْحُكُومِيَّةِ ٤ جُمْبَانْجَ. وَعُنْوَانُ الْمَدْرَسَةِ شَارِعُ إِمَامٍ بُونْجُولَ رَقْمُ ٧١ جُمْبَانْجَ. أَذْهَبُ إِلَى الْمَدْرَسَةِ بِالدَّرَّاجَةِ. وَهَذَا صَدِيقِي، اسْمُهُ أَغُوسُ هُوَ مِنْ سُورَابَايَا. عُنْوَانُهُ شَارِعُ أَحْمَدَ يَانِي رَقْمُ ٥٤ سُورَابَايَا. أَغُوسُ مُتَخَرِّجٌ فِي الْمَدْرَسَةِ الْمُتَوَسِّطَةِ الْحُكُومِيَّةِ ٥ سُورَابَايَا. أَغُوسُ يُحِبُّ دِرَاسَةَ الرِّيَاضِيَّاتِ وَالْعُلُومِ الطَّبِيعِيَّةِ. بِالإِضَافَةِ إِلَى ذَلِكَ هُوَ يُرِيدُ تَعَلُّمَ الْعُلُومِ الدِّينِيَّةِ، فَيُوَاصِلُ الدِّرَاسَةَ إِلَى هَذِهِ الْمَدْرَسَةِ. أَغُوسُ يَسْكُنُ فِي الْمَعْهَدِ الإِسْلَامِيِّ. هُوَ يُرِيدُ تَعَلُّمَ الْعُلُومِ الدِّينِيَّةِ كَثِيرًا. فِي الصَّبَاحِ هُوَ يَتَعَلَّمُ الرِّيَاضِيَّاتِ وَالْعُلُومَ الطَّبِيعِيَّةَ وَالْعُلُومَ الأُخْرَى فِي الْمَدْرَسَةِ، وَفِي الْمَسَاءِ يَتَعَلَّمُ الْعُلُومَ الدِّينِيَّةَ فِي الْمَعْهَدِ.</div>
 <button class="btn" onclick="speak(document.querySelector('#panel-qiraah .rtlbox').innerText)">🔊 Dengarkan bacaan</button>
 <div class="exercise"><b>Pemahaman bacaan</b><ol><li><span class="arabic">مَنْ أَحْمَدُ؟</span></li><li><span class="arabic">مَا عُنْوَانُ أَحْمَدَ؟</span></li><li><span class="arabic">هَلْ أَحْمَدُ طَالِبٌ فِي الْمَدْرَسَةِ الثَّانَوِيَّةِ الإِسْلَامِيَّةِ الْحُكُومِيَّةِ ٤ جُمْبَانْجَ؟</span></li><li><span class="arabic">أَيْنَ يَتَعَلَّمُ أَحْمَدُ؟</span></li><li><span class="arabic">هَلْ أَغُوسُ طَالِبٌ فِي الْمَدْرَسَةِ الثَّانَوِيَّةِ الإِسْلَامِيَّةِ الْحُكُومِيَّةِ ٤ جُمْبَانْجَ؟</span></li><li><span class="arabic">لِمَاذَا أَغُوسُ يَتَعَلَّمُ فِي الْمَدْرَسَةِ الثَّانَوِيَّةِ الْإِسْلَامِيَّةِ؟</span></li></ol></div>
@@ -1707,31 +1721,32 @@
 
 <div id="panel-kitabah" class="lesson-panel">
 <div class="dars-section"><h3>✍️ الكتابة — Kitabah</h3>
-<p>Teks naratif bertujuan menceritakan rangkaian kejadian/peristiwa. Pada materi ini digunakan unsur <b>المقدمة</b>, <b>العقدة</b>, <b>الحل</b>, dan <b>الخاتمة/العبرة</b>.</p>
+<p>Teks perkenalan menyampaikan identitas secara runtut, mulai dari nama, asal, alamat, sekolah, hingga informasi pendukung. Gunakan <b>pengenalan</b> (<span class="arabic">التَّعْرِيفُ</span>), <b>informasi utama</b> (<span class="arabic">الْمَعْلُومَاتُ الْأَسَاسِيَّةُ</span>), dan <b>informasi tambahan</b> (<span class="arabic">الْمَعْلُومَاتُ الْإِضَافِيَّةُ</span>).</p>
+<div class="objective-grid"><div class="objective-item"><b>التَّعْرِيفُ • Pengenalan</b>Sampaikan nama lengkap dan salam pembuka.</div><div class="objective-item"><b>الْمَعْلُومَاتُ الْأَسَاسِيَّةُ • Informasi utama</b>Jelaskan asal, alamat, dan sekolah.</div><div class="objective-item"><b>الْمَعْلُومَاتُ الْإِضَافِيَّةُ • Informasi tambahan</b>Tambahkan minat, tempat tinggal, atau cara pergi ke sekolah.</div></div>
 <div class="exercise"><b>Susun kalimat</b><p class="rtlbox">أَنَا – اسْمِي – مِنْ – مَتَارَام – فُرْحَانُ</p><p class="rtlbox">هَذَا – وَهَذِهِ – اسْمُهَا – صَدِيقَتِي – صَدِيقِي – هِنْدٌ</p><p class="rtlbox">بَيْتِي – الْمَدْرَسَةُ – الْأَقْدَامِ – مِنْ – إِلَيْهَا – عَلَى – قَرِيبٌ – أَذْهَبُ</p></div>
-<div class="exercise"><b>Tulis jawaban tentang dirimu</b><div class="rtlbox">١. مَا اسْمُكَ؟<br>٢. مَا اسْمُكَ بِالْكَامِلِ؟<br>٣. مَا عُنْوَانُكَ؟<br>٤. فِي أَيِّ مَدْرَسَةٍ أَنْتَ مُتَخَرِّجٌ؟<br>٥. هَلْ بَيْتُكَ قَرِيبٌ مِنَ الْمَدْرَسَةِ؟<br>٦. هَلْ أَنْتَ تَسْكُنُ فِي السَّكَنِ؟<br>٧. كَيْفَ تَذْهَبُ إِلَى الْمَدْرَسَةِ؟<br>٨. مَعَ مَنْ تَذْهَبُ إِلَى الْمَدْرَسَةِ؟</div><div class="writing-lines"></div></div>
-</div></div>
-
-<div id="panel-latihan" class="lesson-panel">
-<div class="dars-section"><h3>🧩 Latihan</h3>
+<div class="exercise"><b>Tulis jawaban tentang dirimu</b><div class="rtlbox">١. مَا اسْمُكَ؟<br>٢. مَا اسْمُكَ بِالْكَامِلِ؟<br>٣. مَا عُنْوَانُكَ؟<br>٤. فِي أَيِّ مَدْرَسَةٍ أَنْتَ مُتَخَرِّجٌ؟<br>٥. هَلْ بَيْتُكَ قَرِيبٌ مِنَ الْمَدْرَسَةِ؟<br>٦. هَلْ أَنْتَ تَسْكُنُ فِي السَّكَنِ؟<br>٧. كَيْفَ تَذْهَبُ إِلَى الْمَدْرَسَةِ؟<br>٨. مَعَ مَنْ تَذْهَبُ إِلَى الْمَدْرَسَةِ؟</div><div class="writing-lines rtlbox" contenteditable="true" role="textbox" aria-label="Tulis jawaban tentang diri" data-placeholder="اُكْتُبْ هُنَا..."></div></div>
+</div>
+<div class="dars-section"><h3>🧩 Latihan Terapan</h3>
 <div class="exercise"><div class="q">1. <span class="arabic">أَنَا بخيرٍ والحمد لله.</span> — kata tanya yang tepat? <input class="answer-input" id="ex1" placeholder="..."> <button class="btn" onclick="cek('ex1','كيف','fb1')">Cek</button><div id="fb1" class="feedback"></div></div>
 <div class="q">2. <span class="arabic">عُنْوَانُكَ؟ شَارِعُ سُودِرْمَان رَقْمُ ٧٧</span> — kata tanya yang tepat? <input class="answer-input" id="ex2" placeholder="..."> <button class="btn" onclick="cek('ex2','ما','fb2')">Cek</button><div id="fb2" class="feedback"></div></div>
 <div class="q">3. <span class="arabic">أَنْتَ؟ أَنَا مِنْ تَشِيرِبُونَ</span> — kata tanya yang tepat? <input class="answer-input" id="ex3" placeholder="..."> <button class="btn" onclick="cek('ex3','من أين','fb3')">Cek</button><div id="fb3" class="feedback"></div></div></div>
 </div></div>
 
 <div id="panel-evaluasi" class="lesson-panel">
-<div class="dars-section"><h3>🏆 Evaluasi Otomatis Bab 1</h3>
-<p>Pilih satu jawaban untuk setiap soal. Skor dihitung otomatis saat tombol ditekan.</p><div id="dars1Eval"></div><button class="btn primary" onclick="nilaiDars1()">✓ Hitung skor Bab 1</button><div id="dars1Score" class="result score-card"></div></div>
+<section class="dars-section unit-quiz"><h3>🏆 Kuis Otomatis Unit 1</h3>
+<p>Jawab seluruh 10 soal. Setiap jawaban benar bernilai 10; skor maksimal 100.</p>
+<div class="quiz-progress"><span id="d1Answered">0/10 terjawab</span><div class="bar"><i id="d1QuizBar"></i></div></div>
+<div id="dars1Eval"></div><button class="btn primary quiz-submit" onclick="nilaiDars1()">✓ Hitung skor</button> <button class="btn" onclick="resetDars1Quiz()">Ulangi kuis</button><div id="dars1Score" class="result score-card" aria-live="polite">Skor akan muncul di sini.</div></section>
 <div class="dars-section"><h3>🪞 Muhasabah</h3><div class="tablewrap"><table><tr><th>No.</th><th>Kegiatan</th><th>Mumtaz</th><th>Jayyid Jiddan</th><th>Jayyid</th></tr>${["استمع إلى العرض وأعيد", "أتقن المفردات الجديدة وأفهم معانيها", "أفهم التراكيب وأقوم بالتدريبات", "أستمع إلى المواد المسموعة وأقوم بالتدريبات", "أتكلم بالمواد التدريبية", "أقرأ النص عن التعارف", "أقوم بالتدريبات الكتابية"].map((x, i) => `<tr><td>${i + 1}</td><td class="arabic">${x}</td><td>☐</td><td>☐</td><td>☐</td></tr>`).join("")}</table></div></div>
 <div class="dars-section"><h3>💡 Hikmah</h3><div class="rtlbox" style="text-align:center;background:#eef6e8;border-radius:50%;padding:28px">اِجْتَهِدْ وَلَا تَكْسَلْ وَلَا تَكُنْ غَافِلًا<br>فَنَدَامَةُ الْعُقْبَى لِمَنْ يَتَكَاسَلُ</div></div>
 </div>
 
 <div class="lesson-nav">
 <button class="btn" disabled>← Bab sebelumnya</button>
-<div class="navinfo"><span class="progress-chip">Bab 1 selesai? Tandai di bawah</span></div>
+<div class="navinfo"><span class="progress-chip">Unit 1 • Perkenalan</span></div>
 <button class="btn gold" onclick="nextChapter(1)">Bab berikutnya →</button>
 </div>
-<button class="btn primary" onclick="done('X-0')">✓ Tandai Dars 1 selesai +20 XP</button>
+<button class="btn primary" onclick="done('X-0')">✓ Tandai Unit 1 selesai +20 XP</button>
 </div>`;
       }
 
@@ -3487,6 +3502,7 @@
         if (g === "X" && i === 0) {
           document.getElementById("detailBox").innerHTML = dars1();
           page("detail");
+          quizDars1();
           return;
         }
         if (g === "X" && i === 1) {
@@ -3640,6 +3656,15 @@
         if (correct) gain(2);
         button.blur();
       }
+      function quickAnswer1(button, correct) {
+        const feedback = document.getElementById("quickFeedback1");
+        if (!feedback) return;
+        feedback.textContent = correct
+          ? "صَحِيحٌ! Jawaban tepat."
+          : "Belum tepat. Periksa kembali kartu kosakata.";
+        if (correct) gain(2);
+        button.blur();
+      }
       function quickAnswer3(button, correct) {
         const feedback = document.getElementById("quickFeedback3");
         if (!feedback) return;
@@ -3762,26 +3787,70 @@
           ["جُمْبَانْجَ", "سُورَابَايَا", "مَتَارَام", "جَاكَرْتَا"],
           1,
         ],
+        [
+          "Ungkapan yang tepat untuk menanyakan nama adalah …",
+          ["مَا اسْمُكَ؟", "مِنْ أَيْنَ أَنْتَ؟", "أَيْنَ بَيْتُكَ؟", "كَيْفَ حَالُكَ؟"],
+          0,
+        ],
+        [
+          "Kata ganti yang tepat untuk seorang siswi adalah …",
+          ["هُوَ", "هِيَ", "هُمْ", "نَحْنُ"],
+          1,
+        ],
+        [
+          "Informasi utama dalam teks perkenalan adalah …",
+          ["Nama, asal, dan alamat", "Harga dan ukuran", "Waktu memasak", "Cuaca dan musim"],
+          0,
+        ],
+        [
+          "Arti ungkapan إِلَى اللِّقَاءِ adalah …",
+          ["Selamat datang", "Selamat pagi", "Sampai jumpa", "Terima kasih"],
+          2,
+        ],
       ];
       function quizDars1() {
         const box = document.getElementById("dars1Eval");
         if (!box) return;
         box.innerHTML = DARS1Q.map(
           (q, i) =>
-            `<div class="quiz"><b>${i + 1}. <span class="arabic">${q[0]}</span></b>${q[1].map((a, j) => `<label class="eval-option"><input type="radio" name="d1q${i}" value="${j}"><span class="${/[\u0600-\u06ff]/.test(a) ? "arabic" : ""}">${a}</span></label>`).join("")}</div>`,
+            `<div class="unit-question" data-d1-question="${i}"><b>${i + 1}. <span class="${/[\u0600-\u06ff]/.test(q[0]) ? "arabic" : ""}">${q[0]}</span></b>${q[1].map((a, j) => `<label class="eval-option"><input type="radio" name="d1q${i}" value="${j}" onchange="updateDars1Progress()"><b>${["A", "B", "C", "D"][j]}.</b> <span class="${/[\u0600-\u06ff]/.test(a) ? "arabic" : ""}">${a}</span></label>`).join("")}<p class="answer-key">Jawaban benar: ${["A", "B", "C", "D"][q[2]]}. <span class="${/[\u0600-\u06ff]/.test(q[1][q[2]]) ? "arabic" : ""}">${q[1][q[2]]}</span></p></div>`,
         ).join("");
+        updateDars1Progress();
+      }
+      function updateDars1Progress() {
+        const answered = DARS1Q.filter((q, i) =>
+          document.querySelector(`input[name=d1q${i}]:checked`),
+        ).length;
+        const label = document.getElementById("d1Answered");
+        const bar = document.getElementById("d1QuizBar");
+        if (label) label.textContent = `${answered}/${DARS1Q.length} terjawab`;
+        if (bar) bar.style.width = `${(answered / DARS1Q.length) * 100}%`;
       }
       function nilaiDars1() {
         let s = 0;
+        let answered = 0;
         DARS1Q.forEach((q, i) => {
           const x = document.querySelector(`input[name=d1q${i}]:checked`);
-          if (x && +x.value === q[2]) s++;
+          const row = document.querySelector(`[data-d1-question="${i}"]`);
+          if (row) row.classList.remove("correct", "incorrect");
+          if (x) {
+            answered++;
+            if (+x.value === q[2]) {
+              s++;
+              if (row) row.classList.add("correct");
+            } else if (row) row.classList.add("incorrect");
+          } else if (row) row.classList.add("incorrect");
         });
         const score = Math.round((s / DARS1Q.length) * 100);
         const el = document.getElementById("dars1Score");
-        el.innerHTML = `<h3>Skor: ${score}/100</h3><p>${s} dari ${DARS1Q.length} jawaban benar. ${score >= 80 ? "مُمْتَاز! أحسنت 👏" : "Terus berlatih dan ulangi materi yang belum dikuasai."}</p>`;
+        el.innerHTML = `<h3>Skor: ${score}/100</h3><p>${s} jawaban benar, ${DARS1Q.length - s} belum benar. ${answered < DARS1Q.length ? `Masih ada ${DARS1Q.length - answered} soal yang belum dijawab. ` : ""}${score >= 80 ? "مُمْتَاز! أحسنت 👏" : "Pelajari kembali materi yang ditandai, lalu ulangi kuis."}</p>`;
         gain(s * 5);
         if (score >= 80) done("X-0-evaluasi");
+      }
+      function resetDars1Quiz() {
+        quizDars1();
+        const result = document.getElementById("dars1Score");
+        if (result) result.textContent = "Skor akan muncul di sini.";
       }
 
       const DARS2Q = [
@@ -5631,7 +5700,7 @@
             currentVisitorStats.total +
             '</b></div><div class="dashstat"><span>Kunjungan hari ini</span><b id="dashTodayVisitors">' +
             currentVisitorStats.today +
-            '</b></div><div class="dashstat"><span>Unit tersedia</span><b>25</b></div><div class="dashstat"><span>Rata-rata nilai</span><b id="dashAverage">—</b></div>';
+            '</b></div><div class="dashstat"><span>Unit tersedia</span><b>13</b></div><div class="dashstat"><span>Rata-rata nilai</span><b id="dashAverage">—</b></div>';
           home.appendChild(stats);
           if (siberVisitorStats) {
             document.getElementById("dashTotalVisitors").textContent = siberVisitorStats.total;
