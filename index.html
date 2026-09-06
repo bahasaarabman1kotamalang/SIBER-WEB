@@ -5535,7 +5535,10 @@
             });
             var data = await res.json();
             if (data && data.success) {
-              return { today: Number(data.today || 0), total: Number(data.total || 0) };
+              return {
+                today: Number(data.today != null ? data.today : (data.hari_ini || 0)),
+                total: Number(data.total || 0)
+              };
             }
           } catch (e) {
             console.warn("SIBER-WEB visitor API error:", e);
