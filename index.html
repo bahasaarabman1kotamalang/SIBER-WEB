@@ -438,11 +438,11 @@
       }
       .lesson-tabs {
         display: flex;
+        flex-wrap: wrap;
         gap: 7px;
-        overflow: auto;
+        overflow: visible;
         padding: 4px 0 10px;
         margin: 8px 0;
-        scrollbar-width: thin;
       }
       .lesson-tabs button {
         white-space: nowrap;
@@ -622,8 +622,18 @@
           flex: 1;
         }
         .lesson-tabs {
-          margin-left: -4px;
-          margin-right: -4px;
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 7px;
+          margin-left: 0;
+          margin-right: 0;
+          overflow: visible;
+        }
+        .lesson-tabs button {
+          width: 100%;
+          min-width: 0;
+          white-space: normal;
+          line-height: 1.25;
         }
         .unit-heading {
           grid-template-columns: 1fr;
@@ -1007,6 +1017,9 @@
         margin: 12px 0;
       }
       @media (max-width: 750px) {
+        nav {
+          flex-wrap: wrap;
+        }
         .auth-screen {
           grid-template-columns: 1fr;
         }
@@ -1033,11 +1046,13 @@
         .links {
           display: flex !important;
           width: 100%;
-          overflow: auto;
-          flex-wrap: nowrap;
+          overflow: visible;
+          flex-wrap: wrap;
+          justify-content: center;
         }
         .links button {
-          white-space: nowrap;
+          white-space: normal;
+          flex: 1 1 auto;
         }
         .hero:after {
           font-size: 150px;
@@ -1230,6 +1245,7 @@
         ],
       };
       function page(id) {
+        stopArabicSpeech();
         document
           .querySelectorAll(".page")
           .forEach((x) => x.classList.remove("on"));
@@ -1237,6 +1253,7 @@
         scrollTo(0, 0);
       }
       function kelas(g, b) {
+        stopArabicSpeech();
         document
           .querySelectorAll(".tabs button")
           .forEach((x) => x.classList.remove("on"));
@@ -1609,14 +1626,171 @@
         ["يَسْكُنُ", "Bertempat tinggal"],
         ["يُشَجِّعُ", "Mendorong"],
       ];
-      function speak(x) {
+      /*
+       * Pembaca teks Arab yang stabil.
+       *
+       * Web Speech menyediakan daftar suara yang berbeda pada setiap perangkat.
+       * Karena itu kita memilih nama suara pria Arab secara eksplisit, menunggu
+       * daftar suara siap, lalu membaca teks panjang per potongan agar Android/iOS
+       * tidak berhenti di tengah jalan.
+       */
+      const arabicSpeech = {
+        voices: [],
+        queue: [],
+        token: 0,
+        preferredMaleNames: [
+          "hamed", "hamdan", "shakir", "ali", "ismael", "bassel", "taim",
+          "fahed", "fahd", "rami", "omar", "jamal", "abdullah", "moaz",
+          "laith", "hedi", "saleh", "majed", "maged", "tariq", "tarik",
+          "ahmed", "hamza", "naayf"
+        ],
+        femaleNames: [
+          "zariyah", "salma", "hoda", "laila", "layla", "mariam", "maryam",
+          "fatima", "amina", "female", "woman", "perempuan"
+        ]
+      };
+
+      function refreshArabicVoices() {
+        if (!("speechSynthesis" in window)) return [];
+        arabicSpeech.voices = window.speechSynthesis.getVoices() || [];
+        return arabicSpeech.voices;
+      }
+
+      function chooseArabicMaleVoice() {
+        const voices = refreshArabicVoices();
+        const arabic = voices.filter(function (voice) {
+          return /^ar(?:-|_)/i.test(voice.lang || "") || /arabic|العربية/i.test(voice.name || "");
+        });
+        if (!arabic.length) return null;
+
+        function score(voice) {
+          const label = ((voice.name || "") + " " + (voice.voiceURI || "")).toLowerCase();
+          let value = /^ar-sa/i.test(voice.lang || "") ? 40 : 20;
+          arabicSpeech.preferredMaleNames.forEach(function (name, index) {
+            if (label.indexOf(name) !== -1) value += 300 - index;
+          });
+          arabicSpeech.femaleNames.forEach(function (name) {
+            if (label.indexOf(name) !== -1) value -= 500;
+          });
+          if (/male|man|laki/.test(label) && !/female|woman/.test(label)) value += 350;
+          if (/natural|neural|online|premium|enhanced/.test(label)) value += 35;
+          if (voice.localService) value += 5;
+          return value;
+        }
+
+        return arabic.sort(function (a, b) { return score(b) - score(a); })[0];
+      }
+
+      function splitArabicSpeech(text) {
+        const normalized = String(text || "").replace(/\s+/g, " ").trim();
+        if (!normalized) return [];
+        const sentences = normalized.match(/[^.!?؟،؛]+[.!?؟،؛]?/g) || [normalized];
+        const chunks = [];
+        sentences.forEach(function (sentence) {
+          let part = sentence.trim();
+          while (part.length > 170) {
+            let cut = part.lastIndexOf(" ", 170);
+            if (cut < 70) cut = 170;
+            chunks.push(part.slice(0, cut).trim());
+            part = part.slice(cut).trim();
+          }
+          if (part) chunks.push(part);
+        });
+        return chunks;
+      }
+
+      function speechNotice(message, isError) {
+        let notice = document.getElementById("speechNotice");
+        if (!notice) {
+          notice = document.createElement("div");
+          notice.id = "speechNotice";
+          notice.setAttribute("role", "status");
+          notice.style.cssText = "position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:9999;max-width:min(92vw,520px);padding:10px 14px;border-radius:10px;color:#fff;font:600 14px system-ui;text-align:center;box-shadow:0 8px 24px #0003";
+          document.body.appendChild(notice);
+        }
+        notice.style.background = isError ? "#9f2d2d" : "#126b57";
+        notice.textContent = message;
+        notice.hidden = false;
+        clearTimeout(notice._timer);
+        notice._timer = setTimeout(function () { notice.hidden = true; }, 3500);
+      }
+
+      function stopArabicSpeech() {
+        arabicSpeech.token += 1;
+        arabicSpeech.queue = [];
         if ("speechSynthesis" in window) {
-          const u = new SpeechSynthesisUtterance(x);
-          u.lang = "ar-SA";
-          speechSynthesis.cancel();
-          speechSynthesis.speak(u);
+          window.speechSynthesis.cancel();
+          /* Beberapa versi Android baru membatalkan suara setelah event loop berikutnya. */
+          setTimeout(function () { window.speechSynthesis.cancel(); }, 0);
+        }
+        const notice = document.getElementById("speechNotice");
+        if (notice) notice.hidden = true;
+      }
+
+      function playArabicQueue(token, voice) {
+        if (token !== arabicSpeech.token || !arabicSpeech.queue.length) return;
+        const utterance = new SpeechSynthesisUtterance(arabicSpeech.queue.shift());
+        utterance.lang = (voice && voice.lang) || "ar-SA";
+        if (voice) utterance.voice = voice;
+        utterance.rate = 0.82;
+        utterance.pitch = 0.82;
+        utterance.volume = 1;
+        utterance.onend = function () { playArabicQueue(token, voice); };
+        utterance.onerror = function (event) {
+          if (event.error !== "canceled" && event.error !== "interrupted") {
+            speechNotice("Suara Arab belum tersedia. Aktifkan suara/media perangkat lalu coba lagi.", true);
+          }
+        };
+        window.speechSynthesis.resume();
+        window.speechSynthesis.speak(utterance);
+      }
+
+      function speak(x) {
+        if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
+          speechNotice("Browser ini belum mendukung pembaca suara. Gunakan Chrome, Edge, atau Safari terbaru.", true);
+          return;
+        }
+        const chunks = splitArabicSpeech(x);
+        if (!chunks.length) return;
+        const token = ++arabicSpeech.token;
+        arabicSpeech.queue = chunks;
+        window.speechSynthesis.cancel();
+
+        const start = function (attempt) {
+          if (token !== arabicSpeech.token) return;
+          if (!refreshArabicVoices().length && attempt < 8) {
+            setTimeout(function () { start(attempt + 1); }, 250);
+            return;
+          }
+          const voice = chooseArabicMaleVoice();
+          if (!voice) {
+            speechNotice("Suara Arab belum terpasang pada perangkat ini. Pasang suara Arab (Arab Saudi) di pengaturan bahasa.", true);
+            return;
+          }
+          setTimeout(function () { playArabicQueue(token, voice); }, 60);
+        };
+
+        if (refreshArabicVoices().length) start(0);
+        else {
+          speechNotice("Menyiapkan suara Arab…", false);
+          setTimeout(function () { start(1); }, 250);
         }
       }
+
+      if ("speechSynthesis" in window) {
+        refreshArabicVoices();
+        window.speechSynthesis.addEventListener("voiceschanged", refreshArabicVoices);
+      }
+      document.addEventListener("click", function (event) {
+        const menu = event.target.closest && event.target.closest(
+          ".links button, .tabs button, .lesson-tabs button, .lesson-nav button, [data-dash-page]"
+        );
+        if (menu && !menu.classList.contains("audio-btn")) stopArabicSpeech();
+      }, true);
+      window.addEventListener("pagehide", stopArabicSpeech);
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) stopArabicSpeech();
+      });
       function dars1() {
         return `<div class="card unit-shell">
 <div class="unit-heading">
@@ -3548,6 +3722,7 @@
       }
 
       function openLesson(g, i) {
+        stopArabicSpeech();
         let t = topics[g][i];
         if (g === "X" && i === 0) {
           document.getElementById("detailBox").innerHTML = dars1();
@@ -3639,6 +3814,7 @@
       }
 
       function lessonTab(id, btn) {
+        stopArabicSpeech();
         document
           .querySelectorAll(".lesson-panel")
           .forEach((x) => x.classList.remove("active"));
@@ -6286,6 +6462,7 @@ body.innerHTML='<div class="role-page-grid">'+cards.map(function(c){return '<div
   }
   var originalPage=window.page;
   window.page=function(id){
+    if(typeof window.stopArabicSpeech==="function")window.stopArabicSpeech();
     var map={home:"home",kelas:"kelas",progres:"progres",roleDashboard:"dashboard",manajemenAkun:"akun"};
     if(id==="penilaian"||id==="kuis") {if(!has("penilaian")){return deny("Penilaian Harian")}window.location.href="https://cbt.mung.my.id";return}
     if(map[id]&&!has(map[id])){deny(id);return}
