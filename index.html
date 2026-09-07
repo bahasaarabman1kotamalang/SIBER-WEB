@@ -500,6 +500,9 @@
       .flashface .arabic {
         font-size: 30px;
       }
+
+      .audio-line { display:inline-flex; align-items:center; gap:6px; margin:3px 4px; }
+      .audio-line .btn { padding:5px 9px; font-size:12px; }
       .audio-btn {
         margin-top: 10px;
       }
@@ -1273,33 +1276,27 @@
       const vocab2 = [
         ["أُسْرَةٌ", "Keluarga"],
         ["شَجَرَةُ الْأُسْرَةِ", "Pohon keluarga"],
-        ["جَدٌّ", "Kakek"],
-        ["جَدَّةٌ", "Nenek"],
-        ["أَبٌ", "Ayah"],
-        ["أُمٌّ", "Ibu"],
-        ["أَخٌ", "Saudara laki-laki"],
-        ["أُخْتٌ", "Saudara perempuan"],
-        ["عَمٌّ", "Paman dari ayah"],
-        ["عَمَّةٌ", "Bibi dari ayah"],
-        ["خَالٌ", "Paman dari ibu"],
-        ["خَالَةٌ", "Bibi dari ibu"],
-        ["اِبْنٌ", "Anak laki-laki"],
-        ["اِبْنَةٌ", "Anak perempuan"],
-        ["بَيْتٌ", "Rumah"],
-        ["غُرْفَةُ الْجُلُوسِ", "Ruang keluarga"],
-        ["غُرْفَةُ الِاسْتِقْبَالِ", "Ruang tamu"],
-        ["غُرْفَةُ النَّوْمِ", "Kamar tidur"],
-        ["غُرْفَةُ الْمَكْتَبِ", "Ruang belajar/kerja"],
-        ["غُرْفَةُ الْأَكْلِ", "Ruang makan"],
-        ["مَطْبَخٌ", "Dapur"],
-        ["حَمَّامٌ", "Kamar mandi"],
-        ["حَدِيقَةٌ", "Taman"],
-        ["سَرِيرٌ", "Tempat tidur"],
-        ["خِزَانَةٌ", "Lemari"],
-        ["طَاوِلَةٌ", "Meja"],
-        ["كُرْسِيٌّ", "Kursi"],
-        ["مِصْبَاحٌ", "Lampu"],
-        ["نَافِذَةٌ", "Jendela"],
+        ["جَدٌّ", "Kakek"], ["جَدَّةٌ", "Nenek"],
+        ["أَبٌ", "Ayah"], ["أُمٌّ", "Ibu"],
+        ["أَخٌ", "Saudara laki-laki"], ["أُخْتٌ", "Saudara perempuan"],
+        ["عَمٌّ", "Paman dari ayah"], ["عَمَّةٌ", "Bibi dari ayah"],
+        ["خَالٌ", "Paman dari ibu"], ["خَالَةٌ", "Bibi dari ibu"],
+        ["اِبْنٌ", "Anak laki-laki"], ["اِبْنَةٌ", "Anak perempuan"],
+        ["وَالِدٌ", "Ayah/orang tua laki-laki"], ["وَالِدَةٌ", "Ibu/orang tua perempuan"],
+        ["زَوْجٌ", "Suami"], ["زَوْجَةٌ", "Istri"], ["أَوْلَادٌ", "Anak-anak"],
+        ["أَحْفَادٌ", "Cucu-cucu"], ["عَمٌّ", "Paman dari ayah"], ["عَمَّةٌ", "Bibi dari ayah"],
+        ["بَيْتٌ", "Rumah"], ["غُرْفَةُ الْجُلُوسِ", "Ruang duduk/keluarga"],
+        ["غُرْفَةُ الْأَكْلِ", "Ruang makan"], ["غُرْفَةُ الْمَكْتَبِ", "Ruang belajar/kerja"],
+        ["غُرْفَةُ النَّوْمِ", "Kamar tidur"], ["مَطْبَخٌ", "Dapur"], ["حَمَّامٌ", "Kamar mandi"],
+        ["حَدِيقَةٌ", "Taman"], ["سُورٌ", "Pagar"], ["طَابَقٌ", "Lantai/tingkat"],
+        ["سَرِيرٌ", "Tempat tidur"], ["خِزَانَةٌ", "Lemari"], ["طَاوِلَةٌ", "Meja"],
+        ["كُرْسِيٌّ", "Kursi"], ["دِثَارٌ", "Selimut"], ["وِسَادَةٌ", "Bantal"],
+        ["أَرِيكَةٌ", "Sofa"], ["مِنْضَدَةٌ", "Meja"], ["زُهْرِيَّةٌ", "Vas bunga"],
+        ["رَفٌّ", "Rak"], ["كِتَابٌ", "Buku"], ["مِلْعَقَةٌ", "Sendok"], ["حَلَّةٌ", "Panci"],
+        ["غَلَّايَةٌ", "Ketel"], ["مِقْلَاةٌ", "Wajan"], ["فُرْنٌ كَهْرَبَائِيٌّ", "Oven listrik"],
+        ["ثَلَّاجَةٌ", "Kulkas"], ["مَنْزِلٌ", "Rumah"], ["أَسْرَةٌ سَعِيدَةٌ", "Keluarga bahagia"],
+        ["رَبَّةُ الْبَيْتِ", "Ibu rumah tangga"], ["مُطِيعٌ", "Taat/patuh"], ["عَطُوفٌ", "Penyayang"],
+        ["مُعَامَلَةٌ حَسَنَةٌ", "Perlakuan yang baik"], ["آدَابُ الْوَلَدِ", "Adab anak"],
       ];
       const vocab3 = [
         ["الْمَدْرَسَةُ", "Sekolah/madrasah"],
@@ -1757,7 +1754,7 @@
     <span class="tag">Kelas X • Bab 2 / Unit 2</span>
     <h2 class="arabic">الْوَحْدَةُ الثَّانِيَةُ: الْأُسْرَةُ</h2>
     <h2>Unit 2: Keluarga dan Rumah</h2>
-    <p>Pelajari anggota keluarga, bagian rumah, teks deskriptif, bentuk mudzakkar-muannats, dan huruf jar melalui kegiatan menyimak, berbicara, membaca, serta menulis.</p>
+    <p>Mengenal anggota keluarga, hubungan kekerabatan, bagian-bagian rumah, perabot rumah, serta menggunakan kosakata dan struktur bahasa melalui Istima', Hiwar, Tarkib, Qira'ah, dan Kitabah.</p>
   </div>
   <div class="unit-number" aria-label="Unit 2">02</div>
 </div>
@@ -1782,28 +1779,29 @@
 <div id="panel-tujuan" class="lesson-panel active">
   <div class="dars-section">
     <h3>🎯 Tujuan Pembelajaran</h3>
-    <p>Peserta didik mampu memahami dan memproduksi teks deskriptif bertema keluarga (<span class="arabic">الْأُسْرَةُ</span>) dan rumah dengan menggunakan <span class="arabic">الْمُذَكَّرُ وَالْمُؤَنَّثُ</span> serta <span class="arabic">حُرُوفُ الْجَرِّ</span> secara tepat.</p>
+    <p>Setelah mempelajari unit ini, peserta didik diharapkan mampu memahami dan menggunakan kosakata tentang <span class="arabic">الْأُسْرَةُ وَالْبَيْتُ</span>, menyimak dan mempraktikkan percakapan, memahami bacaan, mengenali bentuk kata serta huruf jar, dan menulis deskripsi sederhana tentang keluarga dan rumah.</p>
     <div class="objective-grid">
-      <div class="objective-item"><b>01 • Bunyi dan makna</b>Menirukan mufradat dengan pelafalan tepat dan memahami artinya.</div>
-      <div class="objective-item"><b>02 • Unsur bahasa</b>Menggunakan bentuk mudzakkar-muannats dan huruf jar dalam kalimat.</div>
-      <div class="objective-item"><b>03 • Menyimak</b>Menemukan informasi tersurat dan tersirat dari hiwar atau teks lisan.</div>
-      <div class="objective-item"><b>04 • Berbicara</b>Menyampaikan informasi tentang keluarga dan rumah dalam percakapan.</div>
-      <div class="objective-item"><b>05 • Membaca</b>Membaca teks deskriptif dengan penggalan, intonasi, dan konteks tepat.</div>
-      <div class="objective-item"><b>06 • Menganalisis</b>Mengidentifikasi struktur dan ciri teks deskriptif.</div>
-      <div class="objective-item"><b>07 • Menulis</b>Menyusun kalimat dan paragraf deskriptif tentang keluarga atau rumah.</div>
-      <div class="objective-item"><b>08 • Refleksi</b>Memberi tanggapan dan menghargai keluarga sebagai karunia Allah.</div>
+      <div class="objective-item"><b>01 • Mufradat</b>Mengenali dan melafalkan kosakata anggota keluarga serta bagian dan perabot rumah.</div>
+      <div class="objective-item"><b>02 • Istima'</b>Menangkap informasi penting dari teks lisan tentang keluarga dan rumah.</div>
+      <div class="objective-item"><b>03 • Hiwar</b>Bertanya dan menjawab tentang foto keluarga, anggota keluarga, serta ruangan di rumah.</div>
+      <div class="objective-item"><b>04 • Tarkib</b>Membedakan mudzakkar dan muannats serta menggunakan huruf jar dalam kalimat.</div>
+      <div class="objective-item"><b>05 • Qira'ah</b>Membaca teks tentang keluarga dan rumah dengan lafal dan intonasi yang tepat.</div>
+      <div class="objective-item"><b>06 • Pemahaman</b>Menemukan informasi tersurat, hubungan kekerabatan, tempat, dan fungsi ruangan.</div>
+      <div class="objective-item"><b>07 • Kitabah</b>Menyusun kalimat dan paragraf deskriptif sederhana tentang keluarga atau rumah.</div>
+      <div class="objective-item"><b>08 • Adab</b>Menumbuhkan rasa syukur, kasih sayang, dan sikap hormat kepada orang tua.</div>
     </div>
   </div>
   <div class="dars-section">
     <h3>🌿 Apersepsi</h3>
     <div class="rtlbox">يَا أَيُّهَا الَّذِينَ آمَنُوا قُوا أَنْفُسَكُمْ وَأَهْلِيكُمْ نَارًا وَقُودُهَا النَّاسُ وَالْحِجَارَةُ</div>
-    <p><b>QS. At-Tahrim: 6</b> mengingatkan kita untuk menjaga diri dan keluarga. Pada unit ini, bahasa dipelajari sekaligus untuk menumbuhkan kasih sayang, adab kepada orang tua, dan kepedulian antarsesama.</p>
+    <button class="btn audio-btn" onclick="speak(this.previousElementSibling.innerText)">🔊 Dengarkan ayat</button>
+    <p><b>QS. At-Tahrim: 6.</b> Keluarga adalah amanah dan karunia Allah. Karena itu, kita belajar bahasa Arab sekaligus membiasakan kasih sayang, penghormatan kepada orang tua, dan tanggung jawab terhadap keluarga.</p>
   </div>
 </div>
 
 <div id="panel-mufradat" class="lesson-panel">
   <div class="dars-section">
-    <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti.</span></div><span class="progress-chip">${vocab2.length} kosakata</span></div>
+    <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti dan gunakan tombol 🔊 untuk mendengarkan pelafalan.</span></div><span class="progress-chip">${vocab2.length} kosakata</span></div>
     <div class="vocab-grid">${vocab2.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();speak('${v[0]}')">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
   </div>
   <div class="dars-section">
@@ -1820,78 +1818,91 @@
 <div id="panel-istima" class="lesson-panel">
   <div class="dars-section">
     <h3>🎧 الِاسْتِمَاعُ — Istima'</h3>
-    <p>Dengarkan dua teks berikut, kemudian ulangi dengan memperhatikan pengucapan dan intonasi.</p>
-    <div class="dialogue rtlbox" id="d2ListenFamily">هَذِهِ أُسْرَةُ السَّيِّدِ حَسَنٍ. السَّيِّدُ حَسَنٌ مُدَرِّسٌ وَالسَّيِّدَةُ مَرْيَمُ رَبَّةُ الْبَيْتِ. لَهُمَا بِنْتٌ وَابْنَانِ. الْبِنْتُ اسْمُهَا زُلْفَى، وَالِابْنَانِ هُمَا زَكَرِيَّا وَيَحْيَى. هُمْ أُسْرَةٌ سَعِيدَةٌ.</div>
-    <button class="btn primary" onclick="speak(document.getElementById('d2ListenFamily').innerText)">▶ Putar: Keluarga</button>
-    <div class="dialogue rtlbox" id="d2ListenHouse">أُسْرَتِي تَسْكُنُ فِي بَيْتٍ كَبِيرٍ وَبَسِيطٍ وَنَظِيفٍ. فِي الْبَيْتِ غُرَفُ النَّوْمِ وَغُرْفَةُ الْجُلُوسِ وَغُرْفَةُ الْمَكْتَبِ وَغُرْفَةُ الْأَكْلِ وَمَطْبَخٌ. أَمَامَ الْبَيْتِ حَدِيقَةٌ جَمِيلَةٌ.</div>
-    <button class="btn primary" onclick="speak(document.getElementById('d2ListenHouse').innerText)">▶ Putar: Rumah</button>
+    <p>Dengarkan dua materi berikut. Dengarkan minimal dua kali, kemudian ulangi dengan memperhatikan makhraj, panjang-pendek, dan intonasi.</p>
+    <div class="dialogue rtlbox" id="d2Listen1">هَارُونُ: السَّلَامُ عَلَيْكُمْ. مُوسَى: وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ اللهِ. أَهْلًا وَسَهْلًا. هَارُونُ: أَهْلًا بِكَ. مُوسَى: تَفَضَّلْ، اِجْلِسْ مِنْ فَضْلِكَ. هَارُونُ: شُكْرًا. مُوسَى: أَنَا مَسْرُورٌ بِزِيَارَتِكَ. هَارُونُ: يَا لَهَا مِنْ صُورَةٍ رَائِعَةٍ! هَلْ هَذِهِ صُورَةُ أُسْرَتِكَ؟ مُوسَى: نَعَمْ، هَذِهِ صُورَةُ أُسْرَتِي. هَارُونُ: مَنْ هَؤُلَاءِ؟ مُوسَى: هَذَا أَبِي، اسْمُهُ إِبْرَاهِيمُ. هَذِهِ أُمِّي، اسْمُهَا رُقَيَّةُ. هَارُونُ: وَمَنْ هَذِهِ؟ مُوسَى: هَذِهِ أُخْتِي، اسْمُهَا حَفْصَةُ. وَهَذَا أَخِي، اسْمُهُ صَالِحٌ. هَارُونُ: هَلْ هَذِهِ صُورَتُكَ؟ مُوسَى: نَعَمْ، هَذِهِ صُورَتِي.</div>
+    <button class="btn primary" onclick="speak(document.getElementById('d2Listen1').innerText)">▶ Putar Istima' 1</button>
+    <div class="material-note"><b>Fokus:</b> mengenali anggota keluarga melalui gambar/foto dan memahami pertanyaan <span class="arabic">مَنْ؟ هَلْ؟</span></div>
+    <div class="dialogue rtlbox" id="d2Listen2">مَحْمُودَةُ: اُنْظُرِي إِلَى هَذِهِ الصُّوْرَةِ. كَامِلَةُ: بَيْتُكِ كَبِيرٌ وَجَمِيلٌ. مَحْمُودَةُ: وَهَذِهِ صُوْرَةُ أُسْرَتِي. كَامِلَةُ: أَنْتِ تَجْلِسِينَ فِي غُرْفَةِ الْجُلُوسِ؟ مَحْمُودَةُ: صَحِيحٌ. وَهَذِهِ غُرْفَةُ الْأَكْلِ. نَحْنُ نَأْكُلُ فِيهَا. كَامِلَةُ: وَهَذِهِ غُرْفَةُ الْمَكْتَبِ، أَلَيْسَ كَذَلِكَ؟ مَحْمُودَةُ: بَلَى، أَقْرَأُ وَأَكْتُبُ وَأَدْرُسُ هُنَا. وَهَذَا مَطْبَخٌ. هُنَا تَطْبُخُ أُمِّي الطَّعَامَ. كَامِلَةُ: عَلَى فِكْرَةٍ، أَيْنَ غُرَفُ النَّوْمِ؟ مَحْمُودَةُ: غُرَفُ النَّوْمِ فِي الطَّابَقِ الْعُلْوِيِّ.</div>
+    <button class="btn primary" onclick="speak(document.getElementById('d2Listen2').innerText)">▶ Putar Istima' 2</button>
     <div class="exercise"><b>Periksa pemahamanmu</b><p class="arabic">مَنْ رَبَّةُ الْبَيْتِ؟</p><input id="d2ist1" placeholder="Tulis jawaban"><button class="btn" onclick="cekFlexible('d2ist1',['مريم','السيدة مريم'],'d2istfb')">Cek jawaban</button><div id="d2istfb" class="feedback" aria-live="polite"></div></div>
   </div>
 </div>
 
 <div id="panel-hiwar" class="lesson-panel">
   <div class="dars-section">
-    <h3>🗣️ الْحِوَارُ — Hiwar 1: Foto Keluarga</h3>
-    <div class="dialogue rtlbox">
-      <b>هَارُونُ:</b> السَّلَامُ عَلَيْكُمْ.<br><b>مُوسَى:</b> وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ اللهِ. أَهْلًا وَسَهْلًا.<br><b>هَارُونُ:</b> يَا لَهَا مِنْ صُورَةٍ رَائِعَةٍ! هَلْ هَذِهِ صُورَةُ أُسْرَتِكَ؟<br><b>مُوسَى:</b> نَعَمْ، هَذِهِ صُورَةُ أُسْرَتِي.<br><b>هَارُونُ:</b> مَنْ هَؤُلَاءِ؟<br><b>مُوسَى:</b> هَذَا أَبِي اسْمُهُ إِبْرَاهِيمُ، وَهَذِهِ أُمِّي اسْمُهَا رَقِيَّةُ.<br><b>هَارُونُ:</b> وَمَنْ هَذِهِ؟<br><b>مُوسَى:</b> هَذِهِ أُخْتِي، اسْمُهَا حَفْصَةُ. وَهَذَا أَخِي اسْمُهُ صَالِحٌ.<br><b>هَارُونُ:</b> هَلْ هَذِهِ صُورَتُكَ؟<br><b>مُوسَى:</b> نَعَمْ، هَذِهِ صُورَتِي.
-    </div>
-    <button class="btn" onclick="speak(this.previousElementSibling.innerText)">🔊 Dengarkan hiwar</button>
+    <h3>🗣️ الْحِوَارُ (١) — Foto Keluarga</h3>
+    <div class="dialogue rtlbox" id="d2hiwar1"><b>هَارُونُ:</b> السَّلَامُ عَلَيْكُمْ.<br><b>مُوسَى:</b> وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ اللهِ. أَهْلًا وَسَهْلًا.<br><b>هَارُونُ:</b> أَهْلًا بِكَ.<br><b>مُوسَى:</b> تَفَضَّلْ، اِجْلِسْ مِنْ فَضْلِكَ.<br><b>هَارُونُ:</b> شُكْرًا.<br><b>مُوسَى:</b> أَنَا مَسْرُورٌ بِزِيَارَتِكَ.<br><b>هَارُونُ:</b> يَا لَهَا مِنْ صُورَةٍ رَائِعَةٍ! هَلْ هَذِهِ صُورَةُ أُسْرَتِكَ؟<br><b>مُوسَى:</b> نَعَمْ، هَذِهِ صُورَةُ أُسْرَتِي.<br><b>هَارُونُ:</b> مَنْ هَؤُلَاءِ؟<br><b>مُوسَى:</b> هَذَا أَبِي، اسْمُهُ إِبْرَاهِيمُ. وَهَذِهِ أُمِّي، اسْمُهَا رُقَيَّةُ.<br><b>هَارُونُ:</b> وَمَنْ هَذِهِ؟<br><b>مُوسَى:</b> هَذِهِ أُخْتِي، اسْمُهَا حَفْصَةُ. وَهَذَا أَخِي، اسْمُهُ صَالِحٌ.<br><b>هَارُونُ:</b> هَلْ هَذِهِ صُورَتُكَ؟<br><b>مُوسَى:</b> نَعَمْ، هَذِهِ صُورَتِي.</div>
+    <button class="btn" onclick="speak(document.getElementById('d2hiwar1').innerText)">🔊 Dengarkan Hiwar 1</button>
+    <div class="exercise"><b>Latihan pasangan:</b> Ganti nama anggota keluarga pada dialog dengan anggota keluargamu sendiri.</div>
   </div>
   <div class="dars-section">
-    <h3>🗣️ الْحِوَارُ — Hiwar 2: Rumahku</h3>
-    <div class="dialogue rtlbox">
-      <b>مَحْمُودٌ:</b> اُنْظُرْ! هَذِهِ صُورَةُ بَيْتِي.<br><b>هَادِي:</b> بَيْتُكَ كَبِيرٌ وَجَمِيلٌ.<br><b>مَحْمُودٌ:</b> شُكْرًا، هَذَا مِنْ فَضْلِ رَبِّي.<br><b>هَادِي:</b> أَنْتَ تَجْلِسُ فِي غُرْفَةِ الْجُلُوسِ؟<br><b>مَحْمُودٌ:</b> صَحِيحٌ، أُشَاهِدُ التِّلْفَازَ مَعَ الْأُسْرَةِ.<br><b>هَادِي:</b> وَهَذِهِ مَكْتَبَةُ الْبَيْتِ، أَلَيْسَ كَذَلِكَ؟<br><b>مَحْمُودٌ:</b> بَلَى، أَقْرَأُ وَأَكْتُبُ وَأَدْرُسُ هُنَا.<br><b>هَادِي:</b> وَهَذَا مَطْبَخٌ؟<br><b>مَحْمُودٌ:</b> هُنَا تَطْبَخُ أُمِّي الطَّعَامَ.<br><b>هَادِي:</b> عَلَى فِكْرَةٍ، أَيْنَ غُرَفُ النَّوْمِ؟<br><b>مَحْمُودٌ:</b> غُرَفُ النَّوْمِ فِي الطَّابِقِ الْعُلْوِيِّ.
-    </div>
-    <button class="btn" onclick="speak(this.previousElementSibling.innerText)">🔊 Dengarkan hiwar</button>
-    <div class="exercise"><b>Praktik berpasangan</b><p>Ganti nama anggota keluarga, lokasi rumah, dan nama ruangan. Lalu praktikkan dialog dengan temanmu.</p></div>
+    <h3>🗣️ الْحِوَارُ (٢) — Rumahku</h3>
+    <div class="dialogue rtlbox" id="d2hiwar2"><b>مَحْمُودٌ:</b> اُنْظُرْ. هَذِهِ صُورَةُ بَيْتِي.<br><b>هَادِي:</b> بَيْتُكَ كَبِيرٌ وَجَمِيلٌ.<br><b>مَحْمُودٌ:</b> شُكْرًا. هَذَا مِنْ فَضْلِ رَبِّي.<br><b>هَادِي:</b> أَنْتَ تَجْلِسُ فِي غُرْفَةِ الْجُلُوسِ؟<br><b>مَحْمُودٌ:</b> صَحِيحٌ. أُشَاهِدُ التِّلْفَازَ مَعَ الْأُسْرَةِ. وَهَذِهِ غُرْفَةُ الْأَكْلِ. نَحْنُ نَأْكُلُ فِيهَا.<br><b>هَادِي:</b> وَهَذِهِ مَكْتَبَةُ الْبَيْتِ، أَلَيْسَ كَذَلِكَ؟<br><b>مَحْمُودٌ:</b> بَلَى، أَقْرَأُ وَأَكْتُبُ وَأَدْرُسُ هُنَا. وَهَذَا مَطْبَخٌ. هُنَا تَطْبُخُ أُمِّي الطَّعَامَ.<br><b>هَادِي:</b> عَلَى فِكْرَةٍ، أَيْنَ غُرَفُ النَّوْمِ؟<br><b>مَحْمُودٌ:</b> غُرَفُ النَّوْمِ فِي الطَّابَقِ الْعُلْوِيِّ.</div>
+    <button class="btn" onclick="speak(document.getElementById('d2hiwar2').innerText)">🔊 Dengarkan Hiwar 2</button>
+    <div class="exercise"><b>Praktik:</b> Buat dialog serupa tentang rumahmu. Gunakan <span class="arabic">أَيْنَ؟ مَا هَذَا؟ مَنْ هَذِهِ؟</span></div>
   </div>
 </div>
 
 <div id="panel-qiraah" class="lesson-panel">
   <div class="dars-section">
-    <div class="reading-title"><h3>📖 القراءة ١ — الْأُسْرَةُ السَّعِيدَةُ</h3><button class="btn" onclick="speak(document.getElementById('d2read1').innerText)">🔊</button></div>
-    <div class="rtlbox" id="d2read1">هَذِهِ أُسْرَةُ السَّيِّدِ حَسَنٍ. السَّيِّدُ حَسَنٌ لَهُ زَوْجَةٌ وَهِيَ السَّيِّدَةُ مَرْيَمُ. لَهُمَا بِنْتٌ وَاحِدَةٌ وَابْنَانِ اثْنَانِ. الْبِنْتُ اسْمُهَا زُلْفَى وَالِابْنَانِ هُمَا زَكَرِيَّا وَيَحْيَى. السَّيِّدُ حَسَنٌ مُدَرِّسٌ فِي الْمَدْرَسَةِ الثَّانَوِيَّةِ الْحُكُومِيَّةِ، وَالسَّيِّدَةُ مَرْيَمُ رَبَّةُ الْبَيْتِ. هِيَ أُمٌّ بَسِيطَةٌ عَطُوفَةٌ. زُلْفَى طَالِبَةٌ بِالْجَامِعَةِ، أَمَّا أَخُوهَا زَكَرِيَّا فَتِلْمِيذٌ فِي الْمَدْرَسَةِ الْمُتَوَسِّطَةِ، وَيَحْيَى تِلْمِيذٌ فِي الْمَدْرَسَةِ الِابْتِدَائِيَّةِ. هُمَا وَلَدَانِ نَشِيطَانِ. وَالْأُسْرَةُ فَضْلٌ مِنَ اللهِ. السَّيِّدُ حَسَنٌ يُحِبُّ زَوْجَتَهُ وَأَوْلَادَهُ، وَالْأَوْلَادُ يُكْرِمُونَ وَالِدَيْهِمْ. هُمْ يَتَحَابُّونَ وَيَتَعَامَلُونَ مُعَامَلَةً حَسَنَةً.</div>
-    <div class="exercise"><b>Pertanyaan:</b><ol class="arabic"><li>مَنْ رَئِيسُ هَذِهِ الْأُسْرَةِ؟</li><li>مَا اسْمُ بِنْتِ السَّيِّدِ حَسَنٍ؟</li><li>مَنْ هِيَ زُلْفَى؟</li><li>كَيْفَ يَتَعَامَلُ أَعْضَاءُ الْأُسْرَةِ؟</li></ol></div>
+    <div class="reading-title"><h3>📖 القراءة (١) — الْأُسْرَةُ السَّعِيدَةُ</h3><button class="btn" onclick="speak(document.getElementById('d2read1').innerText)">🔊 Baca</button></div>
+    <div class="rtlbox" id="d2read1">هَذِهِ أُسْرَةُ السَّيِّدِ حَسَنٍ. اَلسَّيِّدُ حَسَنٌ لَهُ زَوْجَةٌ، وَهِيَ السَّيِّدَةُ مَرْيَمُ. السَّيِّدُ حَسَنٌ وَالسَّيِّدَةُ مَرْيَمُ لَهُمَا بِنْتٌ وَاحِدَةٌ وَابْنَانِ اثْنَانِ. اَلْبِنْتُ اِسْمُهَا زُلْفَى وَالْاِبْنَانِ هُمَا زَكَرِيَّا وَيَحْيَى. السَّيِّدُ حَسَنٌ مُدَرِّسٌ بِالْمَدْرَسَةِ الثَّانَوِيَّةِ الْحُكُومِيَّةِ. هُوَ أَبٌ مُطَاعٌ وَالسَّيِّدَةُ مَرْيَمُ رَبَّةُ الْبَيْتِ. هِيَ أُمٌّ بَسِيطَةٌ وَعَطُوفَةٌ. زُلْفَى طَالِبَةٌ بِالْجَامِعَةِ، هِيَ اِبْنَةٌ مُطِيعَةٌ. أَمَّا أَخُوهَا زَكَرِيَّا تِلْمِيذٌ فِي الْمَدْرَسَةِ الْمُتَوَسِّطَةِ. وَيَحْيَى تِلْمِيذٌ فِي الْمَدْرَسَةِ الْاِبْتِدَائِيَّةِ. هُمَا وَلَدَانِ نَشِيطَانِ. وَالْأُسْرَةُ فَضْلٌ مِنَ اللهِ. السَّيِّدُ حَسَنٌ يَرْحَمُ زَوْجَتَهُ وَأَوْلَادَهُ. وَالْأَوْلَادُ يُكْرِمُونَ وَالِدَيْهِمْ. هُمْ يَتَحَابُّونَ وَيَتَعَامَلُونَ مُعَامَلَةً حَسَنَةً.</div>
+    <div class="exercise"><b>Pertanyaan pemahaman:</b><ol class="arabic"><li>مَنْ رَئِيسُ هَذِهِ الْأُسْرَةِ؟</li><li>مَا اسْمُ بِنْتِ السَّيِّدِ حَسَنٍ؟</li><li>مَنْ هِيَ زُلْفَى؟</li><li>كَيْفَ يَتَعَامَلُ أَعْضَاءُ الْأُسْرَةِ؟</li></ol></div>
   </div>
   <div class="dars-section">
-    <div class="reading-title"><h3>📖 القراءة ٢ — أُسْرَتِي الْكَبِيرَةُ</h3><button class="btn" onclick="speak(document.getElementById('d2read2').innerText)">🔊</button></div>
-    <div class="rtlbox" id="d2read2">أَنَا حَافِظٌ. هَذِهِ أُسْرَتِي. السَّيِّدُ سَعِيدٌ وَالِدِي وَالسَّيِّدَةُ فَرْحَانَةُ وَالِدَتِي. هَذَا وَالِدُ أَبِي السَّيِّدُ تَوْفِيقٌ جَدِّي. أَنَا ابْنُ السَّيِّدِ سَعِيدٍ وَالسَّيِّدَةِ فَرْحَانَةَ، وَرَقِيَّةُ بِنْتُهُمَا. السَّيِّدَةُ لَيْلَةُ أُخْتُ السَّيِّدِ سَعِيدٍ. فَرِيحَةُ ابْنَةُ السَّيِّدَةِ لَيْلَةَ وَالسَّيِّدِ عَمْرٍو، وَمُحَمَّدٌ مَسْرُورٌ ابْنُهُمَا. نَحْنُ أَبْنَاءٌ مُطِيعُونَ؛ نُكْرِمُ وَالِدَيْنَا وَنُحْسِنُ إِلَيْهِمَا.</div>
-    <div class="exercise"><b>Tugas:</b> Buat pohon keluarga sederhana berdasarkan bacaan, lalu ceritakan kembali dengan 4–5 kalimat.</div>
+    <div class="reading-title"><h3>📖 القراءة (٢) — أَنَا حَافِظٌ</h3><button class="btn" onclick="speak(document.getElementById('d2read2').innerText)">🔊 Baca</button></div>
+    <div class="rtlbox" id="d2read2">أَنَا حَافِظٌ. هَذِهِ أُسْرَتِي. السَّيِّدُ سَعِيدٌ وَالِدِي، وَالسَّيِّدَةُ فَرْحَانَةُ وَالِدَتِي. هُمَا وَالِدَايَ. السَّيِّدَةُ مَيْمُونَةُ جَدَّتِي وَالسَّيِّدُ تَوْفِيقٌ جَدِّي. أَنَا اِبْنُ السَّيِّدِ سَعِيدٍ وَالسَّيِّدَةِ فَرْحَانَةَ. وَرُقَيَّةُ بِنْتُهُمَا. رُقَيَّةُ أُخْتِي وَأَنَا أَخُوهَا. السَّيِّدَةُ لَيْلِيَّةُ أُخْتُ السَّيِّدِ سَعِيدٍ. فَرِيْحَةُ ابْنَةُ السَّيِّدَةِ لَيْلِيَّةِ وَالسَّيِّدِ عُمَرَ، وَمُحَمَّدٌ مَسْرُورٌ ابْنُهُمَا. أَبِي خَالُ مَسْرُورٍ وَفَرِيْحَةُ وَالسَّيِّدَةُ لَيْلِيَّةُ عَمَّتِي وَعَمَّةُ رُقَيَّةَ. أَنَا حَفِيدُ السَّيِّدَةِ مَيْمُونَةَ وَالسَّيِّدِ تَوْفِيقٍ، وَرُقَيَّةُ حَفِيدَتُهُمَا. أَنَا وَرُقَيَّةُ وَفَرِيْحَةُ وَمُحَمَّدٌ مَسْرُورٌ أَحْفَادُهُمَا. فَرِيْحَةُ ابْنَةُ عَمِّي وَعَمَّتِي، وَمُحَمَّدٌ مَسْرُورٌ ابْنُهُمَا. نَحْنُ أَبْنَاءٌ مُطِيعُونَ. نَفْعَلُ مَا يَأْمُرُ بِنَا الْوَالِدَانِ وَلَا نُخَالِفُهُمَا. نُكْرِمُ وَالِدَيْنَا وَنُحْسِنُ إِلَيْهِمَا. وَإِذَا تَكَلَّمْنَا مَعَهُمَا لَا نَرْفَعُ أَصْوَاتَنَا أَمَامَهُمَا وَنَسْتَأْذِنُ عِنْدَ الْغِيَابِ مِنَ الْبَيْتِ. وَهَذِهِ هِيَ مِنْ آدَابِ الْوَلَدِ مَعَ الْوَالِدِ.</div>
+    <div class="exercise"><b>Tugas:</b> Buat pohon keluarga sederhana berdasarkan bacaan, lalu ceritakan kembali dengan 4–5 kalimat bahasa Arab.</div>
   </div>
   <div class="dars-section">
-    <div class="reading-title"><h3>📖 القراءة ٣ — فِي الْبَيْتِ</h3><button class="btn" onclick="speak(document.getElementById('d2read3').innerText)">🔊</button></div>
-    <div class="rtlbox" id="d2read3">أُسْرَتِي تَسْكُنُ فِي بَيْتٍ كَبِيرٍ وَبَسِيطٍ وَنَظِيفٍ. وَالْبَيْتُ يَقَعُ فِي قَرْيَةٍ بِمِنْطَقَةِ جُمْبَانْجَ. فِي الْبَيْتِ غُرَفُ النَّوْمِ وَغُرْفَةُ الْجُلُوسِ وَغُرْفَةُ الْمَكْتَبِ وَغُرْفَةُ الْأَكْلِ وَمَطْبَخٌ. أَمَامَ الْبَيْتِ حَدِيقَةٌ جَمِيلَةٌ وَسُورٌ خَفِيضٌ، وَفِي الْحَدِيقَةِ حَمَّامٌ صَغِيرٌ. لِكُلِّ غُرْفَةِ نَوْمٍ سَرِيرٌ صَغِيرٌ وَخِزَانَةُ الْمَلَابِسِ وَطَاوِلَةٌ صَغِيرَةٌ وَكُرْسِيٌّ صَغِيرٌ. فِي غُرْفَةِ الْجُلُوسِ أَرِيكَةٌ نَاعِمَةٌ وَمِنْضَدَةٌ مُتَوَسِّطَةٌ. وَفِي غُرْفَةِ الْمَكْتَبِ مَكْتَبٌ لِلْقِرَاءَةِ وَرُفُوفٌ عَلَيْهَا كُتُبٌ كَثِيرَةٌ. وَفِي غُرْفَةِ الْأَكْلِ مَائِدَةٌ طَوِيلَةٌ حَوْلَهَا كَرَاسِيٌّ كَثِيرَةٌ. وَفِي الْمَطْبَخِ أَثَاثٌ مُتَنَوِّعَةٌ وَثَلَّاجَةٌ.</div>
-    <div class="exercise"><b>Pertanyaan:</b><ol class="arabic"><li>أَيْنَ تَسْكُنُ أُسْرَةُ الْمُتَكَلِّمِ؟</li><li>كَمْ أَثَاثًا لِلْبَيْتِ؟ اُذْكُرْ!</li><li>مَاذَا تَفْعَلُ فِي غُرْفَةِ الْمَكْتَبِ؟</li><li>أَيْنَ الْحَمَّامُ؟</li></ol></div>
+    <div class="reading-title"><h3>📖 القراءة (٣) — فِي الْبَيْتِ</h3><button class="btn" onclick="speak(document.getElementById('d2read3').innerText)">🔊 Baca</button></div>
+    <div class="rtlbox" id="d2read3">أُسْرَتِي تَسْكُنُ فِي بَيْتٍ كَبِيرٍ وَبَسِيطٍ وَنَظِيفٍ. وَالْبَيْتُ يَقَعُ فِي قَرْيَةٍ بِمِنْطَقَةِ جُومْبَانْجُ. فِي الْبَيْتِ غُرَفُ النَّوْمِ وَغُرْفَةُ الْجُلُوسِ وَغُرْفَةُ الْمَكْتَبِ وَغُرْفَةُ الْأَكْلِ وَمَطْبَخٌ. أَمَامَ الْبَيْتِ حَدِيْقَةٌ جَمِيلَةٌ وَسُوْرٌ. وَفِي الْحَدِيْقَةِ حَمَّامٌ صَغِيرٌ. لِكُلِّ غُرْفَةِ النَّوْمِ سَرِيرٌ صَغِيرٌ وَخِزَانَةُ الْمَلَابِسِ وَطَاوِلَةٌ صَغِيْرَةٌ وَكُرْسِيٌّ صَغِيْرٌ. وَعَلَى السَّرِيرِ دِثَارٌ لَيِّنٌ وَوِسَادَةٌ وَثِيرَةٌ. فِي غُرْفَةِ الْجُلُوسِ أَرِيكَةٌ نَاعِمَةٌ وَمِنْضَدَةٌ مُتَوَسِّطَةٌ. عَلَى الْمِنْضَدَةِ زُهْرِيَّةٌ فِيهَا زَهْرَةٌ جَمِيلَةٌ. وَفِي غُرْفَةِ الْمَكْتَبِ مَكْتَبٌ لِلْقِرَاءَةِ وَرُفُوفٌ. عَلَى الرَّفِّ كُتُبُ الْقِصَّةِ كَثِيرَةٌ. هُنَا أَقْرَأُ وَأُذَاكِرُ الدُّرُوسَ. وَفِي غُرْفَةِ الْأَكْلِ مَائِدَةٌ طَوِيلَةٌ حَوْلَهَا كَرَاسِيُّ كَثِيرَةٌ مُنَظَّمَةٌ. وَفِي الْمَطْبَخِ أَثَاثٌ طَبْخِيَّةٌ مُتَنَوِّعَةٌ كَصَحْنٍ مُسْتَدِيرٍ وَمِلْعَقَةٍ وَحَلَّةٍ جَدِيدَةٍ وَغَلَّايَةٍ وَمِقْلَاةٍ لَا تَلْصَقُ وَفُرْنٍ كَهْرَبَائِيٍّ وَثَلَّاجَةٍ.</div>
+    <div class="exercise"><b>Pertanyaan pemahaman:</b><ol class="arabic"><li>أَيْنَ تَسْكُنُ أُسْرَةُ الْمُتَكَلِّمِ؟</li><li>مَاذَا يُوجَدُ فِي غُرَفِ النَّوْمِ؟</li><li>مَاذَا تَفْعَلُ فِي غُرْفَةِ الْمَكْتَبِ؟</li><li>مَاذَا يُوجَدُ فِي الْمَطْبَخِ؟</li></ol></div>
   </div>
 </div>
 
 <div id="panel-tarkib" class="lesson-panel">
   <div class="dars-section">
-    <h3>🔤 التَّرَاكِيبُ — Mudzakkar dan Muannats</h3>
-    <p><b>Isim mudzakkar</b> menunjukkan laki-laki atau kata yang diperlakukan sebagai maskulin. <b>Isim muannats</b> menunjukkan perempuan dan sering ditandai <span class="arabic">ة</span> atau alif maqṣūrah.</p>
-    <div class="tablewrap"><table><tr><th>Mudzakkar</th><th>Muannats</th><th>Isim Isyarah</th></tr><tr><td class="arabic">جَدٌّ، أَبٌ، أَخٌ، عَمٌّ، خَالٌ، زَوْجٌ، اِبْنٌ</td><td class="arabic">جَدَّةٌ، أُمٌّ، أُخْتٌ، عَمَّةٌ، خَالَةٌ، زَوْجَةٌ، اِبْنَةٌ</td><td class="arabic">هَذَا / هَذِهِ<br>ذَلِكَ / تِلْكَ</td></tr></table></div>
-    <h4>Ḍamīr dan kepemilikan</h4>
-    <div class="tablewrap"><table><tr><th>Pola</th><th>Contoh</th><th>Makna</th></tr><tr><td class="arabic">ـهُ / هُوَ</td><td class="arabic">اِسْمُهُ إِسْمَاعِيلُ. هُوَ طَبِيبٌ.</td><td>Namanya Ismail. Dia dokter.</td></tr><tr><td class="arabic">ـهَا / هِيَ</td><td class="arabic">اِسْمُهَا زَيْنَبُ. هِيَ طَالِبَةٌ.</td><td>Namanya Zainab. Dia siswi.</td></tr><tr><td class="arabic">ـي / أَنَا</td><td class="arabic">هَذَا بَيْتِي. أَنَا أَسْكُنُ هُنَا.</td><td>Ini rumahku. Saya tinggal di sini.</td></tr></table></div>
+    <h3>🔤 التَّرْكِيبُ — الْمُذَكَّرُ وَالْمُؤَنَّثُ</h3>
+    <p><b>Isim mudzakkar</b> digunakan untuk laki-laki atau kata yang diperlakukan sebagai maskulin. <b>Isim muannats</b> digunakan untuk perempuan atau kata yang diperlakukan sebagai feminin. Salah satu tanda muannats yang paling mudah dikenali adalah <span class="arabic">ة</span>.</p>
+    <div class="tablewrap"><table><tr><th>Mudzakkar</th><th>Muannats</th><th>Contoh kalimat</th></tr><tr><td class="arabic">أَبٌ، أَخٌ، جَدٌّ، عَمٌّ، خَالٌ، اِبْنٌ</td><td class="arabic">أُمٌّ، أُخْتٌ، جَدَّةٌ، عَمَّةٌ، خَالَةٌ، اِبْنَةٌ</td><td class="arabic">هَذَا أَبِي. هَذِهِ أُمِّي.</td></tr></table></div>
+    <div class="material-note"><b>Perhatikan isim isyarah:</b> <span class="arabic">هَذَا</span> biasanya untuk mudzakkar dan <span class="arabic">هَذِهِ</span> untuk muannats. Contoh: <span class="arabic">هَذَا أَخِي، هَذِهِ أُخْتِي.</span></div>
   </div>
   <div class="dars-section">
     <h3>حُرُوفُ الْجَرِّ — Huruf Jar</h3>
-    <div class="tablewrap"><table><tr><th>Huruf</th><th>Makna</th><th>Contoh</th></tr><tr><td class="arabic">إِلَى</td><td>ke, kepada, sampai</td><td class="arabic">أَنَا أَذْهَبُ إِلَى الْمَدْرَسَةِ</td></tr><tr><td class="arabic">بِـ</td><td>di, dengan, karena</td><td class="arabic">زُلْفَى طَالِبَةٌ بِالْجَامِعَةِ</td></tr><tr><td class="arabic">فِي</td><td>di, di dalam</td><td class="arabic">أُسْرَتِي تَسْكُنُ فِي بَيْتٍ</td></tr><tr><td class="arabic">عَنْ</td><td>dari, tentang</td><td class="arabic">بَيْتِي بَعِيدٌ عَنِ الْمَدِينَةِ</td></tr><tr><td class="arabic">عَلَى</td><td>di atas, kepada</td><td class="arabic">عَلَى الرَّفِّ كُتُبٌ كَثِيرَةٌ</td></tr><tr><td class="arabic">مِنْ</td><td>dari, berasal dari</td><td class="arabic">أُسْرَتِي مِنْ مَالَانْجَ</td></tr><tr><td class="arabic">لِـ</td><td>untuk, kepunyaan</td><td class="arabic">لِكُلِّ غُرْفَةٍ سَرِيرٌ</td></tr><tr><td class="arabic">كَـ</td><td>seperti</td><td class="arabic">أَثَاثٌ كَالطَّاوِلَةِ وَالْخِزَانَةِ</td></tr><tr><td class="arabic">عِنْدَ</td><td>pada, mempunyai</td><td class="arabic">عِنْدِي كِتَابٌ</td></tr><tr><td class="arabic">مَعَ</td><td>bersama</td><td class="arabic">أَتَنَاوَلُ الطَّعَامَ مَعَ أُسْرَتِي</td></tr></table></div>
-    <div class="exercise"><b>Lengkapi:</b><p class="arabic">أَنَا أَدْرُسُ ... الصَّفِّ الْعَاشِرِ ... الْمَدْرَسَةِ الثَّانَوِيَّةِ.</p><p class="muted">Pilihan: فِي، بِـ، إِلَى، مِنْ</p></div>
+    <p>Huruf jar menghubungkan kata dengan kata lain dan menyebabkan isim sesudahnya berharakat kasrah dalam banyak konstruksi. Pelajari makna dan contoh berikut.</p>
+    <div class="tablewrap"><table><tr><th>Huruf</th><th>Makna</th><th>Contoh</th></tr>
+      <tr><td class="arabic">مِنْ</td><td>dari</td><td class="arabic">أُسْرَتِي مِنْ مَالَانْجَ.</td></tr>
+      <tr><td class="arabic">إِلَى</td><td>ke/kepada</td><td class="arabic">أَذْهَبُ إِلَى الْمَدْرَسَةِ.</td></tr>
+      <tr><td class="arabic">فِي</td><td>di/dalam</td><td class="arabic">أَسْكُنُ فِي بَيْتٍ.</td></tr>
+      <tr><td class="arabic">عَلَى</td><td>di atas</td><td class="arabic">عَلَى الرَّفِّ كُتُبٌ.</td></tr>
+      <tr><td class="arabic">عَنْ</td><td>tentang/dari</td><td class="arabic">أَتَكَلَّمُ عَنِ الْأُسْرَةِ.</td></tr>
+      <tr><td class="arabic">بِـ</td><td>dengan/di</td><td class="arabic">زُلْفَى طَالِبَةٌ بِالْجَامِعَةِ.</td></tr>
+      <tr><td class="arabic">لِـ</td><td>untuk/milik</td><td class="arabic">لِكُلِّ غُرْفَةٍ سَرِيرٌ.</td></tr>
+      <tr><td class="arabic">كَـ</td><td>seperti</td><td class="arabic">أَثَاثٌ كَالطَّاوِلَةِ.</td></tr>
+    </table></div>
+    <button class="btn" onclick="speak('مِنْ، إِلَى، فِي، عَلَى، عَنْ، بِـ، لِـ، كَـ')">🔊 Dengarkan huruf jar</button>
+  </div>
+  <div class="dars-section">
+    <h3>Latihan Tarkib</h3>
+    <div class="exercise"><b>1.</b> Pilih kata yang tepat: <span class="arabic">هَذَا / هَذِهِ</span> ... <span class="arabic">أُمِّي.</span></div>
+    <div class="exercise"><b>2.</b> Lengkapi: <span class="arabic">أَنَا أَسْكُنُ ... بَيْتٍ كَبِيرٍ.</span><br><span class="muted">Pilihan: مِنْ • فِي • إِلَى • عَنْ</span></div>
+    <div class="exercise"><b>3.</b> Bedakan mudzakkar dan muannats: <span class="arabic">أَبٌ، أُمٌّ، أَخٌ، أُخْتٌ، جَدٌّ، جَدَّةٌ.</span></div>
   </div>
 </div>
 
 <div id="panel-kitabah" class="lesson-panel">
   <div class="dars-section">
-    <h3>✍️ الْكِتَابَةُ — Teks Deskriptif</h3>
-    <p>Teks deskriptif menggambarkan orang, tempat, atau benda secara jelas dan terperinci. Struktur utamanya terdiri atas <b>pengenalan/pendahuluan</b> (<span class="arabic">الْمُقَدِّمَةُ / التَّعْرِيفُ</span>) dan <b>deskripsi</b> (<span class="arabic">الْوَصْفُ</span>), dari gambaran umum menuju rincian khusus.</p>
-    <div class="objective-grid"><div class="objective-item"><b>التَّعْرِيفُ • Pengenalan</b>Kenalkan rumah atau keluarga: lokasi, ukuran, serta gambaran umum.</div><div class="objective-item"><b>الْوَصْفُ الْعَامُّ • Deskripsi umum</b>Jelaskan anggota keluarga atau bagian utama rumah.</div><div class="objective-item"><b>الْوَصْفُ الْخَاصُّ • Deskripsi khusus</b>Tambahkan sifat, fungsi ruangan, perabot, atau kebiasaan.</div></div>
+    <h3>✍️ الْكِتَابَةُ — Deskripsi Keluarga dan Rumah</h3>
+    <p>Tulislah deskripsi secara bertahap: <b>pengenalan</b> (<span class="arabic">التَّعْرِيفُ</span>), <b>deskripsi umum</b> (<span class="arabic">الْوَصْفُ الْعَامُّ</span>), dan <b>deskripsi khusus</b> (<span class="arabic">الْوَصْفُ الْخَاصُّ</span>).</p>
+    <div class="objective-grid"><div class="objective-item"><b>التَّعْرِيفُ</b>Kenalkan siapa anggota keluargamu dan di mana kamu tinggal.</div><div class="objective-item"><b>الْوَصْفُ الْعَامُّ</b>Jelaskan ukuran, keadaan, atau lokasi rumah.</div><div class="objective-item"><b>الْوَصْفُ الْخَاصُّ</b>Jelaskan ruangan, perabot, fungsi, dan kebiasaan di rumah.</div></div>
   </div>
   <div class="dars-section">
     <h3>Latihan menulis interaktif</h3>
-    <p><b>1. Susun menjadi kalimat:</b></p><div class="exercise arabic">أُخْتِي – صُورَةٌ – أَيْنَ – هَذِهِ – هُوَ</div>
+    <p><b>1. Susun kata menjadi kalimat:</b></p><div class="exercise arabic">أُخْتِي – صُورَةٌ – أَيْنَ – هَذِهِ – هُوَ</div>
     <p><b>2. Tulis pengenalan keluargamu (3–4 kalimat):</b></p><div class="writing-lines rtlbox" contenteditable="true" role="textbox" aria-label="Tulis pengenalan keluarga" data-placeholder="اُكْتُبْ هُنَا..."></div>
     <p><b>3. Deskripsikan rumahmu (5–7 kalimat):</b></p><div class="writing-lines rtlbox" contenteditable="true" role="textbox" aria-label="Tulis deskripsi rumah" data-placeholder="اُكْتُبْ هُنَا..."></div>
-    <p class="muted">Pertanyaan pemandu: <span class="arabic">أَيْنَ تَسْكُنُ؟ كَمْ غُرْفَةً فِي بَيْتِكَ؟ مَاذَا أَمَامَ الْبَيْتِ؟ مَاذَا فِي غُرْفَةِ الْجُلُوسِ؟</span></p>
+    <p class="muted">Pertanyaan pemandu: <span class="arabic">مَنْ فِي أُسْرَتِكَ؟ أَيْنَ تَسْكُنُ؟ كَمْ غُرْفَةً فِي بَيْتِكَ؟ مَاذَا أَمَامَ الْبَيْتِ؟ مَاذَا فِي غُرْفَةِ الْجُلُوسِ؟</span></p>
   </div>
 </div>
 
@@ -1905,8 +1916,8 @@
     <button class="btn" onclick="resetDars2Quiz()">Ulangi kuis</button>
     <div id="dars2Score" class="result score-card" aria-live="polite">Skor akan muncul di sini.</div>
   </section>
-  <div class="dars-section"><h3>🪞 Muhasabah</h3><div class="tablewrap"><table><tr><th>Kegiatan</th><th>Mumtaz</th><th>Jayyid Jiddan</th><th>Jayyid</th></tr>${["أَفْهَمُ الْمُفْرَدَاتِ الْجَدِيدَةَ", "أَفْهَمُ التَّرَاكِيبَ وَأَقُومُ بِالتَّدْرِيبَاتِ", "أَسْتَمِعُ إِلَى الْمَوَادِّ الْمَسْمُوعَةِ", "أَتَكَلَّمُ عَنِ الْأُسْرَةِ وَالْبَيْتِ", "أَقْرَأُ النَّصَّ عَنِ الْأُسْرَةِ", "أَقُومُ بِالتَّدْرِيبَاتِ الْكِتَابِيَّةِ"].map((x) => `<tr><td class="arabic">${x}</td><td>☐</td><td>☐</td><td>☐</td></tr>`).join("")}</table></div></div>
-  <div class="dars-section"><h3>💡 Hikmah</h3><div class="rtlbox" style="text-align:center;background:#eef6e8;border-radius:22px;padding:28px"><b>الْجَارُ قَبْلَ الدَّارِ</b><br><span style="font-size:16px">Bangunlah hubungan baik dengan tetangga sebelum membangun rumah.</span></div></div>
+  <div class="dars-section"><h3>🪞 Muhasabah</h3><div class="tablewrap"><table><tr><th>Kegiatan</th><th>Mumtaz</th><th>Jayyid Jiddan</th><th>Jayyid</th></tr>${["أَفْهَمُ الْمُفْرَدَاتِ الْجَدِيدَةَ", "أَفْهَمُ التَّرَاكِيبَ وَأَقُومُ بِالتَّدْرِيبَاتِ", "أَسْتَمِعُ إِلَى الْمَوَادِّ الْمَسْمُوعَةِ", "أَتَكَلَّمُ عَنِ الْأُسْرَةِ وَالْبَيْتِ", "أَقْرَأُ النُّصُوصَ عَنِ الْأُسْرَةِ وَالْبَيْتِ", "أَقُومُ بِالتَّدْرِيبَاتِ الْكِتَابِيَّةِ"].map((x) => `<tr><td class="arabic">${x}</td><td>☐</td><td>☐</td><td>☐</td></tr>`).join("")}</table></div></div>
+  <div class="dars-section"><h3>💡 Hikmah</h3><div class="rtlbox" style="text-align:center;background:#eef6e8;border-radius:22px;padding:28px"><b>الْجَارُ قَبْلَ الدَّارِ</b><br><span style="font-size:16px">Perhatikan hubungan baik dengan tetangga sebelum memperhatikan rumah.</span></div><button class="btn" onclick="speak('الجار قبل الدار')">🔊 Dengarkan</button></div>
 </div>
 
 <div class="lesson-nav">
