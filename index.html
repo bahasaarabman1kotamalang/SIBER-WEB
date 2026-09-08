@@ -438,11 +438,11 @@
       }
       .lesson-tabs {
         display: flex;
-        flex-wrap: wrap;
         gap: 7px;
-        overflow: visible;
+        overflow: auto;
         padding: 4px 0 10px;
         margin: 8px 0;
+        scrollbar-width: thin;
       }
       .lesson-tabs button {
         white-space: nowrap;
@@ -622,18 +622,8 @@
           flex: 1;
         }
         .lesson-tabs {
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 7px;
-          margin-left: 0;
-          margin-right: 0;
-          overflow: visible;
-        }
-        .lesson-tabs button {
-          width: 100%;
-          min-width: 0;
-          white-space: normal;
-          line-height: 1.25;
+          margin-left: -4px;
+          margin-right: -4px;
         }
         .unit-heading {
           grid-template-columns: 1fr;
@@ -1017,9 +1007,6 @@
         margin: 12px 0;
       }
       @media (max-width: 750px) {
-        nav {
-          flex-wrap: wrap;
-        }
         .auth-screen {
           grid-template-columns: 1fr;
         }
@@ -1046,13 +1033,11 @@
         .links {
           display: flex !important;
           width: 100%;
-          overflow: visible;
-          flex-wrap: wrap;
-          justify-content: center;
+          overflow: auto;
+          flex-wrap: nowrap;
         }
         .links button {
-          white-space: normal;
-          flex: 1 1 auto;
+          white-space: nowrap;
         }
         .hero:after {
           font-size: 150px;
@@ -1245,7 +1230,7 @@
         ],
       };
       function page(id) {
-        stopArabicSpeech();
+        if (typeof stopSpeech === "function") stopSpeech();
         document
           .querySelectorAll(".page")
           .forEach((x) => x.classList.remove("on"));
@@ -1253,7 +1238,6 @@
         scrollTo(0, 0);
       }
       function kelas(g, b) {
-        stopArabicSpeech();
         document
           .querySelectorAll(".tabs button")
           .forEach((x) => x.classList.remove("on"));
@@ -1626,179 +1610,294 @@
         ["يَسْكُنُ", "Bertempat tinggal"],
         ["يُشَجِّعُ", "Mendorong"],
       ];
-      /*
-       * Pembaca teks Arab yang stabil.
-       *
-       * Web Speech menyediakan daftar suara yang berbeda pada setiap perangkat.
-       * Karena itu kita memilih nama suara pria Arab secara eksplisit, menunggu
-       * daftar suara siap, lalu membaca teks panjang per potongan agar Android/iOS
-       * tidak berhenti di tengah jalan.
-       */
-      const arabicSpeech = {
-        voices: [],
-        queue: [],
-        token: 0,
-        preferredMaleNames: [
-          "hamed", "hamdan", "shakir", "ali", "ismael", "bassel", "taim",
-          "fahed", "fahd", "rami", "omar", "jamal", "abdullah", "moaz",
-          "laith", "hedi", "saleh", "majed", "maged", "tariq", "tarik",
-          "ahmed", "hamza", "naayf"
-        ],
-        femaleNames: [
-          "zariyah", "salma", "hoda", "laila", "layla", "mariam", "maryam",
-          "fatima", "amina", "female", "woman", "perempuan"
-        ]
-      };
+      /* =========================================================
+         AUDIO ENGINE — SIBER-WEB: lintas perangkat + auto-stop
+         ---------------------------------------------------------
+         Prinsip:
+         1) Satu elemen <audio> untuk seluruh situs.
+         2) Prioritas: MP3 lokal jika tersedia -> TTS daring ->
+            SpeechSynthesis sebagai fallback terakhir.
+         3) Semua audio memakai token agar audio lama tidak dapat
+            hidup kembali setelah pengguna berpindah menu.
+         4) Navigasi, tab, hash, history, dan perpindahan halaman
+            selalu menghentikan audio aktif.
+      ========================================================== */
+      let __arabicAudio = null;
+      let __arabicQueue = [];
+      let __arabicQueueIndex = 0;
+      let __arabicPlayToken = 0;
+      let __audioMode = "";
 
-      function refreshArabicVoices() {
-        if (!("speechSynthesis" in window)) return [];
-        arabicSpeech.voices = window.speechSynthesis.getVoices() || [];
-        return arabicSpeech.voices;
-      }
-
-      function chooseArabicMaleVoice() {
-        const voices = refreshArabicVoices();
-        const arabic = voices.filter(function (voice) {
-          return /^ar(?:-|_)/i.test(voice.lang || "") || /arabic|العربية/i.test(voice.name || "");
-        });
-        if (!arabic.length) return null;
-
-        function score(voice) {
-          const label = ((voice.name || "") + " " + (voice.voiceURI || "")).toLowerCase();
-          let value = /^ar-sa/i.test(voice.lang || "") ? 40 : 20;
-          arabicSpeech.preferredMaleNames.forEach(function (name, index) {
-            if (label.indexOf(name) !== -1) value += 300 - index;
-          });
-          arabicSpeech.femaleNames.forEach(function (name) {
-            if (label.indexOf(name) !== -1) value -= 500;
-          });
-          if (/male|man|laki/.test(label) && !/female|woman/.test(label)) value += 350;
-          if (/natural|neural|online|premium|enhanced/.test(label)) value += 35;
-          if (voice.localService) value += 5;
-          return value;
+      function __getArabicAudio() {
+        if (!__arabicAudio) {
+          __arabicAudio = document.createElement("audio");
+          __arabicAudio.id = "siberArabicAudio";
+          __arabicAudio.preload = "auto";
+          __arabicAudio.setAttribute("playsinline", "");
+          __arabicAudio.setAttribute("webkit-playsinline", "");
+          __arabicAudio.style.display = "none";
+          document.body.appendChild(__arabicAudio);
         }
-
-        return arabic.sort(function (a, b) { return score(b) - score(a); })[0];
+        return __arabicAudio;
       }
 
-      function splitArabicSpeech(text) {
-        const normalized = String(text || "").replace(/\s+/g, " ").trim();
-        if (!normalized) return [];
-        const sentences = normalized.match(/[^.!?؟،؛]+[.!?؟،؛]?/g) || [normalized];
+      function stopSpeech() {
+        __arabicPlayToken++;
+        if (typeof __hiwarToken !== "undefined") __hiwarToken++;
+        if (typeof __fixedAudioToken !== "undefined") __fixedAudioToken++;
+        __arabicQueue = [];
+        __arabicQueueIndex = 0;
+        __audioMode = "";
+        if (__arabicAudio) {
+          try { __arabicAudio.pause(); } catch (e) {}
+          try {
+            __arabicAudio.onended = null;
+            __arabicAudio.onerror = null;
+            __arabicAudio.removeAttribute("src");
+            __arabicAudio.load();
+          } catch (e) {}
+        }
+        if ("speechSynthesis" in window) {
+          try { window.speechSynthesis.cancel(); } catch (e) {}
+        }
+      }
+
+      function __splitArabicText(text) {
+        text = String(text || "").replace(/\s+/g, " ").trim();
+        if (!text) return [];
+        const sentences = text.split(/(?<=[.!؟،؛])/u);
         const chunks = [];
-        sentences.forEach(function (sentence) {
-          let part = sentence.trim();
-          while (part.length > 170) {
-            let cut = part.lastIndexOf(" ", 170);
-            if (cut < 70) cut = 170;
-            chunks.push(part.slice(0, cut).trim());
-            part = part.slice(cut).trim();
+        let current = "";
+        sentences.forEach(function(part) {
+          part = part.trim();
+          if (!part) return;
+          if ((current + " " + part).trim().length <= 180) {
+            current = (current + " " + part).trim();
+          } else {
+            if (current) chunks.push(current);
+            while (part.length > 180) {
+              let cut = part.lastIndexOf(" ", 180);
+              if (cut < 60) cut = 180;
+              chunks.push(part.slice(0, cut).trim());
+              part = part.slice(cut).trim();
+            }
+            current = part;
           }
-          if (part) chunks.push(part);
         });
+        if (current) chunks.push(current);
         return chunks;
       }
 
-      function speechNotice(message, isError) {
-        let notice = document.getElementById("speechNotice");
-        if (!notice) {
-          notice = document.createElement("div");
-          notice.id = "speechNotice";
-          notice.setAttribute("role", "status");
-          notice.style.cssText = "position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:9999;max-width:min(92vw,520px);padding:10px 14px;border-radius:10px;color:#fff;font:600 14px system-ui;text-align:center;box-shadow:0 8px 24px #0003";
-          document.body.appendChild(notice);
-        }
-        notice.style.background = isError ? "#9f2d2d" : "#126b57";
-        notice.textContent = message;
-        notice.hidden = false;
-        clearTimeout(notice._timer);
-        notice._timer = setTimeout(function () { notice.hidden = true; }, 3500);
-      }
-
-      function stopArabicSpeech() {
-        arabicSpeech.token += 1;
-        arabicSpeech.queue = [];
-        if ("speechSynthesis" in window) {
+      function __browserArabicFallback(text, token) {
+        if (token !== __arabicPlayToken || !text || !("speechSynthesis" in window)) return false;
+        try {
+          const u = new SpeechSynthesisUtterance(text);
+          u.lang = "ar-SA";
+          u.rate = 0.9;
+          u.pitch = 1;
+          u.onend = function() {
+            if (token !== __arabicPlayToken) return;
+            __arabicQueueIndex++;
+            __playArabicChunk(token);
+          };
+          u.onerror = function() {
+            if (token === __arabicPlayToken) {
+              __arabicQueueIndex = __arabicQueue.length;
+            }
+          };
+          __audioMode = "browser";
           window.speechSynthesis.cancel();
-          /* Beberapa versi Android baru membatalkan suara setelah event loop berikutnya. */
-          setTimeout(function () { window.speechSynthesis.cancel(); }, 0);
+          window.speechSynthesis.speak(u);
+          return true;
+        } catch (e) {
+          return false;
         }
-        const notice = document.getElementById("speechNotice");
-        if (notice) notice.hidden = true;
       }
 
-      function playArabicQueue(token, voice) {
-        if (token !== arabicSpeech.token || !arabicSpeech.queue.length) return;
-        const utterance = new SpeechSynthesisUtterance(arabicSpeech.queue.shift());
-        utterance.lang = (voice && voice.lang) || "ar-SA";
-        if (voice) utterance.voice = voice;
-        utterance.rate = 0.82;
-        utterance.pitch = 0.82;
-        utterance.volume = 1;
-        utterance.onend = function () { playArabicQueue(token, voice); };
-        utterance.onerror = function (event) {
-          if (event.error !== "canceled" && event.error !== "interrupted") {
-            speechNotice("Suara Arab belum tersedia. Aktifkan suara/media perangkat lalu coba lagi.", true);
+      function __playArabicChunk(token) {
+        if (token !== __arabicPlayToken || __arabicQueueIndex >= __arabicQueue.length) return;
+        const audio = __getArabicAudio();
+        const text = __arabicQueue[__arabicQueueIndex];
+        const q = encodeURIComponent(text);
+        const urls = [
+          "https://translate.googleapis.com/translate_tts?client=gtx&ie=UTF-8&tl=ar&q=" + q,
+          "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=ar&q=" + q
+        ];
+        let sourceIndex = 0;
+        let fallbackUsed = false;
+
+        const useBrowserFallback = function() {
+          if (fallbackUsed || token !== __arabicPlayToken) return;
+          fallbackUsed = true;
+          __browserArabicFallback(text, token);
+        };
+
+        const trySource = function() {
+          if (token !== __arabicPlayToken) return;
+          audio.src = urls[sourceIndex];
+          audio.load();
+          const playPromise = audio.play();
+          if (playPromise && typeof playPromise.catch === "function") {
+            playPromise.catch(function() {
+              if (sourceIndex < urls.length - 1) {
+                sourceIndex++;
+                trySource();
+              } else {
+                useBrowserFallback();
+              }
+            });
           }
         };
-        window.speechSynthesis.resume();
-        window.speechSynthesis.speak(utterance);
+
+        audio.onended = function() {
+          if (token !== __arabicPlayToken) return;
+          __arabicQueueIndex++;
+          __playArabicChunk(token);
+        };
+        audio.onerror = function() {
+          if (token !== __arabicPlayToken) return;
+          if (sourceIndex < urls.length - 1) {
+            sourceIndex++;
+            trySource();
+          } else {
+            useBrowserFallback();
+          }
+        };
+        __audioMode = "remote";
+        trySource();
       }
 
       function speak(x) {
-        if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
-          speechNotice("Browser ini belum mendukung pembaca suara. Gunakan Chrome, Edge, atau Safari terbaru.", true);
-          return;
-        }
-        const chunks = splitArabicSpeech(x);
-        if (!chunks.length) return;
-        const token = ++arabicSpeech.token;
-        arabicSpeech.queue = chunks;
-        window.speechSynthesis.cancel();
-
-        const start = function (attempt) {
-          if (token !== arabicSpeech.token) return;
-          if (!refreshArabicVoices().length && attempt < 8) {
-            setTimeout(function () { start(attempt + 1); }, 250);
-            return;
-          }
-          const voice = chooseArabicMaleVoice();
-          if (!voice) {
-            /*
-             * Jangan hentikan pembacaan hanya karena getVoices() belum
-             * menampilkan suara Arab. Hal ini umum terjadi pada Android/iOS:
-             * mesin TTS tetap dapat memilih suara ar-SA setelah utterance
-             * dijalankan. Jika perangkat benar-benar tidak mendukungnya,
-             * event error di playArabicQueue akan memberi petunjuk.
-             */
-            speechNotice("Mencoba suara Arab bawaan perangkat…", false);
-            setTimeout(function () { playArabicQueue(token, null); }, 60);
-            return;
-          }
-          setTimeout(function () { playArabicQueue(token, voice); }, 60);
-        };
-
-        if (refreshArabicVoices().length) start(0);
-        else {
-          speechNotice("Menyiapkan suara Arab…", false);
-          setTimeout(function () { start(1); }, 250);
-        }
+        stopSpeech();
+        const text = String(x || "").replace(/\s+/g, " ").trim();
+        if (!text) return;
+        __arabicQueue = __splitArabicText(text);
+        __arabicQueueIndex = 0;
+        const token = __arabicPlayToken;
+        __playArabicChunk(token);
       }
 
-      if ("speechSynthesis" in window) {
-        refreshArabicVoices();
-        window.speechSynthesis.addEventListener("voiceschanged", refreshArabicVoices);
-      }
+      /* SEMUA bentuk navigasi menghentikan audio. */
       document.addEventListener("click", function (event) {
-        const menu = event.target.closest && event.target.closest(
-          ".links button, .tabs button, .lesson-tabs button, .lesson-nav button, [data-dash-page]"
-        );
-        if (menu && !menu.classList.contains("audio-btn")) stopArabicSpeech();
+        const control = event.target.closest && event.target.closest("button, a, [role=tab]");
+        if (!control) return;
+        const onclick = control.getAttribute("onclick") || "";
+        const isAudioControl = control.matches(".audio-btn") || /\b(speak|playHiwarAudioQueue|playHiwar11Unit2|playQiraah11Unit2|playFixedMaleAudio)\s*\(/.test(onclick);
+        if (!isAudioControl) stopSpeech();
       }, true);
-      window.addEventListener("pagehide", stopArabicSpeech);
+
+      window.addEventListener("hashchange", stopSpeech, true);
+      window.addEventListener("popstate", stopSpeech, true);
+      window.addEventListener("beforeunload", stopSpeech, true);
       document.addEventListener("visibilitychange", function () {
-        if (document.hidden) stopArabicSpeech();
-      });
+        if (document.hidden) stopSpeech();
+      }, true);
+
+      /* Prototype audio Hiwar XI Unit 2: suara per tokoh.
+         File MP3 permanen nantinya disimpan di /audio/kelas11/unit2/hiwar/.
+         Satu klik tetap memainkan seluruh percakapan secara berurutan. */
+      let __hiwarQueue = [];
+      let __hiwarIndex = 0;
+      let __hiwarToken = 0;
+
+      function playHiwarAudioQueue(items) {
+        stopSpeech();
+        __hiwarToken++;
+        const token = __hiwarToken;
+        __hiwarQueue = Array.isArray(items) ? items.slice() : [];
+        __hiwarIndex = 0;
+        if (!__hiwarQueue.length) return;
+        __playHiwarAudio(token);
+      }
+
+      function __playHiwarAudio(token) {
+        if (token !== __hiwarToken || __hiwarIndex >= __hiwarQueue.length) return;
+        const item = __hiwarQueue[__hiwarIndex];
+        const audio = __getArabicAudio();
+        audio.onended = function () {
+          if (token !== __hiwarToken) return;
+          __hiwarIndex++;
+          __playHiwarAudio(token);
+        };
+        audio.onerror = function () {
+          if (token !== __hiwarToken) return;
+          audio.onended = null;
+          audio.onerror = null;
+          __hiwarIndex = __hiwarQueue.length;
+          alert("Audio Hiwar belum tersedia. Silakan unggah file MP3 suara laki-laki/perempuan ke folder audio/kelas11/unit2/hiwar/.");
+        };
+        audio.src = item.src;
+        audio.load();
+        const playPromise = audio.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch(function(){
+            if (token !== __hiwarToken) return;
+            /* Browser dapat menolak autoplay; klik pengguna tetap menjadi
+               gesture awal sehingga normalnya play() berhasil. */
+          });
+        }
+      }
+
+      /* Audio tetap untuk materi yang harus memakai suara laki-laki standar.
+         Berbeda dari speak(), fungsi ini TIDAK menggunakan TTS perangkat/browser.
+         File MP3 final disimpan di GitHub agar suara konsisten di semua perangkat. */
+      let __fixedAudioToken = 0;
+      function playFixedMaleAudio(src) {
+        stopSpeech();
+        __fixedAudioToken++;
+        const token = __fixedAudioToken;
+        const audio = __getArabicAudio();
+        audio.onended = null;
+        audio.onerror = function () {
+          if (token !== __fixedAudioToken) return;
+          alert("Audio belum tersedia. Pastikan file MP3 suara laki-laki sudah diunggah ke folder audio/. ");
+        };
+        audio.src = src;
+        audio.load();
+        const playPromise = audio.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.catch(function () {});
+        }
+      }
+
+      function playQiraah11Unit2(number) {
+        if (number === 1) {
+          playFixedMaleAudio("audio/kelas11/unit2/qiraah/qiraah1-full-male.mp3");
+        } else if (number === 2) {
+          playFixedMaleAudio("audio/kelas11/unit2/qiraah/qiraah2-full-male.mp3");
+        }
+      }
+
+      function playHiwar11Unit2(number) {
+        if (number === 1) {
+          playHiwarAudioQueue([
+            {gender:'female', text:'اَلسَّلَامُ عَلَيْكُمْ، مَاذَا بِكَ يَا سَيِّدِي؟', src:'audio/kelas11/unit2/hiwar/hiwar1-01-female.mp3'},
+            {gender:'male', text:'وَ عَلَيْكُمُ السَّلَامُ وَرَحْمَةُ اللهِ، أَصَابَنِي الصُّدَاع.', src:'audio/kelas11/unit2/hiwar/hiwar1-02-male.mp3'},
+            {gender:'female', text:'كَمْ يَوْمًا تَشْعُرُ بِهِ؟', src:'audio/kelas11/unit2/hiwar/hiwar1-03-female.mp3'},
+            {gender:'male', text:'مُنْذُ ثَلَاثَةِ أَيَّامٍ.', src:'audio/kelas11/unit2/hiwar/hiwar1-04-male.mp3'},
+            {gender:'female', text:'تَفَضَّلْ اِسْتَلْقِ عَلَى السَّرِيرِ لِلْفَحْصِ.', src:'audio/kelas11/unit2/hiwar/hiwar1-05-female.mp3'},
+            {gender:'male', text:'حَسَنًا يَا سَيِّدَتِي', src:'audio/kelas11/unit2/hiwar/hiwar1-06-male.mp3'},
+            {gender:'female', text:'ضَغْطُ دَمِكَ مُرْتَفِعٌ، عَلَيْكَ أَنْ تَجْتَنِبَ الْأَطْعِمَةَ الْمَالِحَةَ وَالْحُلْوَةَ. هَذِهِ هِيَ الْوَصْفَةَ مِنِّي.', src:'audio/kelas11/unit2/hiwar/hiwar1-07-female.mp3'},
+            {gender:'male', text:'طَيِّبٌ، سَأَشْتَرِي الدَّوَاءَ فِي الصَّيْدَلِيَّةِ، شُكْرًا.', src:'audio/kelas11/unit2/hiwar/hiwar1-08-male.mp3'},
+            {gender:'female', text:'عَفْوًا، شَفَاكَ اللَّهُ', src:'audio/kelas11/unit2/hiwar/hiwar1-09-female.mp3'}
+          ]);
+        } else if (number === 2) {
+          playHiwarAudioQueue([
+            {gender:'male', text:'اَلسَّلَامُ عَلَيْكُمْ، أَيُّ خِدْمَة؟', src:'audio/kelas11/unit2/hiwar/hiwar2-01-male.mp3'},
+            {gender:'male', text:'وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ الله، أَنَا بِحَاجَةٍ إِلَى الدَّوَاءِ.', src:'audio/kelas11/unit2/hiwar/hiwar2-02-male.mp3'},
+            {gender:'male', text:'أَيُّ مَرَضٍ أَصَابَكَ؟', src:'audio/kelas11/unit2/hiwar/hiwar2-03-male.mp3'},
+            {gender:'male', text:'ضَغْطُ الدَّمِ.', src:'audio/kelas11/unit2/hiwar/hiwar2-04-male.mp3'},
+            {gender:'male', text:'حَسَنًا، أَيْنَ الْوَصْفَةُ الطِبِّيَّةُ؟', src:'audio/kelas11/unit2/hiwar/hiwar2-05-male.mp3'},
+            {gender:'male', text:'هَذِهِ هِيَ الْوَصْفَةُ.', src:'audio/kelas11/unit2/hiwar/hiwar2-06-male.mp3'},
+            {gender:'male', text:'هَلْ لَدَيْكَ أَيُّ حَسَاسِيَّةٍ مِنَ الْأَدْوِيَةِ؟', src:'audio/kelas11/unit2/hiwar/hiwar2-07-male.mp3'},
+            {gender:'male', text:'لَا، لَا أَعْتَقِدُ ذَلِكَ.', src:'audio/kelas11/unit2/hiwar/hiwar2-08-male.mp3'},
+            {gender:'male', text:'طَيِّبٌ، هَذَا هُوَ الدَّوَاءُ، يَجِبُ عَلَيْكَ تَنَاوُلُهُ مَرَّةً فِي الْيَوْمِ، أَتَمَنَّى لَكُمُ الشَّفَاءَ الْعَاجِلَ.', src:'audio/kelas11/unit2/hiwar/hiwar2-09-male.mp3'},
+            {gender:'male', text:'شُكْرًا جَزِيلًا، أَتَمَنَّى لَكَ التَّوْفِيقَ فِي الْعَمَلِ.', src:'audio/kelas11/unit2/hiwar/hiwar2-10-male.mp3'},
+            {gender:'male', text:'لَا شُكْرَ عَلَى الْوَاجِبِ.', src:'audio/kelas11/unit2/hiwar/hiwar2-11-male.mp3'}
+          ]);
+        }
+      }
+
       function dars1() {
         return `<div class="card unit-shell">
 <div class="unit-heading">
@@ -3341,7 +3440,7 @@
 
 <div id="panel-hiwar" class="lesson-panel">
   <section class="dars-section">
-    <div class="reading-title"><div><h3>💬 الْحِوَارُ الأَوَّلُ — فِي الْمُسْتَشْفَى</h3><span class="muted">Percakapan dokter dan pasien. Dengarkan seluruh percakapan dalam satu paket.</span></div><button class="btn primary" onclick="speak('اَلسَّلَامُ عَلَيْكُمْ، مَاذَا بِكَ يَا سَيِّدِي؟ وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ اللهِ، أَصَابَنِي الصُّدَاعُ. كَمْ يَوْمًا تَشْعُرُ بِهِ؟ مُنْذُ ثَلَاثَةِ أَيَّامٍ. تَفَضَّلْ اِسْتَلْقِ عَلَى السَّرِيرِ لِلْفَحْصِ. حَسَنًا يَا سَيِّدَتِي. ضَغْطُ دَمِكَ مُرْتَفِعٌ، عَلَيْكَ أَنْ تَجْتَنِبَ الْأَطْعِمَةَ الْمَالِحَةَ وَالْحُلْوَةَ. هَذِهِ هِيَ الْوَصْفَةَ مِنِّي. طَيِّبٌ، سَأَشْتَرِي الدَّوَاءَ فِي الصَّيْدَلِيَّةِ، شُكْرًا. عَفْوًا، شَفَاكَ اللَّهُ')">▶ Putar semua</button></div>
+    <div class="reading-title"><div><h3>💬 الْحِوَارُ الأَوَّلُ — فِي الْمُسْتَشْفَى</h3><span class="muted">Percakapan dokter dan pasien. Dengarkan seluruh percakapan dalam satu paket.</span></div><button class="btn primary" onclick="playHiwar11Unit2(1)">▶ Putar semua</button></div>
     <div class="dialogue">
       <div class="speech"><b>الطبيبة</b><p class="arabic">اَلسَّلَامُ عَلَيْكُمْ، مَاذَا بِكَ يَا سَيِّدِي؟</p></div>
       <div class="speech alt"><b>حسن</b><p class="arabic">وَ عَلَيْكُمُ السَّلَامُ وَرَحْمَةُ اللهِ، أَصَابَنِي الصُّدَاع.</p></div>
@@ -3356,7 +3455,7 @@
   </section>
 
   <section class="dars-section">
-    <div class="reading-title"><div><h3>💬 الْحِوَارُ الثَّانِي — فِي الصَّيْدَلِيَّةِ</h3><span class="muted">Percakapan pasien dan apoteker sesuai materi yang diunggah.</span></div><button class="btn primary" onclick="speak('اَلسَّلَامُ عَلَيْكُمْ، أَيُّ خِدْمَة؟ وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ الله، أَنَا بِحَاجَةٍ إِلَى الدَّوَاء. أَيُّ مَرَضٍ أَصَابَكَ؟ ضَغْطُ الدَّم. حَسَنًا، أَيْنَ الْوَصْفَةُ الطِبّيَّة؟ هَذِهِ هِيَ الوَصْفَةُ. هَلْ لَدَيْكَ أَيُّ حَسَاسِيَّة مِنَ الأَدْوِيَة؟ لَا، لَا أَعْتَقِدُ ذَلِكَ. طَيِّب، هَذَا هُوَ الدَّوَاء، يَجِبُ عَلَيْكَ تَنَاوُلُهُ مَرَّةً فِي اليَوْمِ، أَتَمَنَّى لَكُمُ الشَّفَاءَ العَاجِلَ. شُكْرًا جَزِيلًا، أَتَمَنَّى لَكَ التَّوْفِيقَ فِي العَمَلِ. لَا شُكْرَ عَلَى الوَاجِبِ.')">▶ Putar semua</button></div>
+    <div class="reading-title"><div><h3>💬 الْحِوَارُ الثَّانِي — فِي الصَّيْدَلِيَّةِ</h3><span class="muted">Percakapan pasien dan apoteker sesuai materi yang diunggah.</span></div><button class="btn primary" onclick="playHiwar11Unit2(2)">▶ Putar semua</button></div>
     <div class="dialogue">
       <div class="speech"><b>اَلصَّيْدَلِي</b><p class="arabic">اَلسَّلَامُ عَلَيْكُمْ، أَيُّ خِدْمَة؟</p></div>
       <div class="speech alt"><b>الَمَرِيْضُ</b><p class="arabic">وَ عَلَيْكُمُ السَّلَامُ وَرَحْمَةُ الله، أَنَا بِحَاجَةٍ إِلَى الدَّوَاء</p></div>
@@ -3376,31 +3475,31 @@
 
 <div id="panel-qiraah" class="lesson-panel">
   <section class="dars-section">
-    <div class="reading-title"><div><h3>📖 الْقِرَاءَةُ الأُولَى — هَيَا نَعِيشُ بِالصَّحَّةِ (١)</h3><span class="muted">Bacaan tentang kebiasaan hidup sehat Nabil dan Naufal.</span></div><button class="btn primary" onclick="speak(document.getElementById('d11u2Reading1').innerText)">▶ Putar bacaan</button></div>
+    <div class="reading-title"><div><h3>📖 الْقِرَاءَةُ الأُولَى — هَيَا نَعِيشُ بِالصَّحَّةِ (١)</h3><span class="muted">Bacaan tentang kebiasaan hidup sehat Nabil dan Naufal.</span></div><button class="btn primary" onclick="playQiraah11Unit2(1)">▶ Putar bacaan</button></div>
     <div id="d11u2Reading1" class="rtlbox">
       <p>نَبِيل وَ نَوْفَل صَدِيقَانِ. هُمَا يَعِيشَانِ فِي قَرْيَةٍ صَغِيْرَة، هُمَا يَتَعَلَّمَانِ فِي نَفْسِ الْمَدْرَسَةِ. نَبِيل وَ نَوْفَل يُحِبَّانِ أَنْ يَعِيشَا فِي صِحَّةٍ لأَنَّهُمَا يَعْرِفَانِ أَنَّ الصِّحَّةِ أَمْرٌ مُهِمْ فِي حَيَاةِ الإِنْسَانِ.</p>
-      <button class="btn audio-btn" onclick="speak('نَبِيل وَ نَوْفَل صَدِيقَانِ. هُمَا يَعِيشَانِ فِي قَرْيَةٍ صَغِيْرَة، هُمَا يَتَعَلَّمَانِ فِي نَفْسِ الْمَدْرَسَةِ. نَبِيل وَ نَوْفَل يُحِبَّانِ أَنْ يَعِيشَا فِي صِحَّةٍ لأَنَّهُمَا يَعْرِفَانِ أَنَّ الصِّحَّةِ أَمْرٌ مُهِمْ فِي حَيَاةِ الإِنْسَانِ.')">🔊 Dengarkan paragraf 1</button>
+      <button class="btn audio-btn" onclick="playFixedMaleAudio(\"audio/kelas11/unit2/qiraah/qiraah1-paragraph-1-male.mp3\")">🔊 Dengarkan paragraf 1</button>
       <p>يُحِبُّ نَبِيل وَ نَوْفَل أَنْ يَذْهَبَا إِلَى الْمَدْرَسَة بِالدَّرَّاجَةِ لِأَنَّ الْمَدْرَسَةَ بَعِيدَةٌ عَنْ بَيْتِهِمَا. يَفْهَمُ نَبِيل وَ نَوْفَل أَنَّ الذَّهَابَ إِلَى الْمَدْرَسَةِ أَوْ إِلَى مَكَانٍ آخَر بِالدَّرَّاجَة نَافِعٌ لِصِحَّةِ البَدَنِ. وَفِي الْمَدْرَسَةِ كَثِيرٌ مِن الطُّلاَبِ الَّذِيْنَ يَذْهَبُوْنَ إِلَى الْمَدْرَسَةِ بِالدَّرَّاجَةِ أَيْضًا.</p>
-      <button class="btn audio-btn" onclick="speak('يُحِبُّ نَبِيل وَ نَوْفَل أَنْ يَذْهَبَا إِلَى الْمَدْرَسَة بِالدَّرَّاجَةِ لِأَنَّ الْمَدْرَسَةَ بَعِيدَةٌ عَنْ بَيْتِهِمَا. يَفْهَمُ نَبِيل وَ نَوْفَل أَنَّ الذَّهَابَ إِلَى الْمَدْرَسَةِ أَوْ إِلَى مَكَانٍ آخَر بِالدَّرَّاجَة نَافِعٌ لِصِحَّةِ البَدَنِ. وَفِي الْمَدْرَسَةِ كَثِيرٌ مِن الطُّلاَبِ الَّذِيْنَ يَذْهَبُوْنَ إِلَى الْمَدْرَسَةِ بِالدَّرَّاجَةِ أَيْضًا.')">🔊 Dengarkan paragraf 2</button>
+      <button class="btn audio-btn" onclick="playFixedMaleAudio(\"audio/kelas11/unit2/qiraah/qiraah1-paragraph-2-male.mp3\")">🔊 Dengarkan paragraf 2</button>
       <p>وَفِي الْبَيْتِ يُحِبُّ نَبِيل وَ نَوْفَل أَنْ يُمَارِسَا الرِّيَاضَةَ مِثْلَ الْجَرْيِ وَكُرَةِ الْقَدَمِ والسِّبَاحَةِ وَغَيْرِ ذَلِكَ. هُمَا يَجْرِيَانِ كُلَّ صَبَاحٍ قَبْلَ الذَّهَابِ إِلَى الْمَدْرَسَة وَيَسْبَحَانِ مَرَّةً فِي الأَسْبُوعِ يَوْمَ الأَحَدِ وَيَلْعَبَانِ كُرَةَ القَدَمِ فِي مَلْعَبِ القَرْيَة مَسَاءَ الْيَوْمِ.</p>
-      <button class="btn audio-btn" onclick="speak('وَفِي الْبَيْتِ يُحِبُّ نَبِيل وَ نَوْفَل أَنْ يُمَارِسَا الرِّيَاضَةَ مِثْلَ الْجَرْيِ وَكُرَةِ الْقَدَمِ وَالسِّبَاحَةِ وَغَيْرِ ذَلِكَ. هُمَا يَجْرِيَانِ كُلَّ صَبَاحٍ قَبْلَ الذَّهَابِ إِلَى الْمَدْرَسَة وَيَسْبَحَانِ مَرَّةً فِي الأَسْبُوعِ يَوْمَ الأَحَدِ وَيَلْعَبَانِ كُرَةَ الْقَدَمِ فِي مَلْعَبِ الْقَرْيَة مَسَاءَ الْيَوْمِ.')">🔊 Dengarkan paragraf 3</button>
+      <button class="btn audio-btn" onclick="playFixedMaleAudio(\"audio/kelas11/unit2/qiraah/qiraah1-paragraph-3-male.mp3\")">🔊 Dengarkan paragraf 3</button>
       <p>يَعْتَنِي الشَّخْصُ بِصِحَّتِهِ مِنْ خِلَالِ تَنَاوُلِ الْأَطْعِمَةِ الضَّرُوْرِيَّة لِلصِّحَّةِ ، وَيُحَافِظُ عَلَى سَلَامَتِهِ الْبَدَنِيَّةِ مِنْ خِلَالِ مُمَارَسَةِ الرِّيَاضَةِ بِانْتِظَامٍ قَالَ الْحُكَمَاءُ : الصِّحَّةُ تَاجٌ عَلَى رُؤُوسِ الْأَصِحَّاءِ لَا يَعْرِفُهُ إِلَّا الْمَرْضَى.</p>
-      <button class="btn audio-btn" onclick="speak('يَعْتَنِي الشَّخْصُ بِصِحَّتِهِ مِنْ خِلَالِ تَنَاوُلِ الْأَطْعِمَةِ الضَّرُوْرِيَّة لِلصِّحَّةِ، وَيُحَافِظُ عَلَى سَلَامَتِهِ الْبَدَنِيَّةِ مِنْ خِلَالِ مُمَارَسَةِ الرِّيَاضَةِ بِانْتِظَامٍ قَالَ الْحُكَمَاءُ: الصِّحَّةُ تَاجٌ عَلَى رُؤُوسِ الْأَصِحَّاءِ لَا يَعْرِفُهُ إِلَّا الْمَرْضَى.')">🔊 Dengarkan paragraf 4</button>
+      <button class="btn audio-btn" onclick="playFixedMaleAudio(\"audio/kelas11/unit2/qiraah/qiraah1-paragraph-4-male.mp3\")">🔊 Dengarkan paragraf 4</button>
     </div>
     <div class="mini-task"><h4>فَهْمُ الْمَقْرُوءِ</h4><p class="arabic">كَيْفَ يَذْهَبُ نَبِيل وَنَوْفَل إِلَى الْمَدْرَسَةِ؟</p><input id="d11u2Read" class="answer-input arabic" placeholder="اكتب الجواب"><button class="btn primary" onclick="cekFlexible('d11u2Read',['بالدراجة','يذهبان بالدراجة','بِالدَّرَّاجَةِ'],'d11u2ReadFb')">Periksa</button><p id="d11u2ReadFb" class="feedback"></p></div>
   </section>
 
   <section class="dars-section">
-    <div class="reading-title"><div><h3>📖 الْقِرَاءَةُ الثَّانِيَةُ — هَيَا نَعِيشُ بِالصِّحَّةِ (٢)</h3><span class="muted">Bacaan tentang Rita, keluhan kesehatan, anjuran dokter, dan makanan sehat.</span></div><button class="btn primary" onclick="speak(document.getElementById('d11u2Reading2').innerText)">▶ Putar bacaan</button></div>
+    <div class="reading-title"><div><h3>📖 الْقِرَاءَةُ الثَّانِيَةُ — هَيَا نَعِيشُ بِالصِّحَّةِ (٢)</h3><span class="muted">Bacaan tentang Rita, keluhan kesehatan, anjuran dokter, dan makanan sehat.</span></div><button class="btn primary" onclick="playQiraah11Unit2(2)">▶ Putar bacaan</button></div>
     <div id="d11u2Reading2" class="rtlbox">
       <p>أَنَا أَيُو وَعِنْدِي صَدِيقَة اِسْمُهَا رِيتَا. هِيَ تَغِيْبُ عَنِ الْمَدْرَسَةِ مُنْذُ ثَلَاثَةِ أَيَّامٍ. فَأَذْهَبُ إِلَى بَيْتِهَا مَعَ صَدِيقَاتِي لِزِيَارَتِهَا.</p>
-      <button class="btn audio-btn" onclick="speak('أَنَا أَيُو وَعِنْدِي صَدِيقَة اِسْمُهَا رِيتَا. هِيَ تَغِيْبُ عَنِ الْمَدْرَسَةِ مُنْذُ ثَلَاثَةِ أَيَّامٍ. فَأَذْهَبُ إِلَى بَيْتِهَا مَعَ صَدِيقَاتِي لِزِيَارَتِهَا.')">🔊 Dengarkan paragraf 1</button>
+      <button class="btn audio-btn" onclick="playFixedMaleAudio(\"audio/kelas11/unit2/qiraah/qiraah2-paragraph-1-male.mp3\")">🔊 Dengarkan paragraf 1</button>
       <p>تَقُولُ رِيتَا أَنَّ ضَغْطَ دَمِهَا مُرْتَفِعٌ. هِيَ تَشْعُرُ بِالصُّدَاعِ وَأَلَمٍ فِي صَدْرِهَا وَ عَدَمِ وُضُوحٍ رُؤْيَتِهَا. وَهِي تَذْهَبُ إِلَى الطَّبِيبِ فَيَأْمُرُهَا الطَّبِيبُ أَنْ تَسْتَلْقِيَ عَلَى السَّرِيرِ وَيَفْحَصُهَا بِجِهَازِ قِيَاسِ ضَغْطِ الدَّم.</p>
-      <button class="btn audio-btn" onclick="speak('تَقُولُ رِيتَا أَنَّ ضَغْطَ دَمِهَا مُرْتَفِعٌ. هِيَ تَشْعُرُ بِالصُّدَاعِ وَأَلَمٍ فِي صَدْرِهَا وَعَدَمِ وُضُوحٍ رُؤْيَتِهَا. وَهِي تَذْهَبُ إِلَى الطَّبِيبِ فَيَأْمُرُهَا الطَّبِيبُ أَنْ تَسْتَلْقِيَ عَلَى السَّرِيرِ وَيَفْحَصُهَا بِجِهَازِ قِيَاسِ ضَغْطِ الدَّمِ.')">🔊 Dengarkan paragraf 2</button>
+      <button class="btn audio-btn" onclick="playFixedMaleAudio(\"audio/kelas11/unit2/qiraah/qiraah2-paragraph-2-male.mp3\")">🔊 Dengarkan paragraf 2</button>
       <p>تَشْرَحُ رِيتَا أَنَّ الطَّبِيْبَ يَنْصَحُهَا أنْ لَا تَأْكُلُ الطَّعَامَ الْمَالِحَ أَو الْحُلْوَ وَالطَّعَامَ الْمَقْلِيَّ واللُّحُومَ الْمُصَنَّعَةَ وَجِلْدَ الدُّجَاجِ وَغَيْرَ ذَلِكَ. وَيَأْمُرُ الطَّبِيبُ أَنْ تَشْتَرِيَ الدَّوَاءَ فِي الصَّيْدَلِيَّة، وَ يَجِبُ عَلَيْهَا أَنْ تَتَنَاوَلَ الدَّوَاءَ مَرَّةً فِي اليَوْمِ.</p>
-      <button class="btn audio-btn" onclick="speak('تَشْرَحُ رِيتَا أَنَّ الطَّبِيْبَ يَنْصَحُهَا أَنْ لَا تَأْكُلُ الطَّعَامَ الْمَالِحَ أَوِ الْحُلْوَ وَالطَّعَامَ الْمَقْلِيَّ وَاللُّحُومَ الْمُصَنَّعَةَ وَجِلْدَ الدُّجَاجِ وَغَيْرَ ذَلِكَ. وَيَأْمُرُ الطَّبِيبُ أَنْ تَشْتَرِيَ الدَّوَاءَ فِي الصَّيْدَلِيَّةِ، وَيَجِبُ عَلَيْهَا أَنْ تَتَنَاوَلَ الدَّوَاءَ مَرَّةً فِي الْيَوْمِ.')">🔊 Dengarkan paragraf 3</button>
+      <button class="btn audio-btn" onclick="playFixedMaleAudio(\"audio/kelas11/unit2/qiraah/qiraah2-paragraph-3-male.mp3\")">🔊 Dengarkan paragraf 3</button>
       <p>وَ يَقُولُ الطَّبِيبُ أَنَّ هُنَاكَ كَثِيْرًا مِن الْأَطْعِمَةِ الصِّحِّيَّةِ مِثْلَ الفَوَاكِهِ مِنَ الْجَوَّافَةِ وَالْمَوْزِ وَالْبُرْتُقَالِ والْخَضْرَوَاتِ والسَّمَكِ وَاللَّبَنِ الْمُصَفَّى بِلَا سُكْرٍ وغَيْرِ ذَلِكَ. نَحْنُ نَرْجِعُ إِلَى البَيْتِ بَعْدَ ذلِكَ. وَلَا نُرِيدُ أَنْ يُصِيْبَنَا أَيُّ مَرَضٍ مِثْلَ مَا أَصَابَ صَدِيقَتَنَا رِيْتَا فَنَأْكُلُ كَثِيْرًا مِن الْفَوَاكِهِ وَالخَضْرَوَاتِ.</p>
-      <button class="btn audio-btn" onclick="speak('وَيَقُولُ الطَّبِيبُ أَنَّ هُنَاكَ كَثِيرًا مِنَ الْأَطْعِمَةِ الصِّحِّيَّةِ مِثْلَ الْفَوَاكِهِ مِنَ الْجَوَّافَةِ وَالْمَوْزِ وَالْبُرْتُقَالِ وَالْخَضْرَوَاتِ وَالسَّمَكِ وَاللَّبَنِ الْمُصَفَّى بِلَا سُكَّرٍ وَغَيْرِ ذَلِكَ. نَحْنُ نَرْجِعُ إِلَى الْبَيْتِ بَعْدَ ذَلِكَ. وَلَا نُرِيدُ أَنْ يُصِيبَنَا أَيُّ مَرَضٍ مِثْلَ مَا أَصَابَ صَدِيقَتَنَا رِيتَا فَنَأْكُلُ كَثِيرًا مِنَ الْفَوَاكِهِ وَالْخَضْرَوَاتِ.')">🔊 Dengarkan paragraf 4</button>
+      <button class="btn audio-btn" onclick="playFixedMaleAudio(\"audio/kelas11/unit2/qiraah/qiraah2-paragraph-4-male.mp3\")">🔊 Dengarkan paragraf 4</button>
     </div>
   </section>
 </div>
@@ -3730,7 +3829,7 @@
       }
 
       function openLesson(g, i) {
-        stopArabicSpeech();
+        if (typeof stopSpeech === "function") stopSpeech();
         let t = topics[g][i];
         if (g === "X" && i === 0) {
           document.getElementById("detailBox").innerHTML = dars1();
@@ -3822,16 +3921,20 @@
       }
 
       function lessonTab(id, btn) {
-        stopArabicSpeech();
-        document
-          .querySelectorAll(".lesson-panel")
-          .forEach((x) => x.classList.remove("active"));
-        document
-          .querySelectorAll(".lesson-tabs button")
-          .forEach((x) => x.classList.remove("active"));
-        const p = document.getElementById("panel-" + id);
+        /* Hentikan audio ketika berpindah materi. */
+        stopSpeech();
+        /* Jangan lagi mencari panel secara global. Beberapa unit memiliki
+           ID panel yang sama (panel-qiraah, panel-hiwar, dll.). Pada
+           perangkat/browser tertentu pencarian global dapat mengambil
+           panel pertama sehingga menu terlihat tidak bekerja. */
+        const shell = btn && btn.closest ? btn.closest(".lesson-shell, .unit-shell, .card") : null;
+        const root = shell || document.getElementById("detailBox") || document;
+        root.querySelectorAll(".lesson-panel").forEach((x) => x.classList.remove("active"));
+        root.querySelectorAll(".lesson-tabs button").forEach((x) => x.classList.remove("active"));
+        const p = root.querySelector("#panel-" + CSS.escape(id));
         if (p) p.classList.add("active");
         if (btn) btn.classList.add("active");
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
       function nextChapter(current) {
         if (current === 1) {
@@ -6470,7 +6573,6 @@ body.innerHTML='<div class="role-page-grid">'+cards.map(function(c){return '<div
   }
   var originalPage=window.page;
   window.page=function(id){
-    if(typeof window.stopArabicSpeech==="function")window.stopArabicSpeech();
     var map={home:"home",kelas:"kelas",progres:"progres",roleDashboard:"dashboard",manajemenAkun:"akun"};
     if(id==="penilaian"||id==="kuis") {if(!has("penilaian")){return deny("Penilaian Harian")}window.location.href="https://cbt.mung.my.id";return}
     if(map[id]&&!has(map[id])){deny(id);return}
