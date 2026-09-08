@@ -1764,7 +1764,15 @@
           }
           const voice = chooseArabicMaleVoice();
           if (!voice) {
-            speechNotice("Suara Arab belum terpasang pada perangkat ini. Pasang suara Arab (Arab Saudi) di pengaturan bahasa.", true);
+            /*
+             * Jangan hentikan pembacaan hanya karena getVoices() belum
+             * menampilkan suara Arab. Hal ini umum terjadi pada Android/iOS:
+             * mesin TTS tetap dapat memilih suara ar-SA setelah utterance
+             * dijalankan. Jika perangkat benar-benar tidak mendukungnya,
+             * event error di playArabicQueue akan memberi petunjuk.
+             */
+            speechNotice("Mencoba suara Arab bawaan perangkat…", false);
+            setTimeout(function () { playArabicQueue(token, null); }, 60);
             return;
           }
           setTimeout(function () { playArabicQueue(token, voice); }, 60);
