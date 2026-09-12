@@ -1100,6 +1100,12 @@
         }
       }
 </style>
+<style>
+.u11-two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+.u11-two-col>.dars-section{margin:0}
+.u11-transcript{margin-top:12px}
+@media(max-width:750px){.u11-two-col{grid-template-columns:1fr}}
+</style>
   </head>
   <body>
     <header>
@@ -3248,14 +3254,21 @@
 
 <div id="panel-istima" class="lesson-panel">
   <section class="dars-section">
-    <div class="reading-title"><div><h3>🎧 الاستماع — فِي الْمُسْتَشْفَى</h3><span class="muted">Dengarkan percakapan dokter dan pasien, lalu jawab pertanyaannya.</span></div><button class="btn primary" onclick="speak('مَاذَا بِكَ يَا سَيِّدِي؟ أَصَابَنِي الصُّدَاعُ. كَمْ يَوْمًا تَشْعُرُ بِهِ؟ مُنْذُ ثَلَاثَةِ أَيَّامٍ. ضَغْطُ دَمِكَ مُرْتَفِعٌ، عَلَيْكَ أَنْ تَجْتَنِبَ الْأَطْعِمَةَ الْمَالِحَةَ وَالْحُلْوَةَ.')">▶ Putar audio</button></div>
-    <div class="audio-script rtlbox"><button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan transkrip</button><p hidden>الطَّبِيبَةُ: مَاذَا بِكَ يَا سَيِّدِي؟ حَسَنٌ: أَصَابَنِي الصُّدَاعُ. الطَّبِيبَةُ: كَمْ يَوْمًا تَشْعُرُ بِهِ؟ حَسَنٌ: مُنْذُ ثَلَاثَةِ أَيَّامٍ. الطَّبِيبَةُ: ضَغْطُ دَمِكَ مُرْتَفِعٌ، عَلَيْكَ أَنْ تَجْتَنِبَ الْأَطْعِمَةَ الْمَالِحَةَ وَالْحُلْوَةَ.</p></div>
+    <div class="reading-title"><div><h3>🎧 الاستماع — فِي الْمُسْتَشْفَى</h3><span class="muted">Dengarkan materi tentang kesehatan, kemudian periksa pemahamanmu.</span></div><button class="btn primary" onclick="speak('مَاذَا بِكَ يَا سَيِّدِي؟ أَصَابَنِي الصُّدَاعُ. كَمْ يَوْمًا تَشْعُرُ بِهِ؟ مُنْذُ ثَلَاثَةِ أَيَّامٍ. ضَغْطُ دَمِكَ مُرْتَفِعٌ، عَلَيْكَ أَنْ تَجْتَنِبَ الْأَطْعِمَةَ الْمَالِحَةَ وَالْحُلْوَةَ. نَبِيل وَنَوْفَل صَدِيقَانِ. هُمَا يَعِيشَانِ فِي قَرْيَةٍ صَغِيرَةٍ وَيَتَعَلَّمَانِ فِي نَفْسِ الْمَدْرَسَةِ. يُحِبَّانِ أَنْ يَعِيشَا فِي صِحَّةٍ، وَيَذْهَبَانِ إِلَى الْمَدْرَسَةِ بِالدَّرَّاجَةِ، وَيُمَارِسَانِ الرِّيَاضَةَ مِثْلَ الْجَرْيِ وَكُرَةِ الْقَدَمِ وَالسِّبَاحَةِ.')">▶ Putar audio</button></div>
+    <div class="audio-script rtlbox">
+      <button class="btn" type="button" onclick="const p=this.nextElementSibling;const h=p.hasAttribute('hidden');p.toggleAttribute('hidden',!h);this.textContent=h?'🙈 Sembunyikan transkrip':'👁 Buka transkrip'">👁 Buka transkrip</button>
+      <div class="u11-transcript" hidden>
+        <p>الطَّبِيبَةُ: مَاذَا بِكَ يَا سَيِّدِي؟ حَسَنٌ: أَصَابَنِي الصُّدَاعُ. الطَّبِيبَةُ: كَمْ يَوْمًا تَشْعُرُ بِهِ؟ حَسَنٌ: مُنْذُ ثَلَاثَةِ أَيَّامٍ.</p>
+        <p>الطَّبِيبَةُ: تَفَضَّلْ اِسْتَلْقِ عَلَى السَّرِيرِ لِلْفَحْصِ. حَسَنٌ: حَسَنًا يَا سَيِّدَتِي. الطَّبِيبَةُ: ضَغْطُ دَمِكَ مُرْتَفِعٌ، عَلَيْكَ أَنْ تَجْتَنِبَ الْأَطْعِمَةَ الْمَالِحَةَ وَالْحُلْوَةَ.</p>
+        <p>نَبِيل وَنَوْفَل صَدِيقَانِ. هُمَا يَعِيشَانِ فِي قَرْيَةٍ صَغِيرَةٍ وَيَتَعَلَّمَانِ فِي نَفْسِ الْمَدْرَسَةِ. يُحِبَّانِ أَنْ يَعِيشَا فِي صِحَّةٍ، وَيَذْهَبَانِ إِلَى الْمَدْرَسَةِ بِالدَّرَّاجَةِ، وَيُمَارِسَانِ الرِّيَاضَةَ مِثْلَ الْجَرْيِ وَكُرَةِ الْقَدَمِ وَالسِّبَاحَةِ.</p>
+      </div>
+    </div>
     <div class="mini-task"><h4>فَهْمُ الْمَسْمُوعِ</h4><p class="arabic">بِمَاذَا يَشْعُرُ حَسَنٌ؟</p><input id="d11u2Listen" class="answer-input arabic" placeholder="اكتب الجواب هنا"><button class="btn primary" onclick="cekFlexible('d11u2Listen',['بالصداع','أصابه الصداع','أَصَابَهُ الصُّدَاعُ','الصُّدَاع'],'d11u2ListenFb')">Periksa</button><p id="d11u2ListenFb" class="feedback"></p></div>
   </section>
 </div>
 
-
 <div id="panel-hiwar" class="lesson-panel">
+<div class="u11-two-col">
   <section class="dars-section">
     <div class="reading-title"><div><h3>💬 الْحِوَارُ الأَوَّلُ — فِي الْمُسْتَشْفَى</h3><span class="muted">Percakapan dokter dan pasien. Dengarkan seluruh percakapan dalam satu paket.</span></div><button class="btn primary" onclick="speak('اَلسَّلَامُ عَلَيْكُمْ، مَاذَا بِكَ يَا سَيِّدِي؟ وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ اللهِ، أَصَابَنِي الصُّدَاعُ. كَمْ يَوْمًا تَشْعُرُ بِهِ؟ مُنْذُ ثَلَاثَةِ أَيَّامٍ. تَفَضَّلْ اِسْتَلْقِ عَلَى السَّرِيرِ لِلْفَحْصِ. حَسَنًا يَا سَيِّدَتِي. ضَغْطُ دَمِكَ مُرْتَفِعٌ، عَلَيْكَ أَنْ تَجْتَنِبَ الْأَطْعِمَةَ الْمَالِحَةَ وَالْحُلْوَةَ. هَذِهِ هِيَ الْوَصْفَةَ مِنِّي. طَيِّبٌ، سَأَشْتَرِي الدَّوَاءَ فِي الصَّيْدَلِيَّةِ، شُكْرًا. عَفْوًا، شَفَاكَ اللَّهُ')">▶ Putar semua</button></div>
     <div class="dialogue">
@@ -3289,8 +3302,10 @@
     <div class="mini-task"><h4>تَدْرِيبُ الْحِوَارِ</h4><p>Latih dialog berpasangan setelah mendengarkan seluruh percakapan sebagai satu paket.</p></div>
   </section>
 </div>
+</div>
 
 <div id="panel-qiraah" class="lesson-panel">
+<div class="u11-two-col">
   <section class="dars-section">
     <div class="reading-title"><div><h3>📖 الْقِرَاءَةُ الأُولَى — هَيَا نَعِيشُ بِالصَّحَّةِ (١)</h3><span class="muted">Bacaan tentang kebiasaan hidup sehat Nabil dan Naufal.</span></div><button class="btn primary" onclick="speak(document.getElementById('d11u2Reading1').innerText)">▶ Putar bacaan</button></div>
     <div id="d11u2Reading1" class="rtlbox">
@@ -3319,6 +3334,7 @@
       <button class="btn audio-btn" onclick="speak('وَيَقُولُ الطَّبِيبُ أَنَّ هُنَاكَ كَثِيرًا مِنَ الْأَطْعِمَةِ الصِّحِّيَّةِ مِثْلَ الْفَوَاكِهِ مِنَ الْجَوَّافَةِ وَالْمَوْزِ وَالْبُرْتُقَالِ وَالْخَضْرَوَاتِ وَالسَّمَكِ وَاللَّبَنِ الْمُصَفَّى بِلَا سُكَّرٍ وَغَيْرِ ذَلِكَ. نَحْنُ نَرْجِعُ إِلَى الْبَيْتِ بَعْدَ ذَلِكَ. وَلَا نُرِيدُ أَنْ يُصِيبَنَا أَيُّ مَرَضٍ مِثْلَ مَا أَصَابَ صَدِيقَتَنَا رِيتَا فَنَأْكُلُ كَثِيرًا مِنَ الْفَوَاكِهِ وَالْخَضْرَوَاتِ.')">🔊 Dengarkan paragraf 4</button>
     </div>
   </section>
+</div>
 </div>
 
 <div id="panel-tarkib" class="lesson-panel">
