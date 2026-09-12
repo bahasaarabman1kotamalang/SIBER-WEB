@@ -1106,6 +1106,71 @@
 .u11u3-transcript{margin-top:12px}
 @media(max-width:750px){.u11u3-two-col{grid-template-columns:1fr}}
 </style>
+
+<style id="u11u3-hiwar-vertical-style">
+.u11u3-hiwar-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+}
+.u11u3-hiwar-vertical > .rtlbox {
+  width: 100%;
+  box-sizing: border-box;
+}
+</style>
+
+<style id="u11u3-hiwar-speaker-inline-style">
+.u11u3-hiwar-vertical .rtlbox p,
+.u11u3-hiwar-vertical .rtlbox .dialog-line,
+.u11u3-hiwar-vertical .rtlbox .hiwar-line {
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+.u11u3-hiwar-vertical .rtlbox p,
+.u11u3-hiwar-vertical .rtlbox .dialog-line,
+.u11u3-hiwar-vertical .rtlbox .hiwar-line {
+  display: block;
+}
+.u11u3-hiwar-vertical .rtlbox p strong:first-child,
+.u11u3-hiwar-vertical .rtlbox .dialog-line strong:first-child,
+.u11u3-hiwar-vertical .rtlbox .hiwar-line strong:first-child {
+  display: inline;
+  white-space: nowrap;
+  margin-inline-end: 6px;
+}
+
+.u11u3-hiwar-vertical .rtlbox .speaker,
+.u11u3-hiwar-vertical .rtlbox .speaker-name,
+.u11u3-hiwar-vertical .rtlbox .dialog-speaker {
+  display: inline;
+  white-space: nowrap;
+  margin-inline-end: 6px;
+}
+</style>
+
+<style id="u11u3-hiwar-inline-fix">
+/* Nama pembicara dan kalimat Hiwar tampil menyatu dalam satu alur baris. */
+.u11u3-hiwar-vertical .speech {
+  display: block;
+  margin: 0;
+  padding: 0;
+  line-height: 1.9;
+}
+.u11u3-hiwar-vertical .speech b {
+  display: inline;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+}
+.u11u3-hiwar-vertical .speech p,
+.u11u3-hiwar-vertical .speech p.arabic {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
+}
+</style>
 </head>
   <body>
     <header>
@@ -3474,7 +3539,7 @@
       </div>
     </div>
 
-    <div class="u11u3-two-col">
+    <div class="u11u3-hiwar-vertical">
 
       <!-- HIWAR 1 -->
       <article class="dars-section" style="margin:0">
@@ -3487,17 +3552,17 @@
         </div>
 
         <div id="d11u3Hiwar1" class="dialogue rtlbox">
-          <div class="speech"><b>فَخْرِي</b><p class="arabic">اَلسَّلَامُ عَلَيْكُمْ.</p></div>
-          <div class="speech alt"><b>عَائِشَة</b><p class="arabic">وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ الله.</p></div>
-          <div class="speech"><b>فَخْرِي</b><p class="arabic">هَلْ تَعْرِفِينَ أَنَّ الكَعْبَةَ الْمُشَرَّفَةَ مَرْكَزُ عِبَادَةِ الْمُسْلِمِينَ؟</p></div>
-          <div class="speech alt"><b>عَائِشَة</b><p class="arabic">نَعَمْ عَرَفْتُهَا . تَوَجَّهُ إِلَى الكَعْبَةِ الْمُشَرَّفَةِ فِي كُلِّ صَلَاةِ لأَنَّهَا قِبْلَةُ الْمُسْلِمِينَ.</p></div>
-          <div class="speech"><b>فَخْرِي</b><p class="arabic">وَمَاذَا يَنْبَغِي أَنْ نَفْعَلَ أَمَامَ الكَعْبَةِ إِذا كُنَّا فِي الحَجِّ ؟</p></div>
-          <div class="speech alt"><b>عَائِشَة</b><p class="arabic">تَوَجَّهُ إِلى الحَجَرِ الأَسْوَدِ وَاسْتَلِمْهِ بِيَدِكَ أَوْ أَشِرْ إِلَيْهِ.</p></div>
-          <div class="speech"><b>فَخْرِي</b><p class="arabic">ثُمَّ مَاذَا؟</p></div>
-          <div class="speech alt"><b>عَائِشَة</b><p class="arabic">طُفْ بِالْكَعْبَةِ سَبْعَةَ أَشْوَاطٍ، وَادْعُ اللَّهَ خِلَالَ الطَّوَافِ.</p></div>
-          <div class="speech"><b>فَخْرِي</b><p class="arabic">هَلْ هُنَاكَ شَيْئٌ مُهِمَّ آخَرُ عَنِ الكَعْبَةِ ؟</p></div>
-          <div class="speech alt"><b>عَائِشَة</b><p class="arabic">إِنَّهَا بَيْتُ الله الحَرَامِ وَأَوَّلُ بَيْتٍ وُضِعَ لِلنَّاسِ لِعِبَادَةِ اللَّهِ.</p></div>
-          <div class="speech"><b>فَخْرِي</b><p class="arabic">حَسَنًا.</p></div>
+          <div class="speech"><b>فَخْرِي :</b><p class="arabic">اَلسَّلَامُ عَلَيْكُمْ.</p></div>
+          <div class="speech alt"><b>عَائِشَة :</b><p class="arabic">وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ الله.</p></div>
+          <div class="speech"><b>فَخْرِي :</b><p class="arabic">هَلْ تَعْرِفِينَ أَنَّ الكَعْبَةَ الْمُشَرَّفَةَ مَرْكَزُ عِبَادَةِ الْمُسْلِمِينَ؟</p></div>
+          <div class="speech alt"><b>عَائِشَة :</b><p class="arabic">نَعَمْ عَرَفْتُهَا . تَوَجَّهُ إِلَى الكَعْبَةِ الْمُشَرَّفَةِ فِي كُلِّ صَلَاةِ لأَنَّهَا قِبْلَةُ الْمُسْلِمِينَ.</p></div>
+          <div class="speech"><b>فَخْرِي :</b><p class="arabic">وَمَاذَا يَنْبَغِي أَنْ نَفْعَلَ أَمَامَ الكَعْبَةِ إِذا كُنَّا فِي الحَجِّ ؟</p></div>
+          <div class="speech alt"><b>عَائِشَة :</b><p class="arabic">تَوَجَّهُ إِلى الحَجَرِ الأَسْوَدِ وَاسْتَلِمْهِ بِيَدِكَ أَوْ أَشِرْ إِلَيْهِ.</p></div>
+          <div class="speech"><b>فَخْرِي :</b><p class="arabic">ثُمَّ مَاذَا؟</p></div>
+          <div class="speech alt"><b>عَائِشَة :</b><p class="arabic">طُفْ بِالْكَعْبَةِ سَبْعَةَ أَشْوَاطٍ، وَادْعُ اللَّهَ خِلَالَ الطَّوَافِ.</p></div>
+          <div class="speech"><b>فَخْرِي :</b><p class="arabic">هَلْ هُنَاكَ شَيْئٌ مُهِمَّ آخَرُ عَنِ الكَعْبَةِ ؟</p></div>
+          <div class="speech alt"><b>عَائِشَة :</b><p class="arabic">إِنَّهَا بَيْتُ الله الحَرَامِ وَأَوَّلُ بَيْتٍ وُضِعَ لِلنَّاسِ لِعِبَادَةِ اللَّهِ.</p></div>
+          <div class="speech"><b>فَخْرِي :</b><p class="arabic">حَسَنًا.</p></div>
         </div>
       </article>
 
@@ -3512,13 +3577,13 @@
         </div>
 
         <div id="d11u3Hiwar2" class="dialogue rtlbox">
-          <div class="speech"><b>خَالِدَة</b><p class="arabic">يَا نَوْفَل نَحْنُ قَرِيبُونَ مِنَ الحَجَرِ الْأَسْوَدِ، مَاذَا أَفْعَلُ؟</p></div>
-          <div class="speech alt"><b>نَوْفَلُ</b><p class="arabic">تَقَدَّمِي إِلَيْهِ وَاسْتَلِمِيهِ إِنْ اسْتَطَعْتِ، فَإِنْ لَمْ تَسْتَطِيعِي وَكُنْتِ بَعِيدَةً فَأَشِرِي إِلَيْهِ بِيَدِكِ.</p></div>
-          <div class="speech"><b>خَالِدَة</b><p class="arabic">ثُمَّ مَاذَا أَفْعَلُ بَعْدَ ذَلِكَ ؟</p></div>
-          <div class="speech alt"><b>نَوْفَلُ</b><p class="arabic">تَابِعِي طَوَافَكِ وَادْعِيْ اللَّهَ بِمَا شِئْتِ.</p></div>
-          <div class="speech"><b>خَالِدَة</b><p class="arabic">هَلْ هُنَاكَ شَيْئٌ آخَرُ عَنِ الحَجَرِ الأَسْوَدِ؟</p></div>
-          <div class="speech alt"><b>نَوْفَلُ</b><p class="arabic">تَذَكَّرِي أَنَّ الحَجَرَ الأَسْوَدَ قِطْعَةٌ مِنَ الْجَنَّةِ. وَكَانَ نَاصِعَ الْبَيَاضِ عِنْدَمَا نُزِلَ إِلَى الْأَرْضِ، وَلَكِنَّهُ اِسْوَدَّ بِسَبَبٍ خَطَايَا البَشَرِ.</p></div>
-          <div class="speech"><b>خَالِدَة</b><p class="arabic">طَيِّبُ يَا نَوْفَل.</p></div>
+          <div class="speech"><b>خَالِدَة :</b><p class="arabic">يَا نَوْفَل نَحْنُ قَرِيبُونَ مِنَ الحَجَرِ الْأَسْوَدِ، مَاذَا أَفْعَلُ؟</p></div>
+          <div class="speech alt"><b>نَوْفَلُ :</b><p class="arabic">تَقَدَّمِي إِلَيْهِ وَاسْتَلِمِيهِ إِنْ اسْتَطَعْتِ، فَإِنْ لَمْ تَسْتَطِيعِي وَكُنْتِ بَعِيدَةً فَأَشِرِي إِلَيْهِ بِيَدِكِ.</p></div>
+          <div class="speech"><b>خَالِدَة :</b><p class="arabic">ثُمَّ مَاذَا أَفْعَلُ بَعْدَ ذَلِكَ ؟</p></div>
+          <div class="speech alt"><b>نَوْفَلُ :</b><p class="arabic">تَابِعِي طَوَافَكِ وَادْعِيْ اللَّهَ بِمَا شِئْتِ.</p></div>
+          <div class="speech"><b>خَالِدَة :</b><p class="arabic">هَلْ هُنَاكَ شَيْئٌ آخَرُ عَنِ الحَجَرِ الأَسْوَدِ؟</p></div>
+          <div class="speech alt"><b>نَوْفَلُ :</b><p class="arabic">تَذَكَّرِي أَنَّ الحَجَرَ الأَسْوَدَ قِطْعَةٌ مِنَ الْجَنَّةِ. وَكَانَ نَاصِعَ الْبَيَاضِ عِنْدَمَا نُزِلَ إِلَى الْأَرْضِ، وَلَكِنَّهُ اِسْوَدَّ بِسَبَبٍ خَطَايَا البَشَرِ.</p></div>
+          <div class="speech"><b>خَالِدَة :</b><p class="arabic">طَيِّبُ يَا نَوْفَل.</p></div>
         </div>
       </article>
 
