@@ -3706,6 +3706,22 @@
     <div class="vocab-grid">${vocab11Unit4.map((v) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();speak('${v[0]}')">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
     <div class="mini-task"><div><h4 class="arabic">تَدْرِيبٌ سَرِيعٌ</h4><p class="arabic">أَيْنَ يَتَعَبَّدُ الْمُسْلِمُ؟</p><button class="btn" onclick="quickAnswer4(this,true)">فِي الْمَسْجِدِ</button> <button class="btn" onclick="quickAnswer4(this,false)">فِي الْكَنِيسَةِ</button> <button class="btn" onclick="quickAnswer4(this,false)">فِي فِيهَارَا</button><p id="quickFeedback4" class="feedback arabic" aria-live="polite"></p></div></div>
   </section>
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>📚 الْمُفْرَدَاتُ الْإِضَافِيَّةُ — Materi BA XI_4</h3><span class="muted">Kosakata tambahan dari file materi BA XI_4.</span></div></div>
+    <div class="vocab-grid">
+      ${[
+        ["الْكَاثُولِيكِيُّ", "Pemeluk Katolik"], ["الْمَسِيحِيُّ / الْبُرُوتِسْتَانْتِيُّ", "Pemeluk Kristen / Protestan"],
+        ["الْهِنْدُوسِيُّ", "Pemeluk Hindu"], ["الْبُوذِيُّ", "Pemeluk Buddha"], ["الْكُونْفُوشِيُّ", "Pemeluk Konghucu"],
+        ["فُورًا", "Pura (sesuai istilah pada materi sumber)"], ["بَانْجَا سِيلَا", "Pancasila"], ["فَوْرًا", "Segera"],
+        ["تَاجِرٌ", "Pedagang"], ["دِينٌ قَدِيمٌ", "Agama kuno"], ["مُطِيعٌ", "Taat"], ["وَسَطُ مَدِينَةٍ", "Tengah kota"],
+        ["أَكْثَرُ انْتِشَارًا", "Paling banyak tersebar"], ["سَلَامٍ", "Kedamaian"], ["بِأَلْوَانٍ مُتَنَوِّعَةٍ", "Dengan warna yang beragam"],
+        ["السُّكَّانُ", "Penduduk"], ["بِالِاخْتِلَافَاتِ", "Dengan perbedaan-perbedaan"], ["تَسَامُحٌ", "Toleransi"],
+        ["الْأَحْمَرُ", "Merah"], ["الْمُعْتَقَدَاتُ", "Keyakinan/kepercayaan"], ["مَبْدَأٌ أَسَاسِيٌّ", "Prinsip dasar"],
+        ["الْأَصْفَرُ", "Kuning"], ["جَارٌ", "Tetangga"], ["الْأَدْيَانُ", "Agama-agama"], ["الِاحْتِرَامُ الْمُتَبَادَلُ", "Saling menghormati"],
+        ["الْمُخْتَلِفَةُ", "Berbeda/beragam"], ["يَذْهَبُ", "Pergi"], ["يَتْبَعُهَا", "Mengikuti"], ["يُزَيَّنُ", "Dihiasi"], ["يَحْتَرِمُونَ", "Mereka menghormati"], ["يُسَمَّى", "Disebut/dinamakan"]
+      ].map((v) => `<div class="vocab"><b>${v[0]}</b><span>${v[1]}</span></div>`).join("")}
+    </div>
+  </section>
 </div>
 
 <div id="panel-istima" class="lesson-panel">
@@ -3717,21 +3733,34 @@
       <div><h4 class="arabic">اِسْتَمِعْ وَرَتِّبْ</h4><p class="arabic">رَتِّبْ حَسَبَ النَّصِّ: فَرَانْسِيسْكُوس — خَالِدٌ — سُونَارْطُو</p><p class="muted">Tuliskan urutan tokoh yang disebut dalam teks.</p></div>
     </div>
   </section>
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ ٢ — الْحِوَارُ عَنِ الْعِبَادَةِ</h3><span class="muted">Materi istima tambahan berdasarkan الحوار ٢ pada file BA XI_4.</span></div><button class="btn primary" onclick="speak(document.getElementById('d11u4Istima2').innerText)">▶ Putar</button></div>
+    <div id="d11u4Istima2" class="audio-script rtlbox">مَرْوَانُ: نَحْنُ الْآنَ فِي مَكَانِ الْعِبَادَةِ، هَلْ عِنْدَكِ صَدِيقٌ غَيْرُ مُسْلِمٍ؟ أَنِيسَةُ: نَعَمْ، عِنْدِي صَدِيقٌ بُوذِيٌّ، هُوَ فِي سُورَابَايَا. مَرْوَانُ: أَيْنَ يَتَعَبَّدُ صَدِيقُكِ؟ أَنِيسَةُ: هُوَ يَتَعَبَّدُ فِي فِيهَارَا. مَرْوَانُ: كَيْفَ تُعَامِلِينَ صَدِيقَكِ الْبُوذِيَّ؟ أَنِيسَةُ: أَحْتَرِمُهُ احْتِرَامًا جَيِّدًا، وَأُشَارِكُهُ فِي الْمُعَامَلَةِ الِاجْتِمَاعِيَّةِ وَلَا فِي الدِّينِيَّةِ.</div>
+    <div class="mini-task"><div><h4 class="arabic">فَهْمُ الْمَسْمُوعِ</h4><p class="arabic">أَيْنَ يَتَعَبَّدُ صَدِيقُ أَنِيسَةَ؟</p><input id="d11u4Istima2Q" class="answer-input arabic" placeholder="اكتب الجواب"><button class="btn primary" onclick="cekFlexible('d11u4Istima2Q',['في فيحارا','فِي فِيهَارَا','في فيْهَارا','فيهارا'],'d11u4Istima2Fb')">Periksa</button><p id="d11u4Istima2Fb" class="feedback"></p></div><div><h4 class="arabic">سُؤَالٌ آخَرُ</h4><p class="arabic">كَيْفَ تُعَامِلُ أَنِيسَةُ صَدِيقَهَا؟</p><p class="muted">Jawab secara lisan dengan kalimat sederhana.</p></div></div>
+  </section>
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ ٣ — نَصٌّ عَنِ التَّسَامُحِ</h3><span class="muted">Gunakan teks qiraah sebagai latihan menyimak tingkat lanjut.</span></div><button class="btn primary" onclick="speak(document.getElementById('d11u4Istima3').innerText)">▶ Putar</button></div>
+    <div id="d11u4Istima3" class="audio-script rtlbox">خَالِدٌ تَاجِرٌ مُسْلِمٌ، هُوَ يَسْكُنُ فِي جُومْبَانْجَ، بَيْتُهُ قَرِيبٌ مِنَ الْمَسْجِدِ، يَذْهَبُ خَالِدٌ إِلَى الْمَسْجِدِ كُلَّ يَوْمٍ لِأَدَاءِ صَلَاةِ الْفَرْضِ. هُوَ مُسْلِمٌ مُطِيعٌ. وَلَهُ جَارٌ اسْمُهُ سُونَارْطُو، هُوَ جَارٌ بُوذِيٌّ، يَتَعَبَّدُ فِي مَعْبَدٍ بَعِيدٍ عَنْ بَيْتِهِ يُسَمَّى مَعْبَدَ هُوكْ لِيُونْج كِيُونْج. وَلَهُ جَارٌ آخَرُ اسْمُهُ فَرَانْسِيسْكُوس، هُوَ جَارٌ بُرُوتِسْتَانْتِيٌّ يَتَعَبَّدُ فِي الْكَنِيسَةِ. يَسْكُنُ خَالِدٌ وَجَارَاهُ فِي سَلَامٍ وَتَسَامُحٍ، وَيَحْتَرِمُ بَعْضُهُمْ بَعْضًا.</div>
+    <div class="mini-task"><div><h4 class="arabic">فَهْمُ الْمَسْمُوعِ</h4><p class="arabic">مَنْ هُوَ جَارُ خَالِدٍ الْبُوذِيُّ؟</p><input id="d11u4Istima3Q" class="answer-input arabic" placeholder="اكتب الجواب"><button class="btn primary" onclick="cekFlexible('d11u4Istima3Q',['سونارطو','سُونَارْطُو'],'d11u4Istima3Fb')">Periksa</button><p id="d11u4Istima3Fb" class="feedback"></p></div><div><h4 class="arabic">اسْتَمِعْ وَاذْكُرْ</h4><p class="muted">Sebutkan tiga tokoh yang terdengar dalam teks.</p></div></div>
+  </section>
 </div>
 
 <div id="panel-hiwar" class="lesson-panel">
   <section class="dars-section">
     <div class="reading-title"><div><h3>💬 الْحِوَارُ — تَنَوُّعُ الْأَدْيَانِ</h3><span class="muted">Baca bergantian sebagai Ruqayyah dan Ibrahim.</span></div><button class="btn" onclick="speak(document.getElementById('d11u4Hiwar').innerText)">🔊 Dengarkan</button></div>
-    <div id="d11u4Hiwar" class="dialogue">
-      <div class="speech"><b>رُقَيَّةُ</b><p class="arabic">السَّلَامُ عَلَيْكُمْ يَا إِبْرَاهِيمُ، كَيْفَ حَالُكَ الْيَوْمَ؟</p></div>
-      <div class="speech alt"><b>إِبْرَاهِيمُ</b><p class="arabic">وَعَلَيْكُمُ السَّلَامُ يَا رُقَيَّةُ، الْحَمْدُ لِلَّهِ. وَأَنْتِ كَيْفَ الْحَالُ؟</p></div>
-      <div class="speech"><b>رُقَيَّةُ</b><p class="arabic">بِخَيْرٍ وَالْحَمْدُ لِلَّهِ. كُنْتُ أُفَكِّرُ فِي تَنَوُّعِ الْأَدْيَانِ فِي إِنْدُونِيسِيَا.</p></div>
-      <div class="speech alt"><b>إِبْرَاهِيمُ</b><p class="arabic">نَعَمْ، إِنَّهُ أَمْرٌ رَائِعٌ. هُنَاكَ الْمُسْلِمُونَ وَالْمَسِيحِيُّونَ وَالْهِنْدُوسِيُّونَ وَالْبُوذِيُّونَ وَالْكُونْفُوشِيُّونَ يَعِيشُونَ فِي سَلَامٍ.</p></div>
-      <div class="speech"><b>رُقَيَّةُ</b><p class="arabic">صَحِيحٌ، وَأَنَا مُعْجَبَةٌ جِدًّا بِكَيْفِيَّةِ احْتِرَامِ الْجَمِيعِ لِمُعْتَقَدَاتِ الْآخَرِينَ.</p></div>
-      <div class="speech alt"><b>إِبْرَاهِيمُ</b><p class="arabic">هَذَا جُزْءٌ مُهِمٌّ مِنْ قِيَمِ بَانْجَاسِيلَا، حَيْثُ تُشَجِّعُ النَّاسَ عَلَى الْوَحْدَةِ فِي التَّنَوُّعِ.</p></div>
-      <div class="speech"><b>رُقَيَّةُ</b><p class="arabic">طَبْعًا، التَّسَامُحُ هُوَ مِفْتَاحُ السَّلَامِ فِي مُجْتَمَعِنَا.</p></div>
-    </div>
+    <div id="d11u4Hiwar" class="dialogue rtlbox">
+      <b>رُقَيَّةُ:</b> السَّلَامُ عَلَيْكُمْ يَا إِبْرَاهِيمُ، كَيْفَ حَالُكَ الْيَوْمَ؟<br>
+      <b>إِبْرَاهِيمُ:</b> وَعَلَيْكُمُ السَّلَامُ يَا رُقَيَّةُ، الْحَمْدُ لِلَّهِ. وَأَنْتِ كَيْفَ الْحَالُ؟<br>
+      <b>رُقَيَّةُ:</b> بِخَيْرٍ وَالْحَمْدُ لِلَّهِ. كُنْتُ أُفَكِّرُ فِي تَنَوُّعِ الْأَدْيَانِ فِي إِنْدُونِيسِيَا.<br>
+      <b>إِبْرَاهِيمُ:</b> نَعَمْ، إِنَّهُ أَمْرٌ رَائِعٌ. هُنَاكَ الْمُسْلِمُونَ وَالْمَسِيحِيُّونَ وَالْهِنْدُوسِيُّونَ وَالْبُوذِيُّونَ وَالْكُونْفُوشِيُّونَ يَعِيشُونَ فِي سَلَامٍ.<br>
+      <b>رُقَيَّةُ:</b> صَحِيحٌ، وَأَنَا مُعْجَبَةٌ جِدًّا بِكَيْفِيَّةِ احْتِرَامِ الْجَمِيعِ لِمُعْتَقَدَاتِ الْآخَرِينَ.<br>
+      <b>إِبْرَاهِيمُ:</b> هَذَا جُزْءٌ مُهِمٌّ مِنْ قِيَمِ بَانْجَاسِيلَا، حَيْثُ تُشَجِّعُ النَّاسَ عَلَى الْوَحْدَةِ فِي التَّنَوُّعِ.<br>
+      <b>رُقَيَّةُ:</b> طَبْعًا، التَّسَامُحُ هُوَ مِفْتَاحُ السَّلَامِ فِي مُجْتَمَعِنَا.</div>
     <div class="mini-task"><div><h4>Praktik pasangan</h4><p>Peragakan dialog, lalu ubah nama tokoh dan contoh tempat ibadah tanpa mengubah pesan toleransinya.</p></div><div><h4 class="arabic">تَكَلَّمْ!</h4><p class="arabic">هَلْ عِنْدَكَ صَدِيقٌ غَيْرُ مُسْلِمٍ؟ كَيْفَ تُعَامِلُهُ؟</p></div></div>
+  </section>
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>💬 الْحِوَارُ ٢ — مَكَانُ الْعِبَادَةِ</h3><span class="muted">Dialog tambahan dari materi BA XI_4.</span></div><button class="btn" onclick="speak(document.getElementById('d11u4Hiwar2').innerText)">🔊 Dengarkan</button></div>
+    <div id="d11u4Hiwar2" class="dialogue rtlbox"><b>مَرْوَانُ:</b> السَّلَامُ عَلَيْكُمْ يَا أَنِيسَةُ.<br><b>أَنِيسَةُ:</b> وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ اللهِ.<br><b>مَرْوَانُ:</b> نَحْنُ الْآنَ فِي مَكَانِ الْعِبَادَةِ، هَلْ عِنْدَكِ صَدِيقٌ غَيْرُ مُسْلِمٍ؟<br><b>أَنِيسَةُ:</b> نَعَمْ، عِنْدِي صَدِيقٌ بُوذِيٌّ، هُوَ فِي سُورَابَايَا.<br><b>مَرْوَانُ:</b> أَيْنَ يَتَعَبَّدُ صَدِيقُكِ؟<br><b>أَنِيسَةُ:</b> هُوَ يَتَعَبَّدُ فِي فِيهَارَا. وَأَنْتَ يَا مَرْوَانُ، هَلْ تَعْرِفُ أَيْنَ يَتَعَبَّدُ الْهِنْدُوسِيُّونَ؟<br><b>مَرْوَانُ:</b> نَعَمْ عَرَفْتُ، هُمْ يَتَعَبَّدُونَ فِي فُورًا. كَيْفَ تُعَامِلِينَ صَدِيقَكِ الْبُوذِيَّ؟<br><b>أَنِيسَةُ:</b> أَحْتَرِمُهُ احْتِرَامًا جَيِّدًا، حَيْثُ أُشَارِكُهُ فِي الْمُعَامَلَةِ الِاجْتِمَاعِيَّةِ وَلَا فِي الدِّينِيَّةِ.<br><b>مَرْوَانُ:</b> أَحْسَنْتِ يَا أَنِيسَةُ، هَذَا هُوَ التَّسَامُحُ فِي الدِّينِ.</div>
   </section>
 </div>
 
@@ -3744,6 +3773,11 @@
       <p>وَلِخَالِدٍ جَارٌ آخَرُ اسْمُهُ فَرَانْسِيسْكُوس، هُوَ جَارٌ بُرُوتِسْتَانْتِيٌّ يَتَعَبَّدُ فِي الْكَنِيسَةِ. يَسْكُنُ خَالِدٌ وَسُونَارْطُو وَفَرَانْسِيسْكُوس فِي سَلَامٍ وَتَسَامُحٍ، وَيُحِبُّ بَعْضُهُمْ بَعْضًا. فَالتَّسَامُحُ مَبْدَأٌ أَسَاسِيٌّ فِي إِنْدُونِيسِيَا، يُشَجِّعُ عَلَى الِاحْتِرَامِ الْمُتَبَادَلِ وَالتَّفَاهُمِ فِي الِاخْتِلَافِ بَيْنَ الْمُعْتَقَدَاتِ الدِّينِيَّةِ.</p>
     </div>
     <div class="mini-task"><div><h4 class="arabic">فَهْمُ الْمَقْرُوءِ</h4><p class="arabic">كَيْفَ يَعِيشُ خَالِدٌ وَجَارَاهُ؟</p><input id="d11u4Read" class="answer-input arabic" placeholder="اكتب الجواب"><button class="btn primary" onclick="cekFlexible('d11u4Read',['في سلام وتسامح','فِي سَلَامٍ وَتَسَامُحٍ','يعيشون في سلام وتسامح'],'d11u4ReadFb')">Periksa</button><p id="d11u4ReadFb" class="feedback"></p></div><div><h4>Struktur teks deskriptif</h4><p><span class="arabic">الْوَصْفُ الْعَامُّ</span> memperkenalkan objek; <span class="arabic">الْوَصْفُ الْخَاصُّ</span> menjelaskan ciri dan rinciannya.</p></div></div>
+  </section>
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>📖 الْقِرَاءَةُ ٢ — الْأَدْيَانُ فِي إِنْدُونِيسِيَا</h3><span class="muted">Versi lengkap teks dari materi BA XI_4.</span></div><button class="btn" onclick="speak(document.getElementById('d11u4Reading2').innerText)">🔊 Dengarkan</button></div>
+    <div id="d11u4Reading2" class="rtlbox"><p>خَالِدٌ تَاجِرٌ مُسْلِمٌ، هُوَ يَسْكُنُ فِي جُومْبَانْجَ، بَيْتُهُ قَرِيبٌ مِنَ الْمَسْجِدِ، يَذْهَبُ خَالِدٌ إِلَى الْمَسْجِدِ كُلَّ يَوْمٍ لِأَدَاءِ صَلَاةِ الْفَرْضِ. هُوَ مُسْلِمٌ مُطِيعٌ. وَالْإِسْلَامُ هُوَ الدِّينُ الْأَكْثَرُ انْتِشَارًا فِي إِنْدُونِيسِيَا حَيْثُ يَتْبَعُهُ حَوَالَي ٨٧،٢٪ مِنَ السُّكَّانِ.</p><p>لِخَالِدٍ جَارٌ اسْمُهُ سُونَارْطُو. هُوَ جَارٌ بُوذِيٌّ. اَلْبُوذِيَّةُ هُوَ دِينٌ قَدِيمٌ فِي إِنْدُونِيسِيَا حَيْثُ يَتْبَعُهَا حَوَالَي ٧٪ مِنَ السُّكَّانِ. يَتَعَبَّدُ سُونَارْطُو فِي مَعْبَدٍ بَعِيدٍ عَنْ بَيْتِهِ يُسَمَّى بِمَعْبَدِ هُوكْ لِيُونْج كِيُونْج. هُوَ مَعْبَدٌ جَمِيلٌ فِي وَسَطِ مَدِينَةِ جُومْبَانْجِ. يُزَيَّنُ الْمَعْبَدُ بِأَلْوَانٍ مُتَنَوِّعَةٍ مِنَ الْأَحْمَرِ وَالْأَصْفَرِ وَالْأَخْضَرِ.</p><p>لِخَالِدٍ جَارٌ آخَرُ، اسْمُهُ فَرَانْسِيسْكُوسُ، هُوَ جَارٌ بُرُوتِسْتَانِيٌّ. اَلْبُرُوتِسْتَانِيَّةُ هُوَ دِينٌ ثَالِثٌ أَكْبَرُ فِي إِنْدُونِيسِيَا حَيْثُ يَتْبَعُهَا حَوَالَي ٦،٩٪ مِنَ السُّكَّانِ. يَتَعَبَّدُ فَرَانْسِيسْكُوسُ فِي الْكَنِيسَةِ فِي جُومْبَانْجَ.</p><p>يَسْكُنُ خَالِدٌ وَسُونَارْطُو وَفَرَانْسِيسْكُوسُ فِي سِلْمٍ وَتَسَامُحٍ، وَيَحْتَرِمُ بَعْضُهُمْ بَعْضًا. فَالتَّسَامُحُ هُوَ مَبْدَأٌ أَسَاسِيٌّ فِي إِنْدُونِيسِيَا، يُشَجِّعُ عَلَى الِاحْتِرَامِ الْمُتَبَادَلِ وَالتَّفَاهُمِ فِي الِاخْتِلَافِ بَيْنَ الْمُعْتَقَدَاتِ الدِّينِيَّةِ.</p><p>وَالْأَدْيَانُ الرَّسْمِيَّةُ فِي إِنْدُونِيسِيَا هِيَ: الْإِسْلَامُ، وَالْكَاثُولِيكِيَّةُ، وَالْبُرُوتِسْتَانْتِيَّةُ، وَالْهِنْدُوسِيَّةُ، وَالْبُوذِيَّةُ، وَالْكُونْفُوشِيَّةُ.</p></div>
+    <div class="mini-task"><h4 class="arabic">فَهْمُ الْمَقْرُوءِ</h4><ol class="arabic"><li>أَيْنَ يَسْكُنُ خَالِدٌ؟</li><li>أَيْنَ يَتَعَبَّدُ سُونَارْطُو؟</li><li>أَيْنَ يَتَعَبَّدُ فَرَانْسِيسْكُوسُ؟</li><li>مَا مَبْدَأٌ أَسَاسِيٌّ فِي إِنْدُونِيسِيَا؟</li></ol></div>
   </section>
 </div>
 
