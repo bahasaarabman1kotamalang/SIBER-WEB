@@ -1100,13 +1100,13 @@
         }
       }
 </style>
-<style>
-.u11-two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
-.u11-two-col>.dars-section{margin:0}
-.u11-transcript{margin-top:12px}
-@media(max-width:750px){.u11-two-col{grid-template-columns:1fr}}
+  <style>
+.u11u3-two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+.u11u3-two-col>.rtlbox,.u11u3-two-col>.dialogue{height:100%;box-sizing:border-box}
+.u11u3-transcript{margin-top:12px}
+@media(max-width:750px){.u11u3-two-col{grid-template-columns:1fr}}
 </style>
-  </head>
+</head>
   <body>
     <header>
       <nav>
@@ -1795,20 +1795,44 @@
 </div>
 
 <div id="panel-hiwar" class="lesson-panel">
-<div class="dars-section"><h3>🗣️ الحوار — Hiwar</h3>
-<div class="dialogue rtlbox"><b>أحمد:</b> السَّلَامُ عَلَيْكُمْ<br><b>أغوس:</b> وَعَلَيْكُمُ السَّلَامُ<br><b>أحمد:</b> اسْمِي أَحْمَدُ، وَمَا اسْمُكَ؟<br><b>أغوس:</b> اسْمِي أَغُوسُ، مِنْ أَيْنَ أَنْتَ؟<br><b>أحمد:</b> أَنَا مِنْ جُمْبَانْجَ، وَأَنْتَ؟<br><b>أغوس:</b> أَنَا مِنْ سُورَابَايَا.<br><b>أحمد:</b> أَهْلًا وَسَهْلًا.<br><b>أغوس:</b> أَهْلًا بِكَ.<br><b>أحمد:</b> إِلَى اللِّقَاءِ.<br><b>أغوس:</b> مَعَ السَّلَامَةِ.</div>
-<div class="dialogue rtlbox"><b>ليلى:</b> مَسَاءَ الْخَيْرِ.<br><b>إليسا:</b> مَسَاءَ النُّورِ.<br><b>ليلى:</b> كَيْفَ أَمْسَيْتِ؟<br><b>إليسا:</b> أَمْسَيْتُ بِخَيْرٍ وَالْحَمْدُ لِلَّهِ، وَأَنْتِ؟<br><b>ليلى:</b> بِخَيْرٍ وَالْحَمْدُ لِلَّهِ.<br><b>إليسا:</b> يَا لَيْلَى، هَذِهِ فِطْرِيَةُ، هِيَ صَدِيقَتِي.<br><b>ليلى:</b> مَرْحَبًا يَا فِطْرِيَةُ، أَنَا لَيْلَى.<br><b>فطرية:</b> مَرْحَبًا بِكِ يَا لَيْلَى.</div>
-<button class="btn primary" onclick="speak('السلام عليكم اسمي أحمد أنا من جومبانج وأنت اسمي أغوس أنا من سورابايا أهلا وسهلا إلى اللقاء مع السلامة')">🔊 Dengarkan model hiwar</button>
-<div class="exercise"><b>Praktik berpasangan</b><p>Ganti nama, asal, alamat, dan nama teman dalam dialog. Praktikkan secara bergantian dengan memperhatikan salam, intonasi, dan kesantunan.</p></div>
-</div>
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>💬 الْحِوَارُ — الْكَعْبَةُ الْمُشَرَّفَةُ وَالْحَجَرُ الأَسْوَدُ</h3><span class="muted">Dialog materi Unit 3.</span></div><button class="btn primary" onclick="speak(document.getElementById('d11u3Hiwar').innerText)">🔊 Dengarkan</button></div>
+    <div id="d11u3Hiwar" class="u11u3-two-col">
+      <div class="rtlbox"><h4 class="arabic">الكَعْبَةُ الْمُشَرَّفَةُ</h4><p class="arabic">فَخْرِي : اَلسَّلَامُ عَلَيْكُمْ</p>
+<p class="arabic">عَائِشَة : وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ الله</p>
+<p class="arabic">فَخْرِي : هَلْ تَعْرِفِينَ أَنَّ الكَعْبَةَ الْمُشَرَّفَةَ مَرْكَزُ عِبَادَةِ الْمُسْلِمِينَ؟</p>
+<p class="arabic">عَائِشَة : نَعَمْ عَرَفْتُهَا . تَوَجَّهُ إِلَى الكَعْبَةِ الْمُشَرَّفَةِ فِي كُلِّ صَلَاةَ لأَنَّهَا قِبْلَةُ الْمُسْلِمِينَ.</p>
+<p class="arabic">فَخْرِي : وَمَاذَا يَنْبَغِي أَنْ نَفْعَلَ أَمَامَ الكَعْبَةِ إِذا كُنَّا فِي الحَجِّ ؟</p>
+<p class="arabic">عَائِشَة : تَوَجَّهُ إِلى الحَجَرِ الأَسْوَدِ وَاسْتَلِمْهِ بِيَدِكَ أَوْ أَشِرْ إِلَيْهِ.</p>
+<p class="arabic">فَخْرِي : ثُمَّ مَاذَا؟</p>
+<p class="arabic">عَائِشَة : طُفْ بِالْكَعْبَةِ سَبْعَةَ أَشْوَاطٍ، وَادْعُ اللَّهَ خِلَالَ الطَّوَافِ.</p>
+<p class="arabic">فَخْرِي : هَلْ هُنَاكَ شَيْيٌّ مُهِمَّ آخَرُ عَنِ الكَعْبَةِ ؟</p>
+<p class="arabic">عَائِشَة : إِنَّهَا بَيْتُ الله الحَرَامِ وَأَوَّلُ بَيْتٍ وُضِعَ لِلنَّاسِ لِعِبَادَةِ اللَّهِ.</p>
+<p class="arabic">فَخْرِي : حَسَنًا.</p></div>
+      <div class="rtlbox"><h4 class="arabic">الحَجَرُ الأَسْوَدُ</h4><p class="arabic">خَالِدَة : يَا نَوْفَل نَحْنُ قَرِيبُونَ مِنَ الحَجَرِ الْأَسْوَدِ، مَاذَا أَفْعَلُ؟</p>
+<p class="arabic">نَوْفَلُ : تَقَدَّمِي إِلَيْهِ وَاسْتَلِمِيهِ إِنْ اسْتَطَعْتِ، فَإِنْ لَمْ تَسْتَطِيعِي وَكُنْتِ بَعِيدَةً فَأَشِرِي إِلَيْهِ بِيَدِكِ</p>
+<p class="arabic">خَالِدَة : ثُمَّ مَاذَا أَفْعَلُ بَعْدَ ذَلِكَ ؟</p>
+<p class="arabic">نَوْفَلُ : تَابِعِي طَوَافَكِ وَادْعِيْ اللَّهَ بِمَا شِئْتِ.</p>
+<p class="arabic">خَالِدَة : هَلْ هُنَاكَ شَيْيٌّ آخَرُ عَنِ الحَجَرِ الأَسْوَدِ؟</p>
+<p class="arabic">نَوْفَلُ : تَذَكَّرِي أَنَّ الحَجَرَ الأَسْوَدَ قِطْعَةٌ مِنَ الْجَنَّةِ. وَكَانَ نَاصِعَ الْبَيَاضِ عِنْدَمَا نُزِلَ إِلَى الْأَرْضِ، وَلَكِنَّهُ اِسْوَدَّ بِسَبَبٍ خَطَايَا البَشَرِ.</p>
+<p class="arabic">خَالِدَة : طَيِّبُ يَا نَوْفَل.</p></div>
+    </div>
+  </section>
 </div>
 
 <div id="panel-qiraah" class="lesson-panel">
-<div class="dars-section"><div class="reading-title"><div><h3>📖 القراءة — Qira'ah: التَّعَارُفُ</h3><span class="muted">Baca teks, temukan informasi rinci, lalu jawab pertanyaan pemahaman.</span></div></div>
-<div class="rtlbox">اسْمِي أَحْمَدُ. أَنَا مِنْ جُمْبَانْجَ. عُنْوَانِي شَارِعُ كِيَاهِي الْحَاجِّ عَبْدِ الْوَهَّابِ رَقْمُ ٧٩ جُمْبَانْجَ. أَنَا مُتَخَرِّجٌ فِي مَدْرَسَةِ الإِحْسَانِ الْمُتَوَسِّطَةِ الإِسْلَامِيَّةِ جُمْبَانْجَ. أَنَا الآنَ أَتَعَلَّمُ فِي الْمَدْرَسَةِ الثَّانَوِيَّةِ الإِسْلَامِيَّةِ الْحُكُومِيَّةِ ٤ جُمْبَانْجَ. وَعُنْوَانُ الْمَدْرَسَةِ شَارِعُ إِمَامٍ بُونْجُولَ رَقْمُ ٧١ جُمْبَانْجَ. أَذْهَبُ إِلَى الْمَدْرَسَةِ بِالدَّرَّاجَةِ. وَهَذَا صَدِيقِي، اسْمُهُ أَغُوسُ هُوَ مِنْ سُورَابَايَا. عُنْوَانُهُ شَارِعُ أَحْمَدَ يَانِي رَقْمُ ٥٤ سُورَابَايَا. أَغُوسُ مُتَخَرِّجٌ فِي الْمَدْرَسَةِ الْمُتَوَسِّطَةِ الْحُكُومِيَّةِ ٥ سُورَابَايَا. أَغُوسُ يُحِبُّ دِرَاسَةَ الرِّيَاضِيَّاتِ وَالْعُلُومِ الطَّبِيعِيَّةِ. بِالإِضَافَةِ إِلَى ذَلِكَ هُوَ يُرِيدُ تَعَلُّمَ الْعُلُومِ الدِّينِيَّةِ، فَيُوَاصِلُ الدِّرَاسَةَ إِلَى هَذِهِ الْمَدْرَسَةِ. أَغُوسُ يَسْكُنُ فِي الْمَعْهَدِ الإِسْلَامِيِّ. هُوَ يُرِيدُ تَعَلُّمَ الْعُلُومِ الدِّينِيَّةِ كَثِيرًا. فِي الصَّبَاحِ هُوَ يَتَعَلَّمُ الرِّيَاضِيَّاتِ وَالْعُلُومَ الطَّبِيعِيَّةَ وَالْعُلُومَ الأُخْرَى فِي الْمَدْرَسَةِ، وَفِي الْمَسَاءِ يَتَعَلَّمُ الْعُلُومَ الدِّينِيَّةَ فِي الْمَعْهَدِ.</div>
-<button class="btn" onclick="speak(document.querySelector('#panel-qiraah .rtlbox').innerText)">🔊 Dengarkan bacaan</button>
-<div class="exercise"><b>Pemahaman bacaan</b><ol><li><span class="arabic">مَنْ أَحْمَدُ؟</span></li><li><span class="arabic">مَا عُنْوَانُ أَحْمَدَ؟</span></li><li><span class="arabic">هَلْ أَحْمَدُ طَالِبٌ فِي الْمَدْرَسَةِ الثَّانَوِيَّةِ الإِسْلَامِيَّةِ الْحُكُومِيَّةِ ٤ جُمْبَانْجَ؟</span></li><li><span class="arabic">أَيْنَ يَتَعَلَّمُ أَحْمَدُ؟</span></li><li><span class="arabic">هَلْ أَغُوسُ طَالِبٌ فِي الْمَدْرَسَةِ الثَّانَوِيَّةِ الإِسْلَامِيَّةِ الْحُكُومِيَّةِ ٤ جُمْبَانْجَ؟</span></li><li><span class="arabic">لِمَاذَا أَغُوسُ يَتَعَلَّمُ فِي الْمَدْرَسَةِ الثَّانَوِيَّةِ الْإِسْلَامِيَّةِ؟</span></li></ol></div>
-</div>
+  <section class="dars-section">
+    <div class="reading-title"><div><h3>📖 الْقِرَاءَةُ — الْحَجُّ وَالْعُمْرَةُ</h3><span class="muted">Teks bacaan Unit 3.</span></div><button class="btn primary" onclick="speak(document.getElementById('d11u3Reading').innerText)">🔊 Dengarkan</button></div>
+    <div id="d11u3Reading" class="u11u3-two-col">
+      <div class="rtlbox"><h4 class="arabic">الْحَجُّ وَالْعُمْرَةُ</h4><p class="arabic">أَنَا سَلْمَانُ، أَسْكُنُ في قَرْيَة صَغِيْرَة فِي سُورَابَايَا، عِنْدِي عَمٌّ اِسْمُهُ أَحْمَدُ، بَيْتُهُ قَرِيبٌ مِنْ بَيْتِي. وَفِي السَّنَةِ الْمَاضِيَةِ زَارَ عَمِّي مَكَّةَ الْمُكَرَمَةِ لِأَدَاءِ الْحَجِّ وَالْعُمْرَةِ. وَأُرِيدُ السَّمَاعَ إِلَى قِصَّتِهِ ، سَائِلًا: يَا عَمِّي مَاذَا فَعَلَ النَّاسُ فِي مَنَاسِكِ الْحَجِّ وَالْعُمْرَةِ؟ وَأَجَابَ عَمِّي : إِذَا أَرَدْتَ الْحَجِّ وَالْعُمْرَةَ....</p>
+<p class="arabic">۱. أَحْرِمْ مِنَ المِيْقَاتِ المُحَدَّدِ لِبِدَايَةِ مَنَاسِكِ الْحَجِّ وَالْعُمْرَةِ وَانْوِ بِالاحْرَامِ</p>
+<p class="arabic">٢. اِصْعَدْ إِلَى جَبَلٍ عَرَفَةَ لِلْوُقُوفِ وَارْمِ الْجَمَرَاتِ الثَّلَاثَةِ فِي مِنَى.</p>
+<p class="arabic">٣. طُفْ حَوْلَ الْكَعْبَةِ الْمُشَرَّفَةِ سَبْعَ مَرَّاتٍ.</p>
+<p class="arabic">٤. اِسْعَ بَيْنَ الصَّفَا وَالْمَرْوَة سَبْعَ مَرَّاتٍ.</p>
+<p class="arabic">ه تَحَلَّلْ بِحَلْقٍ شَعْرِكَ أَو تَقْصِيرِه</p></div>
+      <div class="rtlbox"><p class="arabic">سَمِعْتُ إِلَى قِصَّةِ عَمِّي بِكُلِّ اهْتِمَامٍ ، ثُمَّ أَسْأَلُهُ لِلْمَرَّةِ الثَّانِيَة : يا عَمِّي، مَاذَا يَجِبُ أَنْ نَتَذَكَّرَ فِي الْعُمْرَةِ؟ فَيَقُولُ: "أَوَّلًا اِذْهَبْ لِلْعُمْرَةِ فِي أَيِّ وَقْتٍ مِنَ السُّنَّةِ ، ثَانِيَا، اِحْرِصْ عَلَى أَدَاءِ مَنَاسِكِ الْعُمْرَةِ بِشَكْلٍ صَحِيْحٍ وَثَالِثًا اسْتَفِدْ مِنْ تَجْرِبَةِ الْعُمْرَةِ لِتَحْسِيْنِ حَيَاتِكَ الرُّوْحِيَّةِ. وَأَمَّا الْحَقُّ فَرُكَّنٌ مِنْ أَرْكَانِ الإِسْلَامِ الخَمْسَةِ وَهُوَ وَاجِبٌ عَلَى الْمُسْلِمِينَ القَادِرِينَ عَلَيْهِ جَسَدِيًّا وَمَالِيًا. لِذَا فَلنُعِدَّ أَنْفُسَنَا عَلَى أَفْضَلِ وَجْهٍ مُمْكِنٍ . أَمَّا مَنْ لَمْ يَسْتَطِعْ ، فَلَا يَيْأَسُ، فَإِنَّ اللَّهَ عَلِيمٌ بِنَوَايَا عِبَادِهِ وَسَعْيِهِمْ.</p></div>
+    </div>
+  </section>
 </div>
 
 <div id="panel-tarkib" class="lesson-panel">
@@ -1819,6 +1843,8 @@
 <h4>الضمائر</h4>
 <div class="tablewrap"><table><tr><th>ضمير</th><th>Contoh</th></tr><tr><td class="arabic">أَنَا</td><td class="arabic">اسْمِي، عُنْوَانِي، بَيْتِي</td></tr><tr><td class="arabic">أَنْتَ / أَنْتِ</td><td class="arabic">اسْمُكَ / اسْمُكِ، عُنْوَانُكَ / عُنْوَانُكِ</td></tr><tr><td class="arabic">هُوَ / هِيَ</td><td class="arabic">اسْمُهُ / اسْمُهَا، عُنْوَانُهُ / عُنْوَانُهَا</td></tr><tr><td class="arabic">نَحْنُ</td><td class="arabic">اسْمُنَا، عُنْوَانُنَا، بَيْتُنَا</td></tr><tr><td class="arabic">أَنْتُمْ / أَنْتُنَّ</td><td class="arabic">اسْمُكُمْ / اسْمُكُنَّ</td></tr><tr><td class="arabic">هُمْ / هُنَّ</td><td class="arabic">اسْمُهُمْ / اسْمُهُنَّ</td></tr></table></div>
 </div></div>
+
+
 
 <div id="panel-kitabah" class="lesson-panel">
 <div class="dars-section"><h3>✍️ الكتابة — Kitabah</h3>
@@ -3254,21 +3280,14 @@
 
 <div id="panel-istima" class="lesson-panel">
   <section class="dars-section">
-    <div class="reading-title"><div><h3>🎧 الاستماع — فِي الْمُسْتَشْفَى</h3><span class="muted">Dengarkan materi tentang kesehatan, kemudian periksa pemahamanmu.</span></div><button class="btn primary" onclick="speak('مَاذَا بِكَ يَا سَيِّدِي؟ أَصَابَنِي الصُّدَاعُ. كَمْ يَوْمًا تَشْعُرُ بِهِ؟ مُنْذُ ثَلَاثَةِ أَيَّامٍ. ضَغْطُ دَمِكَ مُرْتَفِعٌ، عَلَيْكَ أَنْ تَجْتَنِبَ الْأَطْعِمَةَ الْمَالِحَةَ وَالْحُلْوَةَ. نَبِيل وَنَوْفَل صَدِيقَانِ. هُمَا يَعِيشَانِ فِي قَرْيَةٍ صَغِيرَةٍ وَيَتَعَلَّمَانِ فِي نَفْسِ الْمَدْرَسَةِ. يُحِبَّانِ أَنْ يَعِيشَا فِي صِحَّةٍ، وَيَذْهَبَانِ إِلَى الْمَدْرَسَةِ بِالدَّرَّاجَةِ، وَيُمَارِسَانِ الرِّيَاضَةَ مِثْلَ الْجَرْيِ وَكُرَةِ الْقَدَمِ وَالسِّبَاحَةِ.')">▶ Putar audio</button></div>
-    <div class="audio-script rtlbox">
-      <button class="btn" type="button" onclick="const p=this.nextElementSibling;const h=p.hasAttribute('hidden');p.toggleAttribute('hidden',!h);this.textContent=h?'🙈 Sembunyikan transkrip':'👁 Buka transkrip'">👁 Buka transkrip</button>
-      <div class="u11-transcript" hidden>
-        <p>الطَّبِيبَةُ: مَاذَا بِكَ يَا سَيِّدِي؟ حَسَنٌ: أَصَابَنِي الصُّدَاعُ. الطَّبِيبَةُ: كَمْ يَوْمًا تَشْعُرُ بِهِ؟ حَسَنٌ: مُنْذُ ثَلَاثَةِ أَيَّامٍ.</p>
-        <p>الطَّبِيبَةُ: تَفَضَّلْ اِسْتَلْقِ عَلَى السَّرِيرِ لِلْفَحْصِ. حَسَنٌ: حَسَنًا يَا سَيِّدَتِي. الطَّبِيبَةُ: ضَغْطُ دَمِكَ مُرْتَفِعٌ، عَلَيْكَ أَنْ تَجْتَنِبَ الْأَطْعِمَةَ الْمَالِحَةَ وَالْحُلْوَةَ.</p>
-        <p>نَبِيل وَنَوْفَل صَدِيقَانِ. هُمَا يَعِيشَانِ فِي قَرْيَةٍ صَغِيرَةٍ وَيَتَعَلَّمَانِ فِي نَفْسِ الْمَدْرَسَةِ. يُحِبَّانِ أَنْ يَعِيشَا فِي صِحَّةٍ، وَيَذْهَبَانِ إِلَى الْمَدْرَسَةِ بِالدَّرَّاجَةِ، وَيُمَارِسَانِ الرِّيَاضَةَ مِثْلَ الْجَرْيِ وَكُرَةِ الْقَدَمِ وَالسِّبَاحَةِ.</p>
-      </div>
-    </div>
+    <div class="reading-title"><div><h3>🎧 الاستماع — فِي الْمُسْتَشْفَى</h3><span class="muted">Dengarkan percakapan dokter dan pasien, lalu jawab pertanyaannya.</span></div><button class="btn primary" onclick="speak('مَاذَا بِكَ يَا سَيِّدِي؟ أَصَابَنِي الصُّدَاعُ. كَمْ يَوْمًا تَشْعُرُ بِهِ؟ مُنْذُ ثَلَاثَةِ أَيَّامٍ. ضَغْطُ دَمِكَ مُرْتَفِعٌ، عَلَيْكَ أَنْ تَجْتَنِبَ الْأَطْعِمَةَ الْمَالِحَةَ وَالْحُلْوَةَ.')">▶ Putar audio</button></div>
+    <div class="audio-script rtlbox"><button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan transkrip</button><p hidden>الطَّبِيبَةُ: مَاذَا بِكَ يَا سَيِّدِي؟ حَسَنٌ: أَصَابَنِي الصُّدَاعُ. الطَّبِيبَةُ: كَمْ يَوْمًا تَشْعُرُ بِهِ؟ حَسَنٌ: مُنْذُ ثَلَاثَةِ أَيَّامٍ. الطَّبِيبَةُ: ضَغْطُ دَمِكَ مُرْتَفِعٌ، عَلَيْكَ أَنْ تَجْتَنِبَ الْأَطْعِمَةَ الْمَالِحَةَ وَالْحُلْوَةَ.</p></div>
     <div class="mini-task"><h4>فَهْمُ الْمَسْمُوعِ</h4><p class="arabic">بِمَاذَا يَشْعُرُ حَسَنٌ؟</p><input id="d11u2Listen" class="answer-input arabic" placeholder="اكتب الجواب هنا"><button class="btn primary" onclick="cekFlexible('d11u2Listen',['بالصداع','أصابه الصداع','أَصَابَهُ الصُّدَاعُ','الصُّدَاع'],'d11u2ListenFb')">Periksa</button><p id="d11u2ListenFb" class="feedback"></p></div>
   </section>
 </div>
 
+
 <div id="panel-hiwar" class="lesson-panel">
-<div class="u11-two-col">
   <section class="dars-section">
     <div class="reading-title"><div><h3>💬 الْحِوَارُ الأَوَّلُ — فِي الْمُسْتَشْفَى</h3><span class="muted">Percakapan dokter dan pasien. Dengarkan seluruh percakapan dalam satu paket.</span></div><button class="btn primary" onclick="speak('اَلسَّلَامُ عَلَيْكُمْ، مَاذَا بِكَ يَا سَيِّدِي؟ وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ اللهِ، أَصَابَنِي الصُّدَاعُ. كَمْ يَوْمًا تَشْعُرُ بِهِ؟ مُنْذُ ثَلَاثَةِ أَيَّامٍ. تَفَضَّلْ اِسْتَلْقِ عَلَى السَّرِيرِ لِلْفَحْصِ. حَسَنًا يَا سَيِّدَتِي. ضَغْطُ دَمِكَ مُرْتَفِعٌ، عَلَيْكَ أَنْ تَجْتَنِبَ الْأَطْعِمَةَ الْمَالِحَةَ وَالْحُلْوَةَ. هَذِهِ هِيَ الْوَصْفَةَ مِنِّي. طَيِّبٌ، سَأَشْتَرِي الدَّوَاءَ فِي الصَّيْدَلِيَّةِ، شُكْرًا. عَفْوًا، شَفَاكَ اللَّهُ')">▶ Putar semua</button></div>
     <div class="dialogue">
@@ -3302,10 +3321,8 @@
     <div class="mini-task"><h4>تَدْرِيبُ الْحِوَارِ</h4><p>Latih dialog berpasangan setelah mendengarkan seluruh percakapan sebagai satu paket.</p></div>
   </section>
 </div>
-</div>
 
 <div id="panel-qiraah" class="lesson-panel">
-<div class="u11-two-col">
   <section class="dars-section">
     <div class="reading-title"><div><h3>📖 الْقِرَاءَةُ الأُولَى — هَيَا نَعِيشُ بِالصَّحَّةِ (١)</h3><span class="muted">Bacaan tentang kebiasaan hidup sehat Nabil dan Naufal.</span></div><button class="btn primary" onclick="speak(document.getElementById('d11u2Reading1').innerText)">▶ Putar bacaan</button></div>
     <div id="d11u2Reading1" class="rtlbox">
@@ -3334,7 +3351,6 @@
       <button class="btn audio-btn" onclick="speak('وَيَقُولُ الطَّبِيبُ أَنَّ هُنَاكَ كَثِيرًا مِنَ الْأَطْعِمَةِ الصِّحِّيَّةِ مِثْلَ الْفَوَاكِهِ مِنَ الْجَوَّافَةِ وَالْمَوْزِ وَالْبُرْتُقَالِ وَالْخَضْرَوَاتِ وَالسَّمَكِ وَاللَّبَنِ الْمُصَفَّى بِلَا سُكَّرٍ وَغَيْرِ ذَلِكَ. نَحْنُ نَرْجِعُ إِلَى الْبَيْتِ بَعْدَ ذَلِكَ. وَلَا نُرِيدُ أَنْ يُصِيبَنَا أَيُّ مَرَضٍ مِثْلَ مَا أَصَابَ صَدِيقَتَنَا رِيتَا فَنَأْكُلُ كَثِيرًا مِنَ الْفَوَاكِهِ وَالْخَضْرَوَاتِ.')">🔊 Dengarkan paragraf 4</button>
     </div>
   </section>
-</div>
 </div>
 
 <div id="panel-tarkib" class="lesson-panel">
@@ -3441,7 +3457,7 @@
 <div id="panel-istima" class="lesson-panel">
   <section class="dars-section">
     <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ — عِنْدَ الْحَجَرِ الْأَسْوَدِ</h3><span class="muted">Dengarkan tanpa melihat teks, jawab pertanyaan, lalu cocokkan dengan transkrip.</span></div><button class="btn primary" onclick="speak(document.getElementById('d11u3ListenText').innerText)">▶ Putar audio</button></div>
-    <div class="audio-script rtlbox"><button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan transkrip</button><div id="d11u3ListenText" hidden><p><b>خَالِدَةُ:</b> يَا نَوْفَلُ، نَحْنُ قَرِيبُونَ مِنَ الْحَجَرِ الْأَسْوَدِ، مَاذَا أَفْعَلُ؟</p><p><b>نَوْفَلُ:</b> تَقَدَّمِي إِلَيْهِ وَاسْتَلِمِيهِ إِنِ اسْتَطَعْتِ، فَإِنْ لَمْ تَسْتَطِيعِي فَأَشِيرِي إِلَيْهِ بِيَدِكِ.</p><p><b>خَالِدَةُ:</b> ثُمَّ مَاذَا أَفْعَلُ بَعْدَ ذَلِكَ؟</p><p><b>نَوْفَلُ:</b> تَابِعِي طَوَافَكِ وَادْعِي اللهَ بِمَا شِئْتِ.</p></div></div>
+    <div class="audio-script rtlbox"><button class="btn" onclick="const p=this.nextElementSibling;const h=p.hasAttribute('hidden');p.toggleAttribute('hidden',!h);this.textContent=h?'🙈 Sembunyikan transkrip':'👁 Buka transkrip'">👁 Buka transkrip</button><div id="d11u3ListenText" hidden><div class="u11u3-transcript"><p class="arabic">خَالِدَة : يَا نَوْفَل نَحْنُ قَرِيبُونَ مِنَ الحَجَرِ الْأَسْوَدِ، مَاذَا أَفْعَلُ؟ نَوْفَلُ : تَقَدَّمِي إِلَيْهِ وَاسْتَلِمِيهِ إِنْ اسْتَطَعْتِ، فَإِنْ لَمْ تَسْتَطِيعِي وَكُنْتِ بَعِيدَةً فَأَشِرِي إِلَيْهِ بِيَدِكِ.</p><p class="arabic">خَالِدَة : ثُمَّ مَاذَا أَفْعَلُ بَعْدَ ذَلِكَ؟ نَوْفَلُ : تَابِعِي طَوَافَكِ وَادْعِيْ اللَّهَ بِمَا شِئْتِ.</p><p class="arabic">خَالِدَة : هَلْ هُنَاكَ شَيْيٌّ آخَرُ عَنِ الحَجَرِ الأَسْوَدِ؟ نَوْفَلُ : تَذَكَّرِي أَنَّ الحَجَرَ الأَسْوَدَ قِطْعَةٌ مِنَ الْجَنَّةِ.</p></div><p><b>خَالِدَةُ:</b> يَا نَوْفَلُ، نَحْنُ قَرِيبُونَ مِنَ الْحَجَرِ الْأَسْوَدِ، مَاذَا أَفْعَلُ؟</p><p><b>نَوْفَلُ:</b> تَقَدَّمِي إِلَيْهِ وَاسْتَلِمِيهِ إِنِ اسْتَطَعْتِ، فَإِنْ لَمْ تَسْتَطِيعِي فَأَشِيرِي إِلَيْهِ بِيَدِكِ.</p><p><b>خَالِدَةُ:</b> ثُمَّ مَاذَا أَفْعَلُ بَعْدَ ذَلِكَ؟</p><p><b>نَوْفَلُ:</b> تَابِعِي طَوَافَكِ وَادْعِي اللهَ بِمَا شِئْتِ.</p></div></div>
     <div class="mini-task">
       <div><h4 class="arabic">فَهْمُ الْمَسْمُوعِ</h4><p class="arabic">مَاذَا تَفْعَلُ خَالِدَةُ إِنْ لَمْ تَسْتَطِعْ أَنْ تَسْتَلِمَ الْحَجَرَ؟</p><input id="d11u3Listen" class="answer-input arabic" placeholder="اُكْتُبِ الْجَوَابَ هُنَا"><button class="btn primary" onclick="cekFlexible('d11u3Listen',['تشير إليه بيدها','فَتُشِيرُ إِلَيْهِ بِيَدِهَا','أشير إليه بيدي'],'d11u3ListenFb')">Periksa</button><p id="d11u3ListenFb" class="feedback"></p></div>
       <div><h4 class="arabic">اِسْتَمِعْ وَرَتِّبْ</h4><p class="arabic">رَتِّبِ الْأَفْعَالَ: اُدْعُ — اِسْتَلِمْ — تَقَدَّمْ — تَابِعْ</p><p class="muted">Ucapkan kembali rangkaian perintah sesuai urutan yang didengar.</p></div>
@@ -3451,28 +3467,49 @@
 
 <div id="panel-hiwar" class="lesson-panel">
   <section class="dars-section">
-    <div class="reading-title"><div><h3>💬 الْحِوَارُ — الْكَعْبَةُ الْمُشَرَّفَةُ</h3><span class="muted">Baca bergantian sebagai Fakhri dan Aisyah.</span></div><button class="btn" onclick="speak(document.getElementById('d11u3Hiwar').innerText)">🔊 Dengarkan</button></div>
-    <div id="d11u3Hiwar" class="dialogue">
-      <div class="speech"><b>فَخْرِي</b><p class="arabic">هَلْ تَعْرِفِينَ أَنَّ الْكَعْبَةَ الْمُشَرَّفَةَ مَرْكَزُ عِبَادَةِ الْمُسْلِمِينَ؟</p></div>
-      <div class="speech alt"><b>عَائِشَةُ</b><p class="arabic">نَعَمْ، تَوَجَّهْ إِلَى الْكَعْبَةِ الْمُشَرَّفَةِ فِي كُلِّ صَلَاةٍ؛ لِأَنَّهَا قِبْلَةُ الْمُسْلِمِينَ.</p></div>
-      <div class="speech"><b>فَخْرِي</b><p class="arabic">وَمَاذَا يَنْبَغِي أَنْ نَفْعَلَ أَمَامَ الْكَعْبَةِ؟</p></div>
-      <div class="speech alt"><b>عَائِشَةُ</b><p class="arabic">تَوَجَّهْ إِلَى الْحَجَرِ الْأَسْوَدِ وَاسْتَلِمْهُ بِيَدِكَ أَوْ أَشِرْ إِلَيْهِ، ثُمَّ طُفْ بِالْكَعْبَةِ سَبْعَةَ أَشْوَاطٍ وَادْعُ اللهَ.</p></div>
-      <div class="speech"><b>فَخْرِي</b><p class="arabic">هَلْ هُنَاكَ شَيْءٌ مُهِمٌّ آخَرُ عَنِ الْكَعْبَةِ؟</p></div>
-      <div class="speech alt"><b>عَائِشَةُ</b><p class="arabic">إِنَّهَا بَيْتُ اللهِ الْحَرَامُ وَأَوَّلُ بَيْتٍ وُضِعَ لِلنَّاسِ لِعِبَادَةِ اللهِ.</p></div>
+    <div class="reading-title">
+      <div><h3>💬 الْحِوَارُ — الْكَعْبَةُ الْمُشَرَّفَةُ</h3><span class="muted">Baca dan dengarkan dialog berikut.</span></div>
+      <button class="btn primary" onclick="speak(document.getElementById('d11u3HiwarNew').innerText)">🔊 Dengarkan</button>
     </div>
-    <div class="mini-task"><div><h4>Praktik pasangan</h4><p>Pilih peran, baca dialog dengan intonasi wajar, lalu ganti objek percakapan menjadi <span class="arabic">الْمِيقَاتُ، عَرَفَةُ، الصَّفَا وَالْمَرْوَةُ</span>.</p></div><div><h4 class="arabic">تَكَلَّمْ!</h4><p class="arabic">مَا هَذَا الْمَكَانُ؟ مَاذَا يَفْعَلُ الْحُجَّاجُ فِيهِ؟ هَلْ سَبَقَ لَكَ الذَّهَابُ إِلَيْهِ؟</p></div></div>
+    <div id="d11u3HiwarNew" class="dialogue rtlbox">
+      <p class="arabic">فَخْرِي : اَلسَّلَامُ عَلَيْكُمْ</p>
+<p class="arabic">عَائِشَة : وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ الله</p>
+<p class="arabic">فَخْرِي : هَلْ تَعْرِفِينَ أَنَّ الكَعْبَةَ الْمُشَرَّفَةَ مَرْكَزُ عِبَادَةِ الْمُسْلِمِينَ؟</p>
+<p class="arabic">عَائِشَة : نَعَمْ عَرَفْتُهَا . تَوَجَّهُ إِلَى الكَعْبَةِ الْمُشَرَّفَةِ فِي كُلِّ صَلَاةَ لأَنَّهَا قِبْلَةُ الْمُسْلِمِينَ.</p>
+<p class="arabic">فَخْرِي : وَمَاذَا يَنْبَغِي أَنْ نَفْعَلَ أَمَامَ الكَعْبَةِ إِذا كُنَّا فِي الحَجِّ ؟</p>
+<p class="arabic">عَائِشَة : تَوَجَّهُ إِلى الحَجَرِ الأَسْوَدِ وَاسْتَلِمْهِ بِيَدِكَ أَوْ أَشِرْ إِلَيْهِ.</p>
+<p class="arabic">فَخْرِي : ثُمَّ مَاذَا؟</p>
+<p class="arabic">عَائِشَة : طُفْ بِالْكَعْبَةِ سَبْعَةَ أَشْوَاطٍ، وَادْعُ اللَّهَ خِلَالَ الطَّوَافِ.</p>
+<p class="arabic">فَخْرِي : هَلْ هُنَاكَ شَيْيٌّ مُهِمَّ آخَرُ عَنِ الكَعْبَةِ ؟</p>
+<p class="arabic">عَائِشَة : إِنَّهَا بَيْتُ الله الحَرَامِ وَأَوَّلُ بَيْتٍ وُضِعَ لِلنَّاسِ لِعِبَادَةِ اللَّهِ.</p>
+<p class="arabic">فَخْرِي : حَسَنًا.</p>
+<p class="arabic">الحَجَرُ الأَسْوَدُ</p>
+<p class="arabic">خَالِدَة : يَا نَوْفَل نَحْنُ قَرِيبُونَ مِنَ الحَجَرِ الْأَسْوَدِ، مَاذَا أَفْعَلُ؟</p>
+<p class="arabic">نَوْفَلُ : تَقَدَّمِي إِلَيْهِ وَاسْتَلِمِيهِ إِنْ اسْتَطَعْتِ، فَإِنْ لَمْ تَسْتَطِيعِي وَكُنْتِ بَعِيدَةً فَأَشِرِي إِلَيْهِ بِيَدِكِ</p>
+<p class="arabic">خَالِدَة : ثُمَّ مَاذَا أَفْعَلُ بَعْدَ ذَلِكَ ؟</p>
+<p class="arabic">نَوْفَلُ : تَابِعِي طَوَافَكِ وَادْعِيْ اللَّهَ بِمَا شِئْتِ.</p>
+<p class="arabic">خَالِدَة : هَلْ هُنَاكَ شَيْيٌّ آخَرُ عَنِ الحَجَرِ الأَسْوَدِ؟</p>
+<p class="arabic">نَوْفَلُ : تَذَكَّرِي أَنَّ الحَجَرَ الأَسْوَدَ قِطْعَةٌ مِنَ الْجَنَّةِ. وَكَانَ نَاصِعَ الْبَيَاضِ عِنْدَمَا نُزِلَ إِلَى الْأَرْضِ، وَلَكِنَّهُ اِسْوَدَّ بِسَبَبٍ خَطَايَا البَشَرِ.</p>
+<p class="arabic">خَالِدَة : طَيِّبُ يَا نَوْفَل.</p>
+    </div>
   </section>
 </div>
 
 <div id="panel-qiraah" class="lesson-panel">
   <section class="dars-section">
-    <div class="reading-title"><div><h3>📖 الْقِرَاءَةُ — الْحَجُّ وَالْعُمْرَةُ</h3><span class="muted">Teks prosedur pelaksanaan manasik.</span></div><button class="btn" onclick="speak(document.getElementById('d11u3Reading').innerText)">🔊 Dengarkan bacaan</button></div>
-    <div id="d11u3Reading" class="rtlbox">
-      <p>أَنَا سَلْمَانُ، أَسْكُنُ فِي قَرْيَةٍ صَغِيرَةٍ فِي سُورَابَايَا. عِنْدِي عَمٌّ اسْمُهُ أَحْمَدُ، بَيْتُهُ قَرِيبٌ مِنْ بَيْتِي. وَفِي السَّنَةِ الْمَاضِيَةِ زَارَ عَمِّي مَكَّةَ الْمُكَرَّمَةَ لِأَدَاءِ الْحَجِّ وَالْعُمْرَةِ.</p>
-      <p>قَالَ عَمِّي: إِذَا أَرَدْتَ الْحَجَّ وَالْعُمْرَةَ: أَحْرِمْ مِنَ الْمِيقَاتِ الْمُحَدَّدِ وَانْوِ بِالْإِحْرَامِ، ثُمَّ اصْعَدْ إِلَى جَبَلِ عَرَفَةَ لِلْوُقُوفِ، وَارْمِ الْجَمَرَاتِ الثَّلَاثَ فِي مِنًى، وَطُفْ حَوْلَ الْكَعْبَةِ الْمُشَرَّفَةِ سَبْعَ مَرَّاتٍ، وَاسْعَ بَيْنَ الصَّفَا وَالْمَرْوَةِ سَبْعَ مَرَّاتٍ، ثُمَّ تَحَلَّلْ بِحَلْقِ شَعْرِكَ أَوْ تَقْصِيرِهِ.</p>
-      <p>وَالْحَجُّ رُكْنٌ مِنْ أَرْكَانِ الْإِسْلَامِ الْخَمْسَةِ، وَهُوَ وَاجِبٌ عَلَى الْمُسْلِمِينَ الْقَادِرِينَ عَلَيْهِ جَسَدِيًّا وَمَالِيًّا.</p>
+    <div class="reading-title">
+      <div><h3>📖 الْقِرَاءَةُ — الْحَجُّ وَالْعُمْرَةُ</h3><span class="muted">Baca dan dengarkan teks berikut.</span></div>
+      <button class="btn primary" onclick="speak(document.getElementById('d11u3QiraahNew').innerText)">🔊 Dengarkan</button>
     </div>
-    <div class="mini-task"><div><h4 class="arabic">فَهْمُ الْمَقْرُوءِ</h4><p class="arabic">كَمْ مَرَّةً يَطُوفُ الْحُجَّاجُ حَوْلَ الْكَعْبَةِ؟</p><input id="d11u3Read" class="answer-input arabic" placeholder="اكتب الجواب"><button class="btn primary" onclick="cekFlexible('d11u3Read',['سبع مرات','سَبْعَ مَرَّاتٍ','يطوفون سبع مرات'],'d11u3ReadFb')">Periksa</button><p id="d11u3ReadFb" class="feedback"></p></div><div><h4>Struktur teks prosedur</h4><p><span class="arabic">الْهَدَفُ</span> tujuan • <span class="arabic">الْمَادَّةُ</span> bahan/informasi • <span class="arabic">الْخُطُوَاتُ</span> langkah-langkah.</p></div></div>
+    <div id="d11u3QiraahNew" class="rtlbox">
+      <p class="arabic">أَنَا سَلْمَانُ، أَسْكُنُ في قَرْيَة صَغِيْرَة فِي سُورَابَايَا، عِنْدِي عَمٌّ اِسْمُهُ أَحْمَدُ، بَيْتُهُ قَرِيبٌ مِنْ بَيْتِي. وَفِي السَّنَةِ الْمَاضِيَةِ زَارَ عَمِّي مَكَّةَ الْمُكَرَمَةِ لِأَدَاءِ الْحَجِّ وَالْعُمْرَةِ. وَأُرِيدُ السَّمَاعَ إِلَى قِصَّتِهِ ، سَائِلًا: يَا عَمِّي مَاذَا فَعَلَ النَّاسُ فِي مَنَاسِكِ الْحَجِّ وَالْعُمْرَةِ؟ وَأَجَابَ عَمِّي : إِذَا أَرَدْتَ الْحَجِّ وَالْعُمْرَةَ....</p>
+<p class="arabic">۱. أَحْرِمْ مِنَ المِيْقَاتِ المُحَدَّدِ لِبِدَايَةِ مَنَاسِكِ الْحَجِّ وَالْعُمْرَةِ وَانْوِ بِالاحْرَامِ</p>
+<p class="arabic">٢. اِصْعَدْ إِلَى جَبَلٍ عَرَفَةَ لِلْوُقُوفِ وَارْمِ الْجَمَرَاتِ الثَّلَاثَةِ فِي مِنَى.</p>
+<p class="arabic">٣. طُفْ حَوْلَ الْكَعْبَةِ الْمُشَرَّفَةِ سَبْعَ مَرَّاتٍ.</p>
+<p class="arabic">٤. اِسْعَ بَيْنَ الصَّفَا وَالْمَرْوَة سَبْعَ مَرَّاتٍ.</p>
+<p class="arabic">ه تَحَلَّلْ بِحَلْقٍ شَعْرِكَ أَو تَقْصِيرِه</p>
+<p class="arabic">سَمِعْتُ إِلَى قِصَّةِ عَمِّي بِكُلِّ اهْتِمَامٍ ، ثُمَّ أَسْأَلُهُ لِلْمَرَّةِ الثَّانِيَة : يا عَمِّي، مَاذَا يَجِبُ أَنْ نَتَذَكَّرَ فِي الْعُمْرَةِ؟ فَيَقُولُ: "أَوَّلًا اِذْهَبْ لِلْعُمْرَةِ فِي أَيِّ وَقْتٍ مِنَ السُّنَّةِ ، ثَانِيَا، اِحْرِصْ عَلَى أَدَاءِ مَنَاسِكِ الْعُمْرَةِ بِشَكْلٍ صَحِيْحٍ وَثَالِثًا اسْتَفِدْ مِنْ تَجْرِبَةِ الْعُمْرَةِ لِتَحْسِيْنِ حَيَاتِكَ الرُّوْحِيَّةِ. وَأَمَّا الْحَقُّ فَرُكَّنٌ مِنْ أَرْكَانِ الإِسْلَامِ الخَمْسَةِ وَهُوَ وَاجِبٌ عَلَى الْمُسْلِمِينَ القَادِرِينَ عَلَيْهِ جَسَدِيًّا وَمَالِيًا. لِذَا فَلنُعِدَّ أَنْفُسَنَا عَلَى أَفْضَلِ وَجْهٍ مُمْكِنٍ . أَمَّا مَنْ لَمْ يَسْتَطِعْ ، فَلَا يَيْأَسُ، فَإِنَّ اللَّهَ عَلِيمٌ بِنَوَايَا عِبَادِهِ وَسَعْيِهِمْ.</p>
+    </div>
   </section>
 </div>
 
