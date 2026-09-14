@@ -1223,7 +1223,7 @@
         <div class="links">
           <button onclick="page('home')">Beranda</button
           ><button onclick="page('kelas')">Kelas</button
-          ><button onclick="window.location.href='https://cbt.mung.my.id'">Penilaian Harian</button
+          ><button onclick="window.location.href='https://bahasaarabman1kotamalang.github.io/cbt/'">Penilaian Harian</button
           ><button onclick="page('progres')">Progres Belajar</button>
         </div>
       </nav>
@@ -6710,7 +6710,7 @@ body.innerHTML='<div class="role-page-grid">'+cards.map(function(c){return '<div
   var originalPage=window.page;
   window.page=function(id){
     var map={home:"home",kelas:"kelas",progres:"progres",roleDashboard:"dashboard",manajemenAkun:"akun"};
-    if(id==="penilaian") {if(!has("penilaian")){return deny("Penilaian Harian")}window.location.href="https://cbt.mung.my.id";return}
+    if(id==="penilaian") {if(!has("penilaian")){return deny("Penilaian Harian")}window.location.href="https://bahasaarabman1kotamalang.github.io/cbt/";return}
     if(id==="kuis") {
       if(document.getElementById("kuis")) { originalPage("kuis"); return; }
       return deny("Kuis");
