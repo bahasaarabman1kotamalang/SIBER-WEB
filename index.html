@@ -374,6 +374,39 @@
         background: #fff;
         border-radius: 8px;
       }
+      .essay-questions {
+        display: grid;
+        gap: 12px;
+        margin-top: 12px;
+      }
+      .essay-question {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 14px;
+      }
+      .essay-question label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 700;
+      }
+      .essay-question textarea {
+        width: 100%;
+        min-height: 74px;
+        box-sizing: border-box;
+        resize: vertical;
+        border: 1px solid #b9ccc5;
+        border-radius: 10px;
+        padding: 10px 12px;
+        background: #fbfdfc;
+        font-family: "Noto Naskh Arabic", "Amiri", sans-serif;
+        font-size: 18px;
+        line-height: 1.7;
+      }
+      .essay-question textarea:focus {
+        outline: 3px solid rgba(18, 103, 73, 0.14);
+        border-color: var(--g);
+      }
       .answer-input {
         max-width: 240px;
       }
@@ -2020,12 +2053,39 @@
   <div class="dars-section">
     <h3>🎧 الِاسْتِمَاعُ — Istima'</h3>
     <p>Dengarkan dua materi berikut. Dengarkan minimal dua kali, kemudian ulangi dengan memperhatikan makhraj, panjang-pendek, dan intonasi.</p>
-    <div class="dialogue rtlbox" id="d2Listen1">هَارُونُ: السَّلَامُ عَلَيْكُمْ. مُوسَى: وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ اللهِ. أَهْلًا وَسَهْلًا. هَارُونُ: أَهْلًا بِكَ. مُوسَى: تَفَضَّلْ، اِجْلِسْ مِنْ فَضْلِكَ. هَارُونُ: شُكْرًا. مُوسَى: أَنَا مَسْرُورٌ بِزِيَارَتِكَ. هَارُونُ: يَا لَهَا مِنْ صُورَةٍ رَائِعَةٍ! هَلْ هَذِهِ صُورَةُ أُسْرَتِكَ؟ مُوسَى: نَعَمْ، هَذِهِ صُورَةُ أُسْرَتِي. هَارُونُ: مَنْ هَؤُلَاءِ؟ مُوسَى: هَذَا أَبِي، اسْمُهُ إِبْرَاهِيمُ. هَذِهِ أُمِّي، اسْمُهَا رُقَيَّةُ. هَارُونُ: وَمَنْ هَذِهِ؟ مُوسَى: هَذِهِ أُخْتِي، اسْمُهَا حَفْصَةُ. وَهَذَا أَخِي، اسْمُهُ صَالِحٌ. هَارُونُ: هَلْ هَذِهِ صُورَتُكَ؟ مُوسَى: نَعَمْ، هَذِهِ صُورَتِي.</div>
     <button class="btn primary" onclick="speak(document.getElementById('d2Listen1').innerText)">▶ Putar Istima' 1</button>
+    <details class="exercise">
+      <summary><b>👁️ Lihat/Sembunyikan Materi Istima' 1</b></summary>
+      <div class="dialogue rtlbox" id="d2Listen1">هَارُونُ: السَّلَامُ عَلَيْكُمْ. مُوسَى: وَعَلَيْكُمُ السَّلَامُ وَرَحْمَةُ اللهِ. أَهْلًا وَسَهْلًا. هَارُونُ: أَهْلًا بِكَ. مُوسَى: تَفَضَّلْ، اِجْلِسْ مِنْ فَضْلِكَ. هَارُونُ: شُكْرًا. مُوسَى: أَنَا مَسْرُورٌ بِزِيَارَتِكَ. هَارُونُ: يَا لَهَا مِنْ صُورَةٍ رَائِعَةٍ! هَلْ هَذِهِ صُورَةُ أُسْرَتِكَ؟ مُوسَى: نَعَمْ، هَذِهِ صُورَةُ أُسْرَتِي. هَارُونُ: مَنْ هَؤُلَاءِ؟ مُوسَى: هَذَا أَبِي، اسْمُهُ إِبْرَاهِيمُ. هَذِهِ أُمِّي، اسْمُهَا رُقَيَّةُ. هَارُونُ: وَمَنْ هَذِهِ؟ مُوسَى: هَذِهِ أُخْتِي، اسْمُهَا حَفْصَةُ. وَهَذَا أَخِي، اسْمُهُ صَالِحٌ. هَارُونُ: هَلْ هَذِهِ صُورَتُكَ؟ مُوسَى: نَعَمْ، هَذِهِ صُورَتِي.</div>
+    </details>
     <div class="material-note"><b>Fokus:</b> mengenali anggota keluarga melalui gambar/foto dan memahami pertanyaan <span class="arabic">مَنْ؟ هَلْ؟</span></div>
-    <div class="dialogue rtlbox" id="d2Listen2">مَحْمُودَةُ: اُنْظُرِي إِلَى هَذِهِ الصُّوْرَةِ. كَامِلَةُ: بَيْتُكِ كَبِيرٌ وَجَمِيلٌ. مَحْمُودَةُ: وَهَذِهِ صُوْرَةُ أُسْرَتِي. كَامِلَةُ: أَنْتِ تَجْلِسِينَ فِي غُرْفَةِ الْجُلُوسِ؟ مَحْمُودَةُ: صَحِيحٌ. وَهَذِهِ غُرْفَةُ الْأَكْلِ. نَحْنُ نَأْكُلُ فِيهَا. كَامِلَةُ: وَهَذِهِ غُرْفَةُ الْمَكْتَبِ، أَلَيْسَ كَذَلِكَ؟ مَحْمُودَةُ: بَلَى، أَقْرَأُ وَأَكْتُبُ وَأَدْرُسُ هُنَا. وَهَذَا مَطْبَخٌ. هُنَا تَطْبُخُ أُمِّي الطَّعَامَ. كَامِلَةُ: عَلَى فِكْرَةٍ، أَيْنَ غُرَفُ النَّوْمِ؟ مَحْمُودَةُ: غُرَفُ النَّوْمِ فِي الطَّابَقِ الْعُلْوِيِّ.</div>
+    <div class="exercise">
+      <b>✍️ Latihan Pemahaman Istima' 1 — Soal Uraian</b>
+      <p class="muted">Jawablah berdasarkan materi yang didengar. Gunakan jawaban singkat dalam bahasa Arab.</p>
+      <div class="essay-questions">
+        <div class="essay-question"><label class="arabic" for="d2essay1-1">١. مَنْ زَارَ مُوسَى؟</label><textarea id="d2essay1-1" lang="ar" dir="rtl" placeholder="اُكْتُبِ الْجَوَابَ هُنَا..."></textarea></div>
+        <div class="essay-question"><label class="arabic" for="d2essay1-2">٢. لِمَاذَا كَانَ مُوسَى مَسْرُورًا؟</label><textarea id="d2essay1-2" lang="ar" dir="rtl" placeholder="اُكْتُبِ الْجَوَابَ هُنَا..."></textarea></div>
+        <div class="essay-question"><label class="arabic" for="d2essay1-3">٣. مَاذَا رَأَى هَارُونُ عِنْدَ مُوسَى؟</label><textarea id="d2essay1-3" lang="ar" dir="rtl" placeholder="اُكْتُبِ الْجَوَابَ هُنَا..."></textarea></div>
+        <div class="essay-question"><label class="arabic" for="d2essay1-4">٤. مَا اسْمُ أَبِي مُوسَى وَمَا اسْمُ أُمِّهِ؟</label><textarea id="d2essay1-4" lang="ar" dir="rtl" placeholder="اُكْتُبِ الْجَوَابَ هُنَا..."></textarea></div>
+        <div class="essay-question"><label class="arabic" for="d2essay1-5">٥. مَا اسْمُ أُخْتِ مُوسَى وَمَا اسْمُ أَخِيهِ؟</label><textarea id="d2essay1-5" lang="ar" dir="rtl" placeholder="اُكْتُبِ الْجَوَابَ هُنَا..."></textarea></div>
+      </div>
+    </div>
     <button class="btn primary" onclick="speak(document.getElementById('d2Listen2').innerText)">▶ Putar Istima' 2</button>
-    <div class="exercise"><b>Periksa pemahamanmu</b><p class="arabic">مَنْ رَبَّةُ الْبَيْتِ؟</p><input id="d2ist1" placeholder="Tulis jawaban"><button class="btn" onclick="cekFlexible('d2ist1',['مريم','السيدة مريم'],'d2istfb')">Cek jawaban</button><div id="d2istfb" class="feedback" aria-live="polite"></div></div>
+    <details class="exercise">
+      <summary><b>👁️ Lihat/Sembunyikan Materi Istima' 2</b></summary>
+      <div class="dialogue rtlbox" id="d2Listen2">مَحْمُودَةُ: اُنْظُرِي إِلَى هَذِهِ الصُّوْرَةِ. كَامِلَةُ: بَيْتُكِ كَبِيرٌ وَجَمِيلٌ. مَحْمُودَةُ: وَهَذِهِ صُوْرَةُ أُسْرَتِي. كَامِلَةُ: أَنْتِ تَجْلِسِينَ فِي غُرْفَةِ الْجُلُوسِ؟ مَحْمُودَةُ: صَحِيحٌ. وَهَذِهِ غُرْفَةُ الْأَكْلِ. نَحْنُ نَأْكُلُ فِيهَا. كَامِلَةُ: وَهَذِهِ غُرْفَةُ الْمَكْتَبِ، أَلَيْسَ كَذَلِكَ؟ مَحْمُودَةُ: بَلَى، أَقْرَأُ وَأَكْتُبُ وَأَدْرُسُ هُنَا. وَهَذَا مَطْبَخٌ. هُنَا تَطْبُخُ أُمِّي الطَّعَامَ. كَامِلَةُ: عَلَى فِكْرَةٍ، أَيْنَ غُرَفُ النَّوْمِ؟ مَحْمُودَةُ: غُرَفُ النَّوْمِ فِي الطَّابَقِ الْعُلْوِيِّ.</div>
+    </details>
+    <div class="exercise">
+      <b>✍️ Latihan Pemahaman Istima' 2 — Soal Uraian</b>
+      <p class="muted">Jawablah berdasarkan materi yang didengar. Gunakan jawaban singkat dalam bahasa Arab.</p>
+      <div class="essay-questions">
+        <div class="essay-question"><label class="arabic" for="d2essay2-1">١. مَاذَا طَلَبَتْ مَحْمُودَةُ مِنْ كَامِلَةَ أَنْ تَنْظُرَ إِلَيْهِ؟</label><textarea id="d2essay2-1" lang="ar" dir="rtl" placeholder="اُكْتُبِ الْجَوَابَ هُنَا..."></textarea></div>
+        <div class="essay-question"><label class="arabic" for="d2essay2-2">٢. أَيْنَ تَجْلِسُ مَحْمُودَةُ؟</label><textarea id="d2essay2-2" lang="ar" dir="rtl" placeholder="اُكْتُبِ الْجَوَابَ هُنَا..."></textarea></div>
+        <div class="essay-question"><label class="arabic" for="d2essay2-3">٣. أَيْنَ تَأْكُلُ الْأُسْرَةُ؟</label><textarea id="d2essay2-3" lang="ar" dir="rtl" placeholder="اُكْتُبِ الْجَوَابَ هُنَا..."></textarea></div>
+        <div class="essay-question"><label class="arabic" for="d2essay2-4">٤. مَاذَا تَفْعَلُ مَحْمُودَةُ فِي غُرْفَةِ الْمَكْتَبِ؟</label><textarea id="d2essay2-4" lang="ar" dir="rtl" placeholder="اُكْتُبِ الْجَوَابَ هُنَا..."></textarea></div>
+        <div class="essay-question"><label class="arabic" for="d2essay2-5">٥. أَيْنَ غُرَفُ النَّوْمِ؟</label><textarea id="d2essay2-5" lang="ar" dir="rtl" placeholder="اُكْتُبِ الْجَوَابَ هُنَا..."></textarea></div>
+      </div>
+    </div>
   </div>
 </div>
 
