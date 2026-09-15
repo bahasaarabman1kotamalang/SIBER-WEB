@@ -1878,15 +1878,6 @@
 <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti. Gunakan tombol suara untuk latihan pelafalan.</span></div><span class="progress-chip">${vocab.length} kosakata</span></div>
 <div class="vocab-grid">${vocab.map((v) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();speak('${v[0]}')">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
 </div>
-<div class="dars-section">
-<h3>Latihan cepat</h3>
-<div class="mini-task">
-  <div><span class="arabic">أَهْلًا وَسَهْلًا</span> berarti …<br><button class="btn" onclick="quickAnswer1(this,true)">Selamat datang</button> <button class="btn" onclick="quickAnswer1(this,false)">Sampai jumpa</button></div>
-  <div><span class="arabic">عُنْوَانِي</span> berarti …<br><button class="btn" onclick="quickAnswer1(this,false)">Sekolah saya</button> <button class="btn" onclick="quickAnswer1(this,true)">Alamat saya</button></div>
-  <div><span class="arabic">طَالِبَةٌ</span> berarti …<br><button class="btn" onclick="quickAnswer1(this,true)">Siswi</button> <button class="btn" onclick="quickAnswer1(this,false)">Guru perempuan</button></div>
-</div>
-<div id="quickFeedback1" class="choice-feedback" aria-live="polite"></div>
-</div>
 </div>
 
 <div id="panel-istima" class="lesson-panel">
@@ -2033,15 +2024,6 @@
   <div class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti dan gunakan tombol 🔊 untuk mendengarkan pelafalan.</span></div><span class="progress-chip">${vocab2.length} kosakata</span></div>
     <div class="vocab-grid">${vocab2.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();speak('${v[0]}')">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
-  </div>
-  <div class="dars-section">
-    <h3>Latihan cepat</h3>
-    <div class="mini-task">
-      <div><span class="arabic">أَبٌ</span> berarti …<br><button class="btn" onclick="quickAnswer(this,true)">Ayah</button> <button class="btn" onclick="quickAnswer(this,false)">Paman</button></div>
-      <div><span class="arabic">مَطْبَخٌ</span> berarti …<br><button class="btn" onclick="quickAnswer(this,false)">Kamar</button> <button class="btn" onclick="quickAnswer(this,true)">Dapur</button></div>
-      <div><span class="arabic">غُرْفَةُ النَّوْمِ</span> berarti …<br><button class="btn" onclick="quickAnswer(this,true)">Kamar tidur</button> <button class="btn" onclick="quickAnswer(this,false)">Ruang tamu</button></div>
-    </div>
-    <div id="quickFeedback" class="choice-feedback" aria-live="polite"></div>
   </div>
 </div>
 
@@ -2241,15 +2223,6 @@
   <div class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti; gunakan tombol suara untuk menirukan pelafalan.</span></div><span class="progress-chip">${vocab3.length} kosakata</span></div>
     <div class="vocab-grid">${vocab3.map((v) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();speak('${v[0]}')">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
-  </div>
-  <div class="dars-section">
-    <h3>Latihan cepat</h3>
-    <div class="mini-task">
-      <div><span class="arabic">مَكْتَبَةٌ</span> berarti …<br><button class="btn" onclick="quickAnswer3(this,true)">Perpustakaan</button> <button class="btn" onclick="quickAnswer3(this,false)">Kantin</button></div>
-      <div><span class="arabic">مَعْمَلُ اللُّغَةِ</span> berarti …<br><button class="btn" onclick="quickAnswer3(this,false)">Aula</button> <button class="btn" onclick="quickAnswer3(this,true)">Lab bahasa</button></div>
-      <div><span class="arabic">مَلْعَبٌ</span> berarti …<br><button class="btn" onclick="quickAnswer3(this,true)">Lapangan</button> <button class="btn" onclick="quickAnswer3(this,false)">Ruang kelas</button></div>
-    </div>
-    <div id="quickFeedback3" class="choice-feedback" aria-live="polite"></div>
   </div>
 </div>
 
@@ -6419,11 +6392,12 @@
                 "Materi inti ditampilkan secara ringkas. Guru dapat menambahkan materi pengayaan sesuai TP/ATP madrasah.",
               );
               box.insertBefore(note, box.firstChild);
-              box.appendChild(makeQuiz(g, i));
             }, 0);
           };
         }
         function makeQuiz(g, i) {
+          // Kuis otomatis tidak ditampilkan di menu Mufradat maupun materi unit.
+          return document.createDocumentFragment();
           var wrap = el("section", "unit-quiz");
           var key = "uq" + g + i;
           var questions = [
@@ -6480,8 +6454,7 @@
               0,
             ],
           ];
-          wrap.innerHTML =
-            "<h3>🏆 Kuis الوحدة</h3><p>Jawab 10 soal. Nilai ketuntasan minimal 75.</p>";
+          wrap.innerHTML = "";
           questions.forEach(function (q, n) {
             var item = el(
               "div",
