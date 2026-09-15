@@ -2259,11 +2259,26 @@
 
 <div id="panel-istima" class="lesson-panel">
   <div class="dars-section">
-    <h3>🎧 الِاسْتِمَاعُ — Istima'</h3>
-    <p>Dengarkan teks tentang fasilitas dan kegiatan sekolah, lalu jawab pertanyaannya.</p>
-    <div class="dialogue rtlbox" id="d3Listen">مَدْرَسَتِي كَبِيرَةٌ وَنَظِيفَةٌ. فِيهَا فُصُولٌ دِرَاسِيَّةٌ وَمَكْتَبَةٌ وَمَسْجِدٌ وَمَقْصَفٌ وَمَلْعَبٌ. يَتَعَلَّمُ الطُّلَّابُ فِي الْفُصُولِ، وَيَقْرَؤُونَ الْكُتُبَ فِي الْمَكْتَبَةِ، وَيُصَلُّونَ فِي الْمَسْجِدِ. فِي وَقْتِ الِاسْتِرَاحَةِ يَذْهَبُ بَعْضُهُمْ إِلَى الْمَقْصَفِ وَيَلْعَبُ آخَرُونَ فِي الْمَلْعَبِ.</div>
-    <button class="btn primary" onclick="speak(document.getElementById('d3Listen').innerText)">▶ Putar Istima'</button>
+    <div class="reading-title">
+      <div><h3>🎧 الِاسْتِمَاعُ الْأَوَّلُ — مَدْرَسَتِي</h3><span class="muted">Dengarkan teks deskriptif tentang fasilitas dan kegiatan di madrasah tanpa membaca transkrip terlebih dahulu.</span></div>
+      <button class="btn primary" onclick="speak(document.getElementById('d3Listen1').innerText)">▶ Putar audio 1</button>
+    </div>
+    <div class="audio-script rtlbox">
+      <button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan teks</button>
+      <div id="d3Listen1" hidden><p>مَدْرَسَتِي كَبِيرَةٌ وَنَظِيفَةٌ. فِيهَا فُصُولٌ دِرَاسِيَّةٌ وَمَكْتَبَةٌ وَمَسْجِدٌ وَمَقْصَفٌ وَمَلْعَبٌ. يَتَعَلَّمُ الطُّلَّابُ فِي الْفُصُولِ، وَيَقْرَؤُونَ الْكُتُبَ فِي الْمَكْتَبَةِ، وَيُصَلُّونَ فِي الْمَسْجِدِ. فِي وَقْتِ الِاسْتِرَاحَةِ يَذْهَبُ بَعْضُهُمْ إِلَى الْمَقْصَفِ وَيَلْعَبُ آخَرُونَ فِي الْمَلْعَبِ.</p></div>
+    </div>
     <div class="exercise"><b>Periksa pemahamanmu</b><p class="arabic">أَيْنَ يَقْرَأُ الطُّلَّابُ الْكُتُبَ؟</p><input id="d3ist1" placeholder="Tulis jawaban"><button class="btn" onclick="cekFlexible('d3ist1',['في المكتبة','المكتبة'],'d3istfb')">Cek jawaban</button><div id="d3istfb" class="feedback" aria-live="polite"></div></div>
+  </div>
+  <div class="dars-section">
+    <div class="reading-title">
+      <div><h3>🎧 الِاسْتِمَاعُ الثَّانِي — يَوْمِي فِي الْمَدْرَسَةِ</h3><span class="muted">Simak teks narasi tentang kegiatan seorang murid di madrasah, lalu temukan informasi pentingnya.</span></div>
+      <button class="btn primary" onclick="speak(document.getElementById('d3Listen2').innerText)">▶ Putar audio 2</button>
+    </div>
+    <div class="audio-script rtlbox">
+      <button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan teks</button>
+      <div id="d3Listen2" hidden><p>أَنَا أَحْمَدُ، وَأَنَا طَالِبٌ فِي الصَّفِّ الْعَاشِرِ. أَذْهَبُ إِلَى الْمَدْرَسَةِ فِي السَّاعَةِ السَّادِسَةِ وَالنِّصْفِ صَبَاحًا. أَدْخُلُ الْفَصْلَ وَأُسَلِّمُ عَلَى أَصْدِقَائِي، ثُمَّ أُرَتِّبُ الْكُتُبَ عَلَى الْمَكْتَبِ. يَبْدَأُ الدَّرْسُ فِي السَّاعَةِ السَّابِعَةِ. أَدْرُسُ اللُّغَةَ الْعَرَبِيَّةَ وَالرِّيَاضِيَّاتِ وَالْفِقْهَ وَالْعُلُومَ. فِي وَقْتِ الِاسْتِرَاحَةِ أَقْرَأُ كِتَابًا فِي الْمَكْتَبَةِ، ثُمَّ أَذْهَبُ إِلَى الْمَقْصَفِ لِشِرَاءِ الطَّعَامِ. بَعْدَ الدِّرَاسَةِ أَلْعَبُ كُرَةَ الْقَدَمِ مَعَ أَصْدِقَائِي فِي الْمَلْعَبِ. أَعُودُ إِلَى الْبَيْتِ فِي السَّاعَةِ الثَّالِثَةِ مَسَاءً، وَأَنَا سَعِيدٌ لِأَنَّنِي تَعَلَّمْتُ أَشْيَاءَ نَافِعَةً.</p></div>
+    </div>
+    <div class="exercise"><b>Periksa pemahamanmu</b><p class="arabic">مَتَى يَبْدَأُ الدَّرْسُ؟</p><input id="d3ist2" placeholder="Tulis jawaban"><button class="btn" onclick="cekFlexible('d3ist2',['في الساعة السابعة','الساعة السابعة','السابعة'],'d3ist2fb')">Cek jawaban</button><div id="d3ist2fb" class="feedback" aria-live="polite"></div></div>
   </div>
 </div>
 
