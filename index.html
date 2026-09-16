@@ -1825,40 +1825,6 @@
         document.addEventListener("visibilitychange", function(){ if (document.hidden) stopSpeech(); });
         window.addEventListener("pagehide", stopSpeech);
       })();
-
-      /* Audio tetap Kelas X Unit 1.
-         Berkas dibuat dengan generate_unit1_audio.py dan diletakkan pada
-         audio/x/unit-01/ agar suara konsisten di semua perangkat. */
-      let siberFixedAudio = null;
-      function stopFixedAudio() {
-        if (!siberFixedAudio) return;
-        try {
-          siberFixedAudio.pause();
-          siberFixedAudio.currentTime = 0;
-        } catch (e) {}
-        siberFixedAudio = null;
-      }
-      function playUnit1Audio(relativePath) {
-        if (typeof stopSpeech === "function") stopSpeech();
-        stopFixedAudio();
-        const source = "audio/x/unit-01/" + relativePath;
-        siberFixedAudio = new Audio(source);
-        siberFixedAudio.preload = "auto";
-        siberFixedAudio.playbackRate = 1;
-        siberFixedAudio.addEventListener("ended", function(){ siberFixedAudio = null; }, { once: true });
-        siberFixedAudio.addEventListener("error", function(){
-          alert("Audio belum ditemukan: " + source + "\nJalankan generate_unit1_audio.py lalu salin folder audio di samping index.html.");
-          siberFixedAudio = null;
-        }, { once: true });
-        const started = siberFixedAudio.play();
-        if (started && typeof started.catch === "function") {
-          started.catch(function(error){
-            console.warn("SIBER-WEB: audio tetap gagal diputar", error);
-          });
-        }
-      }
-      document.addEventListener("visibilitychange", function(){ if (document.hidden) stopFixedAudio(); });
-      window.addEventListener("pagehide", stopFixedAudio);
       function dars1() {
         return `<div class="card unit-shell">
 <div class="unit-heading">
@@ -1910,23 +1876,23 @@
 <div id="panel-mufradat" class="lesson-panel">
 <div class="dars-section">
 <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti. Gunakan tombol suara untuk latihan pelafalan.</span></div><span class="progress-chip">${vocab.length} kosakata</span></div>
-<div class="vocab-grid">${vocab.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();playUnit1Audio('mufradat/vocab-' + String(${i + 1}).padStart(2,'0') + '.wav')">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
+<div class="vocab-grid">${vocab.map((v) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();speak('${v[0]}')">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
 </div>
 </div>
 
 <div id="panel-istima" class="lesson-panel">
   <div class="dars-section">
-    <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ الْأَوَّلُ — التَّعْرِيفُ بِنَفْسِي</h3><span class="muted">Dengarkan teks perkenalan Ahmad tanpa membaca transkrip terlebih dahulu.</span></div><button class="btn primary" onclick="playUnit1Audio('istima/istima-01.wav')">▶ Putar audio 1</button></div>
+    <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ الْأَوَّلُ — التَّعْرِيفُ بِنَفْسِي</h3><span class="muted">Dengarkan teks perkenalan Ahmad tanpa membaca transkrip terlebih dahulu.</span></div><button class="btn primary" onclick="speak(document.getElementById('d1Listen1').innerText)">▶ Putar audio 1</button></div>
     <div class="audio-script rtlbox"><button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan teks</button><div id="d1Listen1" hidden><p>اِسْمِي أَحْمَدُ. أَنَا طَالِبٌ فِي الصَّفِّ الْعَاشِرِ. أَنَا مِنْ جُمْبَانْجَ، وَعُنْوَانِي فِي شَارِعِ كِيَاهِي الْحَاجِّ عَبْدِ الْوَهَّابِ رَقْمُ تِسْعَةٍ وَسَبْعِينَ. أَتَعَلَّمُ الْآنَ فِي الْمَدْرَسَةِ الثَّانَوِيَّةِ الْإِسْلَامِيَّةِ الْحُكُومِيَّةِ الرَّابِعَةِ بِجُمْبَانْجَ. أَذْهَبُ إِلَى الْمَدْرَسَةِ بِالدَّرَّاجَةِ كُلَّ يَوْمٍ.</p></div></div>
     <div class="exercise"><b>Periksa pemahamanmu</b><p class="arabic">مِنْ أَيْنَ أَحْمَدُ؟</p><input id="d1ist1" placeholder="اُكْتُبِ الْجَوَابَ"><button class="btn" onclick="cekFlexible('d1ist1',['من جمبانج','جمبانج','جُمْبَانْجَ'],'d1ist1fb')">Cek jawaban</button><div id="d1ist1fb" class="feedback" aria-live="polite"></div></div>
   </div>
   <div class="dars-section">
-    <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ الثَّانِي — صَدِيقِي أَغُوسُ</h3><span class="muted">Simak informasi mengenai asal, sekolah, tempat tinggal, dan minat Agus.</span></div><button class="btn primary" onclick="playUnit1Audio('istima/istima-02.wav')">▶ Putar audio 2</button></div>
+    <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ الثَّانِي — صَدِيقِي أَغُوسُ</h3><span class="muted">Simak informasi mengenai asal, sekolah, tempat tinggal, dan minat Agus.</span></div><button class="btn primary" onclick="speak(document.getElementById('d1Listen2').innerText)">▶ Putar audio 2</button></div>
     <div class="audio-script rtlbox"><button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan teks</button><div id="d1Listen2" hidden><p>هَذَا صَدِيقِي أَغُوسُ. هُوَ مِنْ سُورَابَايَا، وَعُنْوَانُهُ فِي شَارِعِ أَحْمَدَ يَانِي رَقْمُ أَرْبَعَةٍ وَخَمْسِينَ. هُوَ يُحِبُّ دِرَاسَةَ الرِّيَاضِيَّاتِ وَالْعُلُومِ الطَّبِيعِيَّةِ، وَيُرِيدُ أَيْضًا أَنْ يَتَعَلَّمَ الْعُلُومَ الدِّينِيَّةَ. يَسْكُنُ أَغُوسُ فِي الْمَعْهَدِ الْإِسْلَامِيِّ. فِي الصَّبَاحِ يَتَعَلَّمُ فِي الْمَدْرَسَةِ، وَفِي الْمَسَاءِ يَتَعَلَّمُ فِي الْمَعْهَدِ.</p></div></div>
     <div class="exercise"><b>Periksa pemahamanmu</b><p class="arabic">أَيْنَ يَسْكُنُ أَغُوسُ؟</p><input id="d1ist2" placeholder="اُكْتُبِ الْجَوَابَ"><button class="btn" onclick="cekFlexible('d1ist2',['في المعهد الإسلامي','المعهد الإسلامي','في المعهد'],'d1ist2fb')">Cek jawaban</button><div id="d1ist2fb" class="feedback" aria-live="polite"></div></div>
   </div>
   <div class="dars-section">
-    <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ الثَّالِثُ — صَدِيقَتِي فِطْرِيَّةُ</h3><span class="muted">Dengarkan teks pengenalan orang lain dan catat informasi identitasnya.</span></div><button class="btn primary" onclick="playUnit1Audio('istima/istima-03.wav')">▶ Putar audio 3</button></div>
+    <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ الثَّالِثُ — صَدِيقَتِي فِطْرِيَّةُ</h3><span class="muted">Dengarkan teks pengenalan orang lain dan catat informasi identitasnya.</span></div><button class="btn primary" onclick="speak(document.getElementById('d1Listen3').innerText)">▶ Putar audio 3</button></div>
     <div class="audio-script rtlbox"><button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan teks</button><div id="d1Listen3" hidden><p>هَذِهِ فِطْرِيَّةُ، وَهِيَ صَدِيقَةُ أَلِيسَا. فِطْرِيَّةُ مِنْ بَانْتُولَ بِمُحَافَظَةِ يُوجْيَاكَرْتَا. وَهَذِهِ لَيْلَى، وَهِيَ مِنْ سِيدُوَارْجُو. تَعَارَفَتْ لَيْلَى وَفِطْرِيَّةُ فِي الْمَسَاءِ، وَتَحَدَّثَتَا بِأَدَبٍ وَسُرُورٍ. فِي نِهَايَةِ اللِّقَاءِ قَالَتَا: مَعَ السَّلَامَةِ وَإِلَى اللِّقَاءِ.</p></div></div>
     <div class="exercise"><b>Periksa pemahamanmu</b><p class="arabic">مِنْ أَيْنَ فِطْرِيَّةُ؟</p><input id="d1ist3" placeholder="اُكْتُبِ الْجَوَابَ"><button class="btn" onclick="cekFlexible('d1ist3',['من بانتول يوجياكرتا','بانتول يوجياكرتا','من بانتول'],'d1ist3fb')">Cek jawaban</button><div id="d1ist3fb" class="feedback" aria-live="polite"></div></div>
   </div>
@@ -1936,25 +1902,25 @@
   <div class="dars-section">
     <h3>🗣️ الْحِوَارُ الْأَوَّلُ — التَّعْرِيفُ بِالنَّفْسِ</h3>
     <div class="dialogue rtlbox"><b>أَحْمَدُ:</b> السَّلَامُ عَلَيْكُمْ.<br><b>أَغُوسُ:</b> وَعَلَيْكُمُ السَّلَامُ.<br><b>أَحْمَدُ:</b> اِسْمِي أَحْمَدُ، وَمَا اسْمُكَ؟<br><b>أَغُوسُ:</b> اِسْمِي أَغُوسُ. مِنْ أَيْنَ أَنْتَ؟<br><b>أَحْمَدُ:</b> أَنَا مِنْ جُمْبَانْجَ، وَأَنْتَ؟<br><b>أَغُوسُ:</b> أَنَا مِنْ سُورَابَايَا.<br><b>أَحْمَدُ:</b> أَهْلًا وَسَهْلًا.<br><b>أَغُوسُ:</b> أَهْلًا بِكَ.<br><b>أَحْمَدُ:</b> إِلَى اللِّقَاءِ.<br><b>أَغُوسُ:</b> مَعَ السَّلَامَةِ.</div>
-    <button class="btn" onclick="playUnit1Audio('hiwar/hiwar-01.wav')">🔊 Dengarkan hiwar 1</button>
+    <button class="btn" onclick="speak(this.previousElementSibling.innerText)">🔊 Dengarkan hiwar 1</button>
     <div class="exercise"><b>Praktik berpasangan:</b> Ganti nama dan asal dalam dialog sesuai identitas kalian.</div>
   </div>
   <div class="dars-section">
     <h3>🗣️ الْحِوَارُ الثَّانِي — التَّعْرِيفُ بِالْغَيْرِ</h3>
     <div class="dialogue rtlbox"><b>لَيْلَى:</b> مَسَاءُ الْخَيْرِ.<br><b>أَلِيسَا:</b> مَسَاءُ النُّورِ.<br><b>لَيْلَى:</b> كَيْفَ أَمْسَيْتِ؟<br><b>أَلِيسَا:</b> أَمْسَيْتُ بِخَيْرٍ، الْحَمْدُ للهِ. وَأَنْتِ؟<br><b>لَيْلَى:</b> بِخَيْرٍ، وَالْحَمْدُ للهِ.<br><b>أَلِيسَا:</b> يَا لَيْلَى، هَذِهِ فِطْرِيَّةُ، وَهِيَ صَدِيقَتِي.<br><b>لَيْلَى:</b> مَرْحَبًا يَا فِطْرِيَّةُ، أَنَا لَيْلَى.<br><b>فِطْرِيَّةُ:</b> مَرْحَبًا بِكِ يَا لَيْلَى.<br><b>لَيْلَى:</b> مِنْ أَيْنَ جِئْتِ؟<br><b>فِطْرِيَّةُ:</b> أَنَا مِنْ بَانْتُولَ يُوجْيَاكَرْتَا، وَأَنْتِ؟<br><b>لَيْلَى:</b> أَنَا مِنْ سِيدُوَارْجُو. تَشَرَّفْنَا بِلِقَائِكِ.<br><b>فِطْرِيَّةُ:</b> الشَّرَفُ لِي.<br><b>لَيْلَى:</b> مَعَ السَّلَامَةِ.<br><b>أَلِيسَا:</b> مَعَ السَّلَامَةِ وَإِلَى اللِّقَاءِ.<br><b>فِطْرِيَّةُ:</b> مَعَ السَّلَامَةِ وَإِلَى اللِّقَاءِ.</div>
-    <button class="btn" onclick="playUnit1Audio('hiwar/hiwar-02.wav')">🔊 Dengarkan hiwar 2</button>
+    <button class="btn" onclick="speak(this.previousElementSibling.innerText)">🔊 Dengarkan hiwar 2</button>
     <div class="exercise"><b>Praktik bertiga:</b> Perkenalkan seorang teman kepada teman yang lain dengan pola <span class="arabic">هَذَا صَدِيقِي / هَذِهِ صَدِيقَتِي، اِسْمُهُ / اِسْمُهَا...</span></div>
   </div>
 </div>
 
 <div id="panel-qiraah" class="lesson-panel">
   <div class="dars-section">
-    <div class="reading-title"><div><h3>📖 الْقِرَاءَةُ الْأُولَى — التَّعَارُفُ مَعَ أَحْمَدَ</h3><span class="muted">Bacalah informasi tentang identitas, alamat, sekolah, dan transportasi Ahmad.</span></div><button class="btn" onclick="playUnit1Audio('qiraah/qiraah-01.wav')">🔊 Dengarkan</button></div>
+    <div class="reading-title"><div><h3>📖 الْقِرَاءَةُ الْأُولَى — التَّعَارُفُ مَعَ أَحْمَدَ</h3><span class="muted">Bacalah informasi tentang identitas, alamat, sekolah, dan transportasi Ahmad.</span></div><button class="btn" onclick="speak(document.getElementById('d1read1').innerText)">🔊 Dengarkan</button></div>
     <div class="rtlbox" id="d1read1"><p>اِسْمِي أَحْمَدُ. أَنَا مِنْ جُمْبَانْجَ. عُنْوَانِي فِي شَارِعِ كِيَاهِي الْحَاجِّ عَبْدِ الْوَهَّابِ رَقْمُ تِسْعَةٍ وَسَبْعِينَ بِجُمْبَانْجَ. أَنَا مُتَخَرِّجٌ فِي مَدْرَسَةِ الْإِحْسَانِ الْمُتَوَسِّطَةِ الْإِسْلَامِيَّةِ بِجُمْبَانْجَ.</p><p>أَنَا الْآنَ أَتَعَلَّمُ فِي الْمَدْرَسَةِ الثَّانَوِيَّةِ الْإِسْلَامِيَّةِ الْحُكُومِيَّةِ الرَّابِعَةِ بِجُمْبَانْجَ. وَعُنْوَانُ الْمَدْرَسَةِ فِي شَارِعِ إِمَامٍ بُونْجُولَ رَقْمُ وَاحِدٍ وَسَبْعِينَ. أَذْهَبُ إِلَى الْمَدْرَسَةِ بِالدَّرَّاجَةِ كُلَّ يَوْمٍ.</p></div>
     <div class="exercise"><b>Pemahaman bacaan:</b><ol class="arabic"><li>مِنْ أَيْنَ أَحْمَدُ؟</li><li>مَا عُنْوَانُ أَحْمَدَ؟</li><li>فِي أَيِّ مَدْرَسَةٍ هُوَ مُتَخَرِّجٌ؟</li><li>أَيْنَ يَتَعَلَّمُ الْآنَ؟</li><li>كَيْفَ يَذْهَبُ إِلَى الْمَدْرَسَةِ؟</li></ol></div>
   </div>
   <div class="dars-section">
-    <div class="reading-title"><div><h3>📖 الْقِرَاءَةُ الثَّانِيَةُ — صَدِيقِي أَغُوسُ</h3><span class="muted">Bacalah informasi tentang latar belakang pendidikan dan kegiatan belajar Agus.</span></div><button class="btn" onclick="playUnit1Audio('qiraah/qiraah-02.wav')">🔊 Dengarkan</button></div>
+    <div class="reading-title"><div><h3>📖 الْقِرَاءَةُ الثَّانِيَةُ — صَدِيقِي أَغُوسُ</h3><span class="muted">Bacalah informasi tentang latar belakang pendidikan dan kegiatan belajar Agus.</span></div><button class="btn" onclick="speak(document.getElementById('d1read2').innerText)">🔊 Dengarkan</button></div>
     <div class="rtlbox" id="d1read2"><p>وَهَذَا صَدِيقِي، اِسْمُهُ أَغُوسُ. هُوَ مِنْ سُورَابَايَا، وَعُنْوَانُهُ فِي شَارِعِ أَحْمَدَ يَانِي رَقْمُ أَرْبَعَةٍ وَخَمْسِينَ بِسُورَابَايَا. أَغُوسُ مُتَخَرِّجٌ فِي الْمَدْرَسَةِ الْمُتَوَسِّطَةِ الْحُكُومِيَّةِ الْخَامِسَةِ بِسُورَابَايَا.</p><p>هُوَ يُحِبُّ دِرَاسَةَ الرِّيَاضِيَّاتِ وَالْعُلُومِ الطَّبِيعِيَّةِ. وَبِالْإِضَافَةِ إِلَى ذَلِكَ، يُرِيدُ أَنْ يَتَعَلَّمَ الْعُلُومَ الدِّينِيَّةَ؛ فَيُوَاصِلُ دِرَاسَتَهُ فِي هَذِهِ الْمَدْرَسَةِ، وَيَسْكُنُ فِي الْمَعْهَدِ الْإِسْلَامِيِّ.</p><p>فِي الصَّبَاحِ يَتَعَلَّمُ أَغُوسُ الرِّيَاضِيَّاتِ وَالْعُلُومَ الطَّبِيعِيَّةَ وَالْعُلُومَ الْأُخْرَى فِي الْمَدْرَسَةِ، وَفِي الْمَسَاءِ يَتَعَلَّمُ الْعُلُومَ الدِّينِيَّةَ فِي الْمَعْهَدِ.</p></div>
     <div class="exercise"><b>Pemahaman bacaan:</b><ol class="arabic"><li>مِنْ أَيْنَ أَغُوسُ؟</li><li>مَا عُنْوَانُهُ؟</li><li>مَا الْمَوَادُّ الَّتِي يُحِبُّهَا؟</li><li>أَيْنَ يَسْكُنُ؟</li><li>مَاذَا يَتَعَلَّمُ فِي الْمَسَاءِ؟</li></ol></div>
   </div>
