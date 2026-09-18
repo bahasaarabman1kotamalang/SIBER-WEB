@@ -1404,6 +1404,7 @@
           )
           .join("");
       }
+      window.kelas = kelas;
       const vocab = [
         ["التعارف", "Perkenalan"],
         ["التعارف بالنفس", "Memperkenalkan diri"],
@@ -6863,7 +6864,18 @@ body.innerHTML='<div class="role-page-grid">'+cards.map(function(c){return '<div
     var allBtns=[].slice.call(links.querySelectorAll('button'));var homeBtn=allBtns.find(function(b){return b.textContent.trim()==='Beranda'}),kelasBtn=allBtns.find(function(b){return b.textContent.trim()==='Kelas'}),quizBtn=allBtns.find(function(b){return b.textContent.indexOf('Kuis')>=0}),progBtn=allBtns.find(function(b){return b.textContent.trim()==='Progres Belajar'}),assBtn=allBtns.find(function(b){return b.textContent.indexOf('Penilaian Harian')>=0});
     if(homeBtn)homeBtn.style.display=has("home")?"":"none"; if(kelasBtn)kelasBtn.style.display=has("kelas")?"":"none"; if(quizBtn)quizBtn.style.display=""; if(progBtn)progBtn.style.display=has("progres")?"":"none"; if(assBtn)assBtn.style.display=has("penilaian")?"":"none";
   }
-  var originalPage=window.page;
+  /* FIX: fungsi page() asli berada di scope script utama, bukan window.
+     Karena tombol menu memakai onclick="page(...)", sediakan fungsi navigasi
+     dasar yang aman sebelum memasang kontrol hak akses. */
+  var originalPage = (typeof window.page === "function") ? window.page : function(id){
+    if(window.stopSpeech) window.stopSpeech();
+    document.querySelectorAll(".page").forEach(function(x){x.classList.remove("on")});
+    var target=document.getElementById(id);
+    if(!target)return;
+    target.classList.add("on");
+    window.scrollTo(0,0);
+    if(id==="kuis" && typeof window.quiz==="function") window.quiz();
+  };
   window.page=function(id){
     var map={home:"home",kelas:"kelas",progres:"progres",roleDashboard:"dashboard",manajemenAkun:"akun"};
     if(id==="penilaian") {if(!has("penilaian")){return deny("Penilaian Harian")}window.location.href="https://bahasaarabman1kotamalang.github.io/cbt/";return}
