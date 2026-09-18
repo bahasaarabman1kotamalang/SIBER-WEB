@@ -1763,6 +1763,9 @@
         let activeAudio = null;
         let activeButton = null;
 
+        // Folder audio resmi SIBER-WEB di GitHub Pages.
+        const SIBER_AUDIO_BASE = new URL('/SIBER-WEB/audio/', location.origin).href;
+
         function resetButton(btn, label){
           if(!btn) return;
           btn.disabled = false;
@@ -1775,12 +1778,11 @@
           const button = activeButton;
           activeAudio = null;
           activeButton = null;
-
           if(audio){
             try{
               audio.pause();
               audio.currentTime = 0;
-              audio.removeAttribute('src');
+              audio.src = '';
               audio.load();
             }catch(e){}
           }
@@ -1789,43 +1791,38 @@
 
         function playAudio(src, button){
           if(!src) return;
+          const url = /^https?:\/\//i.test(src) ? src : new URL(src.replace(/^\//,''), location.href).href;
 
-          // Klik tombol yang sama ketika sedang diputar = berhenti.
-          if(activeAudio && activeAudio.dataset && activeAudio.dataset.siberSrc === src){
+          // Klik tombol yang sama saat sedang diputar = berhenti.
+          if(activeAudio && activeAudio.dataset.siberSrc === url){
             stopAllAudio();
             return;
           }
 
           stopAllAudio();
 
-          const audio = new Audio();
+          const audio = new Audio(url);
           audio.preload = 'auto';
           audio.playsInline = true;
-          audio.dataset.siberSrc = src;
+          audio.dataset.siberSrc = url;
           activeAudio = audio;
           activeButton = button || null;
 
           if(button){
             button.dataset.audioOriginal = button.textContent;
-            button.disabled = true;
+            button.disabled = false;
             button.classList.add('audio-playing');
             button.textContent = '⏳ Memuat audio...';
           }
 
           const fail = () => {
-            const b = button;
             if(audio === activeAudio){
               activeAudio = null;
               activeButton = null;
             }
-            resetButton(b, '▶ Coba lagi');
-            console.warn('SIBER-WEB: gagal memuat audio MP3:', src);
-            alert('Audio tidak dapat diputar. Pastikan folder "audio" diunggah bersama index.html dan struktur foldernya tidak berubah.');
+            resetButton(button, '▶ Coba lagi');
+            console.warn('SIBER-WEB: gagal memuat audio MP3:', url);
           };
-
-          audio.addEventListener('canplay', () => {
-            if(button) button.disabled = false;
-          }, {once:true});
 
           audio.addEventListener('playing', () => {
             if(button){
@@ -1835,76 +1832,61 @@
           });
 
           audio.addEventListener('ended', () => {
-            const b = activeButton;
             if(audio === activeAudio){
               activeAudio = null;
               activeButton = null;
             }
-            resetButton(b);
+            resetButton(button);
           }, {once:true});
 
           audio.addEventListener('error', fail, {once:true});
-          audio.addEventListener('abort', () => {
-            if(audio === activeAudio){
-              const b = activeButton;
-              activeAudio = null;
-              activeButton = null;
-              resetButton(b);
-            }
-          }, {once:true});
 
-          // Tetap dimulai dari klik pengguna, sehingga kompatibel dengan kebijakan autoplay HP.
-          audio.src = src;
-          audio.load();
-          audio.play().catch(() => {
-            const b = button;
+          // Jangan memanggil load() terpisah: pada sebagian HP/browser,
+          // load() lalu play() terlalu cepat dapat membuat pemutaran gagal.
+          audio.play().catch((err) => {
+            console.warn('SIBER-WEB: play() gagal:', err, url);
             if(audio === activeAudio){
               activeAudio = null;
               activeButton = null;
             }
-            resetButton(b, '▶ Tekan untuk memutar');
-            alert('Silakan tekan tombol audio sekali lagi.');
+            resetButton(button, '▶ Tekan untuk memutar');
           });
-        }
-
-        // Normalisasi URL agar audio yang dipanggil dari kartu Mufradat
-        // selalu mengarah ke folder audio pada GitHub Pages, termasuk saat
-        // aplikasi berada di subfolder /SIBER-WEB/.
-        function resolveAudioUrl(src){
-          try { return new URL(src, document.baseURI).href; }
-          catch(e) { return src; }
         }
 
         function playVocabAudio(grade, unit, index, button){
           const n = String(index).padStart(2,'0');
-          const src = `audio/${grade}/unit-${String(unit).padStart(2,'0')}/mufradat/vocab-${n}.mp3`;
-          playAudio(src, button);
+          const g = String(grade).toLowerCase();
+          const u = String(unit).padStart(2,'0');
+          const url = `${SIBER_AUDIO_BASE}${g}/unit-${u}/mufradat/vocab-${n}.mp3`;
+          playAudio(url, button);
         }
-
-        // Gunakan URL absolut hasil resolusi base URI untuk menghindari
-        // kegagalan path relatif pada GitHub Pages/subfolder.
-        const _playAudio = playAudio;
-        playAudio = function(src, button){
-          return _playAudio(resolveAudioUrl(src), button);
-        };
 
         window.playAudio = playAudio;
         window.playVocabAudio = playVocabAudio;
         window.stopAllAudio = stopAllAudio;
         window.stopAudioPlayback = stopAllAudio;
 
-        // Tombol lama yang masih memanggil speak() tidak memakai TTS perangkat.
-        // Hanya audio MP3 yang tersedia di arsip yang digunakan untuk konsistensi suara.
+        // Semua bagian yang belum memiliki MP3 tetap tidak memakai TTS perangkat.
         window.speak = function(){
-          alert('Audio MP3 tetap untuk bagian ini belum tersedia di folder audio.');
+          alert('Audio MP3 untuk bagian ini belum tersedia di folder audio.');
         };
 
+        // Hentikan audio ketika berpindah menu/halaman atau kembali dari halaman lain.
         document.addEventListener('visibilitychange', () => {
           if(document.hidden) stopAllAudio();
         });
-
         window.addEventListener('pagehide', stopAllAudio);
         window.addEventListener('beforeunload', stopAllAudio);
+        window.addEventListener('hashchange', stopAllAudio);
+        window.addEventListener('popstate', stopAllAudio);
+
+        // Tombol/link navigasi menghentikan audio, tetapi tombol audio sendiri dikecualikan.
+        document.addEventListener('click', (e) => {
+          const el = e.target.closest('a[href], button');
+          if(!el) return;
+          if(el.classList.contains('audio-btn') || el.closest('.audio-btn')) return;
+          stopAllAudio();
+        }, true);
       })();
       function dars1() {
         return `<div class="card unit-shell" data-audio-unit="x-01">
