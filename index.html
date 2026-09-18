@@ -669,7 +669,23 @@
         }
       }
     
-/* Fixed MP3 audio state */
+
+<style id="mufradat-native-audio-style">
+.mufradat-audio-wrap{display:flex;flex-direction:column;gap:6px;align-items:center;margin-top:10px;width:100%;}
+.mufradat-audio-label{font-size:12px;font-weight:800;opacity:.85;}
+.mufradat-audio{width:min(100%,230px);height:38px;}
+@media(max-width:600px){.mufradat-audio{width:100%;height:40px;}}
+</style>
+<script>
+(function(){
+  document.addEventListener('play', function(e){
+    if(!e.target.matches('audio.mufradat-audio')) return;
+    document.querySelectorAll('audio.mufradat-audio').forEach(function(a){ if(a!==e.target){ try{a.pause(); a.currentTime=0;}catch(_){} } });
+  }, true);
+  window.addEventListener('pagehide', function(){ document.querySelectorAll('audio.mufradat-audio').forEach(function(a){ try{a.pause(); a.currentTime=0;}catch(_){} }); });
+})();
+</script>
+ /* Fixed MP3 audio state */
 .audio-btn.audio-playing,.btn.audio-playing{opacity:.88;}
 </style>
     <style>
@@ -1939,7 +1955,7 @@
 <div id="panel-mufradat" class="lesson-panel">
 <div class="dars-section">
 <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti. Gunakan tombol suara untuk latihan pelafalan.</span></div><span class="progress-chip">${vocab.length} kosakata</span></div>
-<div class="vocab-grid">${vocab.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();playVocabAudio('x',1,i+1,this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
+<div class="vocab-grid">${vocab.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()"><span class="mufradat-audio-label">🔊 Dengarkan</span><audio class="mufradat-audio" controls preload="none" playsinline src="${SIBER_AUDIO_BASE}x/unit-01/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3"></audio></div></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
 </div>
 </div>
 
@@ -2086,7 +2102,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <div class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti dan gunakan tombol 🔊 untuk mendengarkan pelafalan.</span></div><span class="progress-chip">${vocab2.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab2.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();playVocabAudio('x',2,i+1,this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab2.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()"><span class="mufradat-audio-label">🔊 Dengarkan</span><audio class="mufradat-audio" controls preload="none" playsinline src="${SIBER_AUDIO_BASE}x/unit-02/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3"></audio></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
   </div>
 </div>
 
@@ -2285,7 +2301,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <div class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti; gunakan tombol suara untuk menirukan pelafalan.</span></div><span class="progress-chip">${vocab3.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab3.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();playVocabAudio('x',3,i+1,this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab3.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()"><span class="mufradat-audio-label">🔊 Dengarkan</span><audio class="mufradat-audio" controls preload="none" playsinline src="${SIBER_AUDIO_BASE}x/unit-03/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3"></audio></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
   </div>
 </div>
 
@@ -2451,7 +2467,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <div class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti dan gunakan tombol suara untuk berlatih pelafalan.</span></div><span class="progress-chip">${vocab4.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab4.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();playVocabAudio('x',4,i+1,this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab4.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()"><span class="mufradat-audio-label">🔊 Dengarkan</span><audio class="mufradat-audio" controls preload="none" playsinline src="${SIBER_AUDIO_BASE}x/unit-04/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3"></audio></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
   </div>
   <div class="dars-section">
     <h3>Latihan cepat</h3>
@@ -2624,7 +2640,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <div class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk membalik arti; tekan suara untuk berlatih pelafalan.</span></div><span class="progress-chip">${vocab5.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab5.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();playVocabAudio('x',5,i+1,this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab5.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()"><span class="mufradat-audio-label">🔊 Dengarkan</span><audio class="mufradat-audio" controls preload="none" playsinline src="${SIBER_AUDIO_BASE}x/unit-05/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3"></audio></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
   </div>
   <div class="dars-section">
     <h3>Latihan cepat</h3>
@@ -2787,7 +2803,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <div class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk membalik arti; tekan suara untuk berlatih pelafalan.</span></div><span class="progress-chip">${vocab6.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab6.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();playVocabAudio('x',6,i+1,this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab6.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()"><span class="mufradat-audio-label">🔊 Dengarkan</span><audio class="mufradat-audio" controls preload="none" playsinline src="${SIBER_AUDIO_BASE}x/unit-06/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3"></audio></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
   </div>
   <div class="dars-section">
     <h3>Latihan cepat</h3>
@@ -3452,7 +3468,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <section class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata Wisata</h3><span class="muted">Ketuk kartu untuk melihat arti. Gunakan tombol suara untuk latihan pelafalan.</span></div><span class="progress-chip">${vocab11Unit1.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab11Unit1.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();playVocabAudio('xi',1,i+1,this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab11Unit1.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()"><span class="mufradat-audio-label">🔊 Dengarkan</span><audio class="mufradat-audio" controls preload="none" playsinline src="${SIBER_AUDIO_BASE}xi/unit-01/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3"></audio></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
     <div class="mini-task"><h4>Latihan cepat</h4><p class="arabic">أَيُّ كَلِمَةٍ مَعْنَاهَا «تذاكر السفر»؟</p><button class="btn" onclick="quickAnswer(this,false)">غَارٌ</button> <button class="btn" onclick="quickAnswer(this,true)">تَذْكِرَةٌ</button> <button class="btn" onclick="quickAnswer(this,false)">فِرَاشٌ</button><p id="quickFeedback" class="feedback"></p></div>
   </section>
 </div>
@@ -3588,7 +3604,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <section class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kesehatan</h3><span class="muted">Ketuk kartu untuk melihat arti dan tekan suara untuk berlatih pelafalan.</span></div><span class="progress-chip">${vocab11Unit2.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab11Unit2.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();playVocabAudio('xi',2,i+1,this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab11Unit2.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()"><span class="mufradat-audio-label">🔊 Dengarkan</span><audio class="mufradat-audio" controls preload="none" playsinline src="${SIBER_AUDIO_BASE}xi/unit-02/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3"></audio></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
     <div class="mini-task"><h4>Latihan cepat</h4><p class="arabic">أَيْنَ يَشْتَرِي الْمَرِيضُ الدَّوَاءَ؟</p><button class="btn" onclick="quickAnswer(this,false)">فِي الْمَلْعَبِ</button> <button class="btn" onclick="quickAnswer(this,true)">فِي الصَّيْدَلِيَّةِ</button> <button class="btn" onclick="quickAnswer(this,false)">فِي الْفَصْلِ</button><p id="quickFeedback" class="feedback"></p></div>
   </section>
 </div>
@@ -3771,7 +3787,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <section class="dars-section">
     <div class="reading-title"><div><h3>🃏 الْمُفْرَدَاتُ الْجَدِيدَةُ</h3><span class="muted">Ketuk kartu untuk membuka arti; gunakan tombol suara untuk latihan pelafalan.</span></div><span class="progress-chip">${vocab11Unit3.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab11Unit3.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();playVocabAudio('xi',3,i+1,this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab11Unit3.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()"><span class="mufradat-audio-label">🔊 Dengarkan</span><audio class="mufradat-audio" controls preload="none" playsinline src="${SIBER_AUDIO_BASE}xi/unit-03/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3"></audio></div></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
     <div class="mini-task"><div><h4>Latihan cepat</h4><p class="arabic">أَيْنَ يَقِفُ الْحُجَّاجُ فِي الْيَوْمِ التَّاسِعِ مِنْ ذِي الْحِجَّةِ؟</p><button class="btn" onclick="quickAnswer3(this,false)">فِي مِنًى</button> <button class="btn" onclick="quickAnswer3(this,true)">فِي عَرَفَةَ</button> <button class="btn" onclick="quickAnswer3(this,false)">فِي الْمَدِينَةِ</button><p id="quickFeedback3" class="feedback" aria-live="polite"></p></div></div>
   </section>
 </div>
@@ -3960,7 +3976,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <section class="dars-section">
     <div class="reading-title"><div><h3>🃏 الْمُفْرَدَاتُ الْجَدِيدَةُ</h3><span class="muted">Ketuk kartu untuk membuka arti; tekan tombol suara untuk pelafalan.</span></div><span class="progress-chip">${vocab11Unit4.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab11Unit4.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" onclick="event.stopPropagation();playVocabAudio('xi',4,i+1,this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab11Unit4.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()"><span class="mufradat-audio-label">🔊 Dengarkan</span><audio class="mufradat-audio" controls preload="none" playsinline src="${SIBER_AUDIO_BASE}xi/unit-04/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3"></audio></div></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
     <div class="mini-task"><div><h4 class="arabic">تَدْرِيبٌ سَرِيعٌ</h4><p class="arabic">أَيْنَ يَتَعَبَّدُ الْمُسْلِمُ؟</p><button class="btn" onclick="quickAnswer4(this,true)">فِي الْمَسْجِدِ</button> <button class="btn" onclick="quickAnswer4(this,false)">فِي الْكَنِيسَةِ</button> <button class="btn" onclick="quickAnswer4(this,false)">فِي فِيهَارَا</button><p id="quickFeedback4" class="feedback arabic" aria-live="polite"></p></div></div>
   </section>
   <section class="dars-section">
