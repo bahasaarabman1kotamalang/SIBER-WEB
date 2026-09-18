@@ -6868,7 +6868,16 @@ body.innerHTML='<div class="role-page-grid">'+cards.map(function(c){return '<div
     if(homeBtn)homeBtn.style.display=has("home")?"":"none"; if(kelasBtn)kelasBtn.style.display=has("kelas")?"":"none"; if(quizBtn)quizBtn.style.display=""; if(progBtn)progBtn.style.display=has("progres")?"":"none"; if(assBtn)assBtn.style.display=has("penilaian")?"":"none";
   }
   // Keep the original site navigation before wrapping it with role permissions.
-  var originalPage = (typeof window.page === "function") ? window.page : null;
+  var originalPage = (typeof window.page === "function") ? window.page : function(id){
+    if(window.stopAudioPlayback) window.stopAudioPlayback();
+    if(window.stopSpeech) window.stopSpeech();
+    document.querySelectorAll(".page").forEach(function(x){x.classList.remove("on")});
+    var target=document.getElementById(id);
+    if(!target)return;
+    target.classList.add("on");
+    window.scrollTo(0,0);
+    if(id==="kuis" && typeof window.quiz==="function") window.quiz();
+  };
   window.page=function(id){
     var map={home:"home",kelas:"kelas",progres:"progres",roleDashboard:"dashboard",manajemenAkun:"akun"};
     if(id==="penilaian") {if(!has("penilaian")){return deny("Penilaian Harian")}window.location.href="https://bahasaarabman1kotamalang.github.io/cbt/";return}
