@@ -540,6 +540,7 @@
       .audio-btn {
         margin-top: 10px;
       }
+      .audio-btn.audio-playing,.btn.audio-playing{opacity:.88;}
       .progress-chip {
         display: inline-flex;
         align-items: center;
@@ -686,8 +687,7 @@
   window.addEventListener('pagehide', function(){ document.querySelectorAll('audio.mufradat-audio').forEach(function(a){ try{a.pause(); a.currentTime=0;}catch(_){} }); });
 })();
 </script>
- /* Fixed MP3 audio state */
-.audio-btn.audio-playing,.btn.audio-playing{opacity:.88;}
+
 </style>
     <style>
       :root {
