@@ -1366,6 +1366,7 @@
         ],
       };
       function page(id) {
+        if (window.stopAudioPlayback) window.stopAudioPlayback();
         if (window.stopSpeech) window.stopSpeech();
         document.querySelectorAll(".page").forEach((x) => x.classList.remove("on"));
         const target = document.getElementById(id);
@@ -1375,6 +1376,7 @@
         if (id === "kuis" && typeof quiz === "function") quiz();
       }
       function kelas(g, b) {
+        if (window.stopAudioPlayback) window.stopAudioPlayback();
         document
           .querySelectorAll(".tabs button")
           .forEach((x) => x.classList.remove("on"));
@@ -1867,6 +1869,7 @@
 
         window.playAudio = playAudio;
         window.stopAllAudio = stopAllAudio;
+        window.stopAudioPlayback = stopAllAudio;
 
         // Tombol lama yang masih memanggil speak() tidak memakai TTS perangkat.
         // Hanya audio MP3 yang tersedia di arsip yang digunakan untuk konsistensi suara.
@@ -3984,12 +3987,12 @@
     </div>
   </section>
   <section class="dars-section">
-    <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ ٢ — الْحِوَارُ عَنِ الْعِبَادَةِ</h3><span class="muted">Materi istima tambahan berdasarkan الحوار ٢ pada file BA XI_4.</span></div><button class="btn primary" onclick="playAudio('audio/xi/unit-04/hiwar/hiwar-01.mp3', this)">▶ Putar</button></div>
+    <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ ٢ — الْحِوَارُ عَنِ الْعِبَادَةِ</h3><span class="muted">Materi istima tambahan berdasarkan الحوار ٢ pada file BA XI_4.</span></div><button class="btn primary" onclick="playAudio('audio/xi/unit-04/istima/istima-02.mp3', this)">▶ Putar</button></div>
     <div id="d11u4Istima2" class="audio-script rtlbox">مَرْوَانُ: نَحْنُ الْآنَ فِي مَكَانِ الْعِبَادَةِ، هَلْ عِنْدَكِ صَدِيقٌ غَيْرُ مُسْلِمٍ؟ أَنِيسَةُ: نَعَمْ، عِنْدِي صَدِيقٌ بُوذِيٌّ، هُوَ فِي سُورَابَايَا. مَرْوَانُ: أَيْنَ يَتَعَبَّدُ صَدِيقُكِ؟ أَنِيسَةُ: هُوَ يَتَعَبَّدُ فِي فِيهَارَا. مَرْوَانُ: كَيْفَ تُعَامِلِينَ صَدِيقَكِ الْبُوذِيَّ؟ أَنِيسَةُ: أَحْتَرِمُهُ احْتِرَامًا جَيِّدًا، وَأُشَارِكُهُ فِي الْمُعَامَلَةِ الِاجْتِمَاعِيَّةِ وَلَا فِي الدِّينِيَّةِ.</div>
     <div class="mini-task"><div><h4 class="arabic">فَهْمُ الْمَسْمُوعِ</h4><p class="arabic">أَيْنَ يَتَعَبَّدُ صَدِيقُ أَنِيسَةَ؟</p><input id="d11u4Istima2Q" class="answer-input arabic" placeholder="اكتب الجواب"><button class="btn primary" onclick="cekFlexible('d11u4Istima2Q',['في فيحارا','فِي فِيهَارَا','في فيْهَارا','فيهارا'],'d11u4Istima2Fb')">Periksa</button><p id="d11u4Istima2Fb" class="feedback"></p></div><div><h4 class="arabic">سُؤَالٌ آخَرُ</h4><p class="arabic">كَيْفَ تُعَامِلُ أَنِيسَةُ صَدِيقَهَا؟</p><p class="muted">Jawab secara lisan dengan kalimat sederhana.</p></div></div>
   </section>
   <section class="dars-section">
-    <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ ٣ — نَصٌّ عَنِ التَّسَامُحِ</h3><span class="muted">Gunakan teks qiraah sebagai latihan menyimak tingkat lanjut.</span></div><button class="btn primary" onclick="playAudio('audio/xi/unit-04/istima/istima-02.mp3', this)">▶ Putar</button></div>
+    <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ ٣ — نَصٌّ عَنِ التَّسَامُحِ</h3><span class="muted">Gunakan teks qiraah sebagai latihan menyimak tingkat lanjut.</span></div><button class="btn primary" onclick="playAudio('audio/xi/unit-04/istima/istima-03.mp3', this)">▶ Putar</button></div>
     <div id="d11u4Istima3" class="audio-script rtlbox">خَالِدٌ تَاجِرٌ مُسْلِمٌ، هُوَ يَسْكُنُ فِي جُومْبَانْجَ، بَيْتُهُ قَرِيبٌ مِنَ الْمَسْجِدِ، يَذْهَبُ خَالِدٌ إِلَى الْمَسْجِدِ كُلَّ يَوْمٍ لِأَدَاءِ صَلَاةِ الْفَرْضِ. هُوَ مُسْلِمٌ مُطِيعٌ. وَلَهُ جَارٌ اسْمُهُ سُونَارْطُو، هُوَ جَارٌ بُوذِيٌّ، يَتَعَبَّدُ فِي مَعْبَدٍ بَعِيدٍ عَنْ بَيْتِهِ يُسَمَّى مَعْبَدَ هُوكْ لِيُونْج كِيُونْج. وَلَهُ جَارٌ آخَرُ اسْمُهُ فَرَانْسِيسْكُوس، هُوَ جَارٌ بُرُوتِسْتَانْتِيٌّ يَتَعَبَّدُ فِي الْكَنِيسَةِ. يَسْكُنُ خَالِدٌ وَجَارَاهُ فِي سَلَامٍ وَتَسَامُحٍ، وَيَحْتَرِمُ بَعْضُهُمْ بَعْضًا.</div>
     <div class="mini-task"><div><h4 class="arabic">فَهْمُ الْمَسْمُوعِ</h4><p class="arabic">مَنْ هُوَ جَارُ خَالِدٍ الْبُوذِيُّ؟</p><input id="d11u4Istima3Q" class="answer-input arabic" placeholder="اكتب الجواب"><button class="btn primary" onclick="cekFlexible('d11u4Istima3Q',['سونارطو','سُونَارْطُو'],'d11u4Istima3Fb')">Periksa</button><p id="d11u4Istima3Fb" class="feedback"></p></div><div><h4 class="arabic">اسْتَمِعْ وَاذْكُرْ</h4><p class="muted">Sebutkan tiga tokoh yang terdengar dalam teks.</p></div></div>
   </section>
@@ -3997,7 +4000,7 @@
 
 <div id="panel-hiwar" class="lesson-panel">
   <section class="dars-section">
-    <div class="reading-title"><div><h3>💬 الْحِوَارُ — تَنَوُّعُ الْأَدْيَانِ</h3><span class="muted">Baca bergantian sebagai Ruqayyah dan Ibrahim.</span></div><button class="btn" onclick="playAudio('audio/xi/unit-04/hiwar/hiwar-02.mp3', this)">🔊 Dengarkan</button></div>
+    <div class="reading-title"><div><h3>💬 الْحِوَارُ — تَنَوُّعُ الْأَدْيَانِ</h3><span class="muted">Baca bergantian sebagai Ruqayyah dan Ibrahim.</span></div><button class="btn" onclick="playAudio('audio/xi/unit-04/hiwar/hiwar-01.mp3', this)">🔊 Dengarkan</button></div>
     <div id="d11u4Hiwar" class="dialogue rtlbox">
       <b>رُقَيَّةُ:</b> السَّلَامُ عَلَيْكُمْ يَا إِبْرَاهِيمُ، كَيْفَ حَالُكَ الْيَوْمَ؟<br>
       <b>إِبْرَاهِيمُ:</b> وَعَلَيْكُمُ السَّلَامُ يَا رُقَيَّةُ، الْحَمْدُ لِلَّهِ. وَأَنْتِ كَيْفَ الْحَالُ؟<br>
@@ -4079,6 +4082,7 @@
       }
 
       function openLesson(g, i) {
+        if (window.stopAudioPlayback) window.stopAudioPlayback();
         let t = topics[g][i];
         if (g === "X" && i === 0) {
           document.getElementById("detailBox").innerHTML = dars1();
@@ -4176,6 +4180,7 @@
       }
 
       function lessonTab(id, btn) {
+        if (window.stopAudioPlayback) window.stopAudioPlayback();
         if (window.stopSpeech) window.stopSpeech();
         document
           .querySelectorAll(".lesson-panel")
