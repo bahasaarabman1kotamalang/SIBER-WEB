@@ -2982,7 +2982,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <div class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata Digital</h3><span class="muted">Ketuk kartu untuk melihat arti. Gunakan tombol suara untuk latihan pelafalan.</span></div><span class="progress-chip">${vocab12Unit1.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab12Unit1.map((v) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" type="button" data-mufradat-text="${v[0]}" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab12Unit1.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button type="button" class="btn audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/xii/unit-01/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
   </div>
   <div class="dars-section">
     <h3>🗂️ Peta Kosakata</h3>
@@ -3158,7 +3158,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <div class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Tokoh dan Keilmuan</h3><span class="muted">Ketuk kartu untuk melihat arti dan tekan suara untuk berlatih pelafalan.</span></div><span class="progress-chip">${vocab12Unit2.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab12Unit2.map((v) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" type="button" data-mufradat-text="${v[0]}" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab12Unit2.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button type="button" class="btn audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/xii/unit-02/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
   </div>
   <div class="dars-section">
     <h3>Latihan cepat</h3>
@@ -3319,7 +3319,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <section class="dars-section">
     <div class="reading-title"><div><h3>🃏 الْمُفْرَدَاتُ</h3><span class="muted">Ketuk kartu untuk membuka arti dan tekan suara untuk latihan pelafalan.</span></div><span class="progress-chip">${vocab12Unit3.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab12Unit3.map((v) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button class="btn audio-btn" type="button" data-mufradat-text="${v[0]}" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab12Unit3.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button type="button" class="btn audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/xii/unit-03/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
     <div class="mini-task"><div><h4 class="arabic">تَدْرِيبٌ سَرِيعٌ</h4><p class="arabic">مَنْ يَرْأَسُ الْكُلِّيَّةَ؟</p><button class="btn" onclick="quickAnswer12Unit3(this,false)">مُدِيرُ الْجَامِعَةِ</button> <button class="btn" onclick="quickAnswer12Unit3(this,true)">عَمِيدُ الْكُلِّيَّةِ</button> <button class="btn" onclick="quickAnswer12Unit3(this,false)">الطَّالِبُ</button><p id="quickFeedback12Unit3" class="feedback arabic" aria-live="polite"></p></div></div>
   </section>
 </div>
@@ -6922,7 +6922,7 @@ body.innerHTML='<div class="role-page-grid">'+cards.map(function(c){return '<div
   });
 })();
 </script>
-</body>
+\n<script id="siber-xii-mufradat-mp3-final">\n(function(){\n  function reset(btn, label){\n    if(!btn) return;\n    btn.disabled=false;\n    btn.classList.remove('audio-playing','playing');\n    btn.textContent=label || '🔊 Dengarkan';\n  }\n  window.playMufradatAudio=function(btn){\n    if(!btn) return;\n    var src=btn.getAttribute('data-audio-src') || '';\n    if(!src){ reset(btn,'▶ Coba lagi'); return; }\n    if(typeof window.playAudio === 'function'){\n      window.playAudio(src,btn);\n      return;\n    }\n    reset(btn,'▶ Coba lagi');\n    console.warn('SIBER-WEB: fungsi playAudio belum tersedia.');\n  };\n})();\n</script>\n</body>
 </html>
 <style id="mufrodat-audio-final-style">
 .mufrodat-audio-btn{width:min(100%,230px);min-height:40px;border:0;border-radius:12px;padding:10px 14px;font-weight:800;cursor:pointer;background:#083f35;color:#fff;touch-action:manipulation;}
