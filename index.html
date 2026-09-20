@@ -6933,29 +6933,22 @@ body.innerHTML='<div class="role-page-grid">'+cards.map(function(c){return '<div
 (function(){
   var currentUtterance = null;
   var currentButton = null;
-  var voiceTimer = null;
 
   function getArabicVoices(){
     if(!('speechSynthesis' in window)) return [];
-    var voices = speechSynthesis.getVoices() || [];
-    return voices.filter(function(v){
+    return (speechSynthesis.getVoices() || []).filter(function(v){
       return /^ar(?:[-_]|$)/i.test(v.lang || '');
     });
   }
 
   function chooseArabicVoice(){
     var voices = getArabicVoices();
-    if(!voices.length) return null;
-
-    // Prioritaskan voice Arab yang umum tersedia di Windows/Edge/Chrome.
-    var preferred = [
-      /ar-SA/i, /ar-EG/i, /ar-AE/i, /ar-ID/i, /ar-XA/i
-    ];
+    var preferred = [/ar-SA/i, /ar-EG/i, /ar-AE/i, /ar-ID/i, /ar-XA/i];
     for(var i=0;i<preferred.length;i++){
       var found = voices.find(function(v){ return preferred[i].test(v.lang || ''); });
       if(found) return found;
     }
-    return voices[0];
+    return voices[0] || null;
   }
 
   function restoreButton(btn){
@@ -6966,110 +6959,64 @@ body.innerHTML='<div class="role-page-grid">'+cards.map(function(c){return '<div
   }
 
   function stopMufradatAudio(){
-    if(voiceTimer){ clearTimeout(voiceTimer); voiceTimer=null; }
     if('speechSynthesis' in window){
-      try{
-        speechSynthesis.cancel();
-        speechSynthesis.resume();
-      }catch(e){}
+      try{ speechSynthesis.cancel(); speechSynthesis.resume(); }catch(e){}
     }
     restoreButton(currentButton);
-    currentButton=null;
-    currentUtterance=null;
+    currentButton = null;
+    currentUtterance = null;
   }
 
   function speakArabic(text, btn){
     text = String(text || '').replace(/\s+/g,' ').trim();
     if(!text || !('speechSynthesis' in window)){
-      if(btn) btn.textContent='▶ Coba lagi';
+      if(btn) btn.textContent = '▶ Coba lagi';
       return;
     }
-
     stopMufradatAudio();
-
+    if(typeof window.stopAllAudio === 'function') window.stopAllAudio();
     currentButton = btn;
-    if(btn){
-      btn.disabled = false;
-      btn.classList.add('playing');
-      btn.textContent = '⏳ Memuat suara...';
-    }
-
+    if(btn){ btn.disabled = false; btn.classList.add('playing'); btn.textContent = '⏳ Memuat suara...'; }
     var utter = new SpeechSynthesisUtterance(text);
     currentUtterance = utter;
-
     var voice = chooseArabicVoice();
     utter.lang = voice ? voice.lang : 'ar-SA';
     if(voice) utter.voice = voice;
     utter.rate = 0.78;
     utter.pitch = 1;
     utter.volume = 1;
-
-    utter.onstart = function(){
-      if(btn){
-        btn.classList.add('playing');
-        btn.textContent = '⏸ Sedang diputar';
-      }
-    };
-
+    utter.onstart = function(){ if(btn) btn.textContent = '⏸ Sedang diputar'; };
     utter.onend = function(){
-      if(utter === currentUtterance){
-        restoreButton(btn);
-        currentUtterance=null;
-        currentButton=null;
-      }
+      if(utter === currentUtterance){ restoreButton(btn); currentUtterance = null; currentButton = null; }
     };
-
     utter.onerror = function(){
-      if(utter !== currentUtterance) return;
-      restoreButton(btn);
-      currentUtterance=null;
-      currentButton=null;
-      console.warn('SIBER-WEB: TTS Arab gagal diputar.');
+      if(utter === currentUtterance){ restoreButton(btn); currentUtterance = null; currentButton = null; }
     };
-
-    // Beberapa browser memerlukan voiceschanged sebelum voice tersedia.
-    // Namun speechSynthesis.speak() tetap dipanggil langsung dari event klik.
-    try{
-      speechSynthesis.speak(utter);
-      speechSynthesis.resume();
-    }catch(e){
-      restoreButton(btn);
-      currentUtterance=null;
-      currentButton=null;
-      console.warn('SIBER-WEB: speechSynthesis error', e);
-    }
+    try{ speechSynthesis.speak(utter); speechSynthesis.resume(); }
+    catch(e){ restoreButton(btn); currentUtterance = null; currentButton = null; }
   }
 
   window.playMufradatAudio = function(btn){
     if(!btn) return;
-
-    var text = btn.getAttribute('data-mufradat-text') || '';
-    if(!text) return;
-
-    // Klik tombol yang sedang berbunyi = berhenti.
-    if(currentButton === btn && currentUtterance){
+    var src = btn.getAttribute('data-audio-src') || '';
+    if(src){
       stopMufradatAudio();
+      if(typeof window.playAudio === 'function'){
+        window.playAudio(src, btn);
+      }else{
+        btn.textContent = '▶ Pemutar MP3 belum tersedia';
+        console.warn('SIBER-WEB: fungsi playAudio belum tersedia.');
+      }
       return;
     }
-
+    var text = btn.getAttribute('data-mufradat-text') || '';
     speakArabic(text, btn);
   };
 
   window.stopMufradatAudio = stopMufradatAudio;
-
-  // Muat daftar voice sedini mungkin.
   if('speechSynthesis' in window){
-    try{
-      speechSynthesis.getVoices();
-      speechSynthesis.onvoiceschanged = function(){
-        speechSynthesis.getVoices();
-      };
-    }catch(e){}
+    try{ speechSynthesis.getVoices(); }catch(e){}
   }
-
-  document.addEventListener('visibilitychange', function(){
-    if(document.hidden) stopMufradatAudio();
-  });
   window.addEventListener('pagehide', stopMufradatAudio);
 })();
 </script>
