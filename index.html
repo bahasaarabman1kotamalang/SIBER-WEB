@@ -1224,6 +1224,11 @@
   line-height: inherit;
 }
 </style>
+
+<style id="unit1-mufradat-sequence-style">
+.mufradat-sequence-controls{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:0 0 14px;}
+.mufradat-sequence-status{font-size:14px;font-weight:700;min-height:1.4em;}
+</style>
 </head>
   <body>
     <header>
@@ -1961,7 +1966,7 @@
 <div id="panel-mufradat" class="lesson-panel">
 <div class="dars-section">
 <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti. Gunakan tombol suara untuk latihan pelafalan.</span></div><span class="progress-chip">${vocab.length} kosakata</span></div>
-<div class="vocab-grid">${vocab.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
+<div class="vocab-grid">${vocab.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/x/unit-01/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
 </div>
 </div>
 
@@ -2108,7 +2113,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <div class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti dan gunakan tombol 🔊 untuk mendengarkan pelafalan.</span></div><span class="progress-chip">${vocab2.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab2.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab2.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/x/unit-02/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
   </div>
 </div>
 
@@ -2307,7 +2312,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <div class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti; gunakan tombol suara untuk menirukan pelafalan.</span></div><span class="progress-chip">${vocab3.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab3.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab3.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/x/unit-03/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
   </div>
 </div>
 
@@ -2473,7 +2478,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <div class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti dan gunakan tombol suara untuk berlatih pelafalan.</span></div><span class="progress-chip">${vocab4.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab4.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab4.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/x/unit-04/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
   </div>
   <div class="dars-section">
     <h3>Latihan cepat</h3>
@@ -2646,7 +2651,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <div class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk membalik arti; tekan suara untuk berlatih pelafalan.</span></div><span class="progress-chip">${vocab5.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab5.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab5.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/x/unit-05/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
   </div>
   <div class="dars-section">
     <h3>Latihan cepat</h3>
@@ -2809,7 +2814,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <div class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk membalik arti; tekan suara untuk berlatih pelafalan.</span></div><span class="progress-chip">${vocab6.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab6.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab6.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/x/unit-06/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
   </div>
   <div class="dars-section">
     <h3>Latihan cepat</h3>
@@ -2982,7 +2987,8 @@
 <div id="panel-mufradat" class="lesson-panel">
   <div class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata Digital</h3><span class="muted">Ketuk kartu untuk melihat arti. Gunakan tombol suara untuk latihan pelafalan.</span></div><span class="progress-chip">${vocab12Unit1.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab12Unit1.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button type="button" class="btn audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/xii/unit-01/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="mufradat-sequence-controls"><button type="button" class="btn audio-btn" onclick="event.stopPropagation();window.toggleUnit1MufradatPlaylist(this)">▶ Putar ${vocab12Unit1.length} kata berurutan</button><span id="unit1-mufradat-status" class="mufradat-sequence-status" aria-live="polite"></span></div>
+    <div id="unit1-mufradat-grid" class="vocab-grid">${vocab12Unit1.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button type="button" class="btn audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/xii/unit-01/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
   </div>
   <div class="dars-section">
     <h3>🗂️ Peta Kosakata</h3>
@@ -3474,7 +3480,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <section class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata Wisata</h3><span class="muted">Ketuk kartu untuk melihat arti. Gunakan tombol suara untuk latihan pelafalan.</span></div><span class="progress-chip">${vocab11Unit1.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab11Unit1.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab11Unit1.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/xi/unit-01/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
     <div class="mini-task"><h4>Latihan cepat</h4><p class="arabic">أَيُّ كَلِمَةٍ مَعْنَاهَا «تذاكر السفر»؟</p><button class="btn" onclick="quickAnswer(this,false)">غَارٌ</button> <button class="btn" onclick="quickAnswer(this,true)">تَذْكِرَةٌ</button> <button class="btn" onclick="quickAnswer(this,false)">فِرَاشٌ</button><p id="quickFeedback" class="feedback"></p></div>
   </section>
 </div>
@@ -3610,7 +3616,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <section class="dars-section">
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kesehatan</h3><span class="muted">Ketuk kartu untuk melihat arti dan tekan suara untuk berlatih pelafalan.</span></div><span class="progress-chip">${vocab11Unit2.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab11Unit2.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab11Unit2.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/xi/unit-02/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
     <div class="mini-task"><h4>Latihan cepat</h4><p class="arabic">أَيْنَ يَشْتَرِي الْمَرِيضُ الدَّوَاءَ؟</p><button class="btn" onclick="quickAnswer(this,false)">فِي الْمَلْعَبِ</button> <button class="btn" onclick="quickAnswer(this,true)">فِي الصَّيْدَلِيَّةِ</button> <button class="btn" onclick="quickAnswer(this,false)">فِي الْفَصْلِ</button><p id="quickFeedback" class="feedback"></p></div>
   </section>
 </div>
@@ -3793,7 +3799,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <section class="dars-section">
     <div class="reading-title"><div><h3>🃏 الْمُفْرَدَاتُ الْجَدِيدَةُ</h3><span class="muted">Ketuk kartu untuk membuka arti; gunakan tombol suara untuk latihan pelafalan.</span></div><span class="progress-chip">${vocab11Unit3.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab11Unit3.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab11Unit3.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/xi/unit-03/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
     <div class="mini-task"><div><h4>Latihan cepat</h4><p class="arabic">أَيْنَ يَقِفُ الْحُجَّاجُ فِي الْيَوْمِ التَّاسِعِ مِنْ ذِي الْحِجَّةِ؟</p><button class="btn" onclick="quickAnswer3(this,false)">فِي مِنًى</button> <button class="btn" onclick="quickAnswer3(this,true)">فِي عَرَفَةَ</button> <button class="btn" onclick="quickAnswer3(this,false)">فِي الْمَدِينَةِ</button><p id="quickFeedback3" class="feedback" aria-live="polite"></p></div></div>
   </section>
 </div>
@@ -3982,7 +3988,7 @@
 <div id="panel-mufradat" class="lesson-panel">
   <section class="dars-section">
     <div class="reading-title"><div><h3>🃏 الْمُفْرَدَاتُ الْجَدِيدَةُ</h3><span class="muted">Ketuk kartu untuk membuka arti; tekan tombol suara untuk pelafalan.</span></div><span class="progress-chip">${vocab11Unit4.length} kosakata</span></div>
-    <div class="vocab-grid">${vocab11Unit4.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
+    <div class="vocab-grid">${vocab11Unit4.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/xi/unit-04/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
     <div class="mini-task"><div><h4 class="arabic">تَدْرِيبٌ سَرِيعٌ</h4><p class="arabic">أَيْنَ يَتَعَبَّدُ الْمُسْلِمُ؟</p><button class="btn" onclick="quickAnswer4(this,true)">فِي الْمَسْجِدِ</button> <button class="btn" onclick="quickAnswer4(this,false)">فِي الْكَنِيسَةِ</button> <button class="btn" onclick="quickAnswer4(this,false)">فِي فِيهَارَا</button><p id="quickFeedback4" class="feedback arabic" aria-live="polite"></p></div></div>
   </section>
   <section class="dars-section">
@@ -6922,9 +6928,28 @@ body.innerHTML='<div class="role-page-grid">'+cards.map(function(c){return '<div
   });
 })();
 </script>
-\n<script id="siber-xii-mufradat-mp3-final">\n(function(){\n  function reset(btn, label){\n    if(!btn) return;\n    btn.disabled=false;\n    btn.classList.remove('audio-playing','playing');\n    btn.textContent=label || '🔊 Dengarkan';\n  }\n  window.playMufradatAudio=function(btn){\n    if(!btn) return;\n    var src=btn.getAttribute('data-audio-src') || '';\n    if(!src){ reset(btn,'▶ Coba lagi'); return; }\n    if(typeof window.playAudio === 'function'){\n      window.playAudio(src,btn);\n      return;\n    }\n    reset(btn,'▶ Coba lagi');\n    console.warn('SIBER-WEB: fungsi playAudio belum tersedia.');\n  };\n})();\n</script>\n</body>
-</html>
-<style id="mufrodat-audio-final-style">
+
+<script id="siber-xii-mufradat-mp3-final">
+(function(){
+  function reset(btn, label){
+    if(!btn) return;
+    btn.disabled=false;
+    btn.classList.remove('audio-playing','playing');
+    btn.textContent=label || '🔊 Dengarkan';
+  }
+  window.playMufradatAudio=function(btn){
+    if(!btn) return;
+    var src=btn.getAttribute('data-audio-src') || '';
+    if(!src){ reset(btn,'▶ Coba lagi'); return; }
+    if(typeof window.playAudio === 'function'){
+      window.playAudio(src,btn);
+      return;
+    }
+    reset(btn,'▶ Coba lagi');
+    console.warn('SIBER-WEB: fungsi playAudio belum tersedia.');
+  };
+})();
+</script>\n<style id="mufrodat-audio-final-style">
 .mufrodat-audio-btn{width:min(100%,230px);min-height:40px;border:0;border-radius:12px;padding:10px 14px;font-weight:800;cursor:pointer;background:#083f35;color:#fff;touch-action:manipulation;}
 .mufrodat-audio-btn.playing{opacity:.85;}
 @media(max-width:600px){.mufrodat-audio-btn{width:100%;min-height:44px;font-size:14px;}}
@@ -6933,22 +6958,29 @@ body.innerHTML='<div class="role-page-grid">'+cards.map(function(c){return '<div
 (function(){
   var currentUtterance = null;
   var currentButton = null;
+  var voiceTimer = null;
 
   function getArabicVoices(){
     if(!('speechSynthesis' in window)) return [];
-    return (speechSynthesis.getVoices() || []).filter(function(v){
+    var voices = speechSynthesis.getVoices() || [];
+    return voices.filter(function(v){
       return /^ar(?:[-_]|$)/i.test(v.lang || '');
     });
   }
 
   function chooseArabicVoice(){
     var voices = getArabicVoices();
-    var preferred = [/ar-SA/i, /ar-EG/i, /ar-AE/i, /ar-ID/i, /ar-XA/i];
+    if(!voices.length) return null;
+
+    // Prioritaskan voice Arab yang umum tersedia di Windows/Edge/Chrome.
+    var preferred = [
+      /ar-SA/i, /ar-EG/i, /ar-AE/i, /ar-ID/i, /ar-XA/i
+    ];
     for(var i=0;i<preferred.length;i++){
       var found = voices.find(function(v){ return preferred[i].test(v.lang || ''); });
       if(found) return found;
     }
-    return voices[0] || null;
+    return voices[0];
   }
 
   function restoreButton(btn){
@@ -6959,45 +6991,84 @@ body.innerHTML='<div class="role-page-grid">'+cards.map(function(c){return '<div
   }
 
   function stopMufradatAudio(){
+    if(voiceTimer){ clearTimeout(voiceTimer); voiceTimer=null; }
     if('speechSynthesis' in window){
-      try{ speechSynthesis.cancel(); speechSynthesis.resume(); }catch(e){}
+      try{
+        speechSynthesis.cancel();
+        speechSynthesis.resume();
+      }catch(e){}
     }
     restoreButton(currentButton);
-    currentButton = null;
-    currentUtterance = null;
+    currentButton=null;
+    currentUtterance=null;
   }
 
   function speakArabic(text, btn){
     text = String(text || '').replace(/\s+/g,' ').trim();
     if(!text || !('speechSynthesis' in window)){
-      if(btn) btn.textContent = '▶ Coba lagi';
+      if(btn) btn.textContent='▶ Coba lagi';
       return;
     }
+
     stopMufradatAudio();
-    if(typeof window.stopAllAudio === 'function') window.stopAllAudio();
+
     currentButton = btn;
-    if(btn){ btn.disabled = false; btn.classList.add('playing'); btn.textContent = '⏳ Memuat suara...'; }
+    if(btn){
+      btn.disabled = false;
+      btn.classList.add('playing');
+      btn.textContent = '⏳ Memuat suara...';
+    }
+
     var utter = new SpeechSynthesisUtterance(text);
     currentUtterance = utter;
+
     var voice = chooseArabicVoice();
     utter.lang = voice ? voice.lang : 'ar-SA';
     if(voice) utter.voice = voice;
     utter.rate = 0.78;
     utter.pitch = 1;
     utter.volume = 1;
-    utter.onstart = function(){ if(btn) btn.textContent = '⏸ Sedang diputar'; };
+
+    utter.onstart = function(){
+      if(btn){
+        btn.classList.add('playing');
+        btn.textContent = '⏸ Sedang diputar';
+      }
+    };
+
     utter.onend = function(){
-      if(utter === currentUtterance){ restoreButton(btn); currentUtterance = null; currentButton = null; }
+      if(utter === currentUtterance){
+        restoreButton(btn);
+        currentUtterance=null;
+        currentButton=null;
+      }
     };
+
     utter.onerror = function(){
-      if(utter === currentUtterance){ restoreButton(btn); currentUtterance = null; currentButton = null; }
+      if(utter !== currentUtterance) return;
+      restoreButton(btn);
+      currentUtterance=null;
+      currentButton=null;
+      console.warn('SIBER-WEB: TTS Arab gagal diputar.');
     };
-    try{ speechSynthesis.speak(utter); speechSynthesis.resume(); }
-    catch(e){ restoreButton(btn); currentUtterance = null; currentButton = null; }
+
+    // Beberapa browser memerlukan voiceschanged sebelum voice tersedia.
+    // Namun speechSynthesis.speak() tetap dipanggil langsung dari event klik.
+    try{
+      speechSynthesis.speak(utter);
+      speechSynthesis.resume();
+    }catch(e){
+      restoreButton(btn);
+      currentUtterance=null;
+      currentButton=null;
+      console.warn('SIBER-WEB: speechSynthesis error', e);
+    }
   }
 
   window.playMufradatAudio = function(btn){
     if(!btn) return;
+
+    // Gunakan MP3 tetap bila tersedia agar suara dan perpindahan kata konsisten lintas perangkat.
     var src = btn.getAttribute('data-audio-src') || '';
     if(src){
       stopMufradatAudio();
@@ -7005,19 +7076,157 @@ body.innerHTML='<div class="role-page-grid">'+cards.map(function(c){return '<div
         window.playAudio(src, btn);
       }else{
         btn.textContent = '▶ Pemutar MP3 belum tersedia';
-        console.warn('SIBER-WEB: fungsi playAudio belum tersedia.');
       }
       return;
     }
+
     var text = btn.getAttribute('data-mufradat-text') || '';
+    if(!text) return;
+
+    // Klik tombol yang sedang berbunyi = berhenti.
+    if(currentButton === btn && currentUtterance){
+      stopMufradatAudio();
+      return;
+    }
+
     speakArabic(text, btn);
   };
 
   window.stopMufradatAudio = stopMufradatAudio;
+
+  // Muat daftar voice sedini mungkin.
   if('speechSynthesis' in window){
-    try{ speechSynthesis.getVoices(); }catch(e){}
+    try{
+      speechSynthesis.getVoices();
+      speechSynthesis.onvoiceschanged = function(){
+        speechSynthesis.getVoices();
+      };
+    }catch(e){}
   }
+
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden) stopMufradatAudio();
+  });
   window.addEventListener('pagehide', stopMufradatAudio);
 })();
 </script>
 
+
+<script id="unit1-mufradat-sequence-player">
+(function(){
+  var sequenceAudio = null;
+  var sequenceTimer = null;
+  var sequenceButton = null;
+  var sequenceItems = [];
+  var sequenceIndex = 0;
+  var runId = 0;
+  var pauseBetweenWords = 400;
+  var originalPlayAudio = window.playAudio;
+  var originalStopAllAudio = window.stopAllAudio;
+
+  function statusNode(){ return document.getElementById('unit1-mufradat-status'); }
+  function setStatus(message){ var node=statusNode(); if(node) node.textContent=message || ''; }
+
+  function stopSequence(message){
+    runId++;
+    if(sequenceTimer){ clearTimeout(sequenceTimer); sequenceTimer=null; }
+    if(sequenceAudio){
+      try{ sequenceAudio.pause(); sequenceAudio.removeAttribute('src'); sequenceAudio.load(); }catch(e){}
+      sequenceAudio=null;
+    }
+    if(sequenceButton){
+      sequenceButton.textContent=sequenceButton.dataset.idleLabel || '▶ Putar berurutan';
+      sequenceButton.classList.remove('audio-playing');
+    }
+    sequenceButton=null;
+    sequenceItems=[];
+    sequenceIndex=0;
+    setStatus(message || '');
+  }
+
+  function playNext(currentRun){
+    if(currentRun!==runId) return;
+    if(sequenceIndex>=sequenceItems.length){
+      var total=sequenceItems.length;
+      stopSequence('Selesai: '+total+' kata.');
+      return;
+    }
+    var sourceButton=sequenceItems[sequenceIndex];
+    var source=sourceButton.getAttribute('data-audio-src');
+    var word=sourceButton.getAttribute('data-mufradat-text') || '';
+    setStatus('Kata '+(sequenceIndex+1)+' dari '+sequenceItems.length+': '+word);
+    var audio=new Audio(new URL(String(source || '').replace(/^\//,''), location.href).href);
+    audio.preload='auto';
+    audio.playsInline=true;
+    sequenceAudio=audio;
+    audio.addEventListener('ended',function(){
+      if(currentRun!==runId || audio!==sequenceAudio) return;
+      sequenceAudio=null;
+      sequenceIndex++;
+      if(sequenceIndex>=sequenceItems.length){
+        var total=sequenceItems.length;
+        stopSequence('Selesai: '+total+' kata.');
+      }else{
+        sequenceTimer=setTimeout(function(){ sequenceTimer=null; playNext(currentRun); },pauseBetweenWords);
+      }
+    },{once:true});
+    audio.addEventListener('error',function(){
+      if(currentRun===runId && audio===sequenceAudio){
+        stopSequence('Audio kata '+(sequenceIndex+1)+' gagal dimuat.');
+      }
+    },{once:true});
+    audio.play().catch(function(){
+      if(currentRun===runId && audio===sequenceAudio){
+        stopSequence('Audio kata '+(sequenceIndex+1)+' gagal diputar.');
+      }
+    });
+  }
+
+  window.toggleUnit1MufradatPlaylist=function(button){
+    if(sequenceButton===button && sequenceItems.length){
+      stopSequence('Urutan dihentikan.');
+      return;
+    }
+    stopSequence('');
+    if(typeof originalStopAllAudio==='function') originalStopAllAudio();
+    var grid=document.getElementById('unit1-mufradat-grid');
+    var items=grid ? Array.prototype.slice.call(grid.querySelectorAll('.audio-btn[data-audio-src]')) : [];
+    if(!items.length){ setStatus('Audio mufradat Unit 1 tidak ditemukan.'); return; }
+    sequenceItems=items;
+    sequenceIndex=0;
+    sequenceButton=button;
+    if(!button.dataset.idleLabel) button.dataset.idleLabel=button.textContent.trim();
+    button.classList.add('audio-playing');
+    button.textContent='⏹ Hentikan urutan';
+    runId++;
+    playNext(runId);
+  };
+
+  if(typeof originalPlayAudio==='function'){
+    window.playAudio=function(src,button){
+      stopSequence('');
+      return originalPlayAudio.call(this,src,button);
+    };
+  }
+  if(typeof originalStopAllAudio==='function'){
+    window.stopAllAudio=function(){
+      stopSequence('');
+      return originalStopAllAudio.apply(this,arguments);
+    };
+  }
+  document.addEventListener('visibilitychange',function(){ if(document.hidden) stopSequence(''); });
+  window.addEventListener('pagehide',function(){ stopSequence(''); });
+  window.addEventListener('beforeunload',function(){ stopSequence(''); });
+  window.addEventListener('hashchange',function(){ stopSequence(''); });
+  window.addEventListener('popstate',function(){ stopSequence(''); });
+  document.addEventListener('click',function(event){
+    var element=event.target && event.target.closest ? event.target.closest('a[href],button') : null;
+    if(!element) return;
+    if(element.classList.contains('audio-btn') || element.closest('.audio-btn')) return;
+    stopSequence('');
+  },true);
+})();
+</script>
+
+</body>
+</html>
