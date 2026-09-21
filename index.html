@@ -1229,6 +1229,757 @@
 .mufradat-sequence-controls{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:0 0 14px;}
 .mufradat-sequence-status{font-size:14px;font-weight:700;min-height:1.4em;}
 </style>
+
+<style id="siber-web-modern-ui-2026">
+/* =========================================================
+   SIBER-WEB MODERN UI 2026
+   Visual-only refresh: existing HTML, buttons, content,
+   navigation logic, audio logic and learning materials remain.
+   ========================================================= */
+
+:root{
+  --p:#087f68;
+  --primary:#087f68;
+  --p2:#063f39;
+  --g:#f2b84b;
+  --bg:#f5f7fb;
+  --ink:#17252d;
+  --muted:#687681;
+  --card:#ffffff;
+  --line:#e5e9ef;
+  --modern-blue:#5b5cf0;
+  --modern-cyan:#16b8a6;
+  --modern-orange:#ff9f43;
+  --modern-soft:#eef7f5;
+  --modern-shadow:0 18px 50px rgba(21,34,56,.10);
+  --modern-shadow-hover:0 24px 60px rgba(21,34,56,.16);
+}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:
+    radial-gradient(circle at 8% 0%, rgba(91,92,240,.07), transparent 26rem),
+    radial-gradient(circle at 95% 10%, rgba(22,184,166,.07), transparent 24rem),
+    linear-gradient(180deg,#f8f9fc 0%,#f3f6f8 100%) !important;
+  color:var(--ink);
+  font-family:Inter,"Plus Jakarta Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+}
+
+header{
+  background:rgba(255,255,255,.88) !important;
+  border-bottom:1px solid rgba(224,229,237,.85) !important;
+  box-shadow:0 8px 30px rgba(24,39,75,.06) !important;
+  backdrop-filter:blur(18px) saturate(150%);
+  -webkit-backdrop-filter:blur(18px) saturate(150%);
+}
+
+nav{
+  max-width:1220px;
+  padding:10px 18px !important;
+}
+
+.brand{
+  min-width:max-content;
+}
+
+.school-logo{
+  width:48px !important;
+  height:48px !important;
+  border-radius:15px !important;
+  background:linear-gradient(145deg,#fff,#eef5f2);
+  box-shadow:0 7px 18px rgba(8,127,104,.12);
+}
+
+.school-logo img{
+  width:43px !important;
+  height:43px !important;
+}
+
+.brand-title strong{
+  font-size:17px !important;
+  letter-spacing:-.2px;
+}
+
+.brand-title span{
+  font-size:11px !important;
+  font-weight:700;
+}
+
+.links{
+  gap:6px !important;
+  padding:4px !important;
+  border:1px solid #e7ebf0;
+  border-radius:16px;
+  background:rgba(247,249,252,.92);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+}
+
+.links button{
+  min-height:38px !important;
+  border:0 !important;
+  border-radius:12px !important;
+  padding:9px 13px !important;
+  color:#53616b !important;
+  font-size:13px;
+  transition:transform .18s ease,background .18s ease,color .18s ease,box-shadow .18s ease;
+}
+
+.links button:hover{
+  background:#fff !important;
+  color:var(--primary) !important;
+  transform:translateY(-1px);
+  box-shadow:0 5px 15px rgba(25,40,65,.08);
+}
+
+main{
+  max-width:1220px !important;
+  padding:24px 18px 70px !important;
+}
+
+.hero{
+  border-radius:30px !important;
+  padding:48px 38px !important;
+  min-height:500px !important;
+  background:
+    radial-gradient(circle at 84% 22%,rgba(242,184,75,.28),transparent 24%),
+    radial-gradient(circle at 72% 90%,rgba(22,184,166,.18),transparent 28%),
+    linear-gradient(135deg,#062f35 0%,#087f68 56%,#129a83 100%) !important;
+  box-shadow:0 28px 70px rgba(3,54,49,.22) !important;
+}
+
+.hero h1{
+  letter-spacing:-1.8px;
+  font-weight:900;
+}
+
+.hero p{
+  color:#e9f7f3 !important;
+}
+
+.hero .tag{
+  border:1px solid rgba(255,255,255,.22);
+  backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.11) !important;
+}
+
+.hero .btn{
+  border-radius:14px !important;
+  min-height:45px;
+  padding:11px 17px !important;
+  box-shadow:0 9px 22px rgba(0,0,0,.12);
+}
+
+.hero-flyer{
+  border:1px solid rgba(255,222,110,.75) !important;
+  border-radius:24px !important;
+  box-shadow:0 25px 55px rgba(0,0,0,.27),0 0 0 8px rgba(255,255,255,.07) !important;
+}
+
+.section{
+  margin-top:28px !important;
+}
+
+.card,.dars-section,.lesson-nav,.quiz,.essay-question,.objective-item,.mini-task>div,.dashstat{
+  border:1px solid rgba(224,229,237,.95) !important;
+  border-radius:20px !important;
+  box-shadow:0 10px 32px rgba(22,35,58,.055) !important;
+}
+
+.card{
+  padding:20px !important;
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+}
+
+.card:hover{
+  transform:translateY(-5px) !important;
+  box-shadow:var(--modern-shadow-hover) !important;
+  border-color:#d7e3df !important;
+}
+
+.btn{
+  border-radius:12px !important;
+  min-height:42px;
+  padding:10px 15px !important;
+  transition:transform .18s ease,box-shadow .18s ease,filter .18s ease;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  filter:saturate(1.08);
+  box-shadow:0 9px 22px rgba(18,45,55,.13);
+}
+
+.primary{
+  background:linear-gradient(135deg,#087f68,#0c9b80) !important;
+}
+
+.gold{
+  background:linear-gradient(135deg,#f2b84b,#ffd36c) !important;
+}
+
+.lesson-tabs{
+  gap:8px !important;
+  padding:7px !important;
+  background:#f0f3f7;
+  border-radius:16px;
+}
+
+.lesson-tabs button{
+  border:0 !important;
+  background:transparent !important;
+  border-radius:12px !important;
+  padding:10px 14px !important;
+  color:#64727c !important;
+  transition:.18s ease;
+}
+
+.lesson-tabs button:hover{
+  background:#fff !important;
+  color:var(--primary) !important;
+}
+
+.lesson-tabs button.active{
+  background:#fff !important;
+  color:var(--primary) !important;
+  box-shadow:0 6px 17px rgba(26,42,60,.10);
+}
+
+.lesson-nav{
+  background:rgba(255,255,255,.86) !important;
+  box-shadow:0 10px 28px rgba(22,35,58,.08) !important;
+}
+
+.lesson-nav button{
+  border-radius:12px !important;
+}
+
+.tag,.pill,.progress-chip{
+  border:1px solid rgba(8,127,104,.10);
+  background:#edf8f5 !important;
+}
+
+.unit-number{
+  border-radius:23px !important;
+  background:linear-gradient(145deg,#087f68,#16a88d) !important;
+  box-shadow:0 16px 30px rgba(8,127,104,.20) !important;
+}
+
+.lessonbox,.rtlbox,.dialogue,.vocab,.exercise{
+  border-radius:16px !important;
+}
+
+.vocab{
+  transition:.18s ease;
+}
+
+.vocab:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 22px rgba(20,40,55,.07);
+  background:#fff !important;
+}
+
+.tablewrap{
+  border-radius:18px !important;
+  box-shadow:0 9px 28px rgba(22,35,58,.05);
+}
+
+th{
+  background:#eef7f5 !important;
+  color:#176c5d;
+}
+
+input,select,textarea{
+  border-color:#dfe5ec !important;
+  border-radius:12px !important;
+  background:#fff !important;
+}
+
+input:focus,select:focus,textarea:focus{
+  outline:3px solid rgba(8,127,104,.10) !important;
+  border-color:#63b9a7 !important;
+}
+
+.livebar{
+  border-radius:17px !important;
+  background:rgba(255,255,255,.90) !important;
+  box-shadow:0 8px 25px rgba(22,35,58,.06) !important;
+}
+
+.dashboard-extra{
+  gap:14px !important;
+}
+
+.dashstat b{
+  font-size:28px !important;
+}
+
+.auth-screen{
+  background:
+    radial-gradient(circle at 15% 20%,rgba(22,184,166,.22),transparent 25rem),
+    radial-gradient(circle at 88% 75%,rgba(242,184,75,.17),transparent 22rem),
+    linear-gradient(135deg,#052f35,#087f68 58%,#0d8e78) !important;
+}
+
+.auth-card{
+  border:1px solid rgba(255,255,255,.45) !important;
+  border-radius:28px !important;
+  box-shadow:0 35px 90px rgba(0,35,40,.34) !important;
+}
+
+.role-select{
+  border-radius:14px !important;
+}
+
+.role-select button{
+  border-radius:11px !important;
+}
+
+.auth-submit{
+  border-radius:14px !important;
+  min-height:48px;
+  background:linear-gradient(135deg,#087f68,#10a789) !important;
+}
+
+.role-card{
+  border-radius:20px !important;
+  border:1px solid var(--line);
+  box-shadow:0 10px 30px rgba(22,35,58,.06);
+}
+
+.role-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 20px 45px rgba(22,35,58,.12);
+}
+
+.score-card{
+  border-radius:20px !important;
+}
+
+.quiz-progress .bar,.bar{
+  height:10px !important;
+  background:#e9edf2 !important;
+}
+
+.bar i{
+  background:linear-gradient(90deg,#087f68,#16b8a6,#f2b84b) !important;
+}
+
+/* Mobile-first polish: keep every existing navigation button available. */
+@media (max-width:750px){
+  nav{
+    padding:8px 10px !important;
+  }
+
+  .brand{
+    width:100%;
+  }
+
+  .brand-title strong{
+    font-size:14px !important;
+  }
+
+  .brand-title span{
+    font-size:10px !important;
+  }
+
+  .school-logo,.school-logo img{
+    width:42px !important;
+    height:42px !important;
+  }
+
+  .links{
+    width:100% !important;
+    padding:4px !important;
+    border-radius:15px !important;
+    gap:4px !important;
+  }
+
+  .links button{
+    min-height:36px !important;
+    padding:8px 11px !important;
+    font-size:12px !important;
+    border-radius:11px !important;
+  }
+
+  main{
+    padding:16px 12px 55px !important;
+  }
+
+  .hero{
+    min-height:auto !important;
+    padding:25px 18px !important;
+    border-radius:24px !important;
+  }
+
+  .hero h1{
+    font-size:clamp(29px,9vw,43px) !important;
+    letter-spacing:-1.2px !important;
+  }
+
+  .hero-flyer{
+    margin-top:18px !important;
+    border-radius:17px !important;
+  }
+
+  .card,.dars-section{
+    border-radius:17px !important;
+    padding:16px !important;
+  }
+
+  .lesson-tabs{
+    border-radius:14px !important;
+  }
+
+  .lesson-tabs button{
+    padding:9px 12px !important;
+    font-size:12px !important;
+  }
+
+  .lesson-nav{
+    top:62px !important;
+    border-radius:15px !important;
+  }
+
+  .kpi{
+    gap:9px !important;
+  }
+}
+
+/* Respect reduced-motion accessibility without changing functionality. */
+@media (prefers-reduced-motion:reduce){
+  *,*:before,*:after{
+    scroll-behavior:auto !important;
+    transition:none !important;
+    animation:none !important;
+  }
+}
+</style>
+
+
+<style id="siber-home-school-dashboard-2026">
+/* SIBER-WEB BERANDA — SCHOOL CAMPUS DASHBOARD 2026
+   Visual redesign of homepage only.
+   Existing buttons, learning content and JS functions remain. */
+
+@media (min-width: 851px){
+
+  body:has(#home.page.on){
+    min-height:100vh;
+    background:
+      linear-gradient(90deg,rgba(2,35,43,.93) 0 245px,rgba(5,55,58,.18) 245px,rgba(255,255,255,.30) 100%),
+      url("https://man1kotamalang.sch.id/upload/image/bg-man1.jpeg") center center / cover fixed no-repeat !important;
+    background-color:#0b4f48 !important;
+  }
+
+  body:has(#home.page.on) header{
+    position:fixed !important;
+    inset:0 auto 0 0 !important;
+    width:245px !important;
+    height:100vh !important;
+    z-index:1000 !important;
+    background:linear-gradient(180deg,rgba(3,43,53,.98),rgba(3,54,58,.94)) !important;
+    border:0 !important;
+    border-right:1px solid rgba(255,255,255,.10) !important;
+    box-shadow:18px 0 50px rgba(0,0,0,.16) !important;
+    backdrop-filter:blur(16px) !important;
+  }
+
+  body:has(#home.page.on) nav{
+    height:100%;
+    width:100%;
+    padding:24px 15px !important;
+    margin:0 !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+    justify-content:flex-start !important;
+    gap:22px !important;
+  }
+
+  body:has(#home.page.on) .brand{
+    padding:4px 8px 18px;
+    color:#fff !important;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+
+  body:has(#home.page.on) .brand-title strong{
+    color:#fff !important;
+    font-size:17px !important;
+  }
+
+  body:has(#home.page.on) .brand-title span{
+    color:rgba(255,255,255,.70) !important;
+    line-height:1.35;
+  }
+
+  body:has(#home.page.on) .school-logo{
+    width:49px !important;
+    height:49px !important;
+    flex-basis:49px !important;
+    border-radius:14px !important;
+    background:#fff !important;
+    box-shadow:0 8px 22px rgba(0,0,0,.20) !important;
+  }
+
+  body:has(#home.page.on) .school-logo img{
+    width:45px !important;
+    height:45px !important;
+  }
+
+  body:has(#home.page.on) .links{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+    gap:7px !important;
+    padding:0 !important;
+    border:0 !important;
+    background:transparent !important;
+    box-shadow:none !important;
+  }
+
+  body:has(#home.page.on) .links button{
+    width:100% !important;
+    text-align:left !important;
+    min-height:46px !important;
+    padding:11px 14px !important;
+    border-radius:13px !important;
+    color:rgba(255,255,255,.80) !important;
+    font-size:13px !important;
+    border:1px solid transparent !important;
+    background:transparent !important;
+  }
+
+  body:has(#home.page.on) .links button:first-child{
+    background:linear-gradient(90deg,#0b9d80,#087f68) !important;
+    color:#fff !important;
+    box-shadow:0 10px 25px rgba(0,0,0,.18) !important;
+  }
+
+  body:has(#home.page.on) .links button:hover{
+    background:rgba(255,255,255,.10) !important;
+    color:#fff !important;
+    transform:translateX(3px) !important;
+  }
+
+  body:has(#home.page.on) main{
+    max-width:none !important;
+    width:auto !important;
+    margin:0 !important;
+    margin-left:245px !important;
+    padding:28px 32px 70px !important;
+  }
+
+  body:has(#home.page.on) #home{
+    width:min(1320px,100%);
+    margin:0 auto;
+  }
+
+  body:has(#home.page.on) .hero{
+    min-height:480px !important;
+    margin:0 !important;
+    border-radius:28px !important;
+    padding:42px 40px !important;
+    overflow:hidden !important;
+    background:
+      linear-gradient(90deg,rgba(1,44,47,.93) 0%,rgba(2,74,68,.79) 48%,rgba(4,75,68,.34) 100%),
+      url("https://man1kotamalang.sch.id/upload/image/bg-man1.jpeg") center / cover no-repeat !important;
+    box-shadow:0 28px 70px rgba(0,31,36,.25) !important;
+    border:1px solid rgba(255,255,255,.28) !important;
+  }
+
+  body:has(#home.page.on) .hero-copy{ width:min(58%,720px) !important; }
+
+  body:has(#home.page.on) .hero h1{
+    font-size:clamp(36px,4.5vw,62px) !important;
+    font-weight:950 !important;
+    letter-spacing:-1.8px !important;
+  }
+
+  body:has(#home.page.on) .hero p{
+    max-width:680px !important;
+    font-size:15px !important;
+    line-height:1.8 !important;
+    color:#e7f7f3 !important;
+  }
+
+  body:has(#home.page.on) .hero .tag{
+    padding:7px 12px !important;
+    border-radius:999px !important;
+    background:rgba(255,255,255,.13) !important;
+    border:1px solid rgba(255,255,255,.22) !important;
+  }
+
+  body:has(#home.page.on) .hero-flyer{
+    width:min(39%,560px) !important;
+    max-height:calc(100% - 50px) !important;
+    right:3% !important;
+    border-radius:24px !important;
+    border:2px solid rgba(255,221,92,.72) !important;
+    box-shadow:0 26px 60px rgba(0,0,0,.30),0 0 0 8px rgba(255,255,255,.07) !important;
+  }
+
+  body:has(#home.page.on) .hero .btn.white{
+    margin-top:12px;
+    padding:12px 18px !important;
+    border-radius:14px !important;
+    box-shadow:0 10px 25px rgba(0,0,0,.16);
+  }
+
+  body:has(#home.page.on) .section.kpi{
+    display:grid !important;
+    grid-template-columns:repeat(3,1fr) !important;
+    gap:13px !important;
+    margin-top:16px !important;
+  }
+
+  body:has(#home.page.on) .section.kpi .card{
+    background:rgba(255,255,255,.93) !important;
+    border-radius:20px !important;
+    padding:17px 20px !important;
+    box-shadow:0 12px 30px rgba(10,37,48,.10) !important;
+  }
+
+  body:has(#home.page.on) .section.kpi .card b{
+    font-size:30px !important;
+    line-height:1 !important;
+    margin-bottom:5px;
+  }
+
+  body:has(#home.page.on) .section.grid{
+    display:grid !important;
+    grid-template-columns:repeat(4,1fr) !important;
+    gap:13px !important;
+    margin-top:16px !important;
+  }
+
+  body:has(#home.page.on) .section.grid .card{
+    min-height:145px;
+    background:rgba(255,255,255,.95) !important;
+    border-radius:19px !important;
+    box-shadow:0 12px 30px rgba(10,37,48,.09) !important;
+  }
+
+  body:has(#home.page.on) .section.grid .card:hover{
+    transform:translateY(-6px) !important;
+    box-shadow:0 22px 45px rgba(10,37,48,.15) !important;
+  }
+
+  body:has(#home.page.on) footer{
+    margin-left:245px !important;
+    max-width:none !important;
+    padding:0 32px 25px !important;
+    color:rgba(255,255,255,.80) !important;
+  }
+}
+
+@media (max-width:850px){
+
+  body:has(#home.page.on){
+    background:
+      linear-gradient(rgba(2,48,50,.42),rgba(246,249,250,.93) 62%),
+      url("https://man1kotamalang.sch.id/upload/image/bg-man1.jpeg") center top / 100% auto no-repeat fixed !important;
+    background-color:#f4f7f8 !important;
+  }
+
+  body:has(#home.page.on) header{
+    position:sticky !important;
+    top:0 !important;
+    z-index:1000 !important;
+    background:rgba(3,48,53,.92) !important;
+    border:0 !important;
+    box-shadow:0 8px 25px rgba(0,0,0,.16) !important;
+    backdrop-filter:blur(14px) !important;
+  }
+
+  body:has(#home.page.on) nav{
+    padding:9px 11px !important;
+    display:block !important;
+  }
+
+  body:has(#home.page.on) .brand{ color:#fff !important; margin-bottom:7px; }
+  body:has(#home.page.on) .brand-title strong{ color:#fff !important; }
+  body:has(#home.page.on) .brand-title span{ color:rgba(255,255,255,.70) !important; }
+
+  body:has(#home.page.on) .links{
+    display:flex !important;
+    overflow-x:auto !important;
+    flex-wrap:nowrap !important;
+    padding:3px !important;
+    gap:5px !important;
+    border:1px solid rgba(255,255,255,.13) !important;
+    background:rgba(255,255,255,.07) !important;
+    border-radius:13px !important;
+  }
+
+  body:has(#home.page.on) .links button{
+    flex:0 0 auto !important;
+    color:#fff !important;
+    background:transparent !important;
+    white-space:nowrap !important;
+    min-height:37px !important;
+    padding:8px 12px !important;
+    font-size:12px !important;
+  }
+
+  body:has(#home.page.on) .links button:first-child{ background:#0b9d80 !important; }
+
+  body:has(#home.page.on) main{ padding:13px 11px 55px !important; }
+
+  body:has(#home.page.on) .hero{
+    min-height:430px !important;
+    padding:25px 18px !important;
+    border-radius:23px !important;
+    background:
+      linear-gradient(180deg,rgba(2,54,55,.88),rgba(3,74,68,.82)),
+      url("https://man1kotamalang.sch.id/upload/image/bg-man1.jpeg") center / cover no-repeat !important;
+  }
+
+  body:has(#home.page.on) .hero-copy{ width:100% !important; }
+  body:has(#home.page.on) .hero h1{
+    font-size:clamp(30px,9vw,44px) !important;
+    letter-spacing:-1px !important;
+  }
+  body:has(#home.page.on) .hero p{ font-size:13px !important; }
+
+  body:has(#home.page.on) .hero-flyer{
+    position:relative !important;
+    right:auto !important;
+    top:auto !important;
+    transform:none !important;
+    width:100% !important;
+    max-height:190px !important;
+    margin:20px auto 0 !important;
+    object-fit:cover !important;
+    border-radius:17px !important;
+  }
+
+  body:has(#home.page.on) .section.kpi{
+    grid-template-columns:1fr 1fr !important;
+    gap:9px !important;
+    margin-top:12px !important;
+  }
+
+  body:has(#home.page.on) .section.kpi .card{
+    border-radius:16px !important;
+    padding:14px !important;
+  }
+
+  body:has(#home.page.on) .section.kpi .card:last-child{ grid-column:1/-1; }
+
+  body:has(#home.page.on) .section.grid{
+    grid-template-columns:1fr 1fr !important;
+    gap:9px !important;
+  }
+
+  body:has(#home.page.on) .section.grid .card{
+    min-height:125px !important;
+    padding:14px !important;
+    border-radius:16px !important;
+  }
+}
+</style>
+
 </head>
   <body>
     <header>
