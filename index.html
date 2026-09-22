@@ -2546,8 +2546,24 @@ input:focus,select:focus,textarea:focus{
         function resetButton(btn, label){
           if(!btn) return;
           btn.disabled = false;
-          btn.classList.remove('audio-playing');
+          btn.classList.remove('audio-playing','audio-paused');
           btn.textContent = label || btn.dataset.audioOriginal || '🔊 Dengarkan';
+        }
+
+        function markPaused(btn){
+          if(!btn) return;
+          btn.disabled = false;
+          btn.classList.remove('audio-playing');
+          btn.classList.add('audio-paused');
+          btn.textContent = '▶ Lanjutkan';
+        }
+
+        function markPlaying(btn){
+          if(!btn) return;
+          btn.disabled = false;
+          btn.classList.remove('audio-paused');
+          btn.classList.add('audio-playing');
+          btn.textContent = '⏸ Jeda';
         }
 
         function stopAllAudio(){
@@ -2570,9 +2586,16 @@ input:focus,select:focus,textarea:focus{
           if(!src) return;
           const url = /^https?:\/\//i.test(src) ? src : new URL(src.replace(/^\//,''), location.href).href;
 
-          // Klik tombol yang sama saat sedang diputar = berhenti.
+          // Klik tombol yang sama menjadi toggle jeda/lanjutkan.
           if(activeAudio && activeAudio.dataset.siberSrc === url){
-            stopAllAudio();
+            if(activeAudio.paused){
+              activeAudio.play().catch((err) => {
+                console.warn('SIBER-WEB: audio gagal dilanjutkan:', err, url);
+              });
+            }else{
+              activeAudio.pause();
+              markPaused(activeButton);
+            }
             return;
           }
 
@@ -2602,9 +2625,12 @@ input:focus,select:focus,textarea:focus{
           };
 
           audio.addEventListener('playing', () => {
-            if(button){
-              button.disabled = false;
-              button.textContent = '⏸ Sedang diputar';
+            markPlaying(button);
+          });
+
+          audio.addEventListener('pause', () => {
+            if(audio === activeAudio && audio.currentTime > 0 && !audio.ended){
+              markPaused(button);
             }
           });
 
@@ -2661,7 +2687,8 @@ input:focus,select:focus,textarea:focus{
         document.addEventListener('click', (e) => {
           const el = e.target.closest('a[href], button');
           if(!el) return;
-          if(el.classList.contains('audio-btn') || el.closest('.audio-btn')) return;
+          const inlineAudioHandler = /\bplayAudio\s*\(/.test(el.getAttribute('onclick') || '');
+          if(el.classList.contains('audio-btn') || el.closest('.audio-btn') || inlineAudioHandler) return;
           stopAllAudio();
         }, true);
       })();
