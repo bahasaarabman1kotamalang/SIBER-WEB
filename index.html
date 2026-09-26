@@ -8006,5 +8006,32 @@ body.innerHTML='<div class="role-page-grid">'+cards.map(function(c){return '<div
 })();
 </script>
 
+<script id="siber-dashboard-match-right-file">
+(function () {
+  "use strict";
+  var modernStyle = document.getElementById("siber-web-modern-ui-2026");
+  if (!modernStyle) return;
+
+  function syncDashboardStyle() {
+    var dashboardOpen = !!document.querySelector("#roleDashboard.page.on");
+    modernStyle.media = dashboardOpen ? "not all" : "";
+  }
+
+  var existingPage = window.page;
+  if (typeof existingPage === "function") {
+    window.page = function (id) {
+      var result = existingPage.apply(this, arguments);
+      syncDashboardStyle();
+      return result;
+    };
+  }
+
+  var observer = new MutationObserver(syncDashboardStyle);
+  document.querySelectorAll(".page").forEach(function (section) {
+    observer.observe(section, { attributes: true, attributeFilter: ["class"] });
+  });
+  syncDashboardStyle();
+})();
+</script>
 </body>
 </html>
