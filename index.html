@@ -6992,6 +6992,12 @@ input:focus,select:focus,textarea:focus{
             var todayEl = document.getElementById("dashTodayVisitors");
             if (totalEl) totalEl.textContent = visits.total;
             if (todayEl) todayEl.textContent = visits.today;
+          }).catch(function (error) {
+            console.warn("Statistik pengunjung pusat tidak tersedia:", error);
+            var totalEl = document.getElementById("dashTotalVisitors");
+            var todayEl = document.getElementById("dashTodayVisitors");
+            if (totalEl) totalEl.textContent = "—";
+            if (todayEl) todayEl.textContent = "—";
           });
         }
 
@@ -7144,17 +7150,8 @@ input:focus,select:focus,textarea:focus{
             console.warn("SIBER-WEB visitor API error:", e);
           }
 
-          /* Fallback sementara jika API sedang tidak tersedia.
-             Data utama tetap berasal dari Google Sheets. */
-          var d = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Jakarta" });
-          var v;
-          try { v = JSON.parse(localStorage.getItem(visitKey) || "{}"); } catch (e) { v = {}; }
-          if (!v.days || typeof v.days !== "object") v = { total: 0, days: {} };
-          if (typeof v.total !== "number") v.total = 0;
-          if (!v.days[d]) v.days[d] = 0;
-          v.days[d]++; v.total++;
-          localStorage.setItem(visitKey, JSON.stringify(v));
-          return { today: v.days[d], total: v.total };
+          // Jangan membuat hitungan lokal per perangkat: angka pengunjung hanya dari server pusat.
+          throw new Error("Statistik pengunjung pusat tidak dapat diakses");
         }
         function parseEvaluationApiResponse(response) {
           if (!response.ok) throw new Error("HTTP " + response.status);
@@ -7222,7 +7219,9 @@ input:focus,select:focus,textarea:focus{
               });
               setEvaluationSyncStatus(hasPending
                 ? "Sebagian nilai belum tersinkron. Periksa koneksi internet."
-                : "Nilai tersinkron ke akun.");
+                : (Object.keys(merged).length
+                    ? "Nilai tersinkron ke akun."
+                    : "Belum ada nilai tersinkron."));
               return merged;
             });
         };
