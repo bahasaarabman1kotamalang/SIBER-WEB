@@ -5246,7 +5246,6 @@ input:focus,select:focus,textarea:focus{
           } else if (row) row.classList.add("incorrect");
         });
         const score = Math.round((s / DARS1Q.length) * 100);
-        recordEvaluationScore("X-0-evaluasi", score);
         const el = document.getElementById("dars1Score");
         el.innerHTML = `<h3>Skor: ${score}/100</h3><p>${s} jawaban benar, ${DARS1Q.length - s} belum benar. ${answered < DARS1Q.length ? `Masih ada ${DARS1Q.length - answered} soal yang belum dijawab. ` : ""}${score >= 80 ? "مُمْتَاز! أحسنت 👏" : "Pelajari kembali materi yang ditandai, lalu ulangi kuis."}</p>`;
         gain(s * 5);
@@ -5370,7 +5369,6 @@ input:focus,select:focus,textarea:focus{
           }
         });
         const score = correct * 10;
-        recordEvaluationScore("X-1-evaluasi", score);
         const result = document.getElementById("dars2Score");
         result.classList.toggle("quiz-result-perfect", score >= 80);
         result.innerHTML = `<h3>Skor: ${score}/100</h3><p>${correct} jawaban benar, ${10 - correct} belum benar. ${answered < 10 ? `Masih ada ${10 - answered} soal yang belum dijawab. ` : ""}${score >= 80 ? "مُمْتَازٌ! Pemahamanmu sangat baik. 👏" : "Pelajari kembali bagian yang ditandai, lalu ulangi kuis."}</p>`;
@@ -5485,7 +5483,6 @@ input:focus,select:focus,textarea:focus{
           }
         });
         const score = correct * 10;
-        recordEvaluationScore("X-2-evaluasi", score);
         const result = document.getElementById("dars3Score");
         result.classList.toggle("quiz-result-perfect", score >= 80);
         result.innerHTML = `<h3>Skor: ${score}/100</h3><p>${correct} jawaban benar, ${10 - correct} belum benar. ${answered < 10 ? `Masih ada ${10 - answered} soal yang belum dijawab. ` : ""}${score >= 80 ? "مُمْتَازٌ! Pemahamanmu sangat baik. 👏" : "Pelajari kembali materi yang ditandai, lalu ulangi kuis."}</p>`;
@@ -5612,7 +5609,6 @@ input:focus,select:focus,textarea:focus{
           }
         });
         const score = correct * 10;
-        recordEvaluationScore("X-3-evaluasi", score);
         const result = document.getElementById("dars4Score");
         result.classList.toggle("quiz-result-perfect", score >= 80);
         result.innerHTML = `<h3>Skor: ${score}/100</h3><p>${correct} jawaban benar, ${10 - correct} belum benar. ${answered < 10 ? `Masih ada ${10 - answered} soal yang belum dijawab. ` : ""}${score >= 80 ? "مُمْتَازٌ! Pemahamanmu sangat baik. 👏" : "Pelajari kembali materi yang ditandai, lalu ulangi kuis."}</p>`;
@@ -5757,7 +5753,6 @@ input:focus,select:focus,textarea:focus{
           }
         });
         const score = correct * 10;
-        recordEvaluationScore("X-4-evaluasi", score);
         const result = document.getElementById("dars5Score");
         result.classList.toggle("quiz-result-perfect", score >= 80);
         result.innerHTML = `<h3>Skor: ${score}/100</h3><p>${correct} jawaban benar, ${10 - correct} belum benar. ${answered < 10 ? `Masih ada ${10 - answered} soal yang belum dijawab. ` : ""}${score >= 80 ? "مُمْتَازٌ! Pemahamanmu sangat baik. 👏" : "Pelajari kembali materi yang ditandai, lalu ulangi kuis."}</p>`;
@@ -5858,7 +5853,6 @@ input:focus,select:focus,textarea:focus{
           }
         });
         const score = correct * 10;
-        recordEvaluationScore("X-5-evaluasi", score);
         const result = document.getElementById("dars6Score");
         result.classList.toggle("quiz-result-perfect", score >= 80);
         result.innerHTML = `<h3>النَّتِيجَةُ: ${score}/100</h3><p>${correct} إِجَابَاتٍ صَحِيحَةٍ مِنْ ١٠. ${answered < 10 ? `لَمْ تُجِبْ عَنْ ${10 - answered} أَسْئِلَةٍ. ` : ""}${score >= 80 ? "مُمْتَازٌ! أَحْسَنْتَ. 👏" : "رَاجِعِ الدَّرْسَ ثُمَّ أَعِدِ الِاخْتِبَارَ."}</p>`;
@@ -6015,7 +6009,6 @@ input:focus,select:focus,textarea:focus{
           }
         });
         const score = correct * 10;
-        recordEvaluationScore("XII-0-evaluasi", score);
         const result = document.getElementById("dars12Unit1Score");
         result.classList.toggle("quiz-result-perfect", score >= 80);
         result.innerHTML = `<h3>Skor: ${score}/100</h3><p>${correct} jawaban benar, ${10 - correct} belum benar. ${answered < 10 ? `Masih ada ${10 - answered} soal yang belum dijawab. ` : ""}${score >= 80 ? "مُمْتَازٌ! Pemahamanmu sangat baik. 👏" : "Pelajari kembali materi yang ditandai, lalu ulangi kuis."}</p>`;
@@ -6160,7 +6153,6 @@ input:focus,select:focus,textarea:focus{
           }
         });
         const score = correct * 10;
-        recordEvaluationScore("XI-0-evaluasi", score);
         const result = document.getElementById("dars11Unit1Score");
         result.classList.toggle("quiz-result-perfect", score >= 80);
         result.innerHTML = `<h3>Skor: ${score}/100</h3><p>${correct} jawaban benar, ${10 - correct} belum benar. ${answered < 10 ? `Masih ada ${10 - answered} soal yang belum dijawab. ` : ""}${score >= 80 ? "مُمْتَازٌ! Pemahamanmu sangat baik. 👏" : "Pelajari kembali materi yang ditandai, lalu ulangi kuis."}</p>`;
@@ -6317,7 +6309,6 @@ input:focus,select:focus,textarea:focus{
           }
         });
         const score = correct * 10;
-        recordEvaluationScore("XI-1-evaluasi", score);
         const result = document.getElementById("dars11Unit2Score");
         result.classList.toggle("quiz-result-perfect", score >= 80);
         result.innerHTML = `<h3>Skor: ${score}/100</h3><p>${correct} jawaban benar, ${10 - correct} belum benar. ${answered < 10 ? `Masih ada ${10 - answered} soal yang belum dijawab. ` : ""}${score >= 80 ? "مُمْتَازٌ! Pemahamanmu sangat baik. 👏" : "Pelajari kembali materi yang ditandai, lalu ulangi kuis."}</p>`;
@@ -6418,7 +6409,6 @@ input:focus,select:focus,textarea:focus{
           }
         });
         const score = correct * 10;
-        recordEvaluationScore("XI-2-evaluasi", score);
         const result = document.getElementById("dars11Unit3Score");
         if (!result) return;
         result.classList.toggle("quiz-result-perfect", score >= 80);
@@ -6520,7 +6510,6 @@ input:focus,select:focus,textarea:focus{
           }
         });
         const score = correct * 10;
-        recordEvaluationScore("XI-3-evaluasi", score);
         const result = document.getElementById("dars11Unit4Score");
         if (!result) return;
         result.classList.toggle("quiz-result-perfect", score >= 80);
@@ -6666,7 +6655,6 @@ input:focus,select:focus,textarea:focus{
           }
         });
         const score = correct * 10;
-        recordEvaluationScore("XII-1-evaluasi", score);
         const result = document.getElementById("dars12Unit2Score");
         result.classList.toggle("quiz-result-perfect", score >= 80);
         result.innerHTML = `<h3>Skor: ${score}/100</h3><p>${correct} jawaban benar, ${10 - correct} belum benar. ${answered < 10 ? `Masih ada ${10 - answered} soal yang belum dijawab. ` : ""}${score >= 80 ? "مُمْتَازٌ! Pemahamanmu sangat baik. 👏" : "Pelajari kembali materi yang ditandai, lalu ulangi kuis."}</p>`;
@@ -6718,7 +6706,6 @@ input:focus,select:focus,textarea:focus{
           if (item) { item.classList.remove("correct", "incorrect"); item.classList.add(isCorrect ? "correct" : "incorrect"); }
         });
         const score = correct * 10;
-        recordEvaluationScore("XII-2-evaluasi", score);
         const result = document.getElementById("dars12Unit3Score");
         if (!result) return;
         result.classList.toggle("quiz-result-perfect", score >= 80);
@@ -6776,76 +6763,6 @@ input:focus,select:focus,textarea:focus{
         gain(s * 15);
         done("quiz");
       }
-      // Simpan skor evaluasi secara terpisah untuk setiap akun siswa.
-      // Satu entri per unit; percobaan terbaru menggantikan nilai sebelumnya.
-      function evaluationStorageKey(username) {
-        return "siberEvalScores:" + String(username || "").trim().toLowerCase();
-      }
-      function getEvaluationSession() {
-        try {
-          return JSON.parse(localStorage.getItem("siberSession") || "null");
-        } catch (e) {
-          return null;
-        }
-      }
-      function readEvaluationScores(username) {
-        try {
-          const saved = JSON.parse(localStorage.getItem(evaluationStorageKey(username)) || "{}");
-          return saved && typeof saved === "object" ? saved : {};
-        } catch (e) {
-          return {};
-        }
-      }
-      function updateEvaluationAverage() {
-        const output = document.getElementById("dashAverage");
-        if (!output) return;
-        const account = getEvaluationSession();
-        if (!account || account.role !== "siswa" || !account.username) {
-          output.textContent = "—";
-          return;
-        }
-        const scores = Object.values(readEvaluationScores(account.username))
-          .map(function (entry) { return Number(entry && entry.score); })
-          .filter(function (score) { return Number.isFinite(score) && score >= 0 && score <= 100; });
-        if (!scores.length) {
-          output.textContent = "Belum ada nilai";
-          return;
-        }
-        const average = Math.round(scores.reduce(function (sum, score) { return sum + score; }, 0) / scores.length);
-        output.textContent = String(average);
-      }
-      function setEvaluationSyncStatus(message) {
-        const status = document.getElementById("dashAverageSyncStatus");
-        if (status) status.textContent = message || "";
-      }
-      function saveEvaluationScoreCache(username, scores) {
-        localStorage.setItem(evaluationStorageKey(username), JSON.stringify(scores || {}));
-      }
-      function recordEvaluationScore(unitId, score) {
-        const account = getEvaluationSession();
-        const numericScore = Number(score);
-        if (!account || account.role !== "siswa" || !account.username || !Number.isFinite(numericScore)) return;
-        const scores = readEvaluationScores(account.username);
-        const updatedAt = Date.now();
-        scores[unitId] = { score: Math.max(0, Math.min(100, numericScore)), updatedAt: updatedAt, syncStatus: "pending" };
-        saveEvaluationScoreCache(account.username, scores);
-        updateEvaluationAverage();
-        setEvaluationSyncStatus("Menyinkronkan nilai…");
-        if (typeof window.siberSaveEvaluationScore === "function") {
-          window.siberSaveEvaluationScore(unitId, scores[unitId].score, updatedAt).then(function (saved) {
-            const latest = readEvaluationScores(account.username);
-            if (latest[unitId] && Number(latest[unitId].updatedAt) === updatedAt) {
-              latest[unitId] = Object.assign({}, latest[unitId], { syncStatus: "synced" }, saved || {});
-              saveEvaluationScoreCache(account.username, latest);
-            }
-            setEvaluationSyncStatus("Nilai tersinkron ke akun.");
-          }).catch(function () {
-            setEvaluationSyncStatus("Sinkronisasi gagal. Nilai tersimpan sementara di perangkat ini.");
-          });
-        } else {
-          setEvaluationSyncStatus("Sinkronisasi server belum aktif.");
-        }
-      }
       function state() {
         return JSON.parse(
           localStorage.getItem("maArab") || '{"xp":0,"done":{}}',
@@ -6897,7 +6814,7 @@ input:focus,select:focus,textarea:focus{
         var sessionKey = "siberSession",
           visitKey = "siberVisits";
         var accountKey = "siberAccounts";
-        var SIBER_API_URL = "https://script.google.com/macros/s/AKfycbzSOsvX9b23uNbv3WEuYO8_tsKsMfQExxOGY76TDytsU2Jy7ZKYT5Qzr4CToKXy7IywiQ/exec";
+        var SIBER_API_URL = "https://script.google.com/macros/s/AKfycbx1I795WisjHJMltHgdVJCESFiwwQ_qPfjap2tT9b_AShQNkzlyEJcTcjDYxF7E5k7mAg/exec";
         var defaultAccounts = [
           { id: "a1", username: "admin.siber", password: "", name: "Administrator SIBER-WEB", role: "admin", active: true },
           { id: "g1", username: "guru.siber", password: "", name: "Guru Bahasa Arab", role: "guru", active: true },
@@ -7109,7 +7026,6 @@ input:focus,select:focus,textarea:focus{
                 name: account.name,
                 username: account.username,
                 role: account.role,
-                token: data.sessionToken || "",
                 at: Date.now(),
               });
 
@@ -7156,83 +7072,9 @@ input:focus,select:focus,textarea:focus{
           localStorage.setItem(visitKey, JSON.stringify(v));
           return { today: v.days[d], total: v.total };
         }
-        function parseEvaluationApiResponse(response) {
-          if (!response.ok) throw new Error("HTTP " + response.status);
-          return response.json().then(function (data) {
-            if (!data || !data.success) throw new Error((data && data.message) || "API nilai gagal");
-            return data;
-          });
-        }
-        window.siberSaveEvaluationScore = function (unitId, score, updatedAt) {
-          var current = session();
-          if (!current || current.role !== "siswa" || !current.token) {
-            return Promise.reject(new Error("Sesi siswa tidak tersedia"));
-          }
-          var body = new URLSearchParams({
-            action: "saveScore",
-            token: current.token,
-            unitId: unitId,
-            score: String(score),
-            updatedAt: String(updatedAt || Date.now())
-          });
-          return fetch(SIBER_API_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
-            body: body.toString(),
-            cache: "no-store"
-          }).then(parseEvaluationApiResponse);
-        };
-        window.siberLoadEvaluationScores = function () {
-          var current = session();
-          if (!current || current.role !== "siswa" || !current.token) {
-            return Promise.reject(new Error("Sesi siswa tidak tersedia"));
-          }
-          var url = SIBER_API_URL + "?action=getScores&token=" + encodeURIComponent(current.token);
-          return fetch(url, { method: "GET", cache: "no-store" })
-            .then(parseEvaluationApiResponse)
-            .then(async function (data) {
-              var remote = data.scores && typeof data.scores === "object" ? data.scores : {};
-              var local = readEvaluationScores(current.username);
-              var merged = Object.assign({}, remote);
-              for (var unitId of Object.keys(local)) {
-                var localEntry = local[unitId];
-                var remoteEntry = remote[unitId];
-                var localTime = Number(localEntry && localEntry.updatedAt) || 0;
-                var remoteTime = Number(remoteEntry && remoteEntry.updatedAt) || 0;
-                var pending = !localEntry.syncStatus || localEntry.syncStatus !== "synced";
-                if (pending && localTime >= remoteTime) {
-                  try {
-                    var saved = await window.siberSaveEvaluationScore(unitId, localEntry.score, localTime);
-                    merged[unitId] = {
-                      score: Number(saved.score != null ? saved.score : localEntry.score),
-                      updatedAt: Number(saved.updatedAt) || localTime,
-                      syncStatus: "synced"
-                    };
-                  } catch (error) {
-                    merged[unitId] = localEntry;
-                  }
-                } else if (remoteEntry) {
-                  merged[unitId] = remoteEntry;
-                }
-              }
-              saveEvaluationScoreCache(current.username, merged);
-              updateEvaluationAverage();
-              var hasPending = Object.keys(merged).some(function (key) {
-                return merged[key] && merged[key].syncStatus !== "synced";
-              });
-              setEvaluationSyncStatus(hasPending
-                ? "Sebagian nilai belum tersinkron. Periksa koneksi internet."
-                : "Nilai tersinkron ke akun.");
-              return merged;
-            });
-        };
         function enhance() {
           var s = session();
           if (!s) return showLogin();
-          if (s.role === "siswa" && !s.token) {
-            localStorage.removeItem(sessionKey);
-            return showLogin();
-          }
           if (document.getElementById("siberLive")) return;
           var roleNames = {
             admin: "Administrator",
@@ -7250,19 +7092,7 @@ input:focus,select:focus,textarea:focus{
             roleNames[s.role] +
             ' • Data Akun SIBER-WEB</small></div><div class="clock"><span id="siberClock"></span><span id="siberDate" class="date"></span></div><div class="accountbar"><button id="siberLogout">Keluar</button></div>';
           main.insertBefore(live, main.firstChild);
-          document.getElementById("siberLogout").onclick = async function () {
-            var current = session();
-            if (current && current.token) {
-              var body = new URLSearchParams({ action: "logout", token: current.token });
-              try {
-                await fetch(SIBER_API_URL, {
-                  method: "POST",
-                  headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
-                  body: body.toString(),
-                  cache: "no-store"
-                });
-              } catch (e) {}
-            }
+          document.getElementById("siberLogout").onclick = function () {
             localStorage.removeItem(sessionKey);
             location.reload();
           };
@@ -7274,17 +7104,11 @@ input:focus,select:focus,textarea:focus{
             currentVisitorStats.total +
             '</b></div><div class="dashstat"><span>Kunjungan hari ini</span><b id="dashTodayVisitors">' +
             currentVisitorStats.today +
-            '</b></div><div class="dashstat"><span>Unit tersedia</span><b>13</b></div><div class="dashstat"><span>Rata-rata nilai</span><b id="dashAverage">—</b><small id="dashAverageSyncStatus" aria-live="polite"></small></div>';
+            '</b></div><div class="dashstat"><span>Unit tersedia</span><b>13</b></div><div class="dashstat"><span>Rata-rata nilai</span><b id="dashAverage">—</b></div>';
           home.appendChild(stats);
           if (siberVisitorStats) {
             document.getElementById("dashTotalVisitors").textContent = siberVisitorStats.total;
             document.getElementById("dashTodayVisitors").textContent = siberVisitorStats.today;
-          }
-          updateEvaluationAverage();
-          if (s.role === "siswa" && typeof window.siberLoadEvaluationScores === "function") {
-            window.siberLoadEvaluationScores().catch(function () {
-              setEvaluationSyncStatus("Tidak dapat memuat nilai tersinkron. Periksa koneksi internet.");
-            });
           }
           recordSiteVisitOnce();
           if (s.role === "admin") renderAdminPanel(home);
