@@ -677,6 +677,85 @@
 .mufradat-audio-label{font-size:12px;font-weight:800;opacity:.85;}
 .mufradat-audio{width:min(100%,230px);height:38px;}
 @media(max-width:600px){.mufradat-audio{width:100%;height:40px;}}
+
+      /* Interactive vocabulary game: XII Unit 2 */
+      .vocab-game-section { overflow: hidden; }
+      .vocab-game { --vg-ink:#132b49; --vg-blue:#1769aa; --vg-gold:#f0b84b; position:relative; max-width:760px; margin:18px auto 0; padding:clamp(16px,4vw,28px); border-radius:24px; background:linear-gradient(145deg,#0e2b49,#175d83 62%,#1a7990); color:#fff; box-shadow:0 18px 42px rgba(14,43,73,.2); }
+      .vg-top { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+      .vg-pill { padding:8px 13px; border-radius:999px; background:rgba(255,255,255,.14); font-weight:800; font-size:13px; }
+      .vg-stats { font-size:14px; color:#f8fafc; } .vg-stats b { color:#ffd36f; font-size:18px; } .vg-divider { opacity:.55; padding:0 5px; }
+      .vg-progress { height:9px; background:rgba(255,255,255,.2); border-radius:20px; margin:16px 0 20px; overflow:hidden; }
+      .vg-progress span { display:block; width:0; height:100%; border-radius:inherit; background:linear-gradient(90deg,#f9d36a,#65e2cf); transition:width .35s ease; }
+      .vg-card { width:100%; min-height:clamp(205px,32vw,275px); border:2px solid rgba(255,255,255,.75); border-radius:22px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; padding:24px; cursor:pointer; color:#132b49; background:radial-gradient(circle at 20% 15%,#fff 0,#f4fbff 45%,#e6f6f7 100%); box-shadow:0 12px 24px rgba(0,0,0,.15); transition:transform .18s ease,box-shadow .18s ease; }
+      .vg-card:hover { transform:translateY(-3px) rotate(-.25deg); box-shadow:0 17px 30px rgba(0,0,0,.2); }
+      .vg-card:active { transform:scale(.985); } .vg-card:focus-visible { outline:4px solid #ffd36f; outline-offset:4px; }
+      .vg-card-hint { color:#39708b; font-size:13px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+      .vg-word { max-width:100%; font-size:clamp(27px,6vw,46px); line-height:1.7; font-weight:900; text-align:center; overflow-wrap:anywhere; }
+      .vg-word.vg-arabic { direction:rtl; font-family:"Noto Naskh Arabic","Amiri",serif; }
+      .vg-tap { color:#687d8b; font-size:13px; }
+      .vg-answer { min-height:0; max-height:0; opacity:0; overflow:hidden; text-align:center; font-size:clamp(20px,4vw,28px); font-weight:900; color:#ffe08a; transition:all .3s ease; }
+      .vg-answer.show { min-height:38px; max-height:100px; opacity:1; margin:15px 0 0; }
+      .vg-answer.vg-answer-ar { direction:rtl; font-family:"Noto Naskh Arabic","Amiri",serif; }
+      .vg-actions,.vg-controls { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin-top:16px; }
+      .vg-actions { display:none; } .vg-actions.show { display:flex; animation:vg-pop .3s ease; }
+      .vg-controls .btn { background:#fff; color:#173b59; border-color:rgba(255,255,255,.7); } .vg-controls .btn.primary { background:#f4c253; color:#17324d; }
+      .vg-finish { text-align:center; font-size:18px; font-weight:800; margin-top:12px; }
+      .vocab-game.vg-flip .vg-card { animation:vg-flip .35s ease; }
+      @keyframes vg-flip { 50% { transform:rotateY(8deg) scale(.97); } }
+      @keyframes vg-pop { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+      @media (max-width:520px) { .vocab-game { border-radius:18px; } .vg-actions .btn,.vg-controls .btn { flex:1 1 100%; } }
+
+
+      /* Unit-by-unit vocabulary arcade */
+      .unit-vocab-arcade { position:relative; margin:24px auto 8px; max-width:820px; padding:clamp(18px,4vw,30px); overflow:hidden; border:1px solid rgba(255,255,255,.3); border-radius:26px; color:#f7fbff; background:radial-gradient(ellipse at 12% 0%,rgba(61,188,220,.36),transparent 36%),radial-gradient(ellipse at 100% 100%,rgba(248,177,54,.28),transparent 35%),linear-gradient(135deg,#071a35,#102d54 52%,#172142); box-shadow:0 20px 48px rgba(6,22,48,.32); }
+      .unit-vocab-arcade:before { content:""; position:absolute; inset:0; pointer-events:none; opacity:.22; background:repeating-linear-gradient(135deg,transparent 0 18px,rgba(255,255,255,.06) 19px 20px); }
+      .uva-content { position:relative; z-index:1; }
+      .uva-title { display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+      .uva-title h3 { color:#fff; margin:0; } .uva-subtitle { color:#bfd3e9; font-size:13px; }
+      .uva-chip { border:1px solid rgba(255,217,120,.55); color:#ffdf8b; background:rgba(255,204,77,.1); border-radius:999px; padding:7px 12px; font-size:12px; font-weight:800; }
+      .uva-meta { display:flex; justify-content:space-between; gap:10px; align-items:center; flex-wrap:wrap; margin:18px 0 9px; color:#dbe9f6; font-size:14px; }
+      .uva-score strong { color:#ffdc79; font-size:20px; }
+      .uva-bar { height:8px; border-radius:99px; background:rgba(255,255,255,.16); overflow:hidden; margin-bottom:17px; }
+      .uva-bar i { display:block; width:0; height:100%; border-radius:inherit; background:linear-gradient(90deg,#53dfdc,#ffe078,#ff904b); transition:width .35s ease; box-shadow:0 0 12px rgba(255,215,102,.65); }
+      .uva-question { width:100%; min-height:clamp(190px,30vw,260px); padding:20px; border:2px solid rgba(255,255,255,.78); border-radius:22px; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; text-align:center; color:#102846; background:radial-gradient(circle at 24% 14%,#fff 0,#f2fbff 48%,#d7f1f3 100%); box-shadow:0 12px 0 rgba(4,12,28,.22),0 18px 30px rgba(0,0,0,.24); transition:transform .15s ease,box-shadow .15s ease; }
+      .uva-question:hover { transform:translateY(-3px); box-shadow:0 15px 0 rgba(4,12,28,.2),0 23px 35px rgba(0,0,0,.28); }
+      .uva-question:active { transform:translateY(3px); box-shadow:0 6px 0 rgba(4,12,28,.22); }
+      .uva-question:focus-visible { outline:4px solid #ffe078; outline-offset:4px; }
+      .uva-direction { font-size:12px; font-weight:900; letter-spacing:.1em; text-transform:uppercase; color:#31728c; }
+      .uva-prompt { font-weight:900; font-size:clamp(25px,5.2vw,43px); line-height:1.65; overflow-wrap:anywhere; }
+      .uva-prompt.arabic { direction:rtl; font-family:"Noto Naskh Arabic","Amiri",serif; }
+      .uva-hint { color:#6d8190; font-size:13px; }
+      .uva-reveal { min-height:0; max-height:0; opacity:0; overflow:hidden; text-align:center; color:#ffe28b; font-size:clamp(20px,4vw,30px); font-weight:900; transition:all .3s ease; }
+      .uva-reveal.on { max-height:120px; min-height:36px; opacity:1; margin:16px 0 0; }
+      .uva-reveal.arabic { direction:rtl; font-family:"Noto Naskh Arabic","Amiri",serif; }
+      .uva-buttons { display:none; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:12px; }
+      .uva-buttons.on { display:flex; animation:uva-in .25s ease-out; }
+      .uva-buttons .btn { border:1px solid rgba(255,255,255,.35); color:#16304d; background:#fff; font-weight:800; }
+      .uva-buttons .btn:first-child { background:linear-gradient(135deg,#ffe27d,#ffb545); }
+      .uva-tools { display:flex; justify-content:center; gap:9px; flex-wrap:wrap; margin-top:17px; }
+      .uva-tools .btn { color:#eff8ff; background:rgba(255,255,255,.11); border:1px solid rgba(255,255,255,.27); }
+      .uva-tools .btn.primary { color:#182741; background:linear-gradient(135deg,#ffe27d,#ffaf48); border-color:#ffe27d; font-weight:900; }
+      .uva-result { text-align:center; min-height:24px; margin-top:12px; color:#ffdf88; font-size:18px; font-weight:900; }
+      .unit-vocab-arcade.uva-impact { animation:uva-shake .28s ease-out; }
+      @keyframes uva-in { from { opacity:0; transform:translateY(8px) } to { opacity:1; transform:translateY(0) } }
+      @keyframes uva-shake { 0%,100% { transform:translateX(0) } 20% { transform:translateX(-5px) } 45% { transform:translateX(5px) } 70% { transform:translateX(-3px) } }
+      @media(max-width:560px) { .unit-vocab-arcade { border-radius:20px; } .uva-buttons .btn,.uva-tools .btn { flex:1 1 100%; } }
+
+
+      /* Interactive listening transcription exercises */
+      .unit-istima-quiz { margin:14px 0 24px; padding:clamp(16px,3vw,24px); border:1px solid #bfdae8; border-radius:20px; background:linear-gradient(145deg,#f4fbff,#edf7ff 58%,#fff9e8); box-shadow:0 10px 28px rgba(20,68,103,.08); }
+      .uiq-head { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; margin-bottom:6px; }
+      .uiq-head h3 { margin:0; color:#174367; } .uiq-help { color:#526879; font-size:14px; margin:5px 0 14px; }
+      .uiq-score { border-radius:999px; padding:7px 12px; color:#125b68; background:#dff7f1; font-size:13px; font-weight:900; }
+      .uiq-item { display:grid; grid-template-columns:auto minmax(180px,1fr); gap:10px 14px; align-items:center; padding:14px 0; border-top:1px solid #d6e6ee; }
+      .uiq-number { width:34px; height:34px; display:grid; place-items:center; grid-row:span 2; border-radius:50%; color:#173954; background:#f7d77b; font-weight:900; }
+      .uiq-play { justify-self:start; } .uiq-input-wrap { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+      .uiq-input { flex:1 1 220px; min-width:0; padding:11px 13px; border:1px solid #abc9d8; border-radius:12px; background:white; font-size:18px; }
+      .uiq-input:focus { outline:3px solid #bde8ee; border-color:#197b90; }
+      .uiq-feedback { grid-column:2; min-height:20px; margin:0; font-weight:800; font-size:14px; }
+      .uiq-feedback.good { color:#157247; } .uiq-feedback.bad { color:#a34035; }
+      @media(max-width:580px) { .uiq-item { grid-template-columns:36px 1fr; } .uiq-play { grid-column:2; } .uiq-input-wrap { grid-column:2; } .uiq-feedback { grid-column:2; } }
+
 </style>
 <script>
 (function(){
@@ -2390,6 +2469,72 @@ input:focus,select:focus,textarea:focus{
         ["عِلْمٌ وَمَعْرِفَةٌ", "Ilmu dan pengetahuan"],
         ["أُسِّسَ", "Telah didirikan"],
       ];
+
+      // SIBER-WEB game: 40 vocabulary flash questions, based on Unit XII-2 vocabulary.
+      const vocabGameCards12u2 = vocab12Unit2.slice(1, 21).flatMap((item) => [
+        { prompt:item[0], answer:item[1], direction:"Arab → Indonesia", arabic:true },
+        { prompt:item[1], answer:item[0], direction:"Indonesia → Arab", arabic:false },
+      ]);
+      let vocabGameDeck12u2 = [], vocabGameIndex12u2 = 0, vocabGameScore12u2 = 0;
+      let vocabGameRevealed12u2 = false, vocabGameSoundOn12u2 = true, vocabGameAudio12u2 = null;
+      function vocabGameTone12u2(kind="flip") {
+        if (!vocabGameSoundOn12u2) return;
+        try {
+          const Ctx=window.AudioContext||window.webkitAudioContext;
+          if(!Ctx) return;
+          vocabGameAudio12u2 ||= new Ctx();
+          if(vocabGameAudio12u2.state==="suspended") vocabGameAudio12u2.resume();
+          const ctx=vocabGameAudio12u2, now=ctx.currentTime;
+          const notes=kind==="good"?[660,880,1046]:kind==="again"?[330,260]:[520,720];
+          notes.forEach((hz,i)=>{ const osc=ctx.createOscillator(), gain=ctx.createGain(); osc.type=kind==="again"?"triangle":"sine"; osc.frequency.setValueAtTime(hz,now+i*.085); gain.gain.setValueAtTime(.0001,now+i*.085); gain.gain.exponentialRampToValueAtTime(.13,now+i*.085+.018); gain.gain.exponentialRampToValueAtTime(.0001,now+i*.085+.22); osc.connect(gain); gain.connect(ctx.destination); osc.start(now+i*.085); osc.stop(now+i*.085+.23); });
+        } catch(e) { /* Sound is an enhancement; the game remains playable without it. */ }
+      }
+      function paintVocabGame12u2() {
+        const word=document.getElementById("vgWord"), hint=document.getElementById("vgHint"), dir=document.getElementById("vgDirection");
+        const card=document.getElementById("vgCard"), answer=document.getElementById("vgAnswer"), actions=document.getElementById("vgActions");
+        const progress=document.getElementById("vgProgress"), bar=document.getElementById("vgProgressBar"), score=document.getElementById("vgScore"), finish=document.getElementById("vgFinish");
+        if(!word||!vocabGameDeck12u2.length)return;
+        if(vocabGameIndex12u2>=vocabGameDeck12u2.length){
+          card.style.display="none"; hint.textContent="Permainan selesai!"; dir.textContent="مُمْتَازٌ!";
+          answer.classList.remove("show"); actions.classList.remove("show");
+          finish.innerHTML=`Selesai! ⭐ ${vocabGameScore12u2} dari 40 mufradat berhasil diingat.`;
+          bar.style.width="100%"; progress.textContent="40/40"; score.textContent=vocabGameScore12u2; return;
+        }
+        card.style.display="flex"; const q=vocabGameDeck12u2[vocabGameIndex12u2];
+        word.textContent=q.prompt; word.classList.toggle("vg-arabic",q.arabic); word.dir=q.arabic?"rtl":"auto";
+        hint.textContent=`Kartu ${vocabGameIndex12u2+1} dari 40`; dir.textContent=q.direction;
+        answer.textContent=""; answer.classList.remove("show","vg-answer-ar"); actions.classList.remove("show");
+        card.classList.remove("vg-flip"); vocabGameRevealed12u2=false;
+        progress.textContent=`${vocabGameIndex12u2}/40`; bar.style.width=`${vocabGameIndex12u2/40*100}%`; score.textContent=vocabGameScore12u2; finish.textContent="";
+      }
+      function startVocabGame12u2(){
+        vocabGameDeck12u2=vocabGameCards12u2.map(x=>({...x})).sort(()=>Math.random()-.5);
+        vocabGameIndex12u2=0; vocabGameScore12u2=0; vocabGameRevealed12u2=false;
+        const start=document.getElementById("vgStart"); if(start) start.textContent="▶ Mulai ulang";
+        paintVocabGame12u2(); vocabGameTone12u2("flip");
+      }
+      function flipVocabCard12u2(){
+        if(!vocabGameDeck12u2.length) return startVocabGame12u2();
+        if(vocabGameIndex12u2>=vocabGameDeck12u2.length||vocabGameRevealed12u2)return;
+        vocabGameRevealed12u2=true; const q=vocabGameDeck12u2[vocabGameIndex12u2];
+        const a=document.getElementById("vgAnswer"); a.textContent=q.answer;
+        a.classList.toggle("vg-answer-ar",!q.arabic); a.classList.add("show");
+        document.getElementById("vgActions").classList.add("show");
+        const c=document.getElementById("vocabGame12u2"); c.classList.remove("vg-flip"); void c.offsetWidth; c.classList.add("vg-flip");
+        vocabGameTone12u2("flip");
+      }
+      function markVocabCard12u2(remembered){
+        if(!vocabGameRevealed12u2)return;
+        if(remembered){vocabGameScore12u2++;vocabGameTone12u2("good");} else vocabGameTone12u2("again");
+        vocabGameIndex12u2++; paintVocabGame12u2();
+      }
+      function restartVocabGame12u2(){startVocabGame12u2();}
+      function toggleVocabGameSound12u2(){
+        vocabGameSoundOn12u2=!vocabGameSoundOn12u2;
+        const b=document.getElementById("vgSound"); if(b)b.textContent=vocabGameSoundOn12u2?"🔊 Suara aktif":"🔇 Suara mati";
+        if(vocabGameSoundOn12u2)vocabGameTone12u2("flip");
+      }
+
       const vocab12Unit3 = [
         ["الدِّرَاسَةُ فِي الْجَامِعَةِ", "Studi di universitas"],
         ["جَامِعَةٌ", "Universitas"],
@@ -2532,6 +2677,92 @@ input:focus,select:focus,textarea:focus{
         ["يَسْكُنُ", "Bertempat tinggal"],
         ["يُشَجِّعُ", "Mendorong"],
       ];
+
+      // Reusable 40-card bilingual memory game for every unit except XII Unit 2.
+      const unitVocabGamePools = () => ({
+        x1:vocab, x2:vocab2, x3:vocab3, x4:vocab4, x5:vocab5, x6:vocab6,
+        xi1:vocab11Unit1, xi2:vocab11Unit2, xi3:vocab11Unit3, xi4:vocab11Unit4,
+        xii1:vocab12Unit1, xii3:vocab12Unit3
+      });
+      const unitVocabGameState = Object.create(null);
+      function renderUnitVocabGame(key) {
+        const info={x1:"X • Unit 1",x2:"X • Unit 2",x3:"X • Unit 3",x4:"X • Unit 4",x5:"X • Unit 5",x6:"X • Unit 6",xi1:"XI • Unit 1",xi2:"XI • Unit 2",xi3:"XI • Unit 3",xi4:"XI • Unit 4",xii1:"XII • Unit 1",xii3:"XII • Unit 3"}[key]||"Latihan mufradat";
+        return `<section class="dars-section unit-vocab-arcade" id="uva-${key}" aria-label="Permainan mufradat ${info}"><div class="uva-content"><div class="uva-title"><div><h3>🎮 Tantangan Mufradat</h3><span class="uva-subtitle">40 kartu • 20 Arab–Indonesia + 20 Indonesia–Arab</span></div><span class="uva-chip">${info}</span></div><div class="uva-meta"><span class="uva-mode" id="uva-mode-${key}">Siap bermain?</span><span class="uva-score">⭐ Skor: <strong id="uva-score-${key}">0</strong> &nbsp;•&nbsp; <span id="uva-count-${key}">0/40</span></span></div><div class="uva-bar"><i id="uva-bar-${key}"></i></div><button class="uva-question" id="uva-card-${key}" type="button" onclick="flipUnitVocabCard('${key}')"><span class="uva-direction" id="uva-dir-${key}">Kartu mufradat</span><span class="uva-prompt arabic" id="uva-prompt-${key}">اَلْعَرَبِيَّةُ لُغَةٌ جَمِيلَةٌ</span><span class="uva-hint">Klik kartu untuk membuka arti 👆</span></button><div class="uva-reveal" id="uva-answer-${key}" aria-live="polite"></div><div class="uva-buttons" id="uva-buttons-${key}"><button type="button" class="btn" onclick="rateUnitVocabCard('${key}',true)">✅ Saya ingat</button><button type="button" class="btn" onclick="rateUnitVocabCard('${key}',false)">🔁 Ulangi nanti</button></div><div class="uva-tools"><button class="btn primary" id="uva-start-${key}" type="button" onclick="startUnitVocabGame('${key}')">🚀 Mulai tantangan</button><button class="btn" id="uva-sound-${key}" type="button" onclick="toggleUnitVocabSound('${key}')">🔊 Efek suara aktif</button><button class="btn" type="button" onclick="startUnitVocabGame('${key}')">↻ Acak & ulangi</button></div><div class="uva-result" id="uva-result-${key}" aria-live="polite"></div></div></section>`;
+      }
+      function unitGameSound(state,kind){
+        if(!state.sound) return;
+        try {
+          const AC=window.AudioContext||window.webkitAudioContext; if(!AC)return;
+          state.ctx ||= new AC(); if(state.ctx.state==="suspended")state.ctx.resume();
+          const c=state.ctx,t=c.currentTime, master=c.createGain(), comp=c.createDynamicsCompressor();
+          master.gain.value=.65; comp.threshold.value=-18; comp.knee.value=18; comp.ratio.value=8; comp.attack.value=.004; comp.release.value=.18;
+          master.connect(comp); comp.connect(c.destination);
+          const tones=kind==="reveal"?[92,184,554,830]:kind==="win"?[440,660,880,1175]:kind==="again"?[180,130]:[74,147,370,740];
+          if(kind==="flip"||kind==="reveal"){
+            const osc=c.createOscillator(), g=c.createGain(); osc.type="sawtooth"; osc.frequency.setValueAtTime(kind==="reveal"?125:190,t); osc.frequency.exponentialRampToValueAtTime(kind==="reveal"?42:58,t+.2); g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(kind==="reveal"?.42:.22,t+.018); g.gain.exponentialRampToValueAtTime(.0001,t+.32); osc.connect(g);g.connect(master);osc.start(t);osc.stop(t+.34);
+            const len=Math.floor(c.sampleRate*.22),buf=c.createBuffer(1,len,c.sampleRate),data=buf.getChannelData(0);for(let i=0;i<len;i++)data[i]=(Math.random()*2-1)*(1-i/len);
+            const noise=c.createBufferSource(),ng=c.createGain(),filter=c.createBiquadFilter();noise.buffer=buf;filter.type="lowpass";filter.frequency.setValueAtTime(2200,t);filter.frequency.exponentialRampToValueAtTime(280,t+.22);ng.gain.setValueAtTime(kind==="reveal"?.25:.13,t);ng.gain.exponentialRampToValueAtTime(.0001,t+.22);noise.connect(filter);filter.connect(ng);ng.connect(master);noise.start(t);noise.stop(t+.23);
+          }
+          tones.forEach((hz,i)=>{const o=c.createOscillator(),g=c.createGain();o.type=i<2?"triangle":"sine";const st=t+i*(kind==="win"?.07:.045);o.frequency.setValueAtTime(hz,st);g.gain.setValueAtTime(.0001,st);g.gain.exponentialRampToValueAtTime(kind==="again"?.12:.2,st+.012);g.gain.exponentialRampToValueAtTime(.0001,st+(kind==="again"?.14:.28));o.connect(g);g.connect(master);o.start(st);o.stop(st+(kind==="again"?.15:.29));});
+        }catch(e){/* no audio device: gameplay remains available */}
+      }
+      function startUnitVocabGame(key){
+        const pools=unitVocabGamePools(), pool=pools[key]||[], words=pool.slice(0,20);
+        const state=unitVocabGameState[key]||{sound:true}; state.deck=[]; state.i=0; state.score=0; state.open=false; state.sound=state.sound!==false;
+        words.forEach(pair=>{state.deck.push({prompt:pair[0],answer:pair[1],direction:"Arab → Indonesia",arabic:true},{prompt:pair[1],answer:pair[0],direction:"Indonesia → Arab",arabic:false});});
+        for(let i=state.deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[state.deck[i],state.deck[j]]=[state.deck[j],state.deck[i]];}
+        unitVocabGameState[key]=state; const start=document.getElementById(`uva-start-${key}`);if(start)start.textContent="🚀 Mulai lagi";
+        drawUnitVocabGame(key);unitGameSound(state,"flip");
+      }
+      function drawUnitVocabGame(key){
+        const s=unitVocabGameState[key];if(!s)return;
+        const card=document.getElementById(`uva-card-${key}`),prompt=document.getElementById(`uva-prompt-${key}`),dir=document.getElementById(`uva-dir-${key}`),mode=document.getElementById(`uva-mode-${key}`),answer=document.getElementById(`uva-answer-${key}`),buttons=document.getElementById(`uva-buttons-${key}`),result=document.getElementById(`uva-result-${key}`),score=document.getElementById(`uva-score-${key}`),count=document.getElementById(`uva-count-${key}`),bar=document.getElementById(`uva-bar-${key}`);
+        if(s.i>=s.deck.length){card.style.display="none";mode.textContent="Tantangan selesai!";answer.classList.remove("on");buttons.classList.remove("on");result.textContent=`🏆 Hebat! Skor hafalanmu ${s.score} dari 40.`;count.textContent="40/40";bar.style.width="100%";return;}
+        const q=s.deck[s.i];card.style.display="flex";prompt.textContent=q.prompt;prompt.classList.toggle("arabic",q.arabic);prompt.dir=q.arabic?"rtl":"auto";dir.textContent=q.direction;mode.textContent=`${key.toUpperCase()} • Kartu ${s.i+1} dari 40`;
+        answer.textContent="";answer.classList.remove("on","arabic");buttons.classList.remove("on");result.textContent="";score.textContent=s.score;count.textContent=`${s.i}/40`;bar.style.width=`${s.i/40*100}%`;s.open=false;
+      }
+      function flipUnitVocabCard(key){
+        const s=unitVocabGameState[key];if(!s||!s.deck.length)return startUnitVocabGame(key);if(s.open||s.i>=s.deck.length)return;
+        s.open=true;const q=s.deck[s.i],answer=document.getElementById(`uva-answer-${key}`);answer.textContent=q.answer;answer.classList.toggle("arabic",!q.arabic);answer.classList.add("on");document.getElementById(`uva-buttons-${key}`).classList.add("on");
+        const root=document.getElementById(`uva-${key}`);root.classList.remove("uva-impact");void root.offsetWidth;root.classList.add("uva-impact");unitGameSound(s,"reveal");
+      }
+      function rateUnitVocabCard(key,known){const s=unitVocabGameState[key];if(!s||!s.open)return;if(known){s.score++;unitGameSound(s,"win");}else unitGameSound(s,"again");s.i++;drawUnitVocabGame(key);}
+      function toggleUnitVocabSound(key){const s=unitVocabGameState[key]||{sound:true};s.sound=!s.sound;unitVocabGameState[key]=s;const b=document.getElementById(`uva-sound-${key}`);if(b)b.textContent=s.sound?"🔊 Efek suara aktif":"🔇 Efek suara mati";if(s.sound)unitGameSound(s,"win");}
+
+
+      // Five short dictation items for every unit, using that unit's existing mufradat audio.
+      function unitListeningConfig(){return {
+        x1:{label:"Kelas X • Unit 1: Perkenalan",grade:"x",unit:"01",words:vocab},
+        x2:{label:"Kelas X • Unit 2: Keluarga",grade:"x",unit:"02",words:vocab2},
+        x3:{label:"Kelas X • Unit 3: Sekolah",grade:"x",unit:"03",words:vocab3},
+        x4:{label:"Kelas X • Unit 4: Hobi",grade:"x",unit:"04",words:vocab4},
+        x5:{label:"Kelas X • Unit 5: Profesi",grade:"x",unit:"05",words:vocab5},
+        x6:{label:"Kelas X • Unit 6: Kehidupan Sehari-hari",grade:"x",unit:"06",words:vocab6},
+        xi1:{label:"Kelas XI • Unit 1: Pariwisata",grade:"xi",unit:"01",words:vocab11Unit1},
+        xi2:{label:"Kelas XI • Unit 2: Kesehatan",grade:"xi",unit:"02",words:vocab11Unit2},
+        xi3:{label:"Kelas XI • Unit 3: Haji dan Umrah",grade:"xi",unit:"03",words:vocab11Unit3},
+        xi4:{label:"Kelas XI • Unit 4: Agama di Indonesia",grade:"xi",unit:"04",words:vocab11Unit4},
+        xii1:{label:"Kelas XII • Unit 1: Teknologi Informasi dan Komunikasi",grade:"xii",unit:"01",words:vocab12Unit1},
+        xii2:{label:"Kelas XII • Unit 2: Tokoh-tokoh Besar Islam",grade:"xii",unit:"02",words:vocab12Unit2},
+        xii3:{label:"Kelas XII • Unit 3: Studi di Universitas",grade:"xii",unit:"03",words:vocab12Unit3}
+      };}
+      function renderUnitIstimaQuiz(key){
+        const cfg=unitListeningConfig()[key], items=cfg.words.slice(0,5);
+        return `<section class="dars-section unit-istima-quiz" id="unit-istima-${key}" aria-label="Latihan istima ${cfg.label}"><div class="uiq-head"><h3>🎧 Istimā‘ Interaktif — Latihan Menyimak</h3><span class="uiq-score" id="uiq-score-${key}">Skor: 0/5</span></div><p class="uiq-help"><b>${cfg.label}</b><br>Klik tombol audio, dengarkan mufradatnya, lalu ketik kata Arab yang kamu dengar. Harakat boleh ditulis atau dihilangkan.</p>${items.map((w,i)=>`<div class="uiq-item"><span class="uiq-number">${i+1}</span><button type="button" class="btn primary uiq-play" onclick="playAudio('audio/${cfg.grade}/unit-${cfg.unit}/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3',this)">▶️ Dengarkan audio ${i+1}</button><div class="uiq-input-wrap"><input class="uiq-input arabic" dir="rtl" autocomplete="off" id="uiq-input-${key}-${i}" placeholder="اُكْتُبْ مَا سَمِعْتَ بِالْعَرَبِيَّةِ"><button type="button" class="btn" onclick="checkUnitIstimaAnswer('${key}',${i})">Periksa</button></div><p class="uiq-feedback" id="uiq-feedback-${key}-${i}" aria-live="polite"></p></div>`).join("")}<div class="uiq-help" id="uiq-summary-${key}" aria-live="polite"></div></section>`;
+      }
+      function normalizeUnitArabic(text){return (text||"").normalize("NFC").replace(/[ً-ٰٟـ]/g,"").replace(/[أإآٱ]/g,"ا").replace(/ى/g,"ي").replace(/[\s\p{P}\p{S}]/gu,"").toLowerCase();}
+      const unitListeningChecked=Object.create(null);
+      function checkUnitIstimaAnswer(key,index){
+        const cfg=unitListeningConfig()[key], input=document.getElementById(`uiq-input-${key}-${index}`), fb=document.getElementById(`uiq-feedback-${key}-${index}`), scoreEl=document.getElementById(`uiq-score-${key}`), summary=document.getElementById(`uiq-summary-${key}`), expected=cfg.words[index][0];
+        const correct=normalizeUnitArabic(input.value)===normalizeUnitArabic(expected);
+        unitListeningChecked[key] ||= {}; if(unitListeningChecked[key][index])return;
+        unitListeningChecked[key][index]=correct; input.readOnly=true; fb.classList.remove("good","bad");
+        if(correct){fb.classList.add("good");fb.textContent="✅ Tepat! Bagus, kamu menuliskan mufradat yang didengar.";}
+        else{fb.classList.add("bad");fb.innerHTML=`❌ Belum tepat. Jawaban yang benar: <span class="arabic" dir="rtl">${expected}</span>`;}
+        const checks=unitListeningChecked[key], done=Object.keys(checks).length, right=Object.values(checks).filter(Boolean).length;
+        scoreEl.textContent=`Skor: ${right}/5`; if(done===5)summary.textContent=`Selesai! Nilaimu ${right} dari 5. ${right===5?"مُمْتَازٌ!":"Coba dengarkan kembali audio dan ulangi latihannya."}`;
+      }
+
       /* SIBER-WEB FIXED MP3 AUDIO ENGINE
          Audio pembelajaran menggunakan file MP3 tetap, bukan TTS perangkat.
          Satu audio aktif pada satu waktu dan otomatis berhenti saat audio lain diputar.
@@ -2746,9 +2977,13 @@ input:focus,select:focus,textarea:focus{
 <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti. Gunakan tombol suara untuk latihan pelafalan.</span></div><span class="progress-chip">${vocab.length} kosakata</span></div>
 <div class="vocab-grid">${vocab.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/x/unit-01/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
 </div>
+
+${renderUnitVocabGame("x1")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
+${renderUnitIstimaQuiz("x1")}
+
   <div class="dars-section">
     <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ الْأَوَّلُ — التَّعْرِيفُ بِنَفْسِي</h3><span class="muted">Dengarkan teks perkenalan Ahmad tanpa membaca transkrip terlebih dahulu.</span></div><button class="btn primary" onclick="playAudio('audio/x/unit-01/istima/istima-01.mp3', this)">▶ Putar audio 1</button></div>
     <div class="audio-script rtlbox"><button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan teks</button><div id="d1Listen1" hidden><p>اِسْمِي أَحْمَدُ. أَنَا طَالِبٌ فِي الصَّفِّ الْعَاشِرِ. أَنَا مِنْ جُمْبَانْجَ، وَعُنْوَانِي فِي شَارِعِ كِيَاهِي الْحَاجِّ عَبْدِ الْوَهَّابِ رَقْمُ تِسْعَةٍ وَسَبْعِينَ. أَتَعَلَّمُ الْآنَ فِي الْمَدْرَسَةِ الثَّانَوِيَّةِ الْإِسْلَامِيَّةِ الْحُكُومِيَّةِ الرَّابِعَةِ بِجُمْبَانْجَ. أَذْهَبُ إِلَى الْمَدْرَسَةِ بِالدَّرَّاجَةِ كُلَّ يَوْمٍ.</p></div></div>
@@ -2893,9 +3128,13 @@ input:focus,select:focus,textarea:focus{
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti dan gunakan tombol 🔊 untuk mendengarkan pelafalan.</span></div><span class="progress-chip">${vocab2.length} kosakata</span></div>
     <div class="vocab-grid">${vocab2.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/x/unit-02/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
   </div>
+
+${renderUnitVocabGame("x2")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
+${renderUnitIstimaQuiz("x2")}
+
   <div class="dars-section">
     <h3>🎧 الِاسْتِمَاعُ — Istima'</h3>
     <p>Dengarkan dua materi berikut. Dengarkan minimal dua kali, kemudian ulangi dengan memperhatikan makhraj, panjang-pendek, dan intonasi.</p>
@@ -3092,9 +3331,13 @@ input:focus,select:focus,textarea:focus{
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti; gunakan tombol suara untuk menirukan pelafalan.</span></div><span class="progress-chip">${vocab3.length} kosakata</span></div>
     <div class="vocab-grid">${vocab3.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/x/unit-03/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
   </div>
+
+${renderUnitVocabGame("x3")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
+${renderUnitIstimaQuiz("x3")}
+
   <div class="dars-section">
     <div class="reading-title">
       <div><h3>🎧 الِاسْتِمَاعُ الْأَوَّلُ — مَدْرَسَتِي</h3><span class="muted">Dengarkan teks deskriptif tentang fasilitas dan kegiatan di madrasah tanpa membaca transkrip terlebih dahulu.</span></div>
@@ -3267,9 +3510,13 @@ input:focus,select:focus,textarea:focus{
     </div>
     <div id="quickFeedback4" class="choice-feedback" aria-live="polite"></div>
   </div>
+
+${renderUnitVocabGame("x4")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
+${renderUnitIstimaQuiz("x4")}
+
   <div class="dars-section">
     <div class="reading-title">
       <div><h3>🎧 الِاسْتِمَاعُ الْأَوَّلُ — هِوَايَةُ الْقِرَاءَةِ</h3><span class="muted">Dengarkan teks deskriptif tentang hobi Ahmad tanpa membaca transkrip terlebih dahulu.</span></div>
@@ -3440,9 +3687,13 @@ input:focus,select:focus,textarea:focus{
     </div>
     <div id="quickFeedback5" class="choice-feedback" aria-live="polite"></div>
   </div>
+
+${renderUnitVocabGame("x5")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
+${renderUnitIstimaQuiz("x5")}
+
   <div class="dars-section">
     <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ الْأَوَّلُ — مِهَنُ التَّرْبِيَةِ</h3><span class="muted">Dengarkan teks tentang profesi pendidikan tanpa membaca transkrip terlebih dahulu.</span></div><button class="btn primary" onclick="playAudio('audio/x/unit-05/istima/istima-01.mp3', this)">▶ Putar audio 1</button></div>
     <div class="audio-script rtlbox"><button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan teks</button><div id="d5Listen1" hidden><p>فِي مَجَالِ التَّرْبِيَةِ مِهَنٌ مُتَنَوِّعَةٌ. الْمُدَرِّسُ يُعَلِّمُ الْعُلُومَ وَالْمَعَارِفَ فِي الْمَدْرَسَةِ، وَالْمُحَاضِرُ يُعَلِّمُ الطُّلَّابَ فِي الْجَامِعَةِ. أَمَّا مُدِيرُ الْمَدْرَسَةِ فَيُنَظِّمُ الْبَرَامِجَ التَّعْلِيمِيَّةَ، وَالْمُوَظَّفُ الْإِدَارِيُّ يُسَاعِدُ فِي الْأَعْمَالِ الْإِدَارِيَّةِ. كُلُّهُمْ يَعْمَلُونَ بِجِدٍّ لِنَجَاحِ التَّعْلِيمِ.</p></div></div>
@@ -3602,9 +3853,13 @@ input:focus,select:focus,textarea:focus{
     </div>
     <div id="quickFeedback6" class="choice-feedback" aria-live="polite"></div>
   </div>
+
+${renderUnitVocabGame("x6")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
+${renderUnitIstimaQuiz("x6")}
+
   <div class="dars-section">
     <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ الْأَوَّلُ — أَعْمَالِي فِي الصَّبَاحِ</h3><span class="muted">Dengarkan teks kegiatan pagi tanpa membaca transkrip terlebih dahulu.</span></div><button class="btn primary" onclick="playAudio('audio/x/unit-06/istima/istima-01.mp3', this)">▶ Putar audio 1</button></div>
     <div class="audio-script rtlbox"><button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan teks</button><div id="d6Listen1" hidden><p>أَقُومُ مِنَ النَّوْمِ فِي السَّاعَةِ الرَّابِعَةِ صَبَاحًا. أُنَظِّفُ سَرِيرِي وَغُرْفَةَ نَوْمِي، ثُمَّ أَسْتَحِمُّ وَأَتَوَضَّأُ. أَذْهَبُ إِلَى الْمَسْجِدِ لِصَلَاةِ الْفَجْرِ جَمَاعَةً، وَبَعْدَ الصَّلَاةِ أَقْرَأُ بَعْضَ آيَاتٍ مِنَ الْقُرْآنِ الْكَرِيمِ. فِي السَّاعَةِ الْخَامِسَةِ أُسَاعِدُ أُمِّي عَلَى إِعْدَادِ الْفُطُورِ. أَتَنَاوَلُ الْفُطُورَ فِي السَّادِسَةِ إِلَّا الرُّبْعَ، ثُمَّ أَرْتَدِي زِيَّ الْمَدْرَسَةِ.</p></div></div>
@@ -3782,9 +4037,13 @@ input:focus,select:focus,textarea:focus{
     <div id="quickFeedback12Unit1" class="choice-feedback" aria-live="polite"></div>
     <div class="exercise"><b>Tugas klasifikasi:</b> Pilih delapan kartu, lalu kelompokkan ke dalam <span class="arabic">أَجْهِزَةٌ، بَرَامِجُ، شَبَكَاتٌ، أَنْشِطَةٌ رَقْمِيَّةٌ</span>. Buat satu kalimat untuk setiap kelompok.</div>
   </div>
+
+${renderUnitVocabGame("xii1")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
+${renderUnitIstimaQuiz("xii1")}
+
   <div class="dars-section">
     <h3>🎧 الِاسْتِمَاعُ — Istimā' 1: Teknologi yang Bermanfaat</h3>
     <p><b>Petunjuk:</b> Tutup transkrip. Dengarkan pertama kali untuk menemukan tema, kedua kali untuk mencatat rincian, dan ketiga kali untuk memeriksa jawaban.</p>
@@ -3953,9 +4212,35 @@ input:focus,select:focus,textarea:focus{
     </div>
     <div id="quickFeedback12Unit2" class="choice-feedback" aria-live="polite"></div>
   </div>
+
+  <div class="dars-section vocab-game-section">
+    <div class="reading-title"><div><h3>🎮 Permainan Mufradat — 40 Kartu</h3><span class="muted">20 soal Arab–Indonesia dan 20 soal Indonesia–Arab. Klik kartu untuk melihat artinya.</span></div><span class="progress-chip">Kelas XII • Unit 2</span></div>
+    <div class="vocab-game" id="vocabGame12u2">
+      <div class="vg-top"><span class="vg-pill" id="vgDirection">Siap bermain?</span><span class="vg-stats">⭐ Skor: <b id="vgScore">0</b> <span class="vg-divider">•</span> <span id="vgProgress">0/40</span></span></div>
+      <div class="vg-progress"><span id="vgProgressBar"></span></div>
+      <button class="vg-card" id="vgCard" type="button" onclick="flipVocabCard12u2()" aria-label="Klik untuk membuka kartu">
+        <span class="vg-card-hint" id="vgHint">Tekan tombol mulai untuk bermain</span>
+        <span class="vg-word" id="vgWord">عُظَمَاءُ الْإِسْلَامِ</span>
+        <span class="vg-tap">👆 Klik kartu untuk membuka</span>
+      </button>
+      <div class="vg-answer" id="vgAnswer" aria-live="polite"></div>
+      <div class="vg-actions" id="vgActions">
+        <button class="btn primary" type="button" onclick="markVocabCard12u2(true)">✅ Saya ingat</button>
+        <button class="btn" type="button" onclick="markVocabCard12u2(false)">🔁 Ulangi nanti</button>
+      </div>
+      <div class="vg-controls">
+        <button class="btn primary" id="vgStart" type="button" onclick="startVocabGame12u2()">▶ Mulai permainan</button>
+        <button class="btn" type="button" onclick="toggleVocabGameSound12u2()" id="vgSound">🔊 Suara aktif</button>
+        <button class="btn" type="button" onclick="restartVocabGame12u2()">↻ Ulangi dari awal</button>
+      </div>
+      <div class="vg-finish" id="vgFinish" aria-live="polite"></div>
+    </div>
+  </div>
 </div>
 
 <div id="panel-istima" class="lesson-panel">
+${renderUnitIstimaQuiz("xii2")}
+
   <div class="dars-section">
     <h3>🎧 الِاسْتِمَاعُ — Istimā' 1: Dua Warisan Peradaban Islam</h3>
     <p><b>Petunjuk:</b> Tutup transkrip. Dengarkan pertama kali untuk menemukan tema, kedua kali untuk mencatat tokoh, tempat, dan waktu, lalu ketiga kali untuk memeriksa jawaban.</p>
@@ -4106,9 +4391,13 @@ input:focus,select:focus,textarea:focus{
     <div class="vocab-grid">${vocab12Unit3.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button type="button" class="btn audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/xii/unit-03/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
     <div class="mini-task"><div><h4 class="arabic">تَدْرِيبٌ سَرِيعٌ</h4><p class="arabic">مَنْ يَرْأَسُ الْكُلِّيَّةَ؟</p><button class="btn" onclick="quickAnswer12Unit3(this,false)">مُدِيرُ الْجَامِعَةِ</button> <button class="btn" onclick="quickAnswer12Unit3(this,true)">عَمِيدُ الْكُلِّيَّةِ</button> <button class="btn" onclick="quickAnswer12Unit3(this,false)">الطَّالِبُ</button><p id="quickFeedback12Unit3" class="feedback arabic" aria-live="polite"></p></div></div>
   </section>
+
+${renderUnitVocabGame("xii3")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
+${renderUnitIstimaQuiz("xii3")}
+
   <section class="dars-section">
     <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ — Istimā’ 1: خُطُوَاتُ الِالْتِحَاقِ</h3><span class="muted">Dengarkan dialog tanpa membaca, jawab pertanyaan, lalu buka transkrip.</span></div><button class="btn primary" onclick="playAudio('audio/xii/unit-03/istima/istima-01.mp3', this)">▶ Putar Istimā’ 1</button></div>
     <div class="audio-script rtlbox"><button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan transkrip</button><div id="d12u3ListenText" hidden><p><b>عَلِيٌّ:</b> عَفْوًا يَا أُسْتَاذُ، أَنَا لَمْ أَعْرِفْ خُطُوَاتِ الِالْتِحَاقِ بِالْجَامِعَةِ.</p><p><b>الْمُعَلِّمُ:</b> أَوَّلًا، يَنْبَغِي لَكَ أَنْ تَبْحَثَ عَنِ الْمَعْلُومَاتِ عَنِ الْجَامِعَةِ يَا عَلِيُّ.</p><p><b>عَلِيٌّ:</b> وَمَاذَا بَعْدَ ذَلِكَ يَا أُسْتَاذُ؟</p><p><b>الْمُعَلِّمُ:</b> بَعْدَ ذَلِكَ، يَجِبُ عَلَيْكَ أَنْ تُلَبِّيَ جَمِيعَ الشُّرُوطِ الْمَطْلُوبَةِ.</p><p><b>عَلِيٌّ:</b> هَلْ يَجِبُ عَلَيَّ أَنْ أُسَجِّلَ عَلَى الْمَوْقِعِ الْإِلِكْتُرُونِيِّ؟</p><p><b>الْمُعَلِّمُ:</b> نَعَمْ، صَحِيحٌ يَا عَلِيُّ.</p></div></div>
@@ -4261,9 +4550,13 @@ input:focus,select:focus,textarea:focus{
     <div class="vocab-grid">${vocab11Unit1.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/xi/unit-01/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
     <div class="mini-task"><h4>Latihan cepat</h4><p class="arabic">أَيُّ كَلِمَةٍ مَعْنَاهَا «تذاكر السفر»؟</p><button class="btn" onclick="quickAnswer(this,false)">غَارٌ</button> <button class="btn" onclick="quickAnswer(this,true)">تَذْكِرَةٌ</button> <button class="btn" onclick="quickAnswer(this,false)">فِرَاشٌ</button><p id="quickFeedback" class="feedback"></p></div>
   </section>
+
+${renderUnitVocabGame("xi1")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
+${renderUnitIstimaQuiz("xi1")}
+
   <section class="dars-section">
     <div class="reading-title"><div><h3>🎧 الاستماع — Menyimak</h3><span class="muted">Dengarkan tanpa melihat teks, lalu jawab pertanyaan pemahaman.</span></div><button class="btn primary" onclick="playAudio('audio/xi/unit-01/istima/istima-01.mp3', this)">▶ Putar audio</button></div>
     <div class="audio-script rtlbox"><button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan transkrip</button><p hidden>قَضَيْتُ أَيَّامَ الْعُطْلَةِ فِي بَيْتِ جَدِّي بِسُوكُوهَارْجُو. ذَهَبْتُ هُنَاكَ بِالْقِطَارِ فِي الْأُسْبُوعِ الْمَاضِي، وَمَكَثْتُ هُنَاكَ ثَلَاثَةَ أَيَّامٍ.</p></div>
@@ -4397,9 +4690,13 @@ input:focus,select:focus,textarea:focus{
     <div class="vocab-grid">${vocab11Unit2.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/xi/unit-02/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
     <div class="mini-task"><h4>Latihan cepat</h4><p class="arabic">أَيْنَ يَشْتَرِي الْمَرِيضُ الدَّوَاءَ؟</p><button class="btn" onclick="quickAnswer(this,false)">فِي الْمَلْعَبِ</button> <button class="btn" onclick="quickAnswer(this,true)">فِي الصَّيْدَلِيَّةِ</button> <button class="btn" onclick="quickAnswer(this,false)">فِي الْفَصْلِ</button><p id="quickFeedback" class="feedback"></p></div>
   </section>
+
+${renderUnitVocabGame("xi2")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
+${renderUnitIstimaQuiz("xi2")}
+
   <section class="dars-section">
     <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ الْأَوَّلُ — عَادَاتِي الصِّحِّيَّةُ</h3><span class="muted">Dengarkan monolog tentang kebiasaan hidup sehat sebanyak dua atau tiga kali, lalu catat gagasan utama dan informasi rinci.</span></div><button class="btn primary" onclick="playAudio('audio/xi/unit-02/istima/istima-01.mp3', this)">▶ Putar audio 1</button></div>
     <div class="audio-script rtlbox"><button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan transkrip</button><div id="d11u2Istima1" hidden><p>اِسْمِي زَيْنَبُ، وَأَنَا طَالِبَةٌ فِي الصَّفِّ الْحَادِي عَشَرَ. أَهْتَمُّ بِصِحَّتِي لِأَنَّ الصِّحَّةَ نِعْمَةٌ كَبِيرَةٌ. أَسْتَيْقِظُ فِي السَّاعَةِ الْخَامِسَةِ صَبَاحًا، ثُمَّ أَشْرَبُ كُوبًا مِنَ الْمَاءِ وَأُمَارِسُ الرِّيَاضَةَ لِمُدَّةِ ثَلَاثِينَ دَقِيقَةً. أَذْهَبُ إِلَى الْمَدْرَسَةِ بِالدَّرَّاجَةِ ثَلَاثَ مَرَّاتٍ فِي الْأُسْبُوعِ.</p><p>أَتَنَاوَلُ فِي وَجْبَةِ الْفُطُورِ الْخُبْزَ وَالْبَيْضَ وَالْفَوَاكِهَ، وَأَشْرَبُ اللَّبَنَ بِلَا سُكَّرٍ. أُحِبُّ الْمَوْزَ وَالْبُرْتُقَالَ، وَأَتَنَاوَلُ الْخَضْرَوَاتِ كُلَّ يَوْمٍ. أَتَجَنَّبُ الطَّعَامَ الْمَالِحَ وَالطَّعَامَ الْمَقْلِيَّ وَالْمَشْرُوبَاتِ الْحُلْوَةَ؛ لِأَنَّ الْإِكْثَارَ مِنْهَا غَيْرُ نَافِعٍ لِلْبَدَنِ.</p><p>بَعْدَ الدِّرَاسَةِ أَلْعَبُ كُرَةَ الْقَدَمِ مَعَ صَدِيقَاتِي فِي مَلْعَبِ الْقَرْيَةِ. وَفِي اللَّيْلِ أَنَامُ مُبَكِّرًا، فَلَا أَسْتَعْمِلُ الْهَاتِفَ قَبْلَ النَّوْمِ وَأَنَامُ ثَمَانِيَ سَاعَاتٍ. بِهَذِهِ الْعَادَاتِ أَشْعُرُ بِالنَّشَاطِ وَأَسْتَطِيعُ أَنْ أَتَعَلَّمَ جَيِّدًا.</p></div></div>
@@ -4580,9 +4877,13 @@ input:focus,select:focus,textarea:focus{
     <div class="vocab-grid">${vocab11Unit3.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/xi/unit-03/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
     <div class="mini-task"><div><h4>Latihan cepat</h4><p class="arabic">أَيْنَ يَقِفُ الْحُجَّاجُ فِي الْيَوْمِ التَّاسِعِ مِنْ ذِي الْحِجَّةِ؟</p><button class="btn" onclick="quickAnswer3(this,false)">فِي مِنًى</button> <button class="btn" onclick="quickAnswer3(this,true)">فِي عَرَفَةَ</button> <button class="btn" onclick="quickAnswer3(this,false)">فِي الْمَدِينَةِ</button><p id="quickFeedback3" class="feedback" aria-live="polite"></p></div></div>
   </section>
+
+${renderUnitVocabGame("xi3")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
+${renderUnitIstimaQuiz("xi3")}
+
   <section class="dars-section">
     <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ — عِنْدَ الْحَجَرِ الْأَسْوَدِ</h3><span class="muted">Dengarkan tanpa melihat teks, jawab pertanyaan, lalu cocokkan dengan transkrip.</span></div><button class="btn primary" onclick="playAudio('audio/xi/unit-03/istima/istima-01.mp3', this)">▶ Putar audio</button></div>
     <div class="audio-script rtlbox"><button class="btn" onclick="const p=this.nextElementSibling;const h=p.hasAttribute('hidden');p.toggleAttribute('hidden',!h);this.textContent=h?'🙈 Sembunyikan transkrip':'👁 Buka transkrip'">👁 Buka transkrip</button><div id="d11u3ListenText" hidden><div class="u11u3-transcript"><p class="arabic">خَالِدَة : يَا نَوْفَل نَحْنُ قَرِيبُونَ مِنَ الحَجَرِ الْأَسْوَدِ، مَاذَا أَفْعَلُ؟ نَوْفَلُ : تَقَدَّمِي إِلَيْهِ وَاسْتَلِمِيهِ إِنْ اسْتَطَعْتِ، فَإِنْ لَمْ تَسْتَطِيعِي وَكُنْتِ بَعِيدَةً فَأَشِرِي إِلَيْهِ بِيَدِكِ.</p><p class="arabic">خَالِدَة : ثُمَّ مَاذَا أَفْعَلُ بَعْدَ ذَلِكَ؟ نَوْفَلُ : تَابِعِي طَوَافَكِ وَادْعِيْ اللَّهَ بِمَا شِئْتِ.</p><p class="arabic">خَالِدَة : هَلْ هُنَاكَ شَيْيٌّ آخَرُ عَنِ الحَجَرِ الأَسْوَدِ؟ نَوْفَلُ : تَذَكَّرِي أَنَّ الحَجَرَ الأَسْوَدَ قِطْعَةٌ مِنَ الْجَنَّةِ.</p></div><p><b>خَالِدَةُ:</b> يَا نَوْفَلُ، نَحْنُ قَرِيبُونَ مِنَ الْحَجَرِ الْأَسْوَدِ، مَاذَا أَفْعَلُ؟</p><p><b>نَوْفَلُ:</b> تَقَدَّمِي إِلَيْهِ وَاسْتَلِمِيهِ إِنِ اسْتَطَعْتِ، فَإِنْ لَمْ تَسْتَطِيعِي فَأَشِيرِي إِلَيْهِ بِيَدِكِ.</p><p><b>خَالِدَةُ:</b> ثُمَّ مَاذَا أَفْعَلُ بَعْدَ ذَلِكَ؟</p><p><b>نَوْفَلُ:</b> تَابِعِي طَوَافَكِ وَادْعِي اللهَ بِمَا شِئْتِ.</p></div></div>
@@ -4785,9 +5086,13 @@ input:focus,select:focus,textarea:focus{
       ].map((v) => `<div class="vocab"><b>${v[0]}</b><span>${v[1]}</span></div>`).join("")}
     </div>
   </section>
+
+${renderUnitVocabGame("xi4")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
+${renderUnitIstimaQuiz("xi4")}
+
   <section class="dars-section">
     <div class="reading-title"><div><h3>🎧 الِاسْتِمَاعُ — التَّسَامُحُ فِي الْمُجْتَمَعِ</h3><span class="muted">Dengarkan lebih dahulu, jawab pertanyaan, kemudian buka transkrip.</span></div><button class="btn primary" onclick="playAudio('audio/xi/unit-04/istima/istima-01.mp3', this)">▶ Putar audio</button></div>
     <div class="audio-script rtlbox"><button class="btn" onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden">👁 Tampilkan / sembunyikan transkrip</button><div id="d11u4ListenText" hidden><p>خَالِدٌ تَاجِرٌ مُسْلِمٌ يَسْكُنُ فِي جُومْبَانْجَ. يَذْهَبُ إِلَى الْمَسْجِدِ كُلَّ يَوْمٍ لِأَدَاءِ الصَّلَاةِ. وَلَهُ جَارٌ بُوذِيٌّ اسْمُهُ سُونَارْطُو يَتَعَبَّدُ فِي مَعْبَدٍ، وَجَارٌ بُرُوتِسْتَانْتِيٌّ اسْمُهُ فَرَانْسِيسْكُوس يَتَعَبَّدُ فِي الْكَنِيسَةِ. يَعِيشُونَ فِي سَلَامٍ وَتَسَامُحٍ.</p></div></div>
