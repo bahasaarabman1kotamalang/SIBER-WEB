@@ -2059,6 +2059,31 @@ input:focus,select:focus,textarea:focus{
 }
 </style>
 
+
+<style id="uva-fullscreen-style">
+/* Full screen mode untuk Tantangan Mufradat */
+.unit-vocab-arcade:fullscreen{
+  width:100vw !important;
+  height:100vh !important;
+  max-width:none !important;
+  margin:0 !important;
+  border-radius:0 !important;
+  padding:35px !important;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:auto;
+}
+.unit-vocab-arcade:fullscreen .uva-content{
+  width:min(900px,95vw);
+}
+.unit-vocab-arcade:fullscreen .uva-question{
+  min-height:45vh;
+}
+.unit-vocab-arcade:fullscreen .uva-prompt{
+  font-size:clamp(45px,8vw,90px);
+}
+</style>
 </head>
   <body>
     <header>
@@ -2687,7 +2712,7 @@ input:focus,select:focus,textarea:focus{
       const unitVocabGameState = Object.create(null);
       function renderUnitVocabGame(key) {
         const info={x1:"X • Unit 1",x2:"X • Unit 2",x3:"X • Unit 3",x4:"X • Unit 4",x5:"X • Unit 5",x6:"X • Unit 6",xi1:"XI • Unit 1",xi2:"XI • Unit 2",xi3:"XI • Unit 3",xi4:"XI • Unit 4",xii1:"XII • Unit 1",xii3:"XII • Unit 3"}[key]||"Latihan mufradat";
-        return `<section class="dars-section unit-vocab-arcade" id="uva-${key}" aria-label="Permainan mufradat ${info}"><div class="uva-content"><div class="uva-title"><div><h3>🎮 Tantangan Mufradat</h3><span class="uva-subtitle">40 kartu • 20 Arab–Indonesia + 20 Indonesia–Arab</span></div><span class="uva-chip">${info}</span></div><div class="uva-meta"><span class="uva-mode" id="uva-mode-${key}">Siap bermain?</span><span class="uva-score">⭐ Skor: <strong id="uva-score-${key}">0</strong> &nbsp;•&nbsp; <span id="uva-count-${key}">0/40</span></span></div><div class="uva-bar"><i id="uva-bar-${key}"></i></div><button class="uva-question" id="uva-card-${key}" type="button" onclick="flipUnitVocabCard('${key}')"><span class="uva-direction" id="uva-dir-${key}">Kartu mufradat</span><span class="uva-prompt arabic" id="uva-prompt-${key}">اَلْعَرَبِيَّةُ لُغَةٌ جَمِيلَةٌ</span><span class="uva-hint">Klik kartu untuk membuka arti 👆</span></button><div class="uva-reveal" id="uva-answer-${key}" aria-live="polite"></div><div class="uva-buttons" id="uva-buttons-${key}"><button type="button" class="btn" onclick="rateUnitVocabCard('${key}',true)">✅ Saya ingat</button><button type="button" class="btn" onclick="rateUnitVocabCard('${key}',false)">🔁 Ulangi nanti</button></div><div class="uva-tools"><button class="btn primary" id="uva-start-${key}" type="button" onclick="startUnitVocabGame('${key}')">🚀 Mulai tantangan</button><button class="btn" id="uva-sound-${key}" type="button" onclick="toggleUnitVocabSound('${key}')">🔊 Efek suara aktif</button><button class="btn" type="button" onclick="startUnitVocabGame('${key}')">↻ Acak & ulangi</button></div><div class="uva-result" id="uva-result-${key}" aria-live="polite"></div></div></section>`;
+        return `<section class="dars-section unit-vocab-arcade" id="uva-${key}" aria-label="Permainan mufradat ${info}"><div class="uva-content"><div class="uva-title"><div><h3>🎮 Tantangan Mufradat</h3><span class="uva-subtitle">40 kartu • 20 Arab–Indonesia + 20 Indonesia–Arab</span></div><span class="uva-chip">${info}</span></div><div class="uva-meta"><span class="uva-mode" id="uva-mode-${key}">Siap bermain?</span><span class="uva-score">⭐ Skor: <strong id="uva-score-${key}">0</strong> &nbsp;•&nbsp; <span id="uva-count-${key}">0/40</span></span></div><div class="uva-bar"><i id="uva-bar-${key}"></i></div><button class="uva-question" id="uva-card-${key}" type="button" onclick="flipUnitVocabCard('${key}')"><span class="uva-direction" id="uva-dir-${key}">Kartu mufradat</span><span class="uva-prompt arabic" id="uva-prompt-${key}">اَلْعَرَبِيَّةُ لُغَةٌ جَمِيلَةٌ</span><span class="uva-hint">Klik kartu untuk membuka arti 👆</span></button><div class="uva-reveal" id="uva-answer-${key}" aria-live="polite"></div><div class="uva-buttons" id="uva-buttons-${key}"><button type="button" class="btn" onclick="rateUnitVocabCard('${key}',true)">✅ Saya ingat</button><button type="button" class="btn" onclick="rateUnitVocabCard('${key}',false)">🔁 Ulangi nanti</button></div><div class="uva-tools"><button class="btn primary" id="uva-start-${key}" type="button" onclick="startUnitVocabGame('${key}')">🚀 Mulai tantangan</button><button class="btn" type="button" onclick="openUvaFullscreen('${key}')">⛶ Full Screen</button><button class="btn" id="uva-sound-${key}" type="button" onclick="toggleUnitVocabSound('${key}')">🔊 Efek suara aktif</button><button class="btn" type="button" onclick="startUnitVocabGame('${key}')">↻ Acak & ulangi</button></div><div class="uva-result" id="uva-result-${key}" aria-live="polite"></div></div></section>`;
       }
       function unitGameSound(state,kind){
         if(!state.sound) return;
@@ -8492,6 +8517,20 @@ body.innerHTML='<div class="role-page-grid">'+cards.map(function(c){return '<div
   });
   syncDashboardStyle();
 })();
+</script>
+
+<script id="uva-fullscreen-script">
+function openUvaFullscreen(key){
+ const el=document.getElementById('uva-'+key);
+ if(!el) return;
+ if(document.fullscreenElement){
+   document.exitFullscreen();
+   return;
+ }
+ if(el.requestFullscreen){
+   el.requestFullscreen();
+ }
+}
 </script>
 </body>
 </html>
