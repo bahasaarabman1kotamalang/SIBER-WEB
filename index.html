@@ -8532,5 +8532,91 @@ function openUvaFullscreen(key){
  }
 }
 </script>
+
+<script id="siber-account-edit-repair">
+  (function () {
+    "use strict";
+
+    function getLocalAccounts() {
+      try {
+        var value = JSON.parse(localStorage.getItem("siberAccounts") || "[]");
+        return Array.isArray(value) ? value : [];
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function escapeText(value) {
+      return String(value == null ? "" : value).replace(/[&<>\"']/g, function (char) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[char];
+      });
+    }
+
+    function openEditForm(button) {
+      var id = button.getAttribute("data-edit-account");
+      var account = getLocalAccounts().find(function (item) {
+        return String(item.id) === String(id);
+      });
+      if (!account) return;
+
+      var title = document.getElementById("accountFormTitle");
+      var name = document.getElementById("manageName");
+      var username = document.getElementById("manageUsername");
+      var password = document.getElementById("managePassword");
+      var role = document.getElementById("manageRole");
+      var active = document.getElementById("manageActive");
+      var save = document.getElementById("manageSave");
+      var cancel = document.getElementById("manageCancel");
+      if (!title || !name || !username || !password || !role || !active || !save || !cancel) return;
+
+      title.textContent = "✎ Edit akun: " + (account.username || "");
+      name.value = account.name || "";
+      username.value = account.username || "";
+      password.value = "";
+      role.value = account.role || "guru";
+      active.checked = account.active !== false;
+      save.textContent = "✓ Perbarui akun";
+      save.dataset.edit = account.id;
+      cancel.style.display = "inline-block";
+
+      var selected = Array.isArray(account.permissions) ? account.permissions : [];
+      document.querySelectorAll("#permissionEditor [data-perm]").forEach(function (checkbox) {
+        checkbox.checked = selected.indexOf(checkbox.dataset.perm) >= 0;
+      });
+
+      var manager = document.getElementById("manajemenAkun");
+      if (manager) manager.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      var message = document.getElementById("manageMsg");
+      if (message) {
+        message.style.display = "block";
+        message.style.background = "#edf6f2";
+        message.style.color = "#285e50";
+        message.textContent = "Mode edit aktif. Perubahan akan disimpan setelah menekan tombol Perbarui akun.";
+      }
+    }
+
+    function installEditHandler() {
+      if (document.documentElement.dataset.siberEditRepair === "1") return;
+      document.documentElement.dataset.siberEditRepair = "1";
+      document.addEventListener("click", function (event) {
+        var button = event.target && event.target.closest
+          ? event.target.closest("#managedRows [data-edit-account]")
+          : null;
+        if (!button) return;
+        event.preventDefault();
+        event.stopPropagation();
+        openEditForm(button);
+      }, true);
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", installEditHandler);
+    } else {
+      installEditHandler();
+    }
+  })();
+</script>
+
 </body>
 </html>
