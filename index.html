@@ -8031,7 +8031,7 @@ ${renderUnitIstimaQuiz("xi4")}
     rows.querySelectorAll("[data-delete-account]").forEach(function(btn){btn.onclick=function(){var me=sess(),list=accounts(),a=list.find(function(x){return x.id===btn.dataset.deleteAccount});if(!a)return;if(me&&a.username===me.username){showMsg("Akun yang sedang digunakan tidak dapat dihapus.",true);return}if(!confirm("Hapus akun "+a.username+"?"))return;saveAccounts(list.filter(function(x){return x.id!==a.id}));renderRows();showMsg("Akun berhasil dihapus.")}});
   }
   function buildManager(){
-    if(!has("akun"))return; normalizeAccounts(); var pageEl=document.getElementById("manajemenAkun"); if(!pageEl)return; setupImport();
+    if(!has("akun"))return; normalizeAccounts(); var pageEl=document.getElementById("manajemenAkun"); if(!pageEl)return; if(pageEl.dataset.managerReady==="1")return; pageEl.dataset.managerReady="1"; setupImport();
     var roleSel=document.getElementById("manageRole"); roleSel.onchange=function(){permissionEditor(roleDefaults[this.value]||[])};
     document.querySelectorAll("#accountRoleFilter button").forEach(function(b){b.onclick=function(){document.querySelectorAll("#accountRoleFilter button").forEach(function(x){x.classList.remove("active")});b.classList.add("active");filter=b.dataset.filter;renderRows()}});
     document.getElementById("manageCancel").onclick=resetManage;
