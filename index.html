@@ -2083,6 +2083,12 @@ input:focus,select:focus,textarea:focus{
 .unit-vocab-arcade:fullscreen .uva-prompt{
   font-size:clamp(45px,8vw,90px);
 }
+
+/* Game multi-mode yang mengikuti kelas dan unit SIBER-WEB */
+.smg-jump{margin:14px 0 18px;padding:12px 14px;border:1px solid #d9e2ff;border-radius:13px;background:#f3f6ff;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.smg-jump span{font-size:12px;color:#56658c}.siber-multigame{margin:24px 0;padding:22px;border-radius:20px;border:1px solid #293a68;background:linear-gradient(140deg,#17234b,#243b79 60%,#146b78);color:#f7f9ff;box-shadow:0 16px 38px #17244d22}
+.siber-multigame h3{margin:0;color:#fff}.smg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.smg-sub{color:#c5d4f3;font-size:12px}.smg-label{display:inline-flex;padding:6px 10px;border-radius:999px;background:#ffffff18;border:1px solid #ffffff30;color:#ffe28b;font-size:11px;font-weight:800}.smg-controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:17px 0}.smg-controls select{padding:10px 12px;border-radius:10px;border:1px solid #ffffff35;background:#fff;color:#24304f;font-size:12px}.smg-status{margin:10px 0;color:#e6edff;font-size:12px}.smg-stage{padding:18px;border-radius:16px;background:#ffffff12;border:1px solid #ffffff25;text-align:center}.smg-progress{height:7px;border-radius:99px;background:#ffffff25;overflow:hidden;margin:10px 0 17px}.smg-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#6fe7df,#ffe27d);transition:width .25s}.smg-question{font-size:clamp(19px,3vw,29px);font-weight:850;line-height:1.5;margin:12px auto;max-width:760px}.smg-arabic{direction:rtl;font-family:"Noto Naskh Arabic","Amiri",serif}.smg-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;max-width:720px;margin:15px auto}.smg-option{padding:11px 13px;background:#fff;border:1px solid #dce5ff;border-radius:11px;color:#23345f;font-weight:750;text-align:left;display:flex;gap:10px;align-items:center}.smg-option:hover{background:#fff2c2;transform:translateY(-1px)}.smg-option b{min-width:24px;height:24px;display:grid;place-items:center;border-radius:7px;background:#eaf0ff;color:#344d9d}.smg-binary{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:17px auto}.smg-binary button{min-width:145px}.smg-feedback{min-height:26px;margin:10px;color:#ffdf88;font-weight:800}.smg-pairs{display:grid;gap:8px;max-width:680px;margin:14px auto}.smg-pair{display:grid;grid-template-columns:1fr 1fr;gap:9px;align-items:center}.smg-word{padding:10px;background:#ffffff16;border:1px solid #ffffff30;border-radius:10px;font-size:18px;font-weight:800}.smg-pair select{width:100%;padding:10px;border-radius:9px;background:#fff;color:#273654;border:0}.smg-input{max-width:540px;width:100%;padding:12px;border:1px solid #ffffff65;border-radius:10px;text-align:center;font-size:20px}.smg-tools{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:13px}.smg-flash-answer{min-height:30px;margin:12px;color:#ffe28b;font-size:20px;font-weight:800}.smg-small{font-size:11px;color:#c5d4f3}.smg-complete{font-size:25px;font-weight:900;color:#ffe28b;margin:8px}.smg-hidden{display:none!important}
+@media(max-width:560px){.siber-multigame{padding:15px}.smg-options{grid-template-columns:1fr}.smg-pair{grid-template-columns:1fr 1.2fr}.smg-word{font-size:16px}}
+
 </style>
 </head>
   <body>
@@ -2709,6 +2715,46 @@ input:focus,select:focus,textarea:focus{
         xi1:vocab11Unit1, xi2:vocab11Unit2, xi3:vocab11Unit3, xi4:vocab11Unit4,
         xii1:vocab12Unit1, xii3:vocab12Unit3
       });
+
+      // Multi-game Bahasa Arab langsung memakai bank mufradat pada setiap unit.
+      const siberMultiGameState=Object.create(null);
+      function siberMGEscape(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+      function siberMGMarkup(g,i){
+        const key=g.toLowerCase()+(i+1), title=topics[g][i][1], unit=i+1;
+        return `<section class="siber-multigame" id="smg-${key}"><div class="smg-head"><div><h3>🎮 Game Interaktif Bahasa Arab</h3><div class="smg-sub">Gunakan kosakata dari materi unit ini. Pilih mode lalu mulai bermain.</div></div><span class="smg-label">Kelas ${g} • Unit ${unit} • ${siberMGEscape(title)}</span></div><div class="smg-controls"><select id="smg-mode-${key}" aria-label="Pilih mode permainan"><option value="mcq">Pilihan Ganda A–E</option><option value="tf">Benar atau Salah</option><option value="match">Pasangkan Mufradat</option><option value="listen">Istima’ Mufradat</option><option value="spell">Ketik Jawaban Arab</option><option value="flash">Kartu Ingatan</option></select><select id="smg-rounds-${key}" aria-label="Jumlah soal"><option value="10">10 soal</option><option value="15">15 soal</option><option value="20">20 soal</option></select><button class="btn primary" id="smg-start-${key}" onclick="startSiberMultiGame('${key}')">🚀 Mulai permainan</button></div><div class="smg-status" id="smg-status-${key}">Pilih mode. Opsi pilihan ganda disajikan dalam format A–E.</div><div class="smg-stage smg-hidden" id="smg-stage-${key}"><div class="smg-small" id="smg-counter-${key}"></div><div class="smg-progress"><i id="smg-bar-${key}"></i></div><div class="smg-question" id="smg-question-${key}"></div><div id="smg-answer-${key}"></div><div class="smg-feedback" id="smg-feedback-${key}" aria-live="polite"></div><div class="smg-tools" id="smg-tools-${key}"></div></div></section>`;
+      }
+      function siberMGPool(key){const pool=unitVocabGamePools()[key]||[];const seen=new Set();return pool.filter(x=>Array.isArray(x)&&x[0]&&x[1]&&!seen.has(String(x[0]).trim())).filter(x=>{seen.add(String(x[0]).trim());return true;});}
+      function siberMGShuffle(a){const x=[...a];for(let j=x.length-1;j>0;j--){const k=Math.floor(Math.random()*(j+1));[x[j],x[k]]=[x[k],x[j]];}return x;}
+      function siberMGOptions(pool,answer){const choices=[answer,...siberMGShuffle([...new Set(pool.map(x=>x[1]).filter(x=>x!==answer))])].slice(0,5);return siberMGShuffle(choices);}
+      function mountSiberMultiGame(g,i){const box=document.getElementById("detailBox"),key=g.toLowerCase()+(i+1);if(!box||document.getElementById("smg-"+key))return;box.insertAdjacentHTML("beforeend",siberMGMarkup(g,i));const jump=document.createElement("div");jump.className="smg-jump";jump.innerHTML=`<span>Game tambahan untuk Kelas ${g} • Unit ${i+1}</span><button class="btn" type="button" onclick="document.getElementById('smg-${key}').scrollIntoView({behavior:'smooth'})">🎮 Langsung ke Game Unit</button>`;box.prepend(jump);}
+      function startSiberMultiGame(key){const pool=siberMGPool(key),mode=document.getElementById("smg-mode-"+key).value;if(pool.length<5){document.getElementById("smg-status-"+key).textContent="Bank materi unit ini perlu minimal lima mufradat.";return;}const max=mode==="match"?Math.min(20,pool.length):Math.min(+document.getElementById("smg-rounds-"+key).value||10,pool.length);const state={pool,mode,deck:siberMGShuffle(pool).slice(0,mode==="flash"?Math.min(20,pool.length):max),i:0,correct:0,score:0,open:false};siberMultiGameState[key]=state;document.getElementById("smg-stage-"+key).classList.remove("smg-hidden");document.getElementById("smg-status-"+key).textContent="Jawab soal dan baca umpan balik sebelum lanjut.";siberMGDraw(key);}
+      function siberMGDraw(key){const s=siberMultiGameState[key];if(!s)return;const qbox=document.getElementById("smg-question-"+key),answer=document.getElementById("smg-answer-"+key),feedback=document.getElementById("smg-feedback-"+key),tools=document.getElementById("smg-tools-"+key),bar=document.getElementById("smg-bar-"+key),counter=document.getElementById("smg-counter-"+key);feedback.textContent="";tools.innerHTML="";answer.innerHTML="";s.open=false;
+        if(s.mode==="match"){
+          if(s.i>=s.deck.length){siberMGFinish(key);return;}const group=s.deck.slice(s.i,s.i+5), meanings=siberMGShuffle(group.map(x=>x[1]));counter.textContent=`Pasangan ${Math.floor(s.i/5)+1} dari ${Math.ceil(s.deck.length/5)} • Skor ${s.score}`;bar.style.width=`${s.i/s.deck.length*100}%`;qbox.textContent="Pasangkan setiap kata Arab dengan maknanya.";answer.innerHTML=`<div class="smg-pairs">${group.map((w,n)=>`<div class="smg-pair"><div class="smg-word smg-arabic">${siberMGEscape(w[0])}</div><select data-smg-pair="${n}"><option value="">Pilih arti …</option>${meanings.map(m=>`<option value="${siberMGEscape(m)}">${siberMGEscape(m)}</option>`).join("")}</select></div>`).join("")}</div>`;tools.innerHTML=`<button class="btn primary" onclick="checkSiberMultiMatch('${key}')">Periksa pasangan</button>`;return;
+        }
+        if(s.i>=s.deck.length){siberMGFinish(key);return;}const item=s.deck[s.i],n=s.deck.length;counter.textContent=`Soal ${s.i+1} dari ${n} • Skor ${s.score}`;bar.style.width=`${s.i/n*100}%`;
+        if(s.mode==="mcq"){
+          qbox.innerHTML=`<span class="smg-arabic">${siberMGEscape(item[0])}</span><br><span class="smg-small">Pilih makna yang tepat.</span>`;const opts=siberMGOptions(s.pool,item[1]);s.answer=item[1];s.choices=opts;answer.innerHTML=`<div class="smg-options">${opts.map((o,j)=>`<button class="smg-option" data-smg-answer="${j}"><b>${String.fromCharCode(65+j)}</b><span>${siberMGEscape(o)}</span></button>`).join("")}</div>`;answer.querySelectorAll("[data-smg-answer]").forEach(b=>b.addEventListener("click",()=>answerSiberMulti(key,s.choices[+b.dataset.smgAnswer])));
+        } else if(s.mode==="tf"){
+          const truthful=Math.random()<.5, wrong=s.pool.filter(x=>x[1]!==item[1]), shown=truthful||!wrong.length?item[1]:wrong[Math.floor(Math.random()*wrong.length)][1];s.answer=shown===item[1];qbox.innerHTML=`<span class="smg-arabic">${siberMGEscape(item[0])}</span><br><span class="smg-small">Apakah arti kata ini tepat?</span><div class="smg-question">“${siberMGEscape(shown)}”</div>`;answer.innerHTML=`<div class="smg-binary"><button class="btn primary" onclick="answerSiberMulti('${key}',true)">✓ Benar</button><button class="btn" onclick="answerSiberMulti('${key}',false)">✕ Salah</button></div>`;
+        } else if(s.mode==="listen"){
+          qbox.innerHTML=`<span class="smg-small">Dengarkan pelafalan, lalu pilih arti kata yang kamu dengar.</span><div class="smg-tools"><button class="btn" onclick="speakSiberMulti('${key}')">🔊 Dengarkan</button></div>`;const opts=siberMGOptions(s.pool,item[1]);s.answer=item[1];s.choices=opts;answer.innerHTML=`<div class="smg-options">${opts.map((o,j)=>`<button class="smg-option" data-smg-answer="${j}"><b>${String.fromCharCode(65+j)}</b><span>${siberMGEscape(o)}</span></button>`).join("")}</div>`;answer.querySelectorAll("[data-smg-answer]").forEach(b=>b.addEventListener("click",()=>answerSiberMulti(key,s.choices[+b.dataset.smgAnswer])));speakSiberMulti(key);
+        } else if(s.mode==="spell"){
+          qbox.innerHTML=`<span class="smg-small">Ketik kosakata bahasa Arab untuk arti berikut.</span><div class="smg-question">${siberMGEscape(item[1])}</div>`;s.answer=item[0];answer.innerHTML=`<input class="smg-input smg-arabic" id="smg-input-${key}" dir="rtl" autocomplete="off" placeholder="اكتب هنا">`;tools.innerHTML=`<button class="btn primary" onclick="checkSiberMultiSpelling('${key}')">Periksa</button>`;
+        } else {
+          qbox.innerHTML=`<span class="smg-small">Ingat arti kosakata ini, lalu buka kartu.</span><div class="smg-question smg-arabic">${siberMGEscape(item[0])}</div>`;s.answer=item[1];answer.innerHTML=`<div class="smg-flash-answer" id="smg-flash-answer-${key}"></div>`;tools.innerHTML=`<button class="btn primary" onclick="revealSiberMultiFlash('${key}')">Lihat arti</button>`;
+        }
+      }
+      function answerSiberMulti(key,value){const s=siberMultiGameState[key];if(!s||s.locked)return;s.locked=true;const ok=value===s.answer;if(ok){s.correct++;s.score+=100;}const fb=document.getElementById("smg-feedback-"+key);fb.textContent=ok?"✓ Tepat! "+s.deck[s.i][0]+" = "+s.deck[s.i][1]:"Belum tepat. Jawaban: "+s.deck[s.i][0]+" = "+s.deck[s.i][1];setTimeout(()=>{s.i++;s.locked=false;siberMGDraw(key);},1000);}
+      function checkSiberMultiMatch(key){const s=siberMultiGameState[key];if(!s||s.locked)return;const group=s.deck.slice(s.i,s.i+5),selects=[...document.querySelectorAll(`#smg-${key} [data-smg-pair]`)];if(selects.some(x=>!x.value)){document.getElementById("smg-feedback-"+key).textContent="Pilih arti untuk semua kata terlebih dahulu.";return;}s.locked=true;const got=selects.reduce((a,x,n)=>a+(x.value===group[n][1]?1:0),0);s.correct+=got;s.score+=got*100;document.getElementById("smg-feedback-"+key).textContent=got===5?"✓ Semua pasangan benar! +500 poin.":`${got}/5 pasangan benar. ${group.map(x=>x[0]+" = "+x[1]).join(" • ")}`;setTimeout(()=>{s.i+=group.length;s.locked=false;siberMGDraw(key);},1400);}
+      function checkSiberMultiSpelling(key){const s=siberMultiGameState[key],input=document.getElementById("smg-input-"+key);if(!s||!input||s.locked)return;const clean=x=>String(x).normalize("NFC").replace(/[\u064B-\u065F\u0670ـ]/g,"").replace(/\s+/g," ").trim();answerSiberMulti(key,clean(input.value)===clean(s.answer));}
+      function revealSiberMultiFlash(key){const s=siberMultiGameState[key];if(!s||s.locked)return;if(!s.open){document.getElementById("smg-flash-answer-"+key).textContent=s.answer;s.open=true;document.getElementById("smg-tools-"+key).innerHTML=`<button class="btn primary" onclick="rateSiberMultiFlash('${key}',true)">Saya ingat</button><button class="btn" onclick="rateSiberMultiFlash('${key}',false)">Ulangi lagi</button>`;}}
+      function rateSiberMultiFlash(key,known){answerSiberMulti(key,!!known);}
+      function speakSiberMulti(key){const s=siberMultiGameState[key];if(!s)return;if(!window.speechSynthesis){document.getElementById("smg-feedback-"+key).textContent="Fitur suara tidak tersedia di browser ini.";return;}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(s.deck[s.i][0]);u.lang="ar-SA";u.rate=.78;const v=speechSynthesis.getVoices().find(x=>x.lang.toLowerCase().startsWith("ar"));if(v)u.voice=v;speechSynthesis.speak(u);}
+      function siberMGFinish(key){const s=siberMultiGameState[key],total=s.mode==="match"?s.deck.length:s.deck.length,fb=document.getElementById("smg-feedback-"+key),bar=document.getElementById("smg-bar-"+key),q=document.getElementById("smg-question-"+key),answer=document.getElementById("smg-answer-"+key),tools=document.getElementById("smg-tools-"+key);bar.style.width="100%";q.innerHTML=`<div class="smg-complete">🎉 Sesi selesai!</div><div>${s.correct} dari ${total} jawaban benar</div><div class="smg-small">Kelas dan unit mengikuti materi yang sedang dibuka.</div>`;answer.innerHTML="";tools.innerHTML=`<button class="btn primary" onclick="startSiberMultiGame('${key}')">Main lagi</button>`;fb.textContent=`Skor ${s.score} poin`;
+      }
+      window.startSiberMultiGame=startSiberMultiGame;window.answerSiberMulti=answerSiberMulti;window.checkSiberMultiMatch=checkSiberMultiMatch;window.checkSiberMultiSpelling=checkSiberMultiSpelling;window.revealSiberMultiFlash=revealSiberMultiFlash;window.rateSiberMultiFlash=rateSiberMultiFlash;window.speakSiberMulti=speakSiberMulti;
+
       const unitVocabGameState = Object.create(null);
       function renderUnitVocabGame(key) {
         const info={x1:"X • Unit 1",x2:"X • Unit 2",x3:"X • Unit 3",x4:"X • Unit 4",x5:"X • Unit 5",x6:"X • Unit 6",xi1:"XI • Unit 1",xi2:"XI • Unit 2",xi3:"XI • Unit 3",xi4:"XI • Unit 4",xii1:"XII • Unit 1",xii3:"XII • Unit 3"}[key]||"Latihan mufradat";
@@ -5208,78 +5254,91 @@ ${renderUnitIstimaQuiz("xi4")}
           document.getElementById("detailBox").innerHTML = dars1();
           page("detail");
           quizDars1();
+          mountSiberMultiGame(g, i);
           return;
         }
         if (g === "X" && i === 1) {
           document.getElementById("detailBox").innerHTML = dars2();
           page("detail");
           quizDars2();
+          mountSiberMultiGame(g, i);
           return;
         }
         if (g === "X" && i === 2) {
           document.getElementById("detailBox").innerHTML = dars3();
           page("detail");
           quizDars3();
+          mountSiberMultiGame(g, i);
           return;
         }
         if (g === "X" && i === 3) {
           document.getElementById("detailBox").innerHTML = dars4();
           page("detail");
           quizDars4();
+          mountSiberMultiGame(g, i);
           return;
         }
         if (g === "X" && i === 4) {
           document.getElementById("detailBox").innerHTML = dars5();
           page("detail");
           quizDars5();
+          mountSiberMultiGame(g, i);
           return;
         }
         if (g === "X" && i === 5) {
           document.getElementById("detailBox").innerHTML = dars6();
           page("detail");
           quizDars6();
+          mountSiberMultiGame(g, i);
           return;
         }
         if (g === "XI" && i === 0) {
           document.getElementById("detailBox").innerHTML = dars11Unit1();
           page("detail");
           quizDars11Unit1();
+          mountSiberMultiGame(g, i);
           return;
         }
         if (g === "XI" && i === 1) {
           document.getElementById("detailBox").innerHTML = dars11Unit2();
           page("detail");
           quizDars11Unit2();
+          mountSiberMultiGame(g, i);
           return;
         }
         if (g === "XI" && i === 2) {
           document.getElementById("detailBox").innerHTML = dars11Unit3();
           page("detail");
           quizDars11Unit3();
+          mountSiberMultiGame(g, i);
           return;
         }
         if (g === "XI" && i === 3) {
           document.getElementById("detailBox").innerHTML = dars11Unit4();
           page("detail");
           quizDars11Unit4();
+          mountSiberMultiGame(g, i);
           return;
         }
         if (g === "XII" && i === 0) {
           document.getElementById("detailBox").innerHTML = dars12Unit1();
           page("detail");
           quizDars12Unit1();
+          mountSiberMultiGame(g, i);
           return;
         }
         if (g === "XII" && i === 2) {
           document.getElementById("detailBox").innerHTML = dars12Unit3();
           page("detail");
           quizDars12Unit3();
+          mountSiberMultiGame(g, i);
           return;
         }
         if (g === "XII" && t[0] === "عُظَمَاءُ الإِسْلَامِ") {
           document.getElementById("detailBox").innerHTML = dars12Unit2();
           page("detail");
           quizDars12Unit2();
+          mountSiberMultiGame(g, i);
           return;
         }
         let txt =
@@ -5289,6 +5348,7 @@ ${renderUnitIstimaQuiz("xi4")}
         document.getElementById("detailBox").innerHTML =
           `<div class="card"><span class="tag">Kelas ${g}</span><h2 class="arabic">${t[0]}</h2><h2>${t[1]}</h2><div class="lessonbox arabic">${txt}</div><h3>Aktivitas</h3><ol><li>Temukan minimal 5 kosakata penting.</li><li>Identifikasi pola kalimat.</li><li>Baca teks dengan suara keras.</li><li>Buat 3 kalimat baru.</li></ol><button class="btn primary" onclick="done('${g}-${i}')">✓ Tandai selesai +20 XP</button></div>`;
         page("detail");
+        mountSiberMultiGame(g, i);
       }
       function cek(id, answer, fb) {
         const v = document.getElementById(id).value.trim().replace(/\s+/g, " ");
