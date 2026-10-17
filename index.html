@@ -7597,10 +7597,10 @@ ${renderUnitIstimaQuiz("xi4")}
         };
         function enhance() {
           var s = session();
-          if (!s) return showLogin();
-          if (s.role === "siswa" && !s.token) {
-            localStorage.removeItem(sessionKey);
-            return showLogin();
+          // Mode akses langsung: pengunjung langsung masuk ke beranda tanpa login.
+          if (!s) {
+            s = { id: "public-visitor", name: "Pengunjung", username: "pengunjung", role: "tamu", token: "", at: Date.now() };
+            setSession(s);
           }
           if (document.getElementById("siberLive")) return;
           var roleNames = {
@@ -7952,7 +7952,8 @@ ${renderUnitIstimaQuiz("xi4")}
           });
         }
         document.addEventListener("DOMContentLoaded", function () {
-          session() ? enhance() : showLogin();
+          // Lewati layar login dan langsung tampilkan beranda SIBER-WEB.
+          enhance();
         });
       })();
     </script>
@@ -8680,3 +8681,7 @@ function openUvaFullscreen(key){
 
 </body>
 </html>
+
+<style id="siber-direct-home-no-login">
+  #siberLogin, .auth-screen { display: none !important; }
+</style>
