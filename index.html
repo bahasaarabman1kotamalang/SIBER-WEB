@@ -8051,7 +8051,7 @@ ${renderUnitIstimaQuiz("xi4")}
     admin:["dashboard","home","kelas","progres","penilaian","akun"],
     guru:["dashboard","home","kelas","progres","penilaian"],
     siswa:["dashboard","home","kelas","progres","penilaian"],
-    tamu:["home","kelas"]
+    tamu:["dashboard","home","kelas","progres","penilaian"]
   };
   function accounts(){try{var a=JSON.parse(localStorage.getItem(accountKey)||"[]");return Array.isArray(a)?a:[]}catch(e){return []}}
   function saveAccounts(a){localStorage.setItem(accountKey,JSON.stringify(a))}
@@ -8059,8 +8059,14 @@ ${renderUnitIstimaQuiz("xi4")}
   function currentAccount(){
     var s=sess(); if(!s)return null;
     var list=accounts();
-    return list.find(function(a){return s.id && a.id===s.id}) ||
+    var found = list.find(function(a){return s.id && a.id===s.id}) ||
       list.find(function(a){return String(a.username).toLowerCase()===String(s.username||"").toLowerCase()}) || null;
+    // Sesi pengunjung tanpa login tetap diberi akses ke menu belajar yang diminta.
+    if(!found && (s.role === "tamu" || s.username === "pengunjung")){
+      return {id:s.id || "public-visitor", name:s.name || "Pengunjung", username:s.username || "pengunjung", role:"tamu", active:true,
+        permissions:["dashboard","home","kelas","penilaian","progres"]};
+    }
+    return found;
   }
   function roleLabel(r){return {admin:"Admin",guru:"Guru",siswa:"Murid",tamu:"Tamu"}[r]||r}
   function esc(x){return String(x==null?"":x).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
