@@ -2085,7 +2085,7 @@ input:focus,select:focus,textarea:focus{
 }
 
 /* Game multi-mode yang mengikuti kelas dan unit SIBER-WEB */
-.smg-jump{margin:14px 0 18px;padding:12px 14px;border:1px solid #d9e2ff;border-radius:13px;background:#f3f6ff;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.smg-jump span{font-size:12px;color:#56658c}.siber-multigame{margin:24px 0;padding:22px;border-radius:20px;border:1px solid #293a68;background:linear-gradient(140deg,#17234b,#243b79 60%,#146b78);color:#f7f9ff;box-shadow:0 16px 38px #17244d22}
+.siber-multigame{margin:24px 0;padding:22px;border-radius:20px;border:1px solid #293a68;background:linear-gradient(140deg,#17234b,#243b79 60%,#146b78);color:#f7f9ff;box-shadow:0 16px 38px #17244d22}
 .siber-multigame h3{margin:0;color:#fff}.smg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.smg-sub{color:#c5d4f3;font-size:12px}.smg-label{display:inline-flex;padding:6px 10px;border-radius:999px;background:#ffffff18;border:1px solid #ffffff30;color:#ffe28b;font-size:11px;font-weight:800}.smg-controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:17px 0}.smg-controls select{padding:10px 12px;border-radius:10px;border:1px solid #ffffff35;background:#fff;color:#24304f;font-size:12px}.smg-status{margin:10px 0;color:#e6edff;font-size:12px}.smg-stage{padding:18px;border-radius:16px;background:#ffffff12;border:1px solid #ffffff25;text-align:center}.smg-progress{height:7px;border-radius:99px;background:#ffffff25;overflow:hidden;margin:10px 0 17px}.smg-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#6fe7df,#ffe27d);transition:width .25s}.smg-question{font-size:clamp(19px,3vw,29px);font-weight:850;line-height:1.5;margin:12px auto;max-width:760px}.smg-arabic{direction:rtl;font-family:"Noto Naskh Arabic","Amiri",serif}.smg-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;max-width:720px;margin:15px auto}.smg-option{padding:11px 13px;background:#fff;border:1px solid #dce5ff;border-radius:11px;color:#23345f;font-weight:750;text-align:left;display:flex;gap:10px;align-items:center}.smg-option:hover{background:#fff2c2;transform:translateY(-1px)}.smg-option b{min-width:24px;height:24px;display:grid;place-items:center;border-radius:7px;background:#eaf0ff;color:#344d9d}.smg-binary{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:17px auto}.smg-binary button{min-width:145px}.smg-feedback{min-height:26px;margin:10px;color:#ffdf88;font-weight:800}.smg-pairs{display:grid;gap:8px;max-width:680px;margin:14px auto}.smg-pair{display:grid;grid-template-columns:1fr 1fr;gap:9px;align-items:center}.smg-word{padding:10px;background:#ffffff16;border:1px solid #ffffff30;border-radius:10px;font-size:18px;font-weight:800}.smg-pair select{width:100%;padding:10px;border-radius:9px;background:#fff;color:#273654;border:0}.smg-input{max-width:540px;width:100%;padding:12px;border:1px solid #ffffff65;border-radius:10px;text-align:center;font-size:20px}.smg-tools{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:13px}.smg-flash-answer{min-height:30px;margin:12px;color:#ffe28b;font-size:20px;font-weight:800}.smg-small{font-size:11px;color:#c5d4f3}.smg-complete{font-size:25px;font-weight:900;color:#ffe28b;margin:8px}.smg-hidden{display:none!important}
 @media(max-width:560px){.siber-multigame{padding:15px}.smg-options{grid-template-columns:1fr}.smg-pair{grid-template-columns:1fr 1.2fr}.smg-word{font-size:16px}}
 
@@ -2709,11 +2709,11 @@ input:focus,select:focus,textarea:focus{
         ["يُشَجِّعُ", "Mendorong"],
       ];
 
-      // Reusable 40-card bilingual memory game for every unit except XII Unit 2.
+      // Bank kosakata untuk seluruh unit. Setiap permainan memakai materi unit yang sedang dibuka.
       const unitVocabGamePools = () => ({
         x1:vocab, x2:vocab2, x3:vocab3, x4:vocab4, x5:vocab5, x6:vocab6,
         xi1:vocab11Unit1, xi2:vocab11Unit2, xi3:vocab11Unit3, xi4:vocab11Unit4,
-        xii1:vocab12Unit1, xii3:vocab12Unit3
+        xii1:vocab12Unit1, xii2:vocab12Unit2, xii3:vocab12Unit3
       });
 
       // Multi-game Bahasa Arab langsung memakai bank mufradat pada setiap unit.
@@ -2726,7 +2726,11 @@ input:focus,select:focus,textarea:focus{
       function siberMGPool(key){const pool=unitVocabGamePools()[key]||[];const seen=new Set();return pool.filter(x=>Array.isArray(x)&&x[0]&&x[1]&&!seen.has(String(x[0]).trim())).filter(x=>{seen.add(String(x[0]).trim());return true;});}
       function siberMGShuffle(a){const x=[...a];for(let j=x.length-1;j>0;j--){const k=Math.floor(Math.random()*(j+1));[x[j],x[k]]=[x[k],x[j]];}return x;}
       function siberMGOptions(pool,answer){const choices=[answer,...siberMGShuffle([...new Set(pool.map(x=>x[1]).filter(x=>x!==answer))])].slice(0,5);return siberMGShuffle(choices);}
-      function mountSiberMultiGame(g,i){const box=document.getElementById("detailBox"),key=g.toLowerCase()+(i+1);if(!box||document.getElementById("smg-"+key))return;box.insertAdjacentHTML("beforeend",siberMGMarkup(g,i));const jump=document.createElement("div");jump.className="smg-jump";jump.innerHTML=`<span>Game tambahan untuk Kelas ${g} • Unit ${i+1}</span><button class="btn" type="button" onclick="document.getElementById('smg-${key}').scrollIntoView({behavior:'smooth'})">🎮 Langsung ke Game Unit</button>`;box.prepend(jump);}
+      function mountSiberMultiGame(g,i){
+        const panel=document.getElementById("panel-kitabah"),key=g.toLowerCase()+(i+1);
+        if(!panel||document.getElementById("smg-"+key))return;
+        panel.insertAdjacentHTML("beforeend",siberMGMarkup(g,i));
+      }
       function startSiberMultiGame(key){const pool=siberMGPool(key),mode=document.getElementById("smg-mode-"+key).value;if(pool.length<5){document.getElementById("smg-status-"+key).textContent="Bank materi unit ini perlu minimal lima mufradat.";return;}const max=mode==="match"?Math.min(20,pool.length):Math.min(+document.getElementById("smg-rounds-"+key).value||10,pool.length);const state={pool,mode,deck:siberMGShuffle(pool).slice(0,mode==="flash"?Math.min(20,pool.length):max),i:0,correct:0,score:0,open:false};siberMultiGameState[key]=state;document.getElementById("smg-stage-"+key).classList.remove("smg-hidden");document.getElementById("smg-status-"+key).textContent="Jawab soal dan baca umpan balik sebelum lanjut.";siberMGDraw(key);}
       function siberMGDraw(key){const s=siberMultiGameState[key];if(!s)return;const qbox=document.getElementById("smg-question-"+key),answer=document.getElementById("smg-answer-"+key),feedback=document.getElementById("smg-feedback-"+key),tools=document.getElementById("smg-tools-"+key),bar=document.getElementById("smg-bar-"+key),counter=document.getElementById("smg-counter-"+key);feedback.textContent="";tools.innerHTML="";answer.innerHTML="";s.open=false;
         if(s.mode==="match"){
@@ -3048,8 +3052,6 @@ input:focus,select:focus,textarea:focus{
 <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti. Gunakan tombol suara untuk latihan pelafalan.</span></div><span class="progress-chip">${vocab.length} kosakata</span></div>
 <div class="vocab-grid">${vocab.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/x/unit-01/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
 </div>
-
-${renderUnitVocabGame("x1")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
@@ -3199,8 +3201,6 @@ ${renderUnitIstimaQuiz("x1")}
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti dan gunakan tombol 🔊 untuk mendengarkan pelafalan.</span></div><span class="progress-chip">${vocab2.length} kosakata</span></div>
     <div class="vocab-grid">${vocab2.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/x/unit-02/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
   </div>
-
-${renderUnitVocabGame("x2")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
@@ -3382,8 +3382,6 @@ ${renderUnitIstimaQuiz("x2")}
     <div class="reading-title"><div><h3>🃏 Mufradat — Kartu Kosakata</h3><span class="muted">Ketuk kartu untuk melihat arti; gunakan tombol suara untuk menirukan pelafalan.</span></div><span class="progress-chip">${vocab3.length} kosakata</span></div>
     <div class="vocab-grid">${vocab3.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/x/unit-03/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
   </div>
-
-${renderUnitVocabGame("x3")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
@@ -3561,8 +3559,6 @@ ${renderUnitIstimaQuiz("x3")}
     </div>
     <div id="quickFeedback4" class="choice-feedback" aria-live="polite"></div>
   </div>
-
-${renderUnitVocabGame("x4")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
@@ -3738,8 +3734,6 @@ ${renderUnitIstimaQuiz("x4")}
     </div>
     <div id="quickFeedback5" class="choice-feedback" aria-live="polite"></div>
   </div>
-
-${renderUnitVocabGame("x5")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
@@ -3904,8 +3898,6 @@ ${renderUnitIstimaQuiz("x5")}
     </div>
     <div id="quickFeedback6" class="choice-feedback" aria-live="polite"></div>
   </div>
-
-${renderUnitVocabGame("x6")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
@@ -4088,8 +4080,6 @@ ${renderUnitIstimaQuiz("x6")}
     <div id="quickFeedback12Unit1" class="choice-feedback" aria-live="polite"></div>
     <div class="exercise"><b>Tugas klasifikasi:</b> Pilih delapan kartu, lalu kelompokkan ke dalam <span class="arabic">أَجْهِزَةٌ، بَرَامِجُ، شَبَكَاتٌ، أَنْشِطَةٌ رَقْمِيَّةٌ</span>. Buat satu kalimat untuk setiap kelompok.</div>
   </div>
-
-${renderUnitVocabGame("xii1")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
@@ -4263,30 +4253,6 @@ ${renderUnitIstimaQuiz("xii1")}
     </div>
     <div id="quickFeedback12Unit2" class="choice-feedback" aria-live="polite"></div>
   </div>
-
-  <div class="dars-section vocab-game-section">
-    <div class="reading-title"><div><h3>🎮 Permainan Mufradat — 40 Kartu</h3><span class="muted">20 soal Arab–Indonesia dan 20 soal Indonesia–Arab. Klik kartu untuk melihat artinya.</span></div><span class="progress-chip">Kelas XII • Unit 2</span></div>
-    <div class="vocab-game" id="vocabGame12u2">
-      <div class="vg-top"><span class="vg-pill" id="vgDirection">Siap bermain?</span><span class="vg-stats">⭐ Skor: <b id="vgScore">0</b> <span class="vg-divider">•</span> <span id="vgProgress">0/40</span></span></div>
-      <div class="vg-progress"><span id="vgProgressBar"></span></div>
-      <button class="vg-card" id="vgCard" type="button" onclick="flipVocabCard12u2()" aria-label="Klik untuk membuka kartu">
-        <span class="vg-card-hint" id="vgHint">Tekan tombol mulai untuk bermain</span>
-        <span class="vg-word" id="vgWord">عُظَمَاءُ الْإِسْلَامِ</span>
-        <span class="vg-tap">👆 Klik kartu untuk membuka</span>
-      </button>
-      <div class="vg-answer" id="vgAnswer" aria-live="polite"></div>
-      <div class="vg-actions" id="vgActions">
-        <button class="btn primary" type="button" onclick="markVocabCard12u2(true)">✅ Saya ingat</button>
-        <button class="btn" type="button" onclick="markVocabCard12u2(false)">🔁 Ulangi nanti</button>
-      </div>
-      <div class="vg-controls">
-        <button class="btn primary" id="vgStart" type="button" onclick="startVocabGame12u2()">▶ Mulai permainan</button>
-        <button class="btn" type="button" onclick="toggleVocabGameSound12u2()" id="vgSound">🔊 Suara aktif</button>
-        <button class="btn" type="button" onclick="restartVocabGame12u2()">↻ Ulangi dari awal</button>
-      </div>
-      <div class="vg-finish" id="vgFinish" aria-live="polite"></div>
-    </div>
-  </div>
 </div>
 
 <div id="panel-istima" class="lesson-panel">
@@ -4442,8 +4408,6 @@ ${renderUnitIstimaQuiz("xii2")}
     <div class="vocab-grid">${vocab12Unit3.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><button type="button" class="btn audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/xii/unit-03/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
     <div class="mini-task"><div><h4 class="arabic">تَدْرِيبٌ سَرِيعٌ</h4><p class="arabic">مَنْ يَرْأَسُ الْكُلِّيَّةَ؟</p><button class="btn" onclick="quickAnswer12Unit3(this,false)">مُدِيرُ الْجَامِعَةِ</button> <button class="btn" onclick="quickAnswer12Unit3(this,true)">عَمِيدُ الْكُلِّيَّةِ</button> <button class="btn" onclick="quickAnswer12Unit3(this,false)">الطَّالِبُ</button><p id="quickFeedback12Unit3" class="feedback arabic" aria-live="polite"></p></div></div>
   </section>
-
-${renderUnitVocabGame("xii3")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
@@ -4601,8 +4565,6 @@ ${renderUnitIstimaQuiz("xii3")}
     <div class="vocab-grid">${vocab11Unit1.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/xi/unit-01/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
     <div class="mini-task"><h4>Latihan cepat</h4><p class="arabic">أَيُّ كَلِمَةٍ مَعْنَاهَا «تذاكر السفر»؟</p><button class="btn" onclick="quickAnswer(this,false)">غَارٌ</button> <button class="btn" onclick="quickAnswer(this,true)">تَذْكِرَةٌ</button> <button class="btn" onclick="quickAnswer(this,false)">فِرَاشٌ</button><p id="quickFeedback" class="feedback"></p></div>
   </section>
-
-${renderUnitVocabGame("xi1")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
@@ -4741,8 +4703,6 @@ ${renderUnitIstimaQuiz("xi1")}
     <div class="vocab-grid">${vocab11Unit2.map((v, i) => `<div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/xi/unit-02/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small>${v[0]}</small></div></div></div>`).join("")}</div>
     <div class="mini-task"><h4>Latihan cepat</h4><p class="arabic">أَيْنَ يَشْتَرِي الْمَرِيضُ الدَّوَاءَ؟</p><button class="btn" onclick="quickAnswer(this,false)">فِي الْمَلْعَبِ</button> <button class="btn" onclick="quickAnswer(this,true)">فِي الصَّيْدَلِيَّةِ</button> <button class="btn" onclick="quickAnswer(this,false)">فِي الْفَصْلِ</button><p id="quickFeedback" class="feedback"></p></div>
   </section>
-
-${renderUnitVocabGame("xi2")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
@@ -4928,8 +4888,6 @@ ${renderUnitIstimaQuiz("xi2")}
     <div class="vocab-grid">${vocab11Unit3.map((v, i) => `<div class="flashcard" tabindex="0" role="button" aria-label="Kartu kosakata ${v[0]}" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}"><div class="flashcard-inner"><div class="flashface"><div class="arabic">${v[0]}</div><div class="mufradat-audio-wrap" onclick="event.stopPropagation()" onpointerdown="event.stopPropagation()" ontouchstart="event.stopPropagation()"><button type="button" class="mufrodat-audio-btn" data-mufradat-text="${v[0]}" data-audio-src="audio/xi/unit-03/mufradat/vocab-${String(i+1).padStart(2,'0')}.mp3" onclick="event.stopPropagation();window.playMufradatAudio(this)">🔊 Dengarkan</button></div></div><div class="flashface back"><b>${v[1]}</b><small class="arabic">${v[0]}</small></div></div></div>`).join("")}</div>
     <div class="mini-task"><div><h4>Latihan cepat</h4><p class="arabic">أَيْنَ يَقِفُ الْحُجَّاجُ فِي الْيَوْمِ التَّاسِعِ مِنْ ذِي الْحِجَّةِ؟</p><button class="btn" onclick="quickAnswer3(this,false)">فِي مِنًى</button> <button class="btn" onclick="quickAnswer3(this,true)">فِي عَرَفَةَ</button> <button class="btn" onclick="quickAnswer3(this,false)">فِي الْمَدِينَةِ</button><p id="quickFeedback3" class="feedback" aria-live="polite"></p></div></div>
   </section>
-
-${renderUnitVocabGame("xi3")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
@@ -5137,8 +5095,6 @@ ${renderUnitIstimaQuiz("xi3")}
       ].map((v) => `<div class="vocab"><b>${v[0]}</b><span>${v[1]}</span></div>`).join("")}
     </div>
   </section>
-
-${renderUnitVocabGame("xi4")}
 </div>
 
 <div id="panel-istima" class="lesson-panel">
