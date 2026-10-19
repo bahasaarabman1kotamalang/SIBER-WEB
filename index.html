@@ -2085,6 +2085,13 @@ input:focus,select:focus,textarea:focus{
 }
 
 /* Game multi-mode yang mengikuti kelas dan unit SIBER-WEB */
+.tantangan-mufrodat{margin:26px 0 12px;padding:clamp(18px,3vw,28px);border:1px solid #c9d9ef;border-radius:22px;background:linear-gradient(145deg,#f3f8ff,#edf4ff 55%,#fff8e7);box-shadow:0 14px 34px rgba(31,64,115,.1);color:#1d3153}
+.tm-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tm-head h3{margin:0;color:#183b69}.tm-sub{color:#64748b;font-size:14px}.tm-badge{border-radius:999px;padding:7px 12px;background:#e2ecff;color:#244d91;font-weight:850;font-size:13px}
+.tm-bar{height:9px;border-radius:99px;background:#dce6f3;overflow:hidden;margin:17px 0}.tm-bar i{display:block;width:0;height:100%;background:linear-gradient(90deg,#2a78c8,#28b99a);transition:width .25s}
+.tm-question{min-height:155px;padding:22px;border-radius:18px;background:white;border:1px solid #dbe5f2;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:10px;box-shadow:0 8px 20px #1d315310}.tm-direction{font-size:12px;font-weight:850;letter-spacing:.06em;text-transform:uppercase;color:#597394}.tm-prompt{font-size:clamp(24px,4vw,38px);font-weight:900;line-height:1.65;overflow-wrap:anywhere}.tm-prompt.arabic,.tm-option.arabic{font-family:"Noto Naskh Arabic","Amiri",serif;direction:rtl}.tm-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:15px auto;max-width:900px}.tm-option{border:1px solid #d8e2ee;border-radius:12px;background:#fff;color:#253955;padding:12px;text-align:left;font:inherit;font-weight:750;cursor:pointer;transition:.15s}.tm-option:hover:not(:disabled){background:#edf5ff;border-color:#8bb8ea;transform:translateY(-1px)}.tm-option:disabled{cursor:default}.tm-option.correct{background:#e5f8ed;border-color:#68bd8b;color:#17683b}.tm-option.wrong{background:#fff0ed;border-color:#e9a196;color:#9a3027}.tm-feedback{min-height:28px;text-align:center;font-weight:850;color:#34516f}.tm-tools{display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:wrap}.tm-status{text-align:center;color:#5a6c83;font-size:14px;margin:7px}.tm-start-note{margin:10px 0;color:#62748a;font-size:13px}.tantangan-mufrodat:fullscreen{position:fixed;width:100vw;height:100vh;height:100dvh;max-width:none;margin:0;padding:clamp(16px,4vw,48px);border:0;border-radius:0;overflow:auto;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(145deg,#f3f8ff,#edf4ff 55%,#fff8e7)}.tantangan-mufrodat:fullscreen .tm-content{width:min(1100px,100%);margin:auto}.tantangan-mufrodat:fullscreen .tm-question{min-height:26vh}.tantangan-mufrodat:fullscreen .tm-prompt{font-size:clamp(34px,6vw,68px)}
+.siber-fullscreen-fallback{position:fixed!important;inset:0!important;z-index:2147483000!important;width:100vw!important;height:100vh!important;height:100dvh!important;max-width:none!important;margin:0!important;border:0!important;border-radius:0!important;overflow:auto!important;box-sizing:border-box!important}
+.tantangan-mufrodat.siber-fullscreen-fallback{display:flex;flex-direction:column;justify-content:center;padding:clamp(16px,4vw,48px)!important}.tantangan-mufrodat.siber-fullscreen-fallback .tm-content{width:min(1100px,100%);margin:auto}.tantangan-mufrodat.siber-fullscreen-fallback .tm-question{min-height:26vh}.tantangan-mufrodat.siber-fullscreen-fallback .tm-prompt{font-size:clamp(34px,6vw,68px)}
+@media(max-width:600px){.tm-options{grid-template-columns:1fr}.tm-option{min-height:48px}.tantangan-mufrodat{border-radius:17px}}
 .siber-multigame{margin:24px 0;padding:22px;border-radius:20px;border:1px solid #293a68;background:linear-gradient(140deg,#17234b,#243b79 60%,#146b78);color:#f7f9ff;box-shadow:0 16px 38px #17244d22}
 .siber-multigame:fullscreen{width:100vw;height:100vh;max-width:none;margin:0;padding:clamp(18px,4vw,48px);overflow:auto;border-radius:0;display:flex;flex-direction:column;justify-content:center}
 .siber-multigame:fullscreen .smg-stage{width:min(100%,1100px);margin:12px auto}
@@ -2719,14 +2726,62 @@ input:focus,select:focus,textarea:focus{
         xii1:vocab12Unit1, xii2:vocab12Unit2, xii3:vocab12Unit3
       });
 
+      // Kuis tetap 40 soal, ditautkan ke bank mufradat unit dan dipasang
+      // tepat setelah kartu kosakata pada tab Mufradat.
+      const tantanganMufrodatState=Object.create(null);
+      function renderTantanganMufrodat(g,i){
+        const key=g.toLowerCase()+(i+1),label=`Kelas ${g} • Unit ${i+1} • ${topics[g][i][1]}`;
+        return `<section class="dars-section tantangan-mufrodat" id="tm-${key}" aria-label="Tantangan Mufrodat ${siberMGEscape(label)}"><div class="tm-content"><div class="tm-head"><div><h3>🎮 Tantangan Mufrodat</h3><div class="tm-sub">40 soal pilihan ganda • Arab–Indonesia dan Indonesia–Arab</div></div><span class="tm-badge">${siberMGEscape(label)}</span></div><p class="tm-start-note">Jawab soal berdasarkan kosakata pada unit ini. Skor dan umpan balik tampil langsung.</p><div class="tm-status" id="tm-status-${key}">Tekan tombol mulai untuk masuk fullscreen dan memulai 40 soal.</div><div class="tm-bar"><i id="tm-bar-${key}"></i></div><div class="tm-question" id="tm-question-${key}"><span class="tm-direction">Siap untuk tantangan?</span><span class="tm-prompt">🧠</span></div><div class="tm-options" id="tm-options-${key}"></div><div class="tm-feedback" id="tm-feedback-${key}" aria-live="polite"></div><div class="tm-tools"><button class="btn primary" id="tm-start-${key}" type="button" onclick="startTantanganMufrodat('${key}')">🚀 Mulai Tantangan</button><button class="btn" type="button" onclick="toggleSiberGameFullscreen('tm-${key}')">⛶ Keluar / masuk fullscreen</button><button class="btn" id="tm-next-${key}" type="button" onclick="nextTantanganMufrodat('${key}')" disabled>Lanjutkan →</button></div></div></section>`;
+      }
+      function mountTantanganMufrodat(g,i){
+        const panel=document.getElementById("panel-mufradat"),key=g.toLowerCase()+(i+1);
+        if(panel&&!document.getElementById(`tm-${key}`))panel.insertAdjacentHTML("beforeend",renderTantanganMufrodat(g,i));
+      }
+      function startTantanganMufrodat(key){
+        const pool=(unitVocabGamePools()[key]||[]).filter(x=>Array.isArray(x)&&x[0]&&x[1]);
+        if(pool.length<5){document.getElementById(`tm-status-${key}`).textContent="Bank mufradat unit ini belum cukup untuk membuat pilihan jawaban.";return;}
+        const gameRoot=document.getElementById(`tm-${key}`);
+        requestSiberGameFullscreen(gameRoot,()=>{const status=document.getElementById(`tm-status-${key}`);if(status)status.textContent="Mode layar penuh browser tidak diizinkan; permainan dibuka memenuhi layar dan tetap dapat dimainkan.";});
+        const words=[];for(let n=0;n<20;n++)words.push(pool[n%pool.length]);
+        const deck=[];words.forEach(pair=>{deck.push({prompt:pair[0],answer:pair[1],direction:"Pilih arti bahasa Indonesia",arabic:true,optionArabic:false},{prompt:pair[1],answer:pair[0],direction:"Pilih padanan bahasa Arab",arabic:false,optionArabic:true});});
+        const shuffled=siberMGShuffle(deck);tantanganMufrodatState[key]={deck:shuffled,index:0,score:0,answered:false};
+        document.getElementById(`tm-feedback-${key}`).textContent="";document.getElementById(`tm-start-${key}`).textContent="↻ Ulangi tantangan";
+        drawTantanganMufrodat(key);
+      }
+      function drawTantanganMufrodat(key){
+        const s=tantanganMufrodatState[key];if(!s)return;
+        const q=document.getElementById(`tm-question-${key}`),opts=document.getElementById(`tm-options-${key}`),fb=document.getElementById(`tm-feedback-${key}`),next=document.getElementById(`tm-next-${key}`),bar=document.getElementById(`tm-bar-${key}`),status=document.getElementById(`tm-status-${key}`);
+        fb.textContent="";opts.innerHTML="";s.answered=false;next.disabled=true;
+        if(s.index>=s.deck.length){q.innerHTML=`<span class="tm-direction">Tantangan selesai</span><span class="tm-prompt">🏆 ${s.score} / 40 benar</span>`;status.textContent=`Skor akhir: ${s.score} dari 40 soal (${Math.round(s.score/40*100)}%).`;bar.style.width="100%";document.getElementById(`tm-start-${key}`).textContent="🔁 Main lagi";return;}
+        const item=s.deck[s.index],pool=unitVocabGamePools()[key]||[],answer=item.answer;
+        const distractors=siberMGShuffle([...new Set(pool.map(x=>item.optionArabic?x[0]:x[1]).filter(x=>x&&x!==answer))]).slice(0,4);
+        const choices=siberMGShuffle([answer,...distractors]);
+        q.innerHTML=`<span class="tm-direction">${item.direction}</span><span class="tm-prompt ${item.arabic?"arabic":""}" dir="${item.arabic?"rtl":"auto"}">${siberMGEscape(item.prompt)}</span>`;
+        status.textContent=`Soal ${s.index+1} dari 40 • Skor ${s.score}`;bar.style.width=`${s.index/40*100}%`;
+        choices.forEach((choice,n)=>{const b=document.createElement("button");b.type="button";b.className=`tm-option ${item.optionArabic?"arabic":""}`;b.dir=item.optionArabic?"rtl":"auto";b.innerHTML=`<b>${"ABCDE"[n]}.</b> ${siberMGEscape(choice)}`;b.addEventListener("click",()=>answerTantanganMufrodat(key,choice,b));opts.appendChild(b);});
+      }
+      function answerTantanganMufrodat(key,choice,button){
+        const s=tantanganMufrodatState[key];if(!s||s.answered)return;s.answered=true;const item=s.deck[s.index],buttons=[...document.querySelectorAll(`#tm-options-${key} .tm-option`)];buttons.forEach(b=>{b.disabled=true;if(b.textContent.slice(3).trim()===item.answer)b.classList.add("correct");});
+        const ok=choice===item.answer;if(ok){s.score++;button.classList.add("correct");}else button.classList.add("wrong");
+        document.getElementById(`tm-feedback-${key}`).textContent=ok?"✅ Tepat! Jawabanmu benar.":`❌ Belum tepat. Jawaban yang benar: ${item.answer}`;document.getElementById(`tm-status-${key}`).textContent=`Skor sementara: ${s.score} • Soal ${s.index+1}/40`;document.getElementById(`tm-next-${key}`).disabled=false;
+      }
+      function nextTantanganMufrodat(key){const s=tantanganMufrodatState[key];if(!s||!s.answered)return;s.index++;drawTantanganMufrodat(key);}
+      window.startTantanganMufrodat=startTantanganMufrodat;window.nextTantanganMufrodat=nextTantanganMufrodat;
+
       // Multi-game Bahasa Arab langsung memakai bank mufradat pada setiap unit.
-      function requestSiberGameFullscreen(el){
-        if(!el||!el.requestFullscreen)return;
-        try{const result=el.requestFullscreen();if(result&&typeof result.catch==="function")result.catch(()=>{});}catch(_){/* fullscreen is optional; keep the game usable */}
+      function requestSiberGameFullscreen(el,onFailure){
+        if(!el)return false;
+        if((document.fullscreenElement||document.webkitFullscreenElement)===el)return true;
+        const request=el.requestFullscreen||el.webkitRequestFullscreen||el.mozRequestFullScreen||el.msRequestFullscreen;
+        const useFallback=()=>{el.classList.add("siber-fullscreen-fallback");if(typeof onFailure==="function")setTimeout(onFailure,0);};
+        if(!request){useFallback();return false;}
+        try{const result=request.call(el);if(result&&typeof result.then==="function")result.catch(useFallback);return true;}catch(_){useFallback();return false;}
       }
       function toggleSiberGameFullscreen(id){
         const el=document.getElementById(id);
-        if(document.fullscreenElement){document.exitFullscreen?.();return;}
+        if(!el)return;
+        if(el.classList.contains("siber-fullscreen-fallback")){el.classList.remove("siber-fullscreen-fallback");return;}
+        if(document.fullscreenElement||document.webkitFullscreenElement){(document.exitFullscreen||document.webkitExitFullscreen||document.mozCancelFullScreen||document.msExitFullscreen)?.call(document);return;}
         requestSiberGameFullscreen(el);
       }
       const siberMultiGameState=Object.create(null);
@@ -2933,6 +2988,7 @@ input:focus,select:focus,textarea:focus{
       }
       function mountSiberMultiGame(g,i){
         const panel=document.getElementById("panel-kitabah"),key=g.toLowerCase()+(i+1);
+        mountTantanganMufrodat(g,i);
         if(!panel||document.getElementById("smg-"+key))return;
         panel.insertAdjacentHTML("beforeend",siberMGMarkup(g,i));
         mountTarkibGame(g,i);
